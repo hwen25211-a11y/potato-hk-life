@@ -1,0 +1,36 @@
+土豆子的港硕生活 0.1.0 验证记录
+2026-10-20 · Unity 2022.3.62f3c1 · macOS ARM64
+
+规则：884项断言通过。
+完整模拟16次外出、四季、四个节日和全部四种结局；不同随机种子可走通。
+覆盖30秒演示与30—120分钟正常时间，模式切换保持行程比例；
+长时间离线最多3份结果，邮箱满时不产生隐藏积压，重复打开/领取不会重复发奖励；
+系统时间回拨采用UTC高水位，不倒扣或重复生成收获；低体力自动在家恢复。
+覆盖导向约60%概率、背包/装饰购买去重、照片保存出门时衣服、信件奖励与回复去重。
+轨迹：docs/paths；输出：docs/rules-results.txt。
+
+Unity交互：18个界面检查、0文字溢出，SMOKE_OK。
+通过EventSystem Raycast与PointerClick检查三步引导、外出、在弹窗打开时返回后更新按钮、
+领取与相册、读信回复、购物摆放、行囊换装、小目标、离线恢复、节日和毕业纪念。
+检验序列化计时器、损坏JSON拒绝和备份恢复。测试结束恢复原有测试前存档。
+收获照片优先显示，避免第一张相册页先展示未解锁空位。
+截图：docs/screenshots。
+
+音乐：用户三首MP3可成功加载为AudioClip，原始文件SHA-256保持一致。
+主界面Mellow Lounge、外出Winding Path、夜晚Midnight Rhyme；节日沿用外出曲。
+淡入淡出、音乐/音效分离音量、随机微调气泡提示音。
+
+构建：Mac和WebGL均成功，版本0.1.0。
+Mac为x86_64+arm64通用二进制，codesign --verify --deep --strict通过。
+仅临时签名，未做Apple Developer ID公证。未在Windows实机测试，无Windows原生exe。
+离线与全学年主要通过可控时钟的共享规则和Unity编辑器交互验证。
+
+保留边界：角色为8个姿态与4套节日形象，使用呼吸/摆动动画，未制作行走骨骼系统。
+季节节日按游戏进度解锁，不声称对应某个现实学年的真实日期或天气。
+当前是低压力可玩原型，后续可增加地点、信件与更丰富的动作。
+
+旧项目冻结：原项目main仍为ed42d516999b93cfff8181f41ae7f309dd52937b，工作区未改变。
+本地备份含Git bundle、源码和本地私有资料、v1/v2试玩包，均核对SHA-256。
+新旧应用标识和存档键分离。原始新需求存于被忽略的LocalReferences，不进入Git或试玩包。
+
+Native build launched and title screen visually checked: correct Chinese text, mascot transparency and room scene.

@@ -1,0 +1,11 @@
+Background music supplied by the user in 土豆子游戏背景音乐.zip:
+- 主界面陪伴曲Mellow Lounge-ykr.mp3 -> Assets/Resources/Audio/Day.mp3
+- 出发音乐Winding Path-ykr.mp3 -> Assets/Resources/Audio/Travel.mp3
+- 夜晚陪伴Midnight Rhyme.mp3 -> Assets/Resources/Audio/Night.mp3
+These original MP3 bytes are preserved. Metadata and hashes: UserMusic.json.
+The recordings remain owned by their respective rights holders; no CC0 or open-source
+license is assigned to them by this project. The supplied archive contained no separate
+music license document. The user supplied the recordings for use in this game.
+
+Six short interaction WAV effects are original synthesis by Tools/make_audio.py.
+No external sample is used in those effects. The generator does not touch supplied MP3s.

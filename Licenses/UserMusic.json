@@ -1,0 +1,80 @@
+[
+  {
+    "source": "出发音乐Winding Path-ykr.mp3",
+    "asset": "Assets/Resources/Audio/Travel.mp3",
+    "sha256": "02247fc07c020307e1343cc099d2c8f4a1f966f1d6948f0a93743fdea4edfcc2",
+    "media": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "48000",
+          "channels": 2
+        },
+        {
+          "codec_name": "mjpeg"
+        }
+      ],
+      "format": {
+        "duration": "192.773500",
+        "tags": {
+          "title": "Winding Path",
+          "artist": "ritayao"
+        }
+      }
+    }
+  },
+  {
+    "source": "夜晚陪伴Midnight Rhyme.mp3",
+    "asset": "Assets/Resources/Audio/Night.mp3",
+    "sha256": "fd12b890f52ae785674c3e25024c537d93d796461b9b813b2ad4e70f0fb8069c",
+    "media": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "48000",
+          "channels": 2
+        },
+        {
+          "codec_name": "mjpeg"
+        }
+      ],
+      "format": {
+        "duration": "209.573500",
+        "tags": {
+          "title": "Midnight Rhyme",
+          "artist": "ritayao"
+        }
+      }
+    }
+  },
+  {
+    "source": "主界面陪伴曲Mellow Lounge-ykr.mp3",
+    "asset": "Assets/Resources/Audio/Day.mp3",
+    "sha256": "826b1d8d4a971b655cd968abec8b86f020d5ffe980b903a6b5c73c5eda7d2e36",
+    "media": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "48000",
+          "channels": 2
+        },
+        {
+          "codec_name": "mjpeg"
+        }
+      ],
+      "format": {
+        "duration": "205.013500",
+        "tags": {
+          "title": "Mellow Lounge",
+          "artist": "ritayao"
+        }
+      }
+    }
+  }
+]

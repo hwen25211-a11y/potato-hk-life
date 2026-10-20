@@ -1,0 +1,102 @@
+UI 01-title overflow=0
+PASS button NewGame
+PASS raycast NewGame
+UI 02-home-guide overflow=0
+PASS starts with one guide step
+PASS button PickDirection
+PASS raycast PickDirection
+UI 03-direction overflow=0
+PASS button Direction0
+PASS raycast Direction0
+PASS direction guide advances
+PASS button PetPotato
+PASS raycast PetPotato
+PASS pet produces reward
+PASS button Depart
+PASS raycast Depart
+PASS depart UI starts trip
+UI 04-away overflow=0
+PASS active timer roundtrip
+PASS button Settings
+PASS raycast Settings
+UI 05-settings overflow=0
+PASS button ×
+PASS raycast ×
+PASS returns while modal open
+PASS button Depart
+PASS raycast Depart
+UI 06-return overflow=0
+PASS claim advances count
+PASS button OpenNewAlbum
+PASS raycast OpenNewAlbum
+UI 07-album overflow=0
+PASS three step guide complete
+PASS button Photo2
+PASS raycast Photo2
+UI 08-photo overflow=0
+PASS button ×
+PASS raycast ×
+PASS button Tab来信
+PASS raycast Tab来信
+UI 09-mail overflow=0
+PASS button Letter10
+PASS raycast Letter10
+UI 10-letter overflow=0
+PASS button ReplyTogether
+PASS raycast ReplyTogether
+PASS reply advances friend arc
+PASS button Tab小店
+PASS raycast Tab小店
+UI 11-shop overflow=0
+PASS button Buy0
+PASS raycast Buy0
+PASS buy places decoration
+PASS button Tab小屋
+PASS raycast Tab小屋
+UI 12-decorated-home overflow=0
+PASS button Wardrobe
+PASS raycast Wardrobe
+UI 13-wardrobe overflow=0
+PASS button CloseWardrobe
+PASS raycast CloseWardrobe
+PASS button Quests
+PASS raycast Quests
+UI 14-goals overflow=0
+PASS button Quest1
+PASS raycast Quest1
+PASS optional reward once
+PASS button 回小屋
+PASS raycast 回小屋
+PASS offline cap through actual save reload
+UI 15-offline-return overflow=0
+PASS button Depart
+PASS raycast Depart
+PASS button OpenNewAlbum
+PASS raycast OpenNewAlbum
+PASS button Tab小屋
+PASS raycast Tab小屋
+PASS button Festival
+PASS raycast Festival
+UI 16-festival overflow=0
+PASS button FestivalTogether
+PASS raycast FestivalTogether
+PASS festival unlocks costume
+PASS button Wardrobe
+PASS raycast Wardrobe
+PASS button Outfit1
+PASS raycast Outfit1
+PASS costume selectable
+PASS button CloseWardrobe
+PASS raycast CloseWardrobe
+UI 17-new-costume overflow=0
+PASS button Graduation
+PASS raycast Graduation
+UI 18-ending overflow=0
+PASS button FinishYear
+PASS raycast FinishYear
+PASS ending returns to ongoing cozy life
+PASS broken saves rejected
+PASS backup recovery
+PASS three user music tracks imported
+PASS transparent mascot atlas readable
+SMOKE_OK total_overflow=0
