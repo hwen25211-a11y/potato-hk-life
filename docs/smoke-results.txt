@@ -51,8 +51,10 @@ PASS button OpenNewAlbum
 PASS raycast OpenNewAlbum
 UI 07-album overflow=0
 PASS three step guide complete
-PASS button Photo4
-PASS raycast Photo4
+PASS scrollbar handle receives pointer input
+PASS dragging scrollbar moves content
+PASS button Photo3
+PASS raycast Photo3
 UI 08-photo overflow=0
 PASS button ×
 PASS raycast ×
@@ -386,8 +388,8 @@ PASS button Tab小屋
 PASS raycast Tab小屋
 PASS button Tab来信
 PASS raycast Tab来信
-PASS button Letter131
-PASS raycast Letter131
+PASS button Letter130
+PASS raycast Letter130
 PASS button ReplyTogether
 PASS raycast ReplyTogether
 PASS UI letter replied 13
@@ -421,8 +423,8 @@ PASS button CloseWardrobe
 PASS raycast CloseWardrobe
 PASS button Tab来信
 PASS raycast Tab来信
-PASS button Letter142
-PASS raycast Letter142
+PASS button Letter140
+PASS raycast Letter140
 PASS button ReplyAdvice
 PASS raycast ReplyAdvice
 PASS UI letter replied 14
@@ -444,8 +446,8 @@ PASS button Tab小屋
 PASS raycast Tab小屋
 PASS button Tab来信
 PASS raycast Tab来信
-PASS button Letter150
-PASS raycast Letter150
+PASS button Letter152
+PASS raycast Letter152
 PASS button ReplyTogether
 PASS raycast ReplyTogether
 PASS UI letter replied 15
@@ -467,8 +469,8 @@ PASS button Tab小屋
 PASS raycast Tab小屋
 PASS button Tab来信
 PASS raycast Tab来信
-PASS button Letter161
-PASS raycast Letter161
+PASS button Letter160
+PASS raycast Letter160
 PASS button ReplyAdvice
 PASS raycast ReplyAdvice
 PASS UI letter replied 16

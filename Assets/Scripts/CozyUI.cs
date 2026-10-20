@@ -45,7 +45,7 @@ namespace PotatoLife
         {Card(p,x,y,w,h,Pale);var fill=Card(p,x,y,w*Life.Cap(value)/100f,h,color);fill.gameObject.AddComponent<SmoothBar>().fullWidth=w;return fill;}
         public static RectTransform Scroll(Transform p,float x,float y,float w,float h,float full)
         {var root=Rect("Scroll",p,x,y,w,h);var sr=root.gameObject.AddComponent<ScrollRect>();var v=Rect("Viewport",root,0,0,w,h);v.gameObject.AddComponent<RectMask2D>();var im=v.gameObject.AddComponent<Image>();im.color=new Color(1,1,1,.002f);var c=Rect("Content",v,0,0,w-16,Math.Max(h,full));sr.viewport=v;sr.content=c;sr.horizontal=false;sr.movementType=ScrollRect.MovementType.Clamped;sr.scrollSensitivity=45;
-            if(full>h){var rail=Card(root,w-8,0,6,h,Pale);var thumb=Card(rail.transform,0,0,6,70,Mint);var sb=rail.gameObject.AddComponent<Scrollbar>();sb.handleRect=thumb.rectTransform;sb.direction=Scrollbar.Direction.BottomToTop;sb.targetGraphic=thumb;sr.verticalScrollbar=sb;}return c;}
+            if(full>h){var rail=Card(root,w-12,0,12,h,Pale);rail.raycastTarget=true;var thumb=Card(rail.transform,0,0,12,h,Mint);thumb.raycastTarget=true;thumb.rectTransform.anchorMin=Vector2.zero;thumb.rectTransform.anchorMax=Vector2.one;thumb.rectTransform.offsetMin=thumb.rectTransform.offsetMax=Vector2.zero;var sb=rail.gameObject.AddComponent<Scrollbar>();sb.handleRect=thumb.rectTransform;sb.direction=Scrollbar.Direction.BottomToTop;sb.targetGraphic=thumb;sr.verticalScrollbar=sb;}return c;}
     }
     public class HoverPop:MonoBehaviour,IPointerEnterHandler,IPointerExitHandler
     {
