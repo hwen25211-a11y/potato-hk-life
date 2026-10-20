@@ -5,7 +5,17 @@ namespace PotatoLife
 {
     public static class Life
     {
-        public static PotatoState New(long utc,int seed){return new PotatoState{lastUtc=utc,seed=seed};}
+        public static PotatoState New(long utc,int seed){var s=new PotatoState{lastUtc=utc,seed=seed};EnsureDaily(s,utc);return s;}
+        // Hong Kong calendar day; moving the system clock backwards cannot reset rewards.
+        public static bool EnsureDaily(PotatoState s,long utc)
+        {
+            long day=(Math.Max(utc,s.lastUtc)+28800)/86400+1;if(day<=s.dailyDay)return false;
+            s.dailyDay=day;s.dailyPets=s.dailyReturns=s.dailyReads=s.dailyClaimed=0;return true;
+        }
+        public static int DailyProgress(PotatoState s,int id){return id==0?Math.Min(3,s.dailyPets):id==1?Math.Min(1,s.dailyReturns):id==2?Math.Min(1,s.dailyReads):0;}
+        public static bool DailyReady(PotatoState s,int id){return id>=0&&id<3&&DailyProgress(s,id)>=(id==0?3:1);}
+        public static bool ClaimDaily(PotatoState s,int id)
+        {if(!DailyReady(s,id)||(s.dailyClaimed&(1<<id))!=0)return false;s.dailyClaimed|=1<<id;s.coins+=Tuning.DailyCoins;s.mood=Cap(s.mood+3);return true;}
         public static float Cap(float v){return Math.Max(0,Math.Min(100,v));}
         public static int Random(PotatoState s,int min,int max){unchecked{s.rng++;uint x=(uint)(s.seed+s.rng*747796405);x=(x^(x>>16))*2246822519u;x^=x>>13;return min+(int)(x%(uint)(max-min));}}
         public static int Season(PotatoState s){return Math.Min(3,s.completed/Tuning.TripsPerSeason);}
@@ -34,7 +44,7 @@ namespace PotatoLife
         public static bool Tick(PotatoState s,long utc)
         {
             // A monotonic high-water mark prevents duplicate rewards when the wall clock moves backwards.
-            long now=Math.Max(utc,s.lastUtc);if(now==s.lastUtc)return false;
+            long now=Math.Max(utc,s.lastUtc);EnsureDaily(s,now);if(now==s.lastUtc)return false;
             bool changed=false;long homeSince=s.travelling?now:s.lastUtc;
             int guard=0;
             while(s.travelling&&s.trip.finishUtc<=now&&guard++<Tuning.MaxPending)
@@ -81,20 +91,22 @@ namespace PotatoLife
                 s.letters.Add(g.letter);s.friendBond[g.letter.friend]+=2;
                 Remember(s,"第 "+s.completed+" 次回来："+World.Places[g.trip.place].name+"。"+g.highlight);
             }
-            s.pending.Clear();s.petClicks=0;if(s.tutorial==2)s.tutorial=3;
+            s.dailyReturns=Math.Min(1,s.dailyReturns+n);s.pending.Clear();s.petClicks=0;if(s.tutorial==2)s.tutorial=3;
             for(int i=0;i<4;i++)if(!s.festivals[i]&&s.completed>=2+i*4){s.festivalPending=i;break;}
             if(s.letters.Count>80)s.letters.RemoveRange(0,s.letters.Count-80);
             return n;
         }
         public static string Pet(PotatoState s)
         {
+            s.petTotal++;
+            s.dailyPets=Math.Min(3,s.dailyPets+1);
             if(s.petClicks>=Tuning.PetRewards)return "土豆子蹭了蹭你：不拿奖励，也想多陪你一会儿。";
             s.petClicks++;bool lucky=Random(s,0,20)==0;int amount=lucky?10:5;s.coins+=amount;s.company++;s.mood=Cap(s.mood+2);s.energy=Cap(s.energy+2);
             return (lucky?"小惊喜！":"")+"金币 +"+amount+" · 陪伴 +1";
         }
         public static void OpenAlbum(PotatoState s){if(s.tutorial==3)s.tutorial=4;}
         public static bool ReadLetter(PotatoState s,int id)
-        {var l=s.letters.FirstOrDefault(x=>x.id==id);if(l==null||l.read)return false;l.read=true;s.mood=Cap(s.mood+5);s.company+=2;return true;}
+        {var l=s.letters.FirstOrDefault(x=>x.id==id);if(l==null||l.read)return false;l.read=true;s.dailyReads=1;s.mood=Cap(s.mood+5);s.company+=2;return true;}
         public static bool Reply(PotatoState s,int id,int choice)
         {
             var l=s.letters.FirstOrDefault(x=>x.id==id);if(l==null||l.reply>=0||choice<0||choice>1)return false;ReadLetter(s,id);l.reply=choice;s.friendBond[l.friend]+=choice==0?5:3;s.company+=2;
@@ -116,7 +128,7 @@ namespace PotatoLife
             for(int j=0;j<4;j++)if(!s.festivals[j]&&s.completed>=2+j*4){s.festivalPending=j;break;}
             return true;
         }
-        public static bool QuestReady(PotatoState s,int id){return id==0?s.petClicks>=3:id==1?s.completed>=1:id==2&&s.owned.Count>=1;}
+        public static bool QuestReady(PotatoState s,int id){return id==0?s.petTotal>=3:id==1?s.completed>=1:id==2&&s.owned.Count>=1;}
         public static bool ClaimQuest(PotatoState s,int id){if(id<0||id>2||s.questClaimed[id]||!QuestReady(s,id))return false;s.questClaimed[id]=true;s.coins+=25;s.mood=Cap(s.mood+5);return true;}
         public static void Mode(PotatoState s,bool demo,long utc)
         {

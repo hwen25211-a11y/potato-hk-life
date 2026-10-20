@@ -1,0 +1,37 @@
+[
+  {
+    "pack": "interface",
+    "source": "https://kenney.nl/assets/interface-sounds",
+    "file": "Tools/AudioSources/click_003.ogg",
+    "sha256": "2fa929138bc3a0f432696588f66eac94b8f6d463905ec8808c6461ce4b054292",
+    "license": "CC0 1.0"
+  },
+  {
+    "pack": "interface",
+    "source": "https://kenney.nl/assets/interface-sounds",
+    "file": "Tools/AudioSources/open_001.ogg",
+    "sha256": "a27c6bb0df7da1e6af5dd5937593c98bc58b6e513f42fe6a3254cd6a6949c648",
+    "license": "CC0 1.0"
+  },
+  {
+    "pack": "interface",
+    "source": "https://kenney.nl/assets/interface-sounds",
+    "file": "Tools/AudioSources/pluck_001.ogg",
+    "sha256": "be97ec4893a02d6eccfb678daa76c83e34cb2583b834ec2593d2641def739fa4",
+    "license": "CC0 1.0"
+  },
+  {
+    "pack": "casino",
+    "source": "https://kenney.nl/assets/casino-audio",
+    "file": "Tools/AudioSources/card-slide-2.ogg",
+    "sha256": "e674a1679ec87b507047fe012d068ad2c412125f56186f0e732684705c2a6888",
+    "license": "CC0 1.0"
+  },
+  {
+    "pack": "casino",
+    "source": "https://kenney.nl/assets/casino-audio",
+    "file": "Tools/AudioSources/chips-stack-3.ogg",
+    "sha256": "48cc0f01e2b62be7677f2e8c02177906cab80e96fa8176fa05b3ced35bc2a9c2",
+    "license": "CC0 1.0"
+  }
+]

@@ -2,4 +2,4 @@
 旅行家土豆 / trips=16 / photos=15 / letters=16 / direction=2,8,2,4
 打工皇帝土豆 / trips=16 / photos=15 / letters=16 / direction=1,3,6,6
 人缘王土豆 / trips=16 / photos=15 / letters=16 / direction=2,4,2,8
-PASS 884 assertions
+PASS 896 assertions

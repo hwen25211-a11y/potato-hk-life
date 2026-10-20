@@ -30,6 +30,9 @@ namespace PotatoLife
                 if(!ValidTrip(s.trip)||s.travelling&&(s.trip.finishUtc<=s.trip.startUtc||s.trip.normalDuration<1800||s.trip.normalDuration>7200)||s.pending.Any(g=>g==null||!ValidTrip(g.trip)||g.photos==null||g.photos.Any(p=>!ValidPhoto(p))||!ValidLetter(g.letter)))return null;
                 if(s.album.Any(p=>!ValidPhoto(p))||s.letters.Any(l=>!ValidLetter(l))||s.owned.Any(i=>i<0||i>=8)||s.placed.Any(i=>!s.owned.Contains(i)||i>=5)||s.placed.Count>4||s.costumes.Any(i=>i<0||i>4)||!s.costumes.Contains(s.outfit))return null;
                 if(float.IsNaN(s.energy)||float.IsInfinity(s.energy)||float.IsNaN(s.mood)||float.IsInfinity(s.mood)||s.wisdom<0||s.charm<0||s.company<0||(int)s.direction<0||(int)s.direction>3||s.festivalPending<-1||s.festivalPending>3)return null;
+                if(s.petTotal<0||s.dailyDay<0||s.dailyPets<0||s.dailyPets>3||s.dailyReturns<0||s.dailyReturns>1||s.dailyReads<0||s.dailyReads>1||s.dailyClaimed<0||s.dailyClaimed>7)return null;
+                s.petTotal=Math.Max(s.petTotal,Math.Max(s.petClicks,s.dailyPets));
+                if(s.dailyDay==0)Life.EnsureDaily(s,s.lastUtc);
                 s.energy=Life.Cap(s.energy);s.mood=Life.Cap(s.mood);return s;
             }catch{return null;}
         }

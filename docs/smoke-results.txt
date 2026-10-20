@@ -1,8 +1,16 @@
+PASS test audio is silent before gameplay
 UI 01-title overflow=0
 PASS button NewGame
 PASS raycast NewGame
 UI 02-home-guide overflow=0
 PASS starts with one guide step
+PASS button Profile
+PASS raycast Profile
+PASS zero profile value is visible 0
+PASS zero profile value is visible 1
+PASS zero profile value is visible 2
+PASS button ×
+PASS raycast ×
 PASS button PickDirection
 PASS raycast PickDirection
 UI 03-direction overflow=0
@@ -17,8 +25,20 @@ PASS raycast Depart
 PASS depart UI starts trip
 UI 04-away overflow=0
 PASS active timer roundtrip
+PASS v0.1.0 save gains daily tasks without losing trip
 PASS button Settings
 PASS raycast Settings
+PASS volume fill stays within track at 0
+PASS volume fill stays within track at 0.5
+PASS volume fill stays within track at 1
+PASS volume fill stays within track at 0
+PASS volume fill stays within track at 0.5
+PASS volume fill stays within track at 1
+PASS volume slider updates mute button label
+PASS button NextMusic
+PASS raycast NextMusic
+PASS next music button changes track
+PASS settings displays current music title
 UI 05-settings overflow=0
 PASS button ×
 PASS raycast ×
@@ -31,8 +51,10 @@ PASS button OpenNewAlbum
 PASS raycast OpenNewAlbum
 UI 07-album overflow=0
 PASS three step guide complete
-PASS button Photo2
-PASS raycast Photo2
+PASS scrollbar handle receives pointer input
+PASS dragging scrollbar moves content
+PASS button Photo3
+PASS raycast Photo3
 UI 08-photo overflow=0
 PASS button ×
 PASS raycast ×
@@ -89,14 +111,466 @@ PASS costume selectable
 PASS button CloseWardrobe
 PASS raycast CloseWardrobe
 UI 17-new-costume overflow=0
+PASS button Profile
+PASS raycast Profile
+UI 19-profile overflow=0
+PASS profile number actually renders 0
+PASS profile number actually renders 1
+PASS profile number actually renders 2
+PASS button ×
+PASS raycast ×
+PASS button Daily0
+PASS raycast Daily0
+PASS button Daily0
+PASS raycast Daily0
+PASS button Daily0
+PASS raycast Daily0
+PASS button Daily0
+PASS raycast Daily0
+PASS daily task claimed through main board
+PASS button Settings
+PASS raycast Settings
+PASS button ToggleAuto
+PASS raycast ToggleAuto
+PASS button ×
+PASS raycast ×
+PASS button Tab小店
+PASS raycast Tab小店
+PASS button Buy6
+PASS raycast Buy6
+PASS button Tab小屋
+PASS raycast Tab小屋
+PASS button Wardrobe
+PASS raycast Wardrobe
+PASS button Bag6
+PASS raycast Bag6
+PASS button CloseWardrobe
+PASS raycast CloseWardrobe
+PASS purchased camera can be packed
+PASS button PickDirection
+PASS raycast PickDirection
+PASS button Direction0
+PASS raycast Direction0
+PASS button Depart
+PASS raycast Depart
+PASS full-year UI departure 5
+PASS button Settings
+PASS raycast Settings
+PASS button ToggleDemo
+PASS raycast ToggleDemo
+PASS UI slow mode preserves progress
+PASS button ToggleDemo
+PASS raycast ToggleDemo
+PASS UI demo mode preserves progress
+PASS button ×
+PASS raycast ×
+PASS button Depart
+PASS raycast Depart
+PASS full-year UI claim 5
+PASS button OpenNewAlbum
+PASS raycast OpenNewAlbum
+PASS button Tab小屋
+PASS raycast Tab小屋
+PASS button Quests
+PASS raycast Quests
+PASS button Quest0
+PASS raycast Quest0
+PASS pet milestone can be claimed after collecting a trip
+PASS button 回小屋
+PASS raycast 回小屋
+PASS button Tab来信
+PASS raycast Tab来信
+PASS button Letter50
+PASS raycast Letter50
+PASS button ReplyTogether
+PASS raycast ReplyTogether
+PASS UI letter replied 5
+PASS button Tab小屋
+PASS raycast Tab小屋
+PASS button PickDirection
+PASS raycast PickDirection
+PASS button Direction1
+PASS raycast Direction1
+PASS button Depart
+PASS raycast Depart
+PASS full-year UI departure 6
+PASS button Depart
+PASS raycast Depart
+PASS full-year UI claim 6
+PASS button OpenNewAlbum
+PASS raycast OpenNewAlbum
+PASS button Tab小屋
+PASS raycast Tab小屋
+PASS button Festival
+PASS raycast Festival
+UI 20-festival-1 overflow=0
+PASS button FestivalWish
+PASS raycast FestivalWish
+PASS UI festival completed 1
+PASS button Wardrobe
+PASS raycast Wardrobe
+PASS button Outfit2
+PASS raycast Outfit2
+PASS button CloseWardrobe
+PASS raycast CloseWardrobe
+PASS button Tab来信
+PASS raycast Tab来信
+PASS button Letter61
+PASS raycast Letter61
+PASS button ReplyAdvice
+PASS raycast ReplyAdvice
+PASS UI letter replied 6
+PASS button Tab小屋
+PASS raycast Tab小屋
+PASS button PickDirection
+PASS raycast PickDirection
+PASS button Direction2
+PASS raycast Direction2
+PASS button Depart
+PASS raycast Depart
+PASS full-year UI departure 7
+PASS button Depart
+PASS raycast Depart
+PASS full-year UI claim 7
+PASS button OpenNewAlbum
+PASS raycast OpenNewAlbum
+PASS button Tab小屋
+PASS raycast Tab小屋
+PASS button Tab来信
+PASS raycast Tab来信
+PASS button Letter72
+PASS raycast Letter72
+PASS button ReplyTogether
+PASS raycast ReplyTogether
+PASS UI letter replied 7
+PASS button Tab小屋
+PASS raycast Tab小屋
+PASS button PickDirection
+PASS raycast PickDirection
+PASS button Direction3
+PASS raycast Direction3
+PASS button Depart
+PASS raycast Depart
+PASS full-year UI departure 8
+PASS button Depart
+PASS raycast Depart
+PASS full-year UI claim 8
+PASS button OpenNewAlbum
+PASS raycast OpenNewAlbum
+PASS button Tab小屋
+PASS raycast Tab小屋
+PASS button Tab来信
+PASS raycast Tab来信
+PASS button Letter80
+PASS raycast Letter80
+PASS button ReplyAdvice
+PASS raycast ReplyAdvice
+PASS UI letter replied 8
+PASS button Tab小屋
+PASS raycast Tab小屋
+PASS button PickDirection
+PASS raycast PickDirection
+PASS button Direction0
+PASS raycast Direction0
+PASS button Depart
+PASS raycast Depart
+PASS full-year UI departure 9
+PASS button Depart
+PASS raycast Depart
+PASS full-year UI claim 9
+PASS button OpenNewAlbum
+PASS raycast OpenNewAlbum
+PASS button Tab小屋
+PASS raycast Tab小屋
+PASS button Tab来信
+PASS raycast Tab来信
+PASS button Letter90
+PASS raycast Letter90
+PASS button ReplyTogether
+PASS raycast ReplyTogether
+PASS UI letter replied 9
+PASS button Tab小屋
+PASS raycast Tab小屋
+PASS button PickDirection
+PASS raycast PickDirection
+PASS button Direction1
+PASS raycast Direction1
+PASS button Depart
+PASS raycast Depart
+PASS full-year UI departure 10
+PASS button Depart
+PASS raycast Depart
+PASS full-year UI claim 10
+PASS button OpenNewAlbum
+PASS raycast OpenNewAlbum
+PASS button Tab小屋
+PASS raycast Tab小屋
+PASS button Festival
+PASS raycast Festival
+UI 20-festival-2 overflow=0
+PASS button FestivalTogether
+PASS raycast FestivalTogether
+PASS UI festival completed 2
+PASS button Wardrobe
+PASS raycast Wardrobe
+PASS button Outfit3
+PASS raycast Outfit3
+PASS button CloseWardrobe
+PASS raycast CloseWardrobe
+PASS button Tab来信
+PASS raycast Tab来信
+PASS button Letter101
+PASS raycast Letter101
+PASS button ReplyAdvice
+PASS raycast ReplyAdvice
+PASS UI letter replied 10
+PASS button Tab小屋
+PASS raycast Tab小屋
+PASS button PickDirection
+PASS raycast PickDirection
+PASS button Direction2
+PASS raycast Direction2
+PASS button Depart
+PASS raycast Depart
+PASS full-year UI departure 11
+PASS button Depart
+PASS raycast Depart
+PASS full-year UI claim 11
+PASS button OpenNewAlbum
+PASS raycast OpenNewAlbum
+PASS button Tab小屋
+PASS raycast Tab小屋
+PASS button Tab来信
+PASS raycast Tab来信
+PASS button Letter110
+PASS raycast Letter110
+PASS button ReplyTogether
+PASS raycast ReplyTogether
+PASS UI letter replied 11
+PASS button Tab小屋
+PASS raycast Tab小屋
+PASS button PickDirection
+PASS raycast PickDirection
+PASS button Direction3
+PASS raycast Direction3
+PASS button Depart
+PASS raycast Depart
+PASS full-year UI departure 12
+PASS button Depart
+PASS raycast Depart
+PASS full-year UI claim 12
+PASS button OpenNewAlbum
+PASS raycast OpenNewAlbum
+PASS button Tab小屋
+PASS raycast Tab小屋
+PASS button Tab来信
+PASS raycast Tab来信
+PASS button Letter120
+PASS raycast Letter120
+PASS button ReplyAdvice
+PASS raycast ReplyAdvice
+PASS UI letter replied 12
+PASS button Tab小屋
+PASS raycast Tab小屋
+PASS button PickDirection
+PASS raycast PickDirection
+PASS button Direction0
+PASS raycast Direction0
+PASS button Depart
+PASS raycast Depart
+PASS full-year UI departure 13
+PASS button Depart
+PASS raycast Depart
+PASS full-year UI claim 13
+PASS button OpenNewAlbum
+PASS raycast OpenNewAlbum
+PASS button Tab小屋
+PASS raycast Tab小屋
+PASS button Tab来信
+PASS raycast Tab来信
+PASS button Letter130
+PASS raycast Letter130
+PASS button ReplyTogether
+PASS raycast ReplyTogether
+PASS UI letter replied 13
+PASS button Tab小屋
+PASS raycast Tab小屋
+PASS button PickDirection
+PASS raycast PickDirection
+PASS button Direction1
+PASS raycast Direction1
+PASS button Depart
+PASS raycast Depart
+PASS full-year UI departure 14
+PASS button Depart
+PASS raycast Depart
+PASS full-year UI claim 14
+PASS button OpenNewAlbum
+PASS raycast OpenNewAlbum
+PASS button Tab小屋
+PASS raycast Tab小屋
+PASS button Festival
+PASS raycast Festival
+UI 20-festival-3 overflow=0
+PASS button FestivalWish
+PASS raycast FestivalWish
+PASS UI festival completed 3
+PASS button Wardrobe
+PASS raycast Wardrobe
+PASS button Outfit4
+PASS raycast Outfit4
+PASS button CloseWardrobe
+PASS raycast CloseWardrobe
+PASS button Tab来信
+PASS raycast Tab来信
+PASS button Letter140
+PASS raycast Letter140
+PASS button ReplyAdvice
+PASS raycast ReplyAdvice
+PASS UI letter replied 14
+PASS button Tab小屋
+PASS raycast Tab小屋
+PASS button PickDirection
+PASS raycast PickDirection
+PASS button Direction2
+PASS raycast Direction2
+PASS button Depart
+PASS raycast Depart
+PASS full-year UI departure 15
+PASS button Depart
+PASS raycast Depart
+PASS full-year UI claim 15
+PASS button OpenNewAlbum
+PASS raycast OpenNewAlbum
+PASS button Tab小屋
+PASS raycast Tab小屋
+PASS button Tab来信
+PASS raycast Tab来信
+PASS button Letter152
+PASS raycast Letter152
+PASS button ReplyTogether
+PASS raycast ReplyTogether
+PASS UI letter replied 15
+PASS button Tab小屋
+PASS raycast Tab小屋
+PASS button PickDirection
+PASS raycast PickDirection
+PASS button Direction3
+PASS raycast Direction3
+PASS button Depart
+PASS raycast Depart
+PASS full-year UI departure 16
+PASS button Depart
+PASS raycast Depart
+PASS full-year UI claim 16
+PASS button OpenNewAlbum
+PASS raycast OpenNewAlbum
+PASS button Tab小屋
+PASS raycast Tab小屋
+PASS button Tab来信
+PASS raycast Tab来信
+PASS button Letter160
+PASS raycast Letter160
+PASS button ReplyAdvice
+PASS raycast ReplyAdvice
+PASS UI letter replied 16
+PASS button Tab小屋
+PASS raycast Tab小屋
+PASS all four festivals completed in same UI playthrough
 PASS button Graduation
 PASS raycast Graduation
 UI 18-ending overflow=0
+PASS button Ending0
+PASS raycast Ending0
+PASS available ending selectable 0
+PASS button Ending1
+PASS raycast Ending1
+PASS available ending selectable 1
+PASS button Ending2
+PASS raycast Ending2
+PASS available ending selectable 2
+PASS button Ending3
+PASS raycast Ending3
+PASS available ending selectable 3
 PASS button FinishYear
 PASS raycast FinishYear
 PASS ending returns to ongoing cozy life
+PASS button Settings
+PASS raycast Settings
+PASS button 保留进度，返回扉页
+PASS raycast 保留进度，返回扉页
+PASS button Continue
+PASS raycast Continue
+PASS continue reloads completed year
+PASS button Depart
+PASS raycast Depart
+PASS button Depart
+PASS raycast Depart
+PASS can collect another trip after graduation
+PASS button OpenNewAlbum
+PASS raycast OpenNewAlbum
+PASS button Tab小屋
+PASS raycast Tab小屋
 PASS broken saves rejected
 PASS backup recovery
-PASS three user music tracks imported
+PASS music imported Day
+PASS music imported Night
+PASS music imported Travel
+PASS music imported AfternoonJazz
+PASS music imported PixelRoomPiano
+PASS music imported LazyCoolJazz
+PASS feedback sound imported bubble
+PASS feedback sound decodes at gentle level bubble
+PASS feedback sound imported coin
+PASS feedback sound decodes at gentle level coin
+PASS feedback sound imported page
+PASS feedback sound decodes at gentle level page
+PASS feedback sound imported purchase
+PASS feedback sound decodes at gentle level purchase
+PASS feedback sound imported mail
+PASS feedback sound decodes at gentle level mail
+PASS feedback sound imported return
+PASS feedback sound decodes at gentle level return
+PASS feedback sound imported company
+PASS feedback sound decodes at gentle level company
+PASS feedback sound imported stamp
+PASS feedback sound decodes at gentle level stamp
+PASS one playing music source after fade Day
+PASS repeated theme does not restart Day
+PASS one playing music source after fade Day
+PASS repeated theme does not restart Day
+PASS one playing music source after fade Day
+PASS repeated theme does not restart Day
+PASS all songs reachable in Day playlist
+PASS one playing music source after fade Night
+PASS repeated theme does not restart Night
+PASS one playing music source after fade Night
+PASS repeated theme does not restart Night
+PASS one playing music source after fade Night
+PASS repeated theme does not restart Night
+PASS all songs reachable in Night playlist
+PASS one playing music source after fade Travel
+PASS repeated theme does not restart Travel
+PASS one playing music source after fade Travel
+PASS repeated theme does not restart Travel
+PASS one playing music source after fade Travel
+PASS repeated theme does not restart Travel
+PASS all songs reachable in Travel playlist
+PASS festival shares travel without restarting
+PASS track ending automatically advances
+PASS at most one BGM during Day switch
+PASS at most one BGM during Travel switch
+PASS at most one BGM during Night switch
+PASS at most one BGM during Festival switch
+PASS mute holds through switching without changing effects volume
+PASS rapid next preserves fade-out level
+PASS rapid next settles to one source
 PASS transparent mascot atlas readable
+PASS button Settings
+PASS raycast Settings
+PASS hover animation stays centered
+PASS button ×
+PASS raycast ×
+UI 21-all-poses overflow=0
+PASS all testing remained silent
 SMOKE_OK total_overflow=0

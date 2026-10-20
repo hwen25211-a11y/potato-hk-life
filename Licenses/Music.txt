@@ -2,10 +2,20 @@ Background music supplied by the user in 土豆子游戏背景音乐.zip:
 - 主界面陪伴曲Mellow Lounge-ykr.mp3 -> Assets/Resources/Audio/Day.mp3
 - 出发音乐Winding Path-ykr.mp3 -> Assets/Resources/Audio/Travel.mp3
 - 夜晚陪伴Midnight Rhyme.mp3 -> Assets/Resources/Audio/Night.mp3
+
+Additional background music supplied directly by the user:
+- 《午后慢摇爵士曲》100%牛奶巧克力-爵士.mp3 -> Assets/Resources/Audio/AfternoonJazz.mp3
+- 《像素小房间钢琴曲》100%牛奶巧克力-轻音乐.mp3 -> Assets/Resources/Audio/PixelRoomPiano.mp3
+- 《慵懒松弛冷爵士》100%牛奶巧克力-爵士.mp3 -> Assets/Resources/Audio/LazyCoolJazz.mp3
+
 These original MP3 bytes are preserved. Metadata and hashes: UserMusic.json.
 The recordings remain owned by their respective rights holders; no CC0 or open-source
 license is assigned to them by this project. The supplied archive contained no separate
 music license document. The user supplied the recordings for use in this game.
 
-Six short interaction WAV effects are original synthesis by Tools/make_audio.py.
-No external sample is used in those effects. The generator does not touch supplied MP3s.
+Eight short interaction WAV effects are prepared by Tools/make_audio.py.
+Bubble/button, page, purchase, mail and coin effects use selected Kenney CC0 recordings;
+coin also adds an original soft melodic accent. Return, company and stamp are original synthesis.
+Source links and hashes: SoundEffects.json. Original licenses: Kenney-interface.txt and
+Kenney-casino.txt. AudioSources under Tools preserves the source recordings for regeneration.
+The generator does not touch supplied MP3s and does not play audio.
