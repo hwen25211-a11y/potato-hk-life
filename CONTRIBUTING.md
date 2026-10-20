@@ -6,7 +6,8 @@
 - Unity 资源连同 `.meta` 一起提交；运行时状态、离线规则与界面保持分层。
 - 改时间、奖励、存档或解锁规则时，运行 `Tools/test-rules.sh`。不要用真实等待数小时测试离线，给规则传入可控 UTC 时间。
 - 改界面时检查实际点击、文字溢出、存读档、演示与慢生活切换。`PotatoSmoke.Run` 会备份并恢复测试前存档。
+- 本机测试必须静音，不调整 Mac 系统音量、不播放试听音频。编辑器 `PotatoSmoke.Run` 自动全静音；独立实例用 `-potato-silent-test`，浏览器用 `?silent-test=1`。
 - 不提交 `Library`、`Build`、`release`、`LocalReferences`、账号凭据或玩家存档。
-- 替换音乐请保持 Day/Night/Travel 资源名，并同步记录来源。原配音乐是用户提供的音频，不要把它另行声明为 CC0。
+- 替换音乐请保持现有资源名；新增音乐同步更新 `PotatoSound.cs` 场景歌单及 `Licenses/UserMusic.json` 来源记录。原配音乐是用户提供的音频，不要把它另行声明为 CC0。
 
 旧《港硕这一年》已经冻结。新玩法只在本仓库实现，不回写旧项目或迁移旧存档。

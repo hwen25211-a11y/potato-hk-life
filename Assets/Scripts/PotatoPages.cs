@@ -57,7 +57,7 @@ namespace PotatoLife
         }
         void LetterDialog(int id)
         {
-            var l=State.letters.First(x=>x.id==id);bool first=Life.ReadLetter(State,id);Save.Write(State);RefreshStats();if(first)Sound.Fx("company");
+            var l=State.letters.First(x=>x.id==id);bool first=Life.ReadLetter(State,id);Save.Write(State);RefreshStats();if(first)Sound.Fx("mail");
             var p=Modal(l.title,"来自 "+World.Friends[l.friend]+" / 读信后心情 +5、陪伴 +2（仅首次）",1060,785);Actor(p,6,0,30,170,196,245);Text(p,l.body,262,161,761,256,26,Ink);
             Text(p,l.reply<0?"回一小句就好。两种回复都会让关系更近一点。":"你写过："+(l.reply==0?"下次一起走走。":"我把自己的小办法也寄给你。"),32,461,996,77,22,Muted);
             Button(p,l.reply<0?"下次一起走走":"已寄出陪伴",32,571,996,60,()=>{Life.Reply(State,id,0);Save.Write(State);Render();},Coral,l.reply<0,"ReplyTogether");Button(p,l.reply<0?"把自己的小办法写给对方":"回信已收进回忆",32,653,996,60,()=>{Life.Reply(State,id,1);Save.Write(State);Render();},Blue,l.reply<0,"ReplyAdvice");
@@ -71,20 +71,46 @@ namespace PotatoLife
                 int id=i;var item=World.Items[i];bool owned=State.owned.Contains(i);float x=(i%4)*374,y=(i/4)*355;var c=Card(list,x,y,354,333,Color.white).transform;
                 Decoration(c,i,112,19,130,115);Text(c,item.name,19,150,316,36,27,Ink,true);Text(c,item.description,19,200,316,64,21,Muted);
                 string label=owned?(item.type==0?(State.placed.Contains(i)?"已摆放 · 收起来":"摆进房间"):(State.selectedBag==i?"已放进行囊":"放进行囊")):"购买 · "+item.price+" 金币";
-                Button(c,label,19,281,316,34,()=>{if(!owned){if(Life.Buy(State,id)){Save.Write(State);Render();Float("新物件！魅力 +3",Mint);Sound.Fx("coin");}}else{if(item.type==0){if(!Life.PlaceItem(State,id)){Float("先收起一件喜欢的物品，给它腾个位置吧。",Blue);return;}}else Life.Pack(State,id);Save.Write(State);Render();}},owned?Mint:Coral,owned?(item.type==0||!State.travelling):State.coins>=item.price,"Buy"+id);
+                Button(c,label,19,281,316,34,()=>{if(!owned){if(Life.Buy(State,id)){Save.Write(State);Render();Float("新物件！魅力 +3",Mint);Sound.Fx("purchase");}}else{if(item.type==0){if(!Life.PlaceItem(State,id)){Float("先收起一件喜欢的物品，给它腾个位置吧。",Blue);return;}}else Life.Pack(State,id);Save.Write(State);Render();}},owned?Mint:Coral,owned?(item.type==0||!State.travelling):State.coins>=item.price,"Buy"+id);
             }
         }
         void Profile()
         {
             var p=Modal("一颗越来越自在的土豆。","这三项只记录成长，不给你排排名。",1010,744);Actor(p,0,State.outfit,26,153,250,319);
-            string[] names={"智慧","魅力","陪伴"};int[] values={State.wisdom,State.charm,State.company};for(int i=0;i<3;i++){Text(p,names[i],319,172+i*95,340,37,29,Ink,true);Text(p,values[i].ToString(),714,172+i*95,250,40,33,Colors[i],true,TextAlignmentOptions.TopRight);}
+            string[] names={"智慧","魅力","陪伴"};int[] values={State.wisdom,State.charm,State.company};for(int i=0;i<3;i++){Card(p,302,158+i*95,662,80,Pale);Text(p,names[i],319,169+i*95,340,58,27,Ink,true,TextAlignmentOptions.MidlineLeft);var number=Text(p,values[i].ToString(),714,163+i*95,232,69,32,Colors[i],true,TextAlignmentOptions.MidlineRight);number.name="ProfileValue"+i;}
             Text(p,"最常去的方向："+World.Directions[Life.SuggestEnding(State)]+"\n认识了 "+State.friendBond.Count(x=>x>0)+" 位朋友 · 收到 "+State.letters.Count+" 封来信",32,500,946,97,25,Muted);Button(p,"再去过一点喜欢的日子",32,641,946,61,CloseModal,Blue);
         }
         void QuestDialog()
         {
-            var p=Modal("有空就做，完成就庆祝。","三个小目标 / 没完成也不会扣任何东西",1020,700);string[] titles={"摸摸土豆子三次","收好第一次外出的手账","给房间或行囊添一件物品"};
-            for(int i=0;i<3;i++){int id=i;var c=Card(p,32,154+i*145,956,127,Color.white).transform;Text(c,titles[i],21,15,648,37,26,Ink,true);Text(c,"奖励 25 金币 · 心情 +5",21,72,648,32,21,Muted);Button(c,State.questClaimed[i]?"已领小奖励":Life.QuestReady(State,i)?"收下奖励":"慢慢来",708,35,225,53,()=>{Life.ClaimQuest(State,id);Save.Write(State);RefreshStats();Sound.Fx("stamp");QuestDialog();},State.questClaimed[i]?Muted:Mint,!State.questClaimed[i]&&Life.QuestReady(State,i),"Quest"+i);}
-            Button(p,"回小屋",32,611,956,50,CloseModal,Blue);
+            var p=Modal("把小事，放进同一张清单。","每日任务香港时间 0 点刷新；抵港小目标只奖励一次。没完成也不扣资源。",1140,850);
+            Text(p,"今日待办",32,150,521,43,27,Blue,true);Text(p,"抵港小目标",587,150,521,43,27,Blue,true);
+            string[] titles={"摸摸土豆子三次","收好第一次外出的手账","给房间或行囊添一件物品"};
+            for(int i=0;i<3;i++)
+            {
+                int id=i;bool claimed=(State.dailyClaimed&(1<<i))!=0;float y=210+i*164;
+                var c=Card(p,32,y,521,146,Color.white).transform;Text(c,World.DailyTitles[i],19,10,483,37,23,Ink,true);Text(c,Life.DailyProgress(State,i)+" / "+(i==0?3:1)+" · "+Tuning.DailyCoins+" 金币 · 心情 +3",19,55,483,31,19,Muted);
+                Button(c,claimed?"已完成":Life.DailyReady(State,i)?"收下今日奖励":"去完成",19,98,483,36,()=>DailyAction(id),claimed?Muted:Mint,!claimed,"DailyList"+i);
+                c=Card(p,587,y,521,146,Color.white).transform;Text(c,titles[i],19,10,483,37,23,Ink,true);Text(c,"奖励 25 金币 · 心情 +5",19,55,483,31,19,Muted);
+                Button(c,State.questClaimed[i]?"已领小奖励":Life.QuestReady(State,i)?"收下奖励":"慢慢来",19,98,483,36,()=>{if(Life.ClaimQuest(State,id))Sound.Fx("coin");Save.Write(State);RefreshStats();QuestDialog();},State.questClaimed[i]?Muted:Mint,!State.questClaimed[i]&&Life.QuestReady(State,i),"Quest"+i);
+            }
+            Button(p,"回小屋",32,756,1076,52,CloseModal,Blue);
+        }
+        void DailyAction(int id)
+        {
+            Life.Tick(State,Save.Now);
+            if(Life.ClaimDaily(State,id)){bool listOpen=modal!=null;Save.Write(State);Sound.Fx("coin");if(listOpen)QuestDialog();else Render();Float("今日小奖励 · 金币 +"+Tuning.DailyCoins,Mango);RefreshStats();return;}
+            if((State.dailyClaimed&(1<<id))!=0)return;
+            if(id==0){bool listOpen=modal!=null;int before=State.coins;string note=Life.Pet(State);Save.Write(State);Sound.Fx(State.coins>before?"coin":"company");if(listOpen)QuestDialog();RefreshStats();Float(note,Coral);}
+            else if(id==1)
+            {
+                if(State.pending.Count>0){CollectGifts();return;}
+                if(State.festivalPending>=0){FestivalDialog();return;}
+                if(Life.YearReady(State)&&!State.graduated){EndingDialog();return;}
+                if(State.tutorial==0){DirectionDialog();return;}
+                if(Life.Depart(State,Save.Now)){tab="小屋";Save.Write(State);Render();Sound.Fx("page");}
+                else Float(Life.DepartureLock(State),Blue);
+            }
+            else {tab="来信";Render();if(State.letters.All(l=>l.read))Float("先送土豆子出门，回来时会带上新的来信。",Blue);}
         }
         void FestivalDialog()
         {
@@ -92,7 +118,7 @@ namespace PotatoLife
             var p=Modal(World.FestivalNames[season],"季节主题故事 / 完成即获得纪念照和新衣服",1110,850);Picture(p,places,32,145,1046,273,3);Actor(p,6,season+1,444,179,204,225,false);Text(p,body[season],32,444,1046,127,26,Ink);
             Button(p,"和大家一起，把热闹拍下来",32,606,1046,64,()=>FinishFestival(0),Coral,true,"FestivalTogether");Button(p,"写下祝福，留一份安静的纪念",32,694,1046,64,()=>FinishFestival(1),Blue,true,"FestivalWish");
         }
-        void FinishFestival(int choice){Life.Festival(State,choice);Save.Write(State);Render();Sound.Fx("stamp");Float("节日纪念 +1 · 新衣服 +1 · 金币 +200",Coral);}
+        void FinishFestival(int choice){Life.Festival(State,choice);Save.Write(State);Render();Sound.Fx("coin");Float("节日纪念 +1 · 新衣服 +1 · 金币 +200",Coral);}
         void EndingDialog()
         {
             if(!Life.YearReady(State))return;int e=string.IsNullOrEmpty(State.ending)?Life.SuggestEnding(State):int.Parse(State.ending);var p=Modal("这一年，你成为了"+World.Endings[e]+"。","学年纪念 / 没有坏结局，每一页日常都算数",1200,900);
@@ -109,14 +135,19 @@ namespace PotatoLife
             Text(p,"外出节奏",32,148,962,36,27,Ink,true);Button(p,State.demo?"正在使用：30 秒演示模式":"切换到 30 秒演示模式",32,200,966,55,()=>{Life.Mode(State,!State.demo,Save.Now);Save.Write(State);RefreshStats();Settings();},Blue,true,"ToggleDemo");
             Text(p,State.demo?"适合课堂和第一次试玩。切换模式会保留当前外出的完成比例。":"慢生活模式：每次外出 30—120 分钟，可关闭游戏，最多积攒 3 份收获。",32,274,966,68,21,Muted);
             Button(p,State.autoRoam?"连续外出：开（最多等你收三份）":"连续外出：关（每次由你送它出门）",32,361,966,52,()=>{State.autoRoam=!State.autoRoam;Save.Write(State);Settings();},Mint,true,"ToggleAuto");
-            Text(p,"背景音乐",32,445,180,32,22,Ink);VolumeSlider(p,232,455,615,Sound.MusicVolume,v=>Sound.SetMusic(v));Button(p,Sound.MusicVolume<.01f?"开启":"静音",866,441,132,42,()=>{Sound.SetMusic(Sound.MusicVolume<.01f?.32f:0);Settings();},Muted);
-            Text(p,"气泡与提示音",32,520,180,32,22,Ink);VolumeSlider(p,232,530,615,Sound.EffectVolume,v=>Sound.SetEffects(v));
+            Text(p,"背景音乐",32,445,180,32,22,Ink);Button mute=null;VolumeSlider(p,232,455,615,Sound.MusicVolume,v=>{Sound.SetMusic(v);if(mute!=null)mute.GetComponentInChildren<TextMeshProUGUI>().text=v<.01f?"开启":"静音";});mute=Button(p,Sound.MusicVolume<.01f?"开启":"静音",866,441,132,42,()=>{Sound.SetMusic(Sound.MusicVolume<.01f?.32f:0);Settings();},Muted,true,"MuteMusic");
+            musicTrackText=Text(p,"当前曲目 · "+Sound.NowPlaying,32,500,805,32,21,Muted);Button(p,"下一首",866,495,132,42,()=>{Sound.NextTrack();musicTrackText.text="当前曲目 · "+Sound.NowPlaying;},Blue,true,"NextMusic");
+            Text(p,"气泡与提示音",32,568,180,32,22,Ink);VolumeSlider(p,232,578,615,Sound.EffectVolume,v=>Sound.SetEffects(v));
             Button(p,"保留进度，返回扉页",32,636,469,56,()=>{Save.Write(State);menu=true;Render();},Blue);Button(p,"重新开启一段生活",519,636,479,56,Restart,Muted);
             Text(p,"新版独立存档，不会影响《港硕这一年》的游戏进度。",32,728,966,32,18,Muted);
         }
         void VolumeSlider(Transform p,float x,float y,float w,float value,Action<float> changed)
         {
-            var r=UI.Rect("Volume",p,x,y,w,26);var bg=Card(r,0,9,w,8,Pale);bg.raycastTarget=true;var fill=Card(r,0,9,w,8,Mint);var handle=Card(r,0,0,25,26,Blue);var slider=r.gameObject.AddComponent<Slider>();slider.fillRect=fill.rectTransform;slider.handleRect=handle.rectTransform;slider.targetGraphic=handle;handle.raycastTarget=true;slider.minValue=0;slider.maxValue=1;slider.value=value;slider.onValueChanged.AddListener(v=>changed(v));
+            var r=UI.Rect("Volume",p,x,y,w,26);var bg=Card(r,0,9,w,8,Pale);bg.raycastTarget=true;
+            var fillArea=UI.Rect("FillArea",r,0,9,w,8);var fill=Card(fillArea,0,0,w,8,Mint);
+            fill.rectTransform.anchorMin=Vector2.zero;fill.rectTransform.anchorMax=Vector2.one;fill.rectTransform.offsetMin=fill.rectTransform.offsetMax=Vector2.zero;
+            var handle=Card(r,0,0,25,26,Blue);handle.rectTransform.anchorMin=handle.rectTransform.anchorMax=new Vector2(0,.5f);handle.rectTransform.pivot=new Vector2(.5f,.5f);handle.rectTransform.anchoredPosition=Vector2.zero;
+            var slider=r.gameObject.AddComponent<Slider>();slider.fillRect=fill.rectTransform;slider.handleRect=handle.rectTransform;slider.targetGraphic=handle;handle.raycastTarget=true;slider.minValue=0;slider.maxValue=1;slider.value=value;slider.onValueChanged.AddListener(v=>changed(v));
         }
         void Restart()
         {var p=Modal("给新的故事，留一本空手账？","新游戏会覆盖本游戏当前进度，旧港硕游戏不受影响。",960,440);Button(p,"继续现在的小日子",32,290,429,70,()=>{if(menu)Render();else CloseModal();},Blue);Button(p,"确认重新开始",479,290,449,70,NewGame,Coral,true,"ConfirmNewGame");}

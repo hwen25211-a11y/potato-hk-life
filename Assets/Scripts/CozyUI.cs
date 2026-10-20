@@ -30,7 +30,11 @@ namespace PotatoLife
         static Sprite Frame(string path,int index,int cols,int rows)
         {
             string key=path+index;if(sprites.ContainsKey(key))return sprites[key];var t=Resources.Load<Texture2D>(path);if(t==null)return null;
-            int cw=t.width/cols,ch=t.height/rows,sx=index%cols*cw,sy=t.height-(index/cols+1)*ch;var colors=t.GetPixels32();int minX=cw,minY=ch,maxX=0,maxY=0;
+            int cw=t.width/cols,ch=t.height/rows,sx=index%cols*cw,sy=t.height-(index/cols+1)*ch;
+            // The lower row was drawn with uneven gutters: the waving hand and
+            // cushion cross the nominal grid. Slice at the actual empty gutters.
+            if(path=="Art/PotatoAtlas"&&index>=4){float[] edges={0,416f/1536f,800f/1536f,.75f,1};int col=index-4;sx=Mathf.RoundToInt(edges[col]*t.width);cw=Mathf.RoundToInt(edges[col+1]*t.width)-sx;}
+            var colors=t.GetPixels32();int minX=cw,minY=ch,maxX=0,maxY=0;
             for(int y=0;y<ch;y++)for(int x=0;x<cw;x++)if(colors[(sy+y)*t.width+sx+x].a>40){minX=Math.Min(minX,x);minY=Math.Min(minY,y);maxX=Math.Max(maxX,x);maxY=Math.Max(maxY,y);}
             if(minX>maxX){minX=minY=0;maxX=cw-1;maxY=ch-1;}int margin=3;minX=Math.Max(0,minX-margin);minY=Math.Max(0,minY-margin);maxX=Math.Min(cw-1,maxX+margin);maxY=Math.Min(ch-1,maxY+margin);
             var s=Sprite.Create(t,new Rect(sx+minX,sy+minY,maxX-minX+1,maxY-minY+1),new Vector2(.5f,.5f));sprites[key]=s;return s;
@@ -45,8 +49,10 @@ namespace PotatoLife
     }
     public class HoverPop:MonoBehaviour,IPointerEnterHandler,IPointerExitHandler
     {
+        void Awake(){var r=(RectTransform)transform;var center=new Vector2(.5f,.5f);r.anchoredPosition+=Vector2.Scale(r.rect.size,center-r.pivot);r.pivot=center;}
+        void OnDisable(){over=false;transform.localScale=Vector3.one;}
         bool over;public void OnPointerEnter(PointerEventData e){over=GetComponent<Button>().interactable;}public void OnPointerExit(PointerEventData e){over=false;}
-        void Update(){transform.localScale=Vector3.Lerp(transform.localScale,Vector3.one*(over?1.035f:1),Time.unscaledDeltaTime*14);}
+        void Update(){transform.localScale=Vector3.Lerp(transform.localScale,Vector3.one*(over&&GetComponent<Button>().interactable?1.025f:1),Time.unscaledDeltaTime*14);}
     }
     public class PotatoMotion:MonoBehaviour
     {

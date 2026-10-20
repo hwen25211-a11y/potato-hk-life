@@ -76,5 +76,65 @@
         }
       }
     }
+  },
+  {
+    "source": "《午后慢摇爵士曲》100%牛奶巧克力-爵士.mp3",
+    "asset": "Assets/Resources/Audio/AfternoonJazz.mp3",
+    "sha256": "50e5d3ba965809b4b873ebe68988c8a8ac1faee4f428087a805a3d2a98d7aee1",
+    "media": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "44100",
+          "channels": 2
+        }
+      ],
+      "format": {
+        "duration": "90.044063",
+        "tags": {}
+      }
+    }
+  },
+  {
+    "source": "《像素小房间钢琴曲》100%牛奶巧克力-轻音乐.mp3",
+    "asset": "Assets/Resources/Audio/PixelRoomPiano.mp3",
+    "sha256": "9560fb8a116386aa4f6c8c14b035ec2455e357c93c470682b1c0c3458eed35fd",
+    "media": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "44100",
+          "channels": 2
+        }
+      ],
+      "format": {
+        "duration": "60.029375",
+        "tags": {}
+      }
+    }
+  },
+  {
+    "source": "《慵懒松弛冷爵士》100%牛奶巧克力-爵士.mp3",
+    "asset": "Assets/Resources/Audio/LazyCoolJazz.mp3",
+    "sha256": "db6f745313feec640e3a0ad3b83637ceb78666f616e7814fbaee4d0ae2a8d6a5",
+    "media": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "44100",
+          "channels": 2
+        }
+      ],
+      "format": {
+        "duration": "90.044063",
+        "tags": {}
+      }
+    }
   }
 ]

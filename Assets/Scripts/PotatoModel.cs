@@ -25,11 +25,12 @@ namespace PotatoLife
     }
     [Serializable] public class PotatoState
     {
-        public int version=1,seed=19,rng,coins=120,wisdom,charm,company,completed,selectedBag=-1,outfit,petClicks,tutorial;
+        public int version=1,seed=19,rng,coins=120,wisdom,charm,company,completed,selectedBag=-1,outfit,petClicks,petTotal,tutorial;
         public float energy=85,mood=80;
         public bool demo=true,autoRoam=true,travelling,graduated;
         public Direction direction=Direction.Study;
         public long lastUtc;public Trip trip=new Trip();
+        public long dailyDay;public int dailyPets,dailyReturns,dailyReads,dailyClaimed;
         public string ending="",lastHighlight="欢迎来到香港，房间里的光刚刚好。";
         public int[] directionCount=new int[4],friendBond=new int[3],friendChapter=new int[3];
         public bool[] festivals=new bool[4],questClaimed=new bool[3];
@@ -53,7 +54,7 @@ namespace PotatoLife
     {
         public const int DemoSeconds=30,MaxPending=3,TripsPerSeason=4,YearTrips=16;
         public const int MinTripSeconds=1800,MaxTripSeconds=7200,PetRewards=5;
-        public const int TripCoins=35,FestivalCoins=200;
+        public const int TripCoins=35,FestivalCoins=200,DailyCoins=20;
         public const float NormalHomeRecoveryPerSecond=.02f,DemoHomeRecoveryPerSecond=3f;
     }
     public static class World
@@ -67,6 +68,7 @@ namespace PotatoLife
         public static readonly string[] CostumeNames={"小红书包","兔子灯帽","龙舟头巾","花灯披肩","毕业帽"};
         public static readonly string[] FestivalNames={"春日灯会","夏日龙舟","中秋花灯","冬日毕业派对"};
         public static readonly string[] Endings={"学霸土豆","旅行家土豆","打工皇帝土豆","人缘王土豆"};
+        public static readonly string[] DailyTitles={"摸摸土豆子三次","收好一份外出手账","读一封未读来信"};
         public static readonly Place[] Places={
             new Place(0,Direction.Study,"图书馆四楼","空调还是有点冷，刚好把刚学会的知识捂热。",0),
             new Place(1,Direction.Study,"靠窗自习室","今天划掉了三项待办，第四项写着：夸夸自己。",0),
