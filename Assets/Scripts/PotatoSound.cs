@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace PotatoLife
 {
+    [DisallowMultipleComponent]
     public class Sound : MonoBehaviour
     {
         const float FadeSeconds = .6f;
@@ -26,6 +27,9 @@ namespace PotatoLife
         string theme = "", track = "", pendingTrack = "";
         float gain;
         bool hasPlayed;
+        bool focused = true, paused;
+        float resumeTime;
+        bool Suspended { get { return !focused || paused; } }
 
         // Tests mute the listener before any source starts; saved volume settings stay intact.
         public static bool SilentTest;
@@ -40,6 +44,7 @@ namespace PotatoLife
 
         void Awake()
         {
+            if (instance != null && instance != this) { Destroy(this); return; }
             instance = this;
             if (SilentTest || System.Array.IndexOf(System.Environment.GetCommandLineArgs(), "-potato-silent-test") >= 0 ||
                 Application.absoluteURL.Contains("silent-test=1")) AudioListener.volume = 0;
@@ -47,11 +52,70 @@ namespace PotatoLife
             fx = gameObject.AddComponent<AudioSource>();
             music.playOnAwake = fx.playOnAwake = false;
             music.loop = false;
+#if UNITY_WEBGL && !UNITY_EDITOR
+            // The page grants audio ownership only to its active window.
+            focused = false;
+#else
+            focused = Application.isFocused || Application.isEditor;
+#endif
             Theme("Day");
+        }
+
+        void OnApplicationFocus(bool value)
+        {
+#if !UNITY_WEBGL || UNITY_EDITOR
+            if (!SilentTest) SetFocus(value);
+#endif
+        }
+
+        void OnApplicationPause(bool value)
+        {
+            bool wasSuspended = Suspended;
+            paused = value;
+            UpdateSuspension(wasSuspended);
+        }
+
+        // Called by the WebGL page, including when Unity's render loop is throttled.
+        public void SetWebAudioFocus(string value) { SetFocus(value == "1"); }
+
+        void SetFocus(bool value)
+        {
+            bool wasSuspended = Suspended;
+            focused = value;
+            UpdateSuspension(wasSuspended);
+        }
+
+        void UpdateSuspension(bool wasSuspended)
+        {
+            if (music == null || wasSuspended == Suspended) return;
+            if (Suspended)
+            {
+                resumeTime = music.time;
+                music.Stop();
+                fx.Stop();
+                gain = 0;
+                hasPlayed = false;
+                ApplyVolume();
+            }
+            else if (pendingClip != null) StartPending();
+            else if (music.clip != null)
+            {
+                music.time = Mathf.Clamp(resumeTime, 0, Mathf.Max(0, music.clip.length - .01f));
+                music.Play();
+            }
+        }
+
+        void OnDestroy()
+        {
+            if (instance != this) return;
+            if (music != null) { music.Stop(); Destroy(music); }
+            if (fx != null) { fx.Stop(); Destroy(fx); }
+            instance = null;
         }
 
         void Update()
         {
+            if (music == null || Suspended) return;
             if (pendingClip != null)
             {
                 gain = Mathf.MoveTowards(gain, 0, Time.unscaledDeltaTime / FadeSeconds);
@@ -71,7 +135,8 @@ namespace PotatoLife
 
         void StartPending()
         {
-            // A single music source makes simultaneous home/activity playback impossible.
+            if (Suspended) return;
+            // Stop the previous clip before replacing it on this instance's music source.
             music.Stop();
             music.clip = pendingClip;
             track = pendingTrack;
@@ -136,7 +201,7 @@ namespace PotatoLife
 
         public static void Fx(string kind)
         {
-            if (instance == null) return;
+            if (instance == null || instance.Suspended) return;
             var clip = Resources.Load<AudioClip>("Audio/" + kind);
             if (clip == null) return;
             instance.fx.pitch = Random.Range(.96f, 1.06f);

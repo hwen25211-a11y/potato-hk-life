@@ -12,7 +12,7 @@ namespace PotatoLife.Editor
 {
     public static class PotatoBuild
     {
-        public const string Version="0.1.1";
+        public const string Version="0.1.2";
         public const string Scene="Assets/Scenes/PotatoHome.unity";
         [MenuItem("土豆子的港硕生活/准备场景与字体")]
         public static void Prepare()

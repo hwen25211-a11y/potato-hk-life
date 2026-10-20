@@ -1,0 +1,22 @@
+PASS listener muted before any playback
+PASS foreground music starts
+PASS duplicate sound manager creates no extra players
+PASS background stops music and effects including new requests
+PASS focus does not overwrite saved volumes
+PASS foreground starts only the latest pending track
+PASS resume preserves track position
+PASS exclusive music during Day transition
+PASS no queued background playback in Day
+PASS one music source after Day resume
+PASS exclusive music during Travel transition
+PASS no queued background playback in Travel
+PASS one music source after Travel resume
+PASS exclusive music during Night transition
+PASS no queued background playback in Night
+PASS one music source after Night resume
+PASS exclusive music during Festival transition
+PASS no queued background playback in Festival
+PASS one music source after Festival resume
+PASS user mute survives focus changes
+PASS entire regression stayed silent
+AUDIO_CHECK_OK
