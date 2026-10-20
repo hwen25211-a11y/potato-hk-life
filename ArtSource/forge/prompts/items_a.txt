@@ -1,0 +1,10 @@
+Game item icon sheet, landscape 3:2, EXACTLY 8 separate objects in a regular 4 columns by 2 rows grid of equal cells, reading order left-to-right then top-to-bottom:
+1 a small potted window plant with round green leaves in a coral ceramic pot;
+2 a soft round mint-green and cream fluffy rug, seen at a low angle (wide flat oval);
+3 a cute desk lamp with a mango-yellow shade shaped like a rounded star;
+4 a string of three hanging photo postcards clipped with tiny wooden pegs to a short cord (cards show simple coral, mint and mango sketches);
+5 a plump mango-yellow teddy bear cushion;
+6 a small coral bento lunch bag with a cream handle;
+7 a tiny compact cream-and-coral instant camera;
+8 a folded mint-green umbrella with a wooden handle.
+Each object is drawn alone, centred in its own cell, upright, in a gentle three-quarter front view, at a consistent scale as if photographed for a catalogue, with a generous empty margin of at least one fifth of the cell on every side; nothing touches or crosses a cell edge. STYLE: copy the attached room illustration exactly - soft warm storybook illustration, clean thin warm-brown outlines, flat colours with soft painted shading, cozy and slightly realistic proportions. Do not use any blue colour on the objects. Background: completely flat pure blue #0000FF filling every cell, no shadows on the background, no floor, no grid lines, no borders, no text, no labels, no logos, no brand names, no checkerboard.

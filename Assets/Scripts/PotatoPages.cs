@@ -26,15 +26,27 @@ namespace PotatoLife
         }
         void DrawAlbum()
         {
-            Text(page,"把普通的日子，贴成一本书。",45,183,1485,56,37,Ink,true);Text(page,"12 个香港角落 + 4 张节日纪念。照片保留拍摄时的衣服，回忆不会被换掉。",47,250,1489,36,21,Muted);
+            int sealedCount=State.album.Count(p=>p.unopened);
+            Text(page,"把普通的日子，贴成一本书。",45,183,1485,56,37,Ink,true);Text(page,(sealedCount>0?"有 "+sealedCount+" 张新明信片等你亲手拆开。":"12 个香港角落 + 4 张节日纪念。")+"照片保留拍摄时的衣服，回忆不会被换掉。",47,250,1489,36,21,sealedCount>0?Coral:Muted);
             var list=Scroll(page,44,314,1512,605,1460);
             var order=State.album.OrderByDescending(p=>p.trip).Select(p=>p.id).Concat(Enumerable.Range(0,16).Where(id=>!State.album.Any(p=>p.id==id))).ToArray();
             for(int position=0;position<16;position++)
             {
                 int id=order[position],index=id;var photo=State.album.FirstOrDefault(p=>p.id==id);int row=position/4,col=position%4;var c=Card(list,col*374,row*356,354,348,Color.white).rectTransform;
                 if(photo==null){Card(c,14,14,326,229,Pale);Text(c,"还有一个小故事\n正在路上",30,86,296,84,25,Muted,false,TextAlignmentOptions.Center);Text(c,id<12?World.Places[id].name:World.FestivalNames[id-12],16,264,322,42,24,Muted,true,TextAlignmentOptions.Center);}
+                else if(photo.unopened){PostcardBack(c,photo,14,14,326,229);Text(c,id<12?World.Places[id].name:World.FestivalNames[id-12],16,260,322,39,24,Ink,true);Button(c,"拆开这张明信片",16,304,322,35,()=>OpenPostcard(index),Coral,true,"Open"+id);}
                 else{PhotoVisual(c,photo,14,14,326,229);Text(c,id<12?World.Places[id].name:World.FestivalNames[id-12],16,260,322,39,24,Ink,true);Button(c,"第 "+photo.trip+" 次外出 · 打开这一页",16,304,322,35,()=>PhotoDialog(index),Colors[photo.season],true,"Photo"+id);}
             }
+        }
+        void PostcardBack(Transform p,Photo photo,float x,float y,float w,float h)
+        {
+            Card(p,x,y,w,h,Hex("FFF1D6"));Card(p,x+w-74,y+14,58,68,Colors[photo.season]);Card(p,x+w-68,y+20,46,56,Hex("FFF8EC"));Text(p,"港",x+w-68,y+30,46,40,24,Colors[photo.season],true,TextAlignmentOptions.Center);
+            for(int i=0;i<3;i++)Card(p,x+20,y+h-70+i*20,w*.55f,3,Hex("E2CFA8"));
+            Text(p,"新明信片\n点下面拆开",x+20,y+40,w-110,90,24,Ink,true);
+        }
+        void OpenPostcard(int id)
+        {
+            if(!Life.OpenPostcard(State,id))return;Save.Write(State);Sound.Fx("stamp");Render();PhotoDialog(id);Float("拆开了一张新明信片！",Coral);
         }
         void PhotoVisual(Transform p,Photo photo,float x,float y,float w,float h)
         {
@@ -60,8 +72,9 @@ namespace PotatoLife
             var l=State.letters.First(x=>x.id==id);bool first=Life.ReadLetter(State,id);Save.Write(State);RefreshStats();if(first)Sound.Fx("mail");
             var p=Modal(l.title,"来自 "+World.Friends[l.friend]+" / 读信后心情 +5、陪伴 +2（仅首次）",1060,785);Actor(p,6,0,30,170,196,245);Text(p,l.body,262,161,761,256,26,Ink);
             if(!string.IsNullOrEmpty(l.previousReplies))Button(p,"看看以前的回复",262,424,761,31,()=>LetterHistory(l),Blue,true,"LetterHistory"+id);
-            Text(p,l.reply<0?"回一小句就好。两种回复都会让关系更近一点。":"你写过："+(l.reply==0?"下次一起走走。":"我把自己的小办法也寄给你。"),32,461,996,77,22,Muted);
-            Button(p,l.reply<0?"下次一起走走":"已寄出陪伴",32,571,996,60,()=>{Life.Reply(State,id,0);Save.Write(State);Render();},Coral,l.reply<0,"ReplyTogether");Button(p,l.reply<0?"把自己的小办法写给对方":"回信已收进回忆",32,653,996,60,()=>{Life.Reply(State,id,1);Save.Write(State);Render();},Blue,l.reply<0,"ReplyAdvice");
+            Text(p,l.reply<0?"选一句回给对方。三种语气都会让故事继续，不会扣任何东西。":"你写过："+World.ReplyLines[l.reply],32,461,996,70,22,Muted);
+            string[] ids={"ReplyTogether","ReplyAdvice","ReplyLater"};Color[] tones={Coral,Blue,Muted};
+            for(int i=0;i<3;i++){int choice=i;string label=l.reply<0?World.ReplyTone[i]+" · "+World.ReplyLines[i]+"（"+World.ReplyNotes[i]+"）":(l.reply==i?"已寄出 · ":"")+World.ReplyTone[i]+" · "+World.ReplyLines[i];Button(p,label,32,540+i*72,996,58,()=>{Life.Reply(State,id,choice);Save.Write(State);Render();},l.reply<0||l.reply==i?tones[i]:Pale,l.reply<0,ids[i]);}
         }
         void LetterHistory(Letter letter)
         {
@@ -70,16 +83,40 @@ namespace PotatoLife
             Text(list,letter.previousReplies,12,12,944,((RectTransform)list).rect.height-24,23,Ink);
             Button(p,"返回信件",32,665,996,54,()=>LetterDialog(letter.id),Blue,true,"BackToLetter");
         }
+        int shopTab;
         void DrawShop()
         {
-            Text(page,"让小屋，多一点你的样子。",45,181,1479,55,37,Ink,true);Text(page,"花费只发生在你点击购买时。没有房租和自动扣款，也没有必须买的东西。",47,251,1478,38,21,Muted);
-            var list=Scroll(page,44,317,1511,608,739);
-            for(int i=0;i<World.Items.Length;i++)
+            Text(page,"让小屋，多一点你的样子。",45,181,900,55,37,Ink,true);
+            string[] tabs=World.Shops.Concat(new[]{"换个房间"}).ToArray();
+            for(int t=0;t<tabs.Length;t++){int id=t;Button(page,tabs[t],990+t*190,186,176,48,()=>{shopTab=id;Sound.Fx("page");Render();},shopTab==t?Coral:Muted,true,"Shop"+t);}
+            if(shopTab==2){DrawRooms();return;}
+            Text(page,World.ShopNotes[shopTab]+"  已摆放 "+State.placed.Count+" / "+Tuning.MaxPlaced,47,251,1478,38,21,Muted);
+            var ids=Enumerable.Range(0,World.Items.Length).Where(i=>World.Items[i].shop==shopTab).ToArray();
+            var list=Scroll(page,44,317,1511,608,(ids.Length+3)/4*355);
+            for(int n=0;n<ids.Length;n++)
             {
-                int id=i;var item=World.Items[i];bool owned=State.owned.Contains(i);float x=(i%4)*374,y=(i/4)*355;var c=Card(list,x,y,354,333,Color.white).transform;
-                Decoration(c,i,112,19,130,115);Text(c,item.name,19,150,316,36,27,Ink,true);Text(c,item.description,19,200,316,64,21,Muted);
-                string label=owned?(item.type==0?(State.placed.Contains(i)?"已摆放 · 收起来":"摆进房间"):(State.selectedBag==i?"已放进行囊":"放进行囊")):"购买 · "+item.price+" 金币";
-                Button(c,label,19,281,316,34,()=>{if(!owned){if(Life.Buy(State,id)){Save.Write(State);Render();Float("新物件！魅力 +3",Mint);Sound.Fx("purchase");}}else{if(item.type==0){if(!Life.PlaceItem(State,id)){Float("先收起一件喜欢的物品，给它腾个位置吧。",Blue);return;}}else Life.Pack(State,id);Save.Write(State);Render();}},owned?Mint:Coral,owned?(item.type==0||!State.travelling):State.coins>=item.price,"Buy"+id);
+                int id=ids[n];var item=World.Items[id];bool owned=State.owned.Contains(id);float x=(n%4)*374,y=(n/4)*355;var c=Card(list,x,y,354,333,Color.white).transform;
+                Item(c,id,97,14,160,128);Text(c,item.name,19,150,316,36,27,Ink,true);Text(c,item.description,19,200,316,64,21,Muted);
+                string label=owned?(item.type==0?(State.placed.Contains(id)?"已摆放 · 收起来":"摆进房间"):(State.selectedBag==id?"已放进行囊":"放进行囊")):"购买 · "+item.price+" 金币";
+                Button(c,label,19,281,316,34,()=>{if(!owned){if(Life.Buy(State,id)){Save.Write(State);Render();Float("新物件！魅力 +3",Mint);Sound.Fx("purchase");}}else{if(item.type==0){if(!Life.PlaceItem(State,id)){Float("最多摆 "+Tuning.MaxPlaced+" 件，先收起一件给它腾个位置吧。",Blue);return;}}else Life.Pack(State,id);Save.Write(State);Render();}},owned?Mint:Coral,owned?(item.type==0||!State.travelling):State.coins>=item.price,"Buy"+id);
+            }
+        }
+        // Five homes: three free real-world rooms and two to unlock once. Decorations follow you, each room remembers its own layout.
+        void DrawRooms()
+        {
+            Text(page,"搬家免费，已摆放的物品会跟着你；每间房会记住你拖好的位置。",47,251,1100,38,21,Muted);
+            if(State.spots.Any(p=>p.room==State.room))Button(page,"这间的家具放回默认位置",1186,247,360,42,()=>{Life.ResetSpots(State);Save.Write(State);Render();Float("家具都回到原来的位置啦。",Blue);},Blue,true,"ResetSpots");
+            var list=Scroll(page,44,317,1511,608,(World.Rooms.Length+2)/3*520);
+            for(int i=0;i<World.Rooms.Length;i++)
+            {
+                int id=i;bool here=State.room==i,owned=State.rooms.Contains(i);int price=World.RoomPrice[i];var c=Card(list,(i%3)*503,(i/3)*520,486,500,Color.white).transform;
+                Picture(c,homes[i],14,14,458,305);if(!owned){var tag=Card(c,24,24,190,40,new Color(1,.98f,.93f,.95f)).transform;Text(tag,"需解锁 · "+price+" 金币",10,6,170,28,18,Coral,true,TextAlignmentOptions.Center);}
+                Text(c,World.Rooms[i],20,332,446,40,28,Ink,true);Text(c,World.RoomNotes[i],20,382,446,52,19,Muted);
+                string label=here?"现在住在这里":owned?"搬进这一间":State.coins>=price?"解锁并搬进去 · "+price+" 金币":"还差 "+(price-State.coins)+" 金币";
+                Button(c,label,20,440,446,46,()=>{
+                    if(!owned){if(!Life.BuyRoom(State,id))return;Sound.Fx("purchase");}
+                    if(Life.ChooseRoom(State,id)){Save.Write(State);if(owned)Sound.Fx("purchase");tab="小屋";Render();Float("搬进了「"+World.Rooms[id]+"」，东西都摆好啦。",Mint);}
+                },here?Muted:Coral,!here&&(owned||State.coins>=price),"Room"+i);
             }
         }
         void Profile()
@@ -88,28 +125,47 @@ namespace PotatoLife
             string[] names={"智慧","魅力","陪伴"};int[] values={State.wisdom,State.charm,State.company};for(int i=0;i<3;i++){Card(p,302,158+i*95,662,80,Pale);Text(p,names[i],319,169+i*95,340,58,27,Ink,true,TextAlignmentOptions.MidlineLeft);var number=Text(p,values[i].ToString(),714,163+i*95,232,69,32,Colors[i],true,TextAlignmentOptions.MidlineRight);number.name="ProfileValue"+i;}
             Text(p,"最常去的方向："+World.Directions[Life.SuggestEnding(State)]+"\n认识了 "+State.friendBond.Count(x=>x>0)+" 位朋友 · 收到 "+State.letters.Count+" 封来信",32,500,946,97,25,Muted);Button(p,"再去过一点喜欢的日子",32,641,946,61,CloseModal,Blue);
         }
+        bool focusTodo;
         void QuestDialog()
         {
-            var p=Modal("把小事，放进同一张清单。","每日任务香港时间 0 点刷新；抵港小目标只奖励一次。没完成也不扣资源。",1140,850);
-            Text(p,"今日待办",32,150,521,43,27,Blue,true);Text(p,"抵港小目标",587,150,521,43,27,Blue,true);
-            string[] titles={"摸摸土豆子三次","收好第一次外出的手账","给房间或行囊添一件物品"};
+            var p=Modal("把小事，放进同一张清单。","每日任务完成即换新；抵港小目标只奖励一次；自己的待办也算数。没完成不扣资源。",1500,860);
+            Text(p,"今日待办",32,150,446,43,27,Blue,true);Text(p,"抵港小目标",527,150,446,43,27,Blue,true);Text(p,"我的待办",1022,150,446,43,27,Blue,true);
+            string[] titles={"摸摸土豆子三次","收好第一次外出的手账","给房间或行囊添一件物品"};bool full=Life.DailyFull(State);
             for(int i=0;i<3;i++)
             {
-                int id=i;bool claimed=(State.dailyClaimed&(1<<i))!=0;float y=210+i*164;
-                var c=Card(p,32,y,521,146,Color.white).transform;Text(c,World.DailyTitles[i],19,10,483,37,23,Ink,true);Text(c,Life.DailyProgress(State,i)+" / "+(i==0?3:1)+" · "+Tuning.DailyCoins+" 金币 · 心情 +3",19,55,483,31,19,Muted);
-                Button(c,claimed?"已完成":Life.DailyReady(State,i)?"收下今日奖励":"去完成",19,98,483,36,()=>DailyAction(id),claimed?Muted:Mint,!claimed,"DailyList"+i);
-                c=Card(p,587,y,521,146,Color.white).transform;Text(c,titles[i],19,10,483,37,23,Ink,true);Text(c,"奖励 25 金币 · 心情 +5",19,55,483,31,19,Muted);
-                Button(c,State.questClaimed[i]?"已领小奖励":Life.QuestReady(State,i)?"收下奖励":"慢慢来",19,98,483,36,()=>{if(Life.ClaimQuest(State,id))Sound.Fx("coin");Save.Write(State);RefreshStats();QuestDialog();},State.questClaimed[i]?Muted:Mint,!State.questClaimed[i]&&Life.QuestReady(State,i),"Quest"+i);
+                int id=i;float y=210+i*164;bool ready=Life.DailyReady(State,i);
+                var c=Card(p,32,y,446,146,Color.white).transform;Text(c,Life.Task(State,i).title,19,10,408,37,23,Ink,true);Text(c,DailyLine(i,full)+" · 心情 +3",19,55,408,31,19,Muted);
+                Button(c,full?"今天领满啦":ready?"收下奖励，换个新任务":DailyVerb(Life.Task(State,i).kind),19,98,408,36,()=>DailyAction(id),ready?Coral:Mint,!full,"DailyList"+i);
+                c=Card(p,527,y,446,146,Color.white).transform;Text(c,titles[i],19,10,408,37,23,Ink,true);Text(c,"奖励 25 金币 · 心情 +5",19,55,408,31,19,Muted);
+                Button(c,State.questClaimed[i]?"已领小奖励":Life.QuestReady(State,i)?"收下奖励":"慢慢来",19,98,408,36,()=>{if(Life.ClaimQuest(State,id))Sound.Fx("coin");Save.Write(State);RefreshStats();QuestDialog();},State.questClaimed[i]?Muted:Mint,!State.questClaimed[i]&&Life.QuestReady(State,i),"Quest"+i);
             }
-            Button(p,"回小屋",32,756,1076,52,CloseModal,Blue);
+            Text(p,"完成即换新 · 今日已领 "+State.dailyClaims+" / "+Tuning.DailyCap,32,700,446,32,19,Muted);
+            var input=Field(p,"写下想做的小事，按回车添加",1022,210,330,52,21,"TodoInput");input.characterLimit=Tuning.TodoLength;
+            System.Action add=()=>{if(Life.AddTodo(State,input.text)==null){Float(string.IsNullOrEmpty(input.text.Trim())?"先写下一件想做的小事吧。":"未完成的待办已经很多啦，先完成几件吧。",Blue);return;}Save.Write(State);Sound.Fx("page");focusTodo=true;QuestDialog();};
+            input.onSubmit.AddListener(_=>add());Button(p,"添加",1364,210,104,52,()=>add(),Coral,true,"TodoAdd");
+            int bonus=State.placed.Sum(i=>World.Items[i].todoCoins);
+            Text(p,"完成一项：金币 +"+(Tuning.TodoCoins+bonus)+" · 心情 +2 · 智慧 +1\n每天前 "+Tuning.TodoDailyRewards+" 项有奖励（今日 "+State.todoRewards+" / "+Tuning.TodoDailyRewards+"）",1022,272,446,58,18,Muted);
+            var todos=State.todos.Where(t=>!t.done).Concat(State.todos.Where(t=>t.done).Reverse()).ToArray();
+            var list=Scroll(p,1022,340,446,400,System.Math.Max(400,todos.Length*62));
+            if(todos.Length==0)Text(list,"还没有自己的待办。\n比如：读完一篇论文、去超市买牛奶、给家里打个电话。",12,20,410,120,20,Muted);
+            for(int i=0;i<todos.Length;i++)
+            {
+                var t=todos[i];int id=t.id;var c=Card(list,0,i*62,430,54,t.done?Pale:Color.white).transform;
+                Text(c,(t.done?"✓ ":"")+t.text,14,10,t.done?350:290,34,19,t.done?Muted:Ink);
+                if(!t.done)Button(c,"完成",306,9,62,36,()=>FinishTodo(id),Mint,true,"TodoDone"+id);
+                Button(c,"×",374,9,44,36,()=>{Life.RemoveTodo(State,id);Save.Write(State);QuestDialog();},Muted,true,"TodoDel"+id);
+            }
+            Button(p,"回小屋",32,776,1436,52,CloseModal,Blue);
+            if(focusTodo){focusTodo=false;input.ActivateInputField();}
         }
         void DailyAction(int id)
         {
             Life.Tick(State,Save.Now);
-            if(Life.ClaimDaily(State,id)){bool listOpen=modal!=null;Save.Write(State);Sound.Fx("coin");if(listOpen)QuestDialog();else Render();Float("今日小奖励 · 金币 +"+Tuning.DailyCoins,Mango);RefreshStats();return;}
-            if((State.dailyClaimed&(1<<id))!=0)return;
-            if(id==0){bool listOpen=modal!=null;int before=State.coins;string note=Life.Pet(State);Save.Write(State);Sound.Fx(State.coins>before?"coin":"company");if(listOpen)QuestDialog();RefreshStats();Float(note,Coral);}
-            else if(id==1)
+            if(Life.ClaimDaily(State,id)){bool listOpen=modal!=null;Save.Write(State);Sound.Fx("coin");if(listOpen)QuestDialog();else Render();Float("今日小奖励 · 金币 +"+Tuning.DailyCoins+" · 换上新任务啦",Mango);RefreshStats();return;}
+            if(Life.DailyFull(State)){Float("今天的奖励都领满啦，明天再来。",Blue);return;}
+            int kind=Life.Task(State,id).kind;
+            if(kind==0){bool listOpen=modal!=null;int before=State.coins;string note=Life.Pet(State);Save.Write(State);Sound.Fx(State.coins>before?"coin":"company");if(listOpen)QuestDialog();RefreshStats();Float(note,Coral);}
+            else if(kind==1||kind==5)
             {
                 if(State.pending.Count>0){CollectGifts();return;}
                 if(State.festivalPending>=0){FestivalDialog();return;}
@@ -118,7 +174,10 @@ namespace PotatoLife
                 if(Life.Depart(State,Save.Now)){tab="小屋";Save.Write(State);Render();Sound.Fx("page");}
                 else Float(Life.DepartureLock(State),Blue);
             }
-            else {tab="来信";Render();if(State.letters.All(l=>l.read))Float("先送土豆子出门，回来时会带上新的来信。",Blue);}
+            else if(kind==2||kind==6){tab="来信";Render();if(State.letters.All(l=>l.read&&l.reply>=0))Float("先送土豆子出门，回来时会带上新的来信。",Blue);}
+            else if(kind==3){tab="陪伴";Render();}
+            else if(kind==4)QuestDialog();
+            else{tab="小店";Render();}
         }
         void FestivalDialog()
         {
@@ -161,19 +220,13 @@ namespace PotatoLife
         {var p=Modal("给新的故事，留一本空手账？","新游戏会覆盖本游戏当前进度，旧港硕游戏不受影响。",960,440);Button(p,"继续现在的小日子",32,290,429,70,()=>{if(menu)Render();else CloseModal();},Blue);Button(p,"确认重新开始",479,290,449,70,NewGame,Coral,true,"ConfirmNewGame");}
         void DrawDecorations(Transform scene)
         {
-            foreach(int id in State.placed){float[] xs={131,356,221,721,754};float[] ys={431,546,355,220,498};Decoration(scene,id,xs[id],ys[id],id==1?311:125,id==1?85:117);}
-        }
-        void Decoration(Transform parent,int id,float x,float y,float w,float h)
-        {
-            var p=UI.Rect("Decoration"+id,parent,x,y,w,h);float s=Math.Min(w/130,h/115);var r=UI.Rect("Drawing",p,0,0,130,115);r.localScale=Vector3.one*s;
-            if(id==0){Card(r,38,62,55,47,Coral);var a=Card(r,20,13,45,57,Mint).rectTransform;a.localRotation=Quaternion.Euler(0,0,30);var b=Card(r,67,4,36,61,Mint).rectTransform;b.localRotation=Quaternion.Euler(0,0,-24);Card(r,61,45,7,38,Blue);}
-            else if(id==1){Card(r,1,31,128,64,Hex("97D8B2"));Card(r,15,42,101,40,Hex("D7EFCD"));}
-            else if(id==2){Card(r,42,94,60,11,Mango);Card(r,68,36,9,60,Blue);Card(r,22,14,95,43,Mango);Text(r,"+",51,13,48,38,29,Color.white);}
-            else if(id==3){Card(r,8,19,115,4,Blue);for(int i=0;i<3;i++){var c=Card(r,5+i*43,25,37,55,Color.white).transform;Card(c,4,6,29,35,Colors[i]);}}
-            else if(id==4){Card(r,33,16,28,29,Mango);Card(r,75,16,28,29,Mango);Card(r,23,34,89,70,Mango);Card(r,48,59,9,10,Ink);Card(r,80,59,9,10,Ink);Card(r,60,81,17,10,Coral);}
-            else if(id==5){Card(r,21,25,95,79,Coral);Card(r,41,7,54,32,Mango);Card(r,36,44,64,20,Cream);}
-            else if(id==6){Card(r,7,29,116,75,Blue);Card(r,35,16,34,21,Blue);Card(r,45,42,53,52,Cream);Card(r,55,52,33,32,Ink);Card(r,15,42,17,11,Mango);}
-            else{Card(r,63,38,7,65,Blue);Card(r,13,14,106,43,Mint);Card(r,62,96,24,10,Blue);}
+            // Farther items first, so things nearer the front overlap them. Every item can be dragged.
+            float k=1040f/1536f;
+            foreach(int id in State.placed.Where(i=>World.Slots[State.room][i]!=null).OrderBy(i=>{var r=Life.ItemRect(State,i);return r[1]+r[3];}))
+            {
+                var a=Life.ItemRect(State,id);var image=Item(scene,id,a[0]*k,a[1]*k,a[2]*k,a[3]*k);image.raycastTarget=true;int item=id;
+                image.gameObject.AddComponent<DragItem>().dropped=pos=>{if(Life.MoveItem(State,item,Mathf.RoundToInt(pos.x/k),Mathf.RoundToInt(-pos.y/k))){Save.Write(State);RefreshStats();}};
+            }
         }
     }
 }

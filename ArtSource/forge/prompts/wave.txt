@@ -1,0 +1,14 @@
+Character animation sprite sheet, landscape 3:2, EXACTLY 4 frames in a regular 2 columns by 2 rows grid, equal cells, reading order left-to-right then top-to-bottom.
+
+Character: the SAME potato mascot as the attached reference image, copied exactly — plump warm golden-brown potato body, tiny dark oval eyes, rosy cheeks, subtle freckles, one small green sprout on top, tiny bean arms and little feet, small red backpack straps visible on its shoulders. Soft gummy storybook illustration style with clean warm-brown outlines, flat cheerful colours and soft painted shading, identical to the reference. NOT pixel art.
+
+View: facing the viewer (front view), standing on both feet, just arrived home, very happy, big open smile.
+
+Action: a joyful "I'm home!" wave with its right arm (on the viewer's left side), body stays planted:
+frame 1 (top-left): waving arm raised beside the head, hand tilted outward;
+frame 2 (top-right): waving arm high above the head, body stretches up slightly, eyes happily closed in a smile (^ ^);
+frame 3 (bottom-left): waving arm raised beside the head, hand tilted inward;
+frame 4 (bottom-right): waving arm high above the head, body squashes down slightly, eyes open.
+The other arm rests at its side. Same size, same scale and same ground line in every frame; the character is centered in its cell with a LARGE empty margin (at least one fifth of the cell) on all sides, raised arm included, and never touches a cell edge.
+
+Background: completely flat pure blue #0000FF filling every cell, no gradient, no ground shadows, no grid lines, no borders, no text, no labels, no checkerboard.

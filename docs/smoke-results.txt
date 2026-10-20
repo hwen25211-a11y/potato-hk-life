@@ -2,6 +2,8 @@ PASS test audio is silent before gameplay
 UI 01-title overflow=0
 PASS button NewGame
 PASS raycast NewGame
+PASS button ConfirmNewGame
+PASS raycast ConfirmNewGame
 UI 02-home-guide overflow=0
 PASS starts with one guide step
 PASS button Profile
@@ -53,8 +55,10 @@ UI 07-album overflow=0
 PASS three step guide complete
 PASS scrollbar handle receives pointer input
 PASS dragging scrollbar moves content
-PASS button Photo1
-PASS raycast Photo1
+PASS album photos wait to be opened
+PASS button Open1
+PASS raycast Open1
+PASS postcard opened by hand
 UI 08-photo overflow=0
 PASS button ×
 PASS raycast ×
@@ -147,6 +151,96 @@ PASS raycast Bag6
 PASS button CloseWardrobe
 PASS raycast CloseWardrobe
 PASS purchased camera can be packed
+PASS button Tab陪伴
+PASS raycast Tab陪伴
+UI 25-study overflow=0
+PASS button StudyPotato
+PASS raycast StudyPotato
+PASS tapping the napping potato wakes it with praise
+PASS button StudyToggle
+PASS raycast StudyToggle
+PASS study timer starts
+PASS 45 minute stretch reminder appears
+UI 26-study-break overflow=0
+PASS button StudyContinue
+PASS raycast StudyContinue
+PASS continue resumes the timer
+UI 27-studying overflow=0
+PASS button StudyEnd
+PASS raycast StudyEnd
+PASS study session ends
+PASS button StudyTodos
+PASS raycast StudyTodos
+PASS button TodoAdd
+PASS raycast TodoAdd
+PASS own todo added through the list
+UI 28-todos overflow=0
+PASS button TodoDone1
+PASS raycast TodoDone1
+PASS own todo completed through the list
+PASS button 回小屋
+PASS raycast 回小屋
+PASS button Tab小店
+PASS raycast Tab小店
+PASS button Shop1
+PASS raycast Shop1
+UI 29-home-goods overflow=0
+PASS button Buy9
+PASS raycast Buy9
+PASS home good bought and placed
+PASS button Shop0
+PASS raycast Shop0
+PASS button Tab小屋
+PASS raycast Tab小屋
+UI 30-new-room overflow=0
+PASS button Tab小店
+PASS raycast Tab小店
+PASS button Shop2
+PASS raycast Shop2
+UI 31-rooms overflow=0
+PASS button Room1
+PASS raycast Room1
+PASS moving keeps decorations
+UI 32-room-two overflow=0
+PASS button Tab小店
+PASS raycast Tab小店
+PASS button Room2
+PASS raycast Room2
+PASS third room chosen
+UI 33-room-three overflow=0
+PASS button Tab小店
+PASS raycast Tab小店
+PASS button Room0
+PASS raycast Room0
+PASS back to the first room
+PASS dragging a decoration saves its new spot
+PASS button Tab小屋
+PASS raycast Tab小屋
+PASS dragged spot survives a redraw
+UI 34-dragged overflow=0
+PASS button Tab小店
+PASS raycast Tab小店
+UI 35-rooms-more overflow=0
+PASS button Room4
+PASS raycast Room4
+PASS villa unlocks and moves in
+UI 36-villa overflow=0
+PASS button Tab小店
+PASS raycast Tab小店
+PASS button Room3
+PASS raycast Room3
+PASS harbour flat unlocks and moves in
+UI 37-flat overflow=0
+PASS button Tab小店
+PASS raycast Tab小店
+PASS button Room0
+PASS raycast Room0
+PASS button Tab小店
+PASS raycast Tab小店
+PASS button Shop0
+PASS raycast Shop0
+PASS button Tab小屋
+PASS raycast Tab小屋
 PASS button PickDirection
 PASS raycast PickDirection
 PASS button Direction0
@@ -215,8 +309,8 @@ PASS button CloseWardrobe
 PASS raycast CloseWardrobe
 PASS button Tab来信
 PASS raycast Tab来信
-PASS button Letter60
-PASS raycast Letter60
+PASS button Letter61
+PASS raycast Letter61
 PASS button ReplyAdvice
 PASS raycast ReplyAdvice
 PASS UI letter replied 6
@@ -238,8 +332,8 @@ PASS button Tab小屋
 PASS raycast Tab小屋
 PASS button Tab来信
 PASS raycast Tab来信
-PASS button Letter72
-PASS raycast Letter72
+PASS button Letter70
+PASS raycast Letter70
 PASS button ReplyTogether
 PASS raycast ReplyTogether
 PASS UI letter replied 7
@@ -261,8 +355,8 @@ PASS button Tab小屋
 PASS raycast Tab小屋
 PASS button Tab来信
 PASS raycast Tab来信
-PASS button Letter80
-PASS raycast Letter80
+PASS button Letter81
+PASS raycast Letter81
 PASS button ReplyAdvice
 PASS raycast ReplyAdvice
 PASS UI letter replied 8
@@ -319,8 +413,8 @@ PASS button CloseWardrobe
 PASS raycast CloseWardrobe
 PASS button Tab来信
 PASS raycast Tab来信
-PASS button Letter101
-PASS raycast Letter101
+PASS button Letter100
+PASS raycast Letter100
 PASS button ReplyAdvice
 PASS raycast ReplyAdvice
 PASS UI letter replied 10
@@ -342,8 +436,8 @@ PASS button Tab小屋
 PASS raycast Tab小屋
 PASS button Tab来信
 PASS raycast Tab来信
-PASS button Letter112
-PASS raycast Letter112
+PASS button Letter110
+PASS raycast Letter110
 PASS button ReplyTogether
 PASS raycast ReplyTogether
 PASS UI letter replied 11
@@ -423,8 +517,8 @@ PASS button CloseWardrobe
 PASS raycast CloseWardrobe
 PASS button Tab来信
 PASS raycast Tab来信
-PASS button Letter140
-PASS raycast Letter140
+PASS button Letter141
+PASS raycast Letter141
 PASS button ReplyAdvice
 PASS raycast ReplyAdvice
 PASS UI letter replied 14
@@ -446,8 +540,8 @@ PASS button Tab小屋
 PASS raycast Tab小屋
 PASS button Tab来信
 PASS raycast Tab来信
-PASS button Letter152
-PASS raycast Letter152
+PASS button Letter151
+PASS raycast Letter151
 PASS button ReplyTogether
 PASS raycast ReplyTogether
 PASS UI letter replied 15
@@ -469,8 +563,8 @@ PASS button Tab小屋
 PASS raycast Tab小屋
 PASS button Tab来信
 PASS raycast Tab来信
-PASS button Letter160
-PASS raycast Letter160
+PASS button Letter161
+PASS raycast Letter161
 PASS button ReplyAdvice
 PASS raycast ReplyAdvice
 PASS UI letter replied 16
@@ -486,9 +580,6 @@ PASS available ending selectable 0
 PASS button Ending1
 PASS raycast Ending1
 PASS available ending selectable 1
-PASS button Ending2
-PASS raycast Ending2
-PASS available ending selectable 2
 PASS button Ending3
 PASS raycast Ending3
 PASS available ending selectable 3
@@ -578,6 +669,7 @@ PASS repeated theme does not restart Travel
 PASS one playing music source after fade Travel
 PASS repeated theme does not restart Travel
 PASS all songs reachable in Travel playlist
+PASS travel music settles before the festival check
 PASS festival shares travel without restarting
 PASS track ending automatically advances
 PASS at most one BGM during Day switch

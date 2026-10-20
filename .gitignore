@@ -24,3 +24,12 @@ __pycache__/
 *.pfx
 .DS_Store
 /Tools/*-source.ttf
+
+# Local distribution packages and reference photos
+/*.app/
+/*.zip
+/先看这里.txt
+/ArtSource/refs/
+/ArtSource/forge/**/job.json
+
+/ArtSource/.forge/

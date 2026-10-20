@@ -1,0 +1,14 @@
+Game item icon sheet, landscape 3:2, EXACTLY 12 separate objects in a regular 4 columns by 3 rows grid of equal cells, reading order left-to-right then top-to-bottom. All are minimalist Japanese-style home goods in light oak wood, warm white, natural linen beige and rattan - simple, calm, functional:
+1 a low two-tier light-oak open bookshelf with a few books;
+2 a soft beige linen bean-bag sofa (body-fit cushion);
+3 a small white ultrasonic aroma diffuser with a soft wisp of mist;
+4 a simple round light-oak wall clock with a white face and thin hands;
+5 a woven rattan storage basket with a folded linen cloth inside;
+6 a slim linen-shade floor lamp on a light-oak stand, warmly lit;
+7 a white three-tier rolling storage trolley with a few small items;
+8 a small round light-oak side table;
+9 a square natural linen throw cushion in oatmeal beige;
+10 a plain white ceramic mug with a tiny wooden coaster;
+11 a short light-oak wall shelf with a small plant and two tiny jars;
+12 a light cork memo board in a thin oak frame with three pinned paper notes.
+Each object is drawn alone, centred in its own cell, upright, in a gentle three-quarter front view, at a consistent scale as if photographed for a catalogue, with a generous empty margin of at least one fifth of the cell on every side; nothing touches or crosses a cell edge. STYLE: copy the attached room illustration exactly - soft warm storybook illustration, clean thin warm-brown outlines, flat colours with soft painted shading, cozy and slightly realistic proportions. Do not use any blue colour on the objects. Background: completely flat pure blue #0000FF filling every cell, no shadows on the background, no floor, no grid lines, no borders, no text, no labels, no logos, no brand names, no checkerboard.
