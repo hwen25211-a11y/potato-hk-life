@@ -73,12 +73,60 @@ namespace PotatoLife
         }
         static Letter MakeLetter(PotatoState s,Trip t,int friend)
         {
-            int chapter=Math.Min(3,s.friendChapter[friend]+1);string[] titles={"要不要一起找教室？","今天也不必一直说没事","照旧少冰，已经记住啦"};
+            int chapter=s.friendChapter[friend]+1;
+            // Pending gifts reserve story chapters too: several offline returns
+            // must not each deliver the same chapter before the player can reply.
+            if(chapter>3||s.letters.Any(l=>l.kind==0&&l.friend==friend&&l.chapter==chapter)||
+                s.pending.Any(g=>g.letter.kind==0&&g.letter.friend==friend&&g.letter.chapter==chapter))
+                return MakeDailyLetter(t,friend);
             string[,] bodies={
                 {"我也刚到香港。刚才走错了楼，假装自己只是想多散一会儿步。下次一起找教室吧，迷路就有两颗土豆了。","上次你说不用一次就准备得很完美，我把那句话贴在了电脑旁边。这周终于在课堂上举手了，想先告诉你。","毕业之前想说，谢谢你陪我把陌生的路走熟。下一段学习还很长，但我已经不太怕问一个问题了。"},
                 {"大家都说我看起来很稳，其实昨天也对着待办发了好久的呆。可以约一顿不聊效率的饭吗？","那天散步时你没有急着给建议，反而让我轻松了很多。我开始学着说，今天需要帮一点忙。","毕业照背面我写了你的名字。以后不管在哪座城，发一句一起吃饭吗，我都会认真回复。"},
                 {"今天的奶茶给你少放了冰。看你背着书包来来回回，就知道最近忙。慢慢喝，饭要记得吃。","你上次介绍朋友来，他也喜欢这张靠窗桌。店里没多一块招牌，却多了几张熟悉的脸。","毕业那天带朋友来吧，我给你们留张大桌。以后回来不用预约，老位置一直记得。"}};
-            return new Letter{id=t.number*10+friend,friend=friend,chapter=chapter,title=titles[friend],body=bodies[friend,chapter-1]+(s.mood<45?"\n累的时候，回家歇一歇也很好。":"")};
+            return new Letter{id=t.number*10+friend,friend=friend,chapter=chapter,title=World.LetterTitles[friend,chapter-1],body=bodies[friend,chapter-1]+(s.mood<45?"\n累的时候，回家歇一歇也很好。":"")};
+        }
+        static Letter MakeDailyLetter(Trip t,int friend)
+        {
+            string[,] titles={{"自习室的小提醒","打印机又闹小脾气","书页边的小太阳"},{"今天的猫很有气场","发现一条阴凉的小路","替你试过食堂新菜"},{"菠萝包刚出炉","又见一位新同学","门口长出了新叶子"}};
+            string[,] bodies={
+                {"自习室的空调今天很认真。我带了外套，也给你留了靠窗的位置。","打印机又吃了一张纸。我决定先吃一块饼干，再和它讲道理。","今天在图书馆找到一本好看的书。页边有人画了小太阳，想把这个小发现告诉你。"},
+                {"下楼买面包时看见一只胖猫，坐姿比我开组会还端正。照片下次给你看。","今天绕了远路，发现一条有树荫的小坡。下次不赶时间，一起慢慢走。","食堂的新菜名很长，味道倒挺朴素。我已经替你试过了，可以点。"},
+                {"店里刚出炉的菠萝包还温着。忙完路过的话，记得先吃点东西。","今天来了一位把多谢说得特别认真的新同学，让我想起你刚来的时候。","门口那盆绿植终于长新叶了。店里生意和植物一样，慢慢照顾，总会有新动静。"}};
+            int note=(t.number+t.weather+friend)%3;
+            return new Letter{id=t.number*10+friend,friend=friend,kind=1,chapter=0,title=titles[friend,note],body=bodies[friend,note]};
+        }
+        public static void NormalizeLetters(PotatoState s)
+        {
+            var stories=new Dictionary<int,Letter>();var kept=new List<Letter>();
+            foreach(var letter in s.letters)
+            {
+                if(letter.kind!=0){kept.Add(letter);continue;}
+                if(letter.reply>=0){letter.read=true;s.friendChapter[letter.friend]=Math.Max(s.friendChapter[letter.friend],letter.chapter);}
+                int key=letter.friend*4+letter.chapter;Letter first;
+                if(!stories.TryGetValue(key,out first)){stories[key]=letter;letter.title=World.LetterTitles[letter.friend,letter.chapter-1];kept.Add(letter);continue;}
+                // Keep earned stats, read state and every existing reply when
+                // collapsing duplicates from older saves; never award them again.
+                first.read|=letter.read||letter.reply>=0;
+                if(letter.reply>=0)
+                {
+                    string note="第 "+(letter.id/10)+" 次外出后，你写了："+(letter.reply==0?"下次一起走走。":"把自己的小办法写给对方。");
+                    first.previousReplies=(first.previousReplies??"")+note+"\n";
+                    if(first.reply<0)first.reply=letter.reply;
+                }
+                if(!string.IsNullOrEmpty(letter.previousReplies))first.previousReplies=(first.previousReplies??"")+letter.previousReplies;
+            }
+            s.letters=kept;var reserved=new HashSet<int>(stories.Keys);
+            foreach(var gift in s.pending)
+            {
+                var letter=gift.letter;if(letter.kind!=0)continue;
+                int key=letter.friend*4+letter.chapter;
+                if(!reserved.Add(key))gift.letter=MakeDailyLetter(gift.trip,letter.friend);
+            }
+        }
+        static void TrimLetters(PotatoState s)
+        {
+            // Story chapters and their reply history remain in the album of letters.
+            while(s.letters.Count>80){int index=s.letters.FindIndex(l=>l.kind!=0);if(index<0)break;s.letters.RemoveAt(index);}
         }
         public static int Collect(PotatoState s,long utc)
         {
@@ -93,7 +141,7 @@ namespace PotatoLife
             }
             s.dailyReturns=Math.Min(1,s.dailyReturns+n);s.pending.Clear();s.petClicks=0;if(s.tutorial==2)s.tutorial=3;
             for(int i=0;i<4;i++)if(!s.festivals[i]&&s.completed>=2+i*4){s.festivalPending=i;break;}
-            if(s.letters.Count>80)s.letters.RemoveRange(0,s.letters.Count-80);
+            TrimLetters(s);
             return n;
         }
         public static string Pet(PotatoState s)

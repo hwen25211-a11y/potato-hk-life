@@ -16,7 +16,7 @@ namespace PotatoLife
     }
     [Serializable] public class Letter
     {
-        public int id,friend,chapter;public string title,body;public bool read;public int reply=-1;
+        public int id,friend,chapter,kind;public string title,body,previousReplies="";public bool read;public int reply=-1;
     }
     [Serializable] public class ReturnGift
     {
@@ -69,6 +69,10 @@ namespace PotatoLife
         public static readonly string[] FestivalNames={"春日灯会","夏日龙舟","中秋花灯","冬日毕业派对"};
         public static readonly string[] Endings={"学霸土豆","旅行家土豆","打工皇帝土豆","人缘王土豆"};
         public static readonly string[] DailyTitles={"摸摸土豆子三次","收好一份外出手账","读一封未读来信"};
+        public static readonly string[,] LetterTitles={
+            {"要不要一起找教室？","今天，我在课堂上举手了","下一段路，也敢问问题"},
+            {"吃顿不聊效率的饭，好吗？","今天想请你帮一点忙","毕业照背面，写着你的名字"},
+            {"照旧少冰，已经记住啦","靠窗那张桌，又热闹了一点","毕业那天，大桌给你留着"}};
         public static readonly Place[] Places={
             new Place(0,Direction.Study,"图书馆四楼","空调还是有点冷，刚好把刚学会的知识捂热。",0),
             new Place(1,Direction.Study,"靠窗自习室","今天划掉了三项待办，第四项写着：夸夸自己。",0),

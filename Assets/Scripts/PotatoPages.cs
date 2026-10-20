@@ -53,14 +53,22 @@ namespace PotatoLife
             for(int i=0;i<3;i++){int id=i;var c=Card(page,44+i*509,309,490,135,Color.white).transform;Actor(c,6,0,13,10,91,111,false);Text(c,World.Friends[i]+" · 默契 "+State.friendBond[i],123,16,340,35,25,Colors[i],true);Text(c,World.FriendNotes[i],123,66,340,52,19,Muted);}
             if(State.letters.Count==0){Text(page,"信箱还是空的。土豆子第一次回来时，\n会把认识的朋友和一封信一起带给你。",92,560,1400,128,31,Muted,false,TextAlignmentOptions.Center);return;}
             var letters=State.letters.AsEnumerable().Reverse().ToArray();var list=Scroll(page,44,475,1511,439,letters.Length*141);
-            for(int i=0;i<letters.Length;i++){var l=letters[i];float y=i*141;var c=Card(list,0,y,1489,125,Color.white).transform;Text(c,(l.read?"已读":"新来信")+" / "+World.Friends[l.friend]+" · 第 "+l.chapter+" 封心事",23,14,1102,29,18,Colors[l.friend],true);Text(c,l.title,23,58,1095,42,28,Ink,true);Button(c,l.reply>=0?"看看我们的回信":"拆开信封",1198,35,266,54,()=>LetterDialog(l.id),Coral,true,"Letter"+l.id);}
+            for(int i=0;i<letters.Length;i++){var l=letters[i];float y=i*141;var c=Card(list,0,y,1489,125,Color.white).transform;Text(c,(l.read?"已读":"新来信")+" / "+World.Friends[l.friend]+" · "+(l.kind==0?"第 "+l.chapter+" 封心事":"日常小纸条 · 第 "+(l.id/10)+" 次外出"),23,14,1102,29,18,Colors[l.friend],true);Text(c,l.title,23,58,1095,42,28,Ink,true);Button(c,l.reply>=0?"看看我们的回信":"拆开信封",1198,35,266,54,()=>LetterDialog(l.id),Coral,true,"Letter"+l.id);}
         }
         void LetterDialog(int id)
         {
             var l=State.letters.First(x=>x.id==id);bool first=Life.ReadLetter(State,id);Save.Write(State);RefreshStats();if(first)Sound.Fx("mail");
             var p=Modal(l.title,"来自 "+World.Friends[l.friend]+" / 读信后心情 +5、陪伴 +2（仅首次）",1060,785);Actor(p,6,0,30,170,196,245);Text(p,l.body,262,161,761,256,26,Ink);
+            if(!string.IsNullOrEmpty(l.previousReplies))Button(p,"看看以前的回复",262,424,761,31,()=>LetterHistory(l),Blue,true,"LetterHistory"+id);
             Text(p,l.reply<0?"回一小句就好。两种回复都会让关系更近一点。":"你写过："+(l.reply==0?"下次一起走走。":"我把自己的小办法也寄给你。"),32,461,996,77,22,Muted);
             Button(p,l.reply<0?"下次一起走走":"已寄出陪伴",32,571,996,60,()=>{Life.Reply(State,id,0);Save.Write(State);Render();},Coral,l.reply<0,"ReplyTogether");Button(p,l.reply<0?"把自己的小办法写给对方":"回信已收进回忆",32,653,996,60,()=>{Life.Reply(State,id,1);Save.Write(State);Render();},Blue,l.reply<0,"ReplyAdvice");
+        }
+        void LetterHistory(Letter letter)
+        {
+            var p=Modal("和"+World.Friends[letter.friend]+"的往来记录。","以前的回复也留在这里。",1060,760);
+            var list=Scroll(p,32,152,996,470,Math.Max(470,(letter.previousReplies.Split('\n').Length+1)*64));
+            Text(list,letter.previousReplies,12,12,944,((RectTransform)list).rect.height-24,23,Ink);
+            Button(p,"返回信件",32,665,996,54,()=>LetterDialog(letter.id),Blue,true,"BackToLetter");
         }
         void DrawShop()
         {

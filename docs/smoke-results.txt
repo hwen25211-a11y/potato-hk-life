@@ -53,8 +53,8 @@ UI 07-album overflow=0
 PASS three step guide complete
 PASS scrollbar handle receives pointer input
 PASS dragging scrollbar moves content
-PASS button Photo3
-PASS raycast Photo3
+PASS button Photo1
+PASS raycast Photo1
 UI 08-photo overflow=0
 PASS button ×
 PASS raycast ×
@@ -215,8 +215,8 @@ PASS button CloseWardrobe
 PASS raycast CloseWardrobe
 PASS button Tab来信
 PASS raycast Tab来信
-PASS button Letter61
-PASS raycast Letter61
+PASS button Letter60
+PASS raycast Letter60
 PASS button ReplyAdvice
 PASS raycast ReplyAdvice
 PASS UI letter replied 6
@@ -342,8 +342,8 @@ PASS button Tab小屋
 PASS raycast Tab小屋
 PASS button Tab来信
 PASS raycast Tab来信
-PASS button Letter110
-PASS raycast Letter110
+PASS button Letter112
+PASS raycast Letter112
 PASS button ReplyTogether
 PASS raycast ReplyTogether
 PASS UI letter replied 11
@@ -511,6 +511,28 @@ PASS button OpenNewAlbum
 PASS raycast OpenNewAlbum
 PASS button Tab小屋
 PASS raycast Tab小屋
+PASS UI full year has no repeated numbered stories
+PASS button Tab来信
+PASS raycast Tab来信
+PASS daily letters are labelled separately from story chapters
+UI 24-daily-mail overflow=0
+PASS legacy duplicate mail loads once without changing earned stats
+PASS button Tab来信
+PASS raycast Tab来信
+UI 22-letters-migrated overflow=0
+PASS button Letter12
+PASS raycast Letter12
+PASS opening merged read letter gives no repeat reward
+PASS button LetterHistory12
+PASS raycast LetterHistory12
+UI 23-letter-history overflow=0
+PASS button BackToLetter
+PASS raycast BackToLetter
+PASS button ×
+PASS raycast ×
+PASS button Tab小屋
+PASS raycast Tab小屋
+PASS merged reply history survives repeated saves
 PASS broken saves rejected
 PASS backup recovery
 PASS music imported Day
