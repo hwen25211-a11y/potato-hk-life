@@ -18,7 +18,7 @@ namespace PotatoLife
         }
         static bool ValidTrip(Trip t){return t!=null&&t.place>=0&&t.place<12&&t.outfit>=0&&t.outfit<5&&t.bag>=-1&&t.bag<8&&(int)t.direction>=0&&(int)t.direction<4&&t.season>=0&&t.season<4&&t.weather>=0&&t.weather<6;}
         static bool ValidPhoto(Photo p){return p!=null&&p.id>=0&&p.id<16&&p.outfit>=0&&p.outfit<5&&p.season>=0&&p.season<4;}
-        static bool ValidLetter(Letter l){return l!=null&&l.friend>=0&&l.friend<3&&l.chapter>=1&&l.chapter<=3&&l.reply>=-1&&l.reply<=1;}
+        static bool ValidLetter(Letter l){return l!=null&&l.friend>=0&&l.friend<3&&(l.kind==0&&l.chapter>=1&&l.chapter<=3||l.kind==1&&l.chapter==0)&&l.reply>=-1&&l.reply<=1;}
         public static PotatoState Parse(string json)
         {
             try
@@ -33,7 +33,7 @@ namespace PotatoLife
                 if(s.petTotal<0||s.dailyDay<0||s.dailyPets<0||s.dailyPets>3||s.dailyReturns<0||s.dailyReturns>1||s.dailyReads<0||s.dailyReads>1||s.dailyClaimed<0||s.dailyClaimed>7)return null;
                 s.petTotal=Math.Max(s.petTotal,Math.Max(s.petClicks,s.dailyPets));
                 if(s.dailyDay==0)Life.EnsureDaily(s,s.lastUtc);
-                s.energy=Life.Cap(s.energy);s.mood=Life.Cap(s.mood);return s;
+                Life.NormalizeLetters(s);s.energy=Life.Cap(s.energy);s.mood=Life.Cap(s.mood);return s;
             }catch{return null;}
         }
         public static PotatoState Read(){Error="";var s=Parse(PlayerPrefs.GetString(Key,""));if(s!=null)return s;s=Parse(PlayerPrefs.GetString(Backup,""));if(s!=null)Error="已从上一份备份找回土豆子的手账。";return s;}

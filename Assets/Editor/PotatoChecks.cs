@@ -42,6 +42,27 @@ namespace PotatoLife.Tests
             var shop=Life.New(1,2);Check(!Life.Buy(shop,2),"no overdraft");Check(Life.Buy(shop,0)&&shop.placed.Contains(0),"decoration is visible and equipped");int money2=shop.coins;Check(!Life.Buy(shop,0)&&shop.coins==money2,"cannot double buy");Check(Life.PlaceItem(shop,0)&&!shop.placed.Contains(0),"can remove decoration");Check(!Life.Pack(shop,6),"cannot pack unowned camera");
             var outfit=RunYear(Direction.Explore);int original=outfit.album[0].outfit;Check(Life.Dress(outfit,3),"festival costume selectable");Check(outfit.album[0].outfit==original,"old photo keeps captured outfit");long time=outfit.lastUtc+30;Life.Tick(outfit,time);Life.Depart(outfit,time);Check(outfit.trip.outfit==3,"new trip captures selected costume");Life.Tick(outfit,outfit.trip.finishUtc);Check(outfit.pending[0].photos.All(p=>p.outfit==3),"photos wear departure outfit");
             var letter=outfit.letters.First();int affection=outfit.company;Check(!Life.ReadLetter(outfit,letter.id)&&!Life.Reply(outfit,letter.id,0)&&outfit.company==affection,"letters cannot award repeatedly");
+            bool hasDaily=false;
+            for(int seed=1;seed<=24;seed++)
+            {
+                var mail=Life.New(1000,seed);mail.tutorial=4;Life.DirectionPick(mail,Direction.Work);Life.Depart(mail,1000);Life.Tick(mail,87400);
+                Check(mail.pending.Select(g=>g.letter).Where(l=>l.kind==0).GroupBy(l=>l.friend*4+l.chapter).All(g=>g.Count()==1),"offline batch reserves unique story chapters "+seed);
+                hasDaily|=mail.pending.Any(g=>g.letter.kind==1);Life.Collect(mail,87400);
+                var storyKeys=mail.letters.Where(l=>l.kind==0).Select(l=>l.friend*4+l.chapter).ToArray();
+                if(mail.festivalPending>=0)Life.Festival(mail,0);
+                Life.Depart(mail,87401);Life.Tick(mail,173801);Life.Collect(mail,173801);
+                Check(mail.letters.Where(l=>l.kind==0).GroupBy(l=>l.friend*4+l.chapter).All(g=>g.Count()==1),"waiting for replies never duplicates stories "+seed);
+                Check(storyKeys.All(k=>mail.letters.Any(l=>l.kind==0&&l.friend*4+l.chapter==k))&&mail.letters.Where(l=>l.kind==0).All(l=>l.chapter==1),"unreplied story chapters are retained without skipping ahead "+seed);
+                foreach(var l in mail.letters.Where(l=>l.kind==0).ToArray())Life.Reply(mail,l.id,0);
+                Check(mail.letters.Where(l=>l.kind==1).All(l=>l.chapter==0),"daily notes do not impersonate chapter one "+seed);
+                var note=mail.letters.First(l=>l.kind==1);int chapterBefore=mail.friendChapter[note.friend];Life.Reply(mail,note.id,1);Check(mail.friendChapter[note.friend]==chapterBefore,"replying to a daily note does not advance story chapter "+seed);
+            }
+            Check(hasDaily,"daily notes fill repeated-friend offline returns");
+            var oldMail=Life.New(1,1);oldMail.company=42;oldMail.letters.Add(new Letter{id=12,friend=2,chapter=1,read=true,reply=0,title="旧标题",body="旧正文"});oldMail.letters.Add(new Letter{id=22,friend=2,chapter=1,read=true,reply=1,title="旧标题",body="旧正文"});oldMail.pending.Add(new ReturnGift{trip=new Trip{number=3},letter=new Letter{id=32,friend=2,chapter=1}});
+            Life.NormalizeLetters(oldMail);Check(oldMail.letters.Count==1&&oldMail.letters[0].read&&oldMail.letters[0].reply==0&&oldMail.letters[0].previousReplies.Contains("第 2 次外出"),"legacy duplicate stories merge without losing replies");
+            Check(oldMail.company==42&&oldMail.friendChapter[2]==1&&oldMail.pending[0].letter.kind==1,"legacy pending duplicates become daily notes without replaying rewards");
+            string priorReplies=oldMail.letters[0].previousReplies;Life.NormalizeLetters(oldMail);Check(oldMail.letters.Count==1&&oldMail.letters[0].previousReplies==priorReplies,"letter migration is idempotent");
+            var finishedLetters=RunYear(Direction.Work);Check(finishedLetters.letters.Where(l=>l.kind==0).GroupBy(l=>l.friend*4+l.chapter).All(g=>g.Count()==1),"full year has no repeated story chapters");Check(finishedLetters.letters.Any(l=>l.kind==1)&&finishedLetters.letters.Where(l=>l.kind==0&&l.friend==2).Select(l=>l.chapter).OrderBy(x=>x).SequenceEqual(new[]{1,2,3}),"story progresses through three unique chapters and then daily notes");Check(finishedLetters.letters.Where(l=>l.kind==0&&l.friend==2).Select(l=>l.title).Distinct().Count()==3,"each friend chapter has its own title");
             int following=0;for(int i=0;i<1000;i++){var s=Life.New(1,100+i);s.tutorial=4;Life.DirectionPick(s,Direction.Work);Life.Depart(s,1);if(s.trip.direction==Direction.Work)following++;}Check(following>540&&following<660,"direction is a 60 percent preference, not a command");
             foreach(int seed in new[]{7,38,901}){var s=RunYear(Direction.Friends,seed);Check(s.coins>=0&&s.energy>=0&&s.mood>=0,"alternate worlds never fail");}
             report.Add("PASS "+count+" assertions");Console.WriteLine(report.Last());File.WriteAllLines("docs/rules-results.txt",report.ToArray());
