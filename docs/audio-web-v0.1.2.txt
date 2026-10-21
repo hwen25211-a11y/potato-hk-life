@@ -1,0 +1,18 @@
+PASS browser output gate is silent throughout testing
+PASS one real browser music element after startup
+PASS rapid next-track clicks settle to one connected media element
+PASS browser actually played multiple different playlist tracks
+PASS audio-context resume does not leave a previous song connected
+PASS window blur stops the actual browser player and closes output gate
+PASS returning to window resumes one track
+PASS departure keeps a single connected browser music player
+PASS departure actually changed music to Winding Path
+PASS return and collection keep a single music player
+PASS arrival actually restored the home playlist
+PASS second game window takes audio ownership and silences the first
+PASS switching back transfers ownership without two songs
+PASS 20ms sampling found no overlapping music in first window
+PASS 20ms sampling found no overlapping music in second window
+PASS closing previous owner does not lock other window's audio
+PASS browser error log empty: 
+WEB_AUDIO_OK (all physical output muted)

@@ -32,13 +32,15 @@
 
 ## 指定音乐
 
-已接入用户提供的六首原始 MP3，按场景顺序轮播。全程只有一个背景音乐播放源：外出时先淡出并停止小屋音乐，再淡入活动音乐；返回后恢复小屋歌单。设置里显示当前曲名，可点击「下一首」；再次进入同一场景时接着播放列表中的下一曲：
+已接入用户提供的六首原始 MP3，按场景顺序轮播。每个游戏实例使用一个背景音乐播放源：外出时先淡出并停止小屋音乐，再淡入活动音乐；返回后恢复小屋歌单。设置里显示当前曲名，可点击「下一首」；再次进入同一场景时接着播放列表中的下一曲：
 
 | 场景 | 曲目 | 资源 |
 | --- | --- | --- |
 | 小屋白天 | Mellow Lounge → 午后慢摇爵士曲 → 像素小房间钢琴曲 | `Day` / `AfternoonJazz` / `PixelRoomPiano` |
 | 外出与节日 | Winding Path → 午后慢摇爵士曲 → 慵懒松弛冷爵士 | `Travel` / `AfternoonJazz` / `LazyCoolJazz` |
 | 小屋夜晚（设备时间 20:00—06:00） | Midnight Rhyme → 慵懒松弛冷爵士 → 像素小房间钢琴曲 | `Night` / `LazyCoolJazz` / `PixelRoomPiano` |
+
+窗口失去焦点时暂停音乐和音效，回来后继续播放；浏览器另有输出静音保护和同源窗口接管，避免打开多个游戏页面时叠歌。设置页底部显示版本号。
 
 以上资源均在 `Assets/Resources/Audio` 下，以 `.mp3` 保存。背景音乐和提示音可分别调音量。原始文件名、媒体信息和 SHA-256 在 `Licenses/UserMusic.json`，来源说明在 `Licenses/Music.txt`。
 
@@ -57,7 +59,7 @@ python3 Tools/package.py
 
 Unity 编辑器菜单“土豆子的港硕生活”也提供构建入口。构建脚本支持 `UNITY_BIN`，规则测试支持 `UNITY_ROOT`。
 
-本机验证保持静音：`PotatoSmoke.Run` 会在任何音频启动前静音测试实例。浏览器测试使用 `http://127.0.0.1:8919/?silent-test=1`（先在 8919 启动预览服务），原生测试使用 `-potato-silent-test`。这些开关不会改变系统音量或玩家保存的音量设置。
+本机验证保持静音：`PotatoSmoke.Run` 会在任何音频启动前静音测试实例。浏览器测试使用 `http://127.0.0.1:8919/?silent-test=1`（先在 8919 启动预览服务），原生测试使用 `-potato-silent-test`。这些开关不会改变系统音量或玩家保存的音量设置。音频专项回归入口为 `PotatoLife.Editor.PotatoAudioCheck.Run` 和 `Tools/test-web-audio.cjs`（需要 Playwright）；后者强制使用静音无头浏览器。
 
 | 文件 | 职责 |
 | --- | --- |

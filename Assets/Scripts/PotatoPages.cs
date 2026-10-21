@@ -206,7 +206,7 @@ namespace PotatoLife
             musicTrackText=Text(p,"当前曲目 · "+Sound.NowPlaying,32,500,805,32,21,Muted);Button(p,"下一首",866,495,132,42,()=>{Sound.NextTrack();musicTrackText.text="当前曲目 · "+Sound.NowPlaying;},Blue,true,"NextMusic");
             Text(p,"气泡与提示音",32,568,180,32,22,Ink);VolumeSlider(p,232,578,615,Sound.EffectVolume,v=>Sound.SetEffects(v));
             Button(p,"保留进度，返回扉页",32,636,469,56,()=>{Save.Write(State);menu=true;Render();},Blue);Button(p,"重新开启一段生活",519,636,479,56,Restart,Muted);
-            Text(p,"新版独立存档，不会影响《港硕这一年》的游戏进度。",32,728,966,32,18,Muted);
+            Text(p,"v"+Application.version+" · 切到其他窗口时暂停声音，回来继续播放。",32,728,966,32,18,Muted);
         }
         void VolumeSlider(Transform p,float x,float y,float w,float value,Action<float> changed)
         {
