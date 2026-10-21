@@ -24,3 +24,12 @@ __pycache__/
 *.pfx
 .DS_Store
 /Tools/*-source.ttf
+
+# v0.1.3: stray built app and readme copied at the project root
+/*.app/
+/先看这里.txt
+# Private: the owner's own room photos used as layout references
+/ArtSource/refs/
+# Local generation records (contain machine paths)
+/ArtSource/.forge/
+/ArtSource/forge/**/job.json

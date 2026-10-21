@@ -1,0 +1,17 @@
+Full-screen room background illustration for a cozy Chinese idle game about a tiny potato student in Hong Kong. Landscape 3:2.
+
+STYLE (copy from the FIRST attached image exactly): cute soft gummy storybook illustration, clean warm-brown outlines, flat cheerful colours with soft painted shading, rounded friendly shapes, warm window light. Not photorealistic, no pixel art.
+
+ROOM LAYOUT AND FURNISHING (follow the 2nd, 3rd and 4th attached photos of real compact Hong Kong bedrooms): a small, tidy, realistic Hong Kong student bedroom seen from the front at eye level.
+- Light oak wood and warm off-white built-in joinery everywhere; pale wood-look floor.
+- Left side: a single bed pushed against the left wall, with a soft upholstered beige headboard panel, light grey bedding and a knitted taupe throw blanket, a pillow.
+- Back wall, left of centre: a wall-mounted floating light-oak desk with a small drawer, a slim open shelf above it with a few books and a small vase, and a row of white overhead wall cabinets with rounded corners; a warm LED strip glowing under the cabinets and along a slim wood wall panel.
+- Back wall, centre-right: a window with heavy beige pleated curtains half open, showing a simplified Hong Kong harbour with buildings and a blue sky; a white split air-conditioner mounted on the wall above the window.
+- Right side: a tall white built-in wardrobe with recessed handle grooves and two drawers at the bottom, and next to it, at the far right edge, a light-wood room door with a black handle.
+- A round flush ceiling light.
+- Small realistic details: power sockets on the wall panel, a framed sunset painting leaning on the headboard ledge, a woven storage basket.
+
+IMPORTANT COMPOSITION: keep the central and lower-centre floor area (the middle 45% of the width, lower 55% of the height) completely EMPTY open floor with nothing standing on it, so an animated mascot can be layered there later. Also leave a clear empty floor patch in the front-left corner and the front-right corner, and some empty wall space on the left of the window, for decorations the player buys later.
+
+Palette: light oak, warm white #FFF8EC, soft beige, a touch of harbour blue #3A7CA5 in the window, mint #6BBF8E from small plants, mango #F2B33D light glow.
+No characters, no animals, no people, no text, no logos, no watermark.

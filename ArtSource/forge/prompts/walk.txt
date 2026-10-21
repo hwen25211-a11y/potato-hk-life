@@ -1,0 +1,14 @@
+Character animation sprite sheet, landscape 3:2, EXACTLY 4 frames in a regular 2 columns by 2 rows grid, equal cells, reading order left-to-right then top-to-bottom.
+
+Character: the SAME potato mascot as the attached reference image, copied exactly — plump warm golden-brown potato body, tiny dark oval eyes, rosy cheeks, subtle freckles, one small green sprout on top, tiny bean arms and little feet, small red backpack worn on its back. Soft gummy storybook illustration style with clean warm-brown outlines, flat cheerful colours and soft painted shading, identical to the reference. NOT pixel art.
+
+View: three-quarter side view, the potato faces and walks toward the RIGHT side of the image, happy expression, excited to go out.
+
+Action: a cute short-legged waddle walk cycle, one foot always on the ground:
+frame 1 (top-left): right foot steps forward and touches ground, body leans slightly right;
+frame 2 (top-right): both feet under the body, body bobs a little lower and squashes slightly;
+frame 3 (bottom-left): left foot steps forward and touches ground, body leans slightly the other way;
+frame 4 (bottom-right): both feet under the body, body slightly higher and stretched.
+Arms swing gently opposite to the feet. Same size, same scale and same ground line in every frame; the character is centered in its cell with a generous empty margin on all sides and never touches or crosses a cell edge.
+
+Background: completely flat pure blue #0000FF filling every cell, no gradient, no shadows on the ground, no grid lines, no borders, no text, no labels, no checkerboard.
