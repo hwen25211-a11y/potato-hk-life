@@ -10,12 +10,29 @@ namespace PotatoLife
         public static bool EnsureDaily(PotatoState s,long utc)
         {
             long day=(Math.Max(utc,s.lastUtc)+28800)/86400+1;if(day<=s.dailyDay)return false;
-            s.dailyDay=day;s.dailyPets=s.dailyReturns=s.dailyReads=s.dailyClaimed=0;return true;
+            s.dailyDay=day;s.dailyPets=s.dailyReturns=s.dailyReads=s.dailyClaimed=0;
+            s.dailyClaims=s.dailyStudy=s.dailyTodos=s.dailyDeparts=s.dailyReplies=s.dailyPlaces=s.studyBlocks=s.todoRewards=0;s.dailyTask=new[]{0,1,2};s.dailyBase=new int[3];return true;
         }
-        public static int DailyProgress(PotatoState s,int id){return id==0?Math.Min(3,s.dailyPets):id==1?Math.Min(1,s.dailyReturns):id==2?Math.Min(1,s.dailyReads):0;}
-        public static bool DailyReady(PotatoState s,int id){return id>=0&&id<3&&DailyProgress(s,id)>=(id==0?3:1);}
+        // Saves from v0.1.1 marked claimed slots with bits only; count them and move those slots on.
+        public static void MigrateDaily(PotatoState s)
+        {if(s.dailyClaims!=0)return;for(int i=0;i<3;i++)if((s.dailyClaimed&(1<<i))!=0){s.dailyClaims++;NextTask(s,i);}}
+        public static DailyTask Task(PotatoState s,int slot){return World.DailyTasks[s.dailyTask[slot]];}
+        static int Counter(PotatoState s,int kind)
+        {return kind==0?s.dailyPets:kind==1?s.dailyReturns:kind==2?s.dailyReads:kind==3?s.dailyStudy:kind==4?s.dailyTodos:kind==5?s.dailyDeparts:kind==6?s.dailyReplies:s.dailyPlaces;}
+        // Progress counts only what happened after the task appeared in its slot.
+        public static int DailyProgress(PotatoState s,int id)
+        {if(id<0||id>2)return 0;var t=Task(s,id);int v=Counter(s,t.kind)-s.dailyBase[id];if(t.kind==3)v/=60;return Math.Max(0,Math.Min(t.need,v));}
+        public static bool DailyFull(PotatoState s){return s.dailyClaims>=Tuning.DailyCap;}
+        public static bool DailyReady(PotatoState s,int id){return id>=0&&id<3&&!DailyFull(s)&&DailyProgress(s,id)>=Task(s,id).need;}
         public static bool ClaimDaily(PotatoState s,int id)
-        {if(!DailyReady(s,id)||(s.dailyClaimed&(1<<id))!=0)return false;s.dailyClaimed|=1<<id;s.coins+=Tuning.DailyCoins;s.mood=Cap(s.mood+3);return true;}
+        {if(!DailyReady(s,id))return false;s.dailyClaims++;s.dailyClaimed|=1<<id;s.coins+=Tuning.DailyCoins;s.mood=Cap(s.mood+3);NextTask(s,id);return true;}
+        // A claimed slot gets a different task straight away; the choice is deterministic and never touches the trip RNG.
+        static void NextTask(PotatoState s,int slot)
+        {
+            int n=World.DailyTasks.Length;
+            for(int k=1;k<=n;k++){int c=(int)((s.dailyDay*7+s.dailyClaims*3+slot*5+k)%n);if(!s.dailyTask.Contains(c)){s.dailyTask[slot]=c;break;}}
+            s.dailyBase[slot]=Counter(s,Task(s,slot).kind);
+        }
         public static float Cap(float v){return Math.Max(0,Math.Min(100,v));}
         public static int Random(PotatoState s,int min,int max){unchecked{s.rng++;uint x=(uint)(s.seed+s.rng*747796405);x=(x^(x>>16))*2246822519u;x^=x>>13;return min+(int)(x%(uint)(max-min));}}
         public static int Season(PotatoState s){return Math.Min(3,s.completed/Tuning.TripsPerSeason);}
@@ -32,7 +49,7 @@ namespace PotatoLife
         public static bool Depart(PotatoState s,long utc)
         {
             Tick(s,utc);if(DepartureLock(s)!="")return false;
-            Schedule(s,Math.Max(utc,s.lastUtc));if(s.tutorial==1)s.tutorial=2;return true;
+            Schedule(s,Math.Max(utc,s.lastUtc));s.dailyDeparts++;if(s.tutorial==1)s.tutorial=2;return true;
         }
         static void Schedule(PotatoState s,long start)
         {
@@ -60,11 +77,11 @@ namespace PotatoLife
         static ReturnGift MakeGift(PotatoState s,Trip t)
         {
             var g=new ReturnGift{trip=t,coins=Tuning.TripCoins+Random(s,0,16),wisdom=2,charm=2,company=3,energy=10,mood=8};
-            if(t.direction==Direction.Study){g.wisdom+=8+(s.placed.Contains(2)?2:0);g.highlight="把一个小问题想明白了。";}
+            if(t.direction==Direction.Study){g.wisdom+=8;g.highlight="把一个小问题想明白了。";}
             if(t.direction==Direction.Explore){g.charm+=8;g.highlight="带回了一阵刚刚好的海风。";}
             if(t.direction==Direction.Work){g.coins+=55;g.highlight="靠自己的小本事赚到了零花钱。";}
             if(t.direction==Direction.Friends){g.company+=8;g.mood+=6;g.highlight="今天有人主动说：下次还一起。";}
-            if(s.placed.Contains(0))g.mood+=3;if(s.placed.Contains(1))g.energy+=5;if(s.placed.Contains(4))g.company+=2;
+            foreach(int id in s.placed){var item=World.Items[id];g.mood+=item.mood;g.energy+=item.energy;g.company+=item.company;if(t.direction==Direction.Study)g.wisdom+=item.wisdom;}
             int count=Random(s,1,4);if(t.bag==6||t.bag==7&&(t.weather==2||t.weather==4))count=Math.Min(3,count+1);
             var known=new HashSet<int>(s.album.Select(p=>p.id));foreach(var gift in s.pending)foreach(var p in gift.photos)known.Add(p.id);
             var places=Enumerable.Range((int)t.direction*3,3).OrderBy(i=>known.Contains(i)).ThenBy(i=>(i-t.place+3)%3).Take(count).ToArray();
@@ -109,7 +126,7 @@ namespace PotatoLife
                 first.read|=letter.read||letter.reply>=0;
                 if(letter.reply>=0)
                 {
-                    string note="第 "+(letter.id/10)+" 次外出后，你写了："+(letter.reply==0?"下次一起走走。":"把自己的小办法写给对方。");
+                    string note="第 "+(letter.id/10)+" 次外出后，你写了："+World.ReplyLines[letter.reply];
                     first.previousReplies=(first.previousReplies??"")+note+"\n";
                     if(first.reply<0)first.reply=letter.reply;
                 }
@@ -135,11 +152,11 @@ namespace PotatoLife
             {
                 s.coins+=g.coins;s.wisdom+=g.wisdom;s.charm+=g.charm;s.company+=g.company;s.energy=Cap(s.energy+g.energy);s.mood=Cap(s.mood+g.mood);
                 s.directionCount[(int)g.trip.direction]++;s.completed++;s.lastHighlight=g.highlight;
-                foreach(var p in g.photos){if(!s.album.Any(x=>x.id==p.id))s.album.Add(p);else s.company++;}
+                foreach(var p in g.photos){if(!s.album.Any(x=>x.id==p.id)){p.unopened=true;s.album.Add(p);}else s.company++;}
                 s.letters.Add(g.letter);s.friendBond[g.letter.friend]+=2;
                 Remember(s,"第 "+s.completed+" 次回来："+World.Places[g.trip.place].name+"。"+g.highlight);
             }
-            s.dailyReturns=Math.Min(1,s.dailyReturns+n);s.pending.Clear();s.petClicks=0;if(s.tutorial==2)s.tutorial=3;
+            s.dailyReturns+=n;s.pending.Clear();s.petClicks=0;if(s.tutorial==2)s.tutorial=3;
             for(int i=0;i<4;i++)if(!s.festivals[i]&&s.completed>=2+i*4){s.festivalPending=i;break;}
             TrimLetters(s);
             return n;
@@ -147,23 +164,37 @@ namespace PotatoLife
         public static string Pet(PotatoState s)
         {
             s.petTotal++;
-            s.dailyPets=Math.Min(3,s.dailyPets+1);
+            s.dailyPets++;
             if(s.petClicks>=Tuning.PetRewards)return "土豆子蹭了蹭你：不拿奖励，也想多陪你一会儿。";
             s.petClicks++;bool lucky=Random(s,0,20)==0;int amount=lucky?10:5;s.coins+=amount;s.company++;s.mood=Cap(s.mood+2);s.energy=Cap(s.energy+2);
             return (lucky?"小惊喜！":"")+"金币 +"+amount+" · 陪伴 +1";
         }
         public static void OpenAlbum(PotatoState s){if(s.tutorial==3)s.tutorial=4;}
+        public static bool OpenPostcard(PotatoState s,int id){var p=s.album.FirstOrDefault(x=>x.id==id);if(p==null||!p.unopened)return false;p.unopened=false;return true;}
+        public static bool ChooseRoom(PotatoState s,int room){if(room<0||room>=World.Rooms.Length||s.room==room||!s.rooms.Contains(room))return false;s.room=room;return true;}
+        public static bool BuyRoom(PotatoState s,int room)
+        {if(room<0||room>=World.Rooms.Length||s.rooms.Contains(room)||s.coins<World.RoomPrice[room])return false;s.coins-=World.RoomPrice[room];s.rooms.Add(room);Remember(s,"拿到了「"+World.Rooms[room]+"」的钥匙。");return true;}
+        // A decoration's rectangle on the room art (1536x1024 px): the dragged spot if any, otherwise the default slot.
+        public static int[] ItemRect(PotatoState s,int id)
+        {var slot=World.Slots[s.room][id];var spot=s.spots.FirstOrDefault(p=>p.room==s.room&&p.id==id);return spot==null?slot:new[]{spot.x,spot.y,slot[2],slot[3]};}
+        public static bool MoveItem(PotatoState s,int id,int x,int y)
+        {
+            if(!s.placed.Contains(id)||World.Slots[s.room][id]==null)return false;var slot=World.Slots[s.room][id];
+            x=Math.Max(0,Math.Min(1536-slot[2],x));y=Math.Max(0,Math.Min(1024-slot[3],y));
+            var spot=s.spots.FirstOrDefault(p=>p.room==s.room&&p.id==id);if(spot==null)s.spots.Add(spot=new Spot{room=s.room,id=id});spot.x=x;spot.y=y;s.dailyPlaces++;return true;
+        }
+        public static bool ResetSpots(PotatoState s){return s.spots.RemoveAll(p=>p.room==s.room)>0;}
         public static bool ReadLetter(PotatoState s,int id)
-        {var l=s.letters.FirstOrDefault(x=>x.id==id);if(l==null||l.read)return false;l.read=true;s.dailyReads=1;s.mood=Cap(s.mood+5);s.company+=2;return true;}
+        {var l=s.letters.FirstOrDefault(x=>x.id==id);if(l==null||l.read)return false;l.read=true;s.dailyReads++;s.mood=Cap(s.mood+5);s.company+=2;return true;}
         public static bool Reply(PotatoState s,int id,int choice)
         {
-            var l=s.letters.FirstOrDefault(x=>x.id==id);if(l==null||l.reply>=0||choice<0||choice>1)return false;ReadLetter(s,id);l.reply=choice;s.friendBond[l.friend]+=choice==0?5:3;s.company+=2;
-            if(choice==1)s.wisdom+=2;s.friendChapter[l.friend]=Math.Max(s.friendChapter[l.friend],l.chapter);Remember(s,"回信给"+World.Friends[l.friend]+"："+(choice==0?"下次一起走走。":"我把自己的小办法也寄给你。"));return true;
+            var l=s.letters.FirstOrDefault(x=>x.id==id);if(l==null||l.reply>=0||choice<0||choice>2)return false;ReadLetter(s,id);l.reply=choice;s.dailyReplies++;s.friendBond[l.friend]+=choice==0?5:choice==1?3:1;s.company+=choice==2?1:2;
+            if(choice==1)s.wisdom+=2;if(choice==2)s.energy=Cap(s.energy+5);s.friendChapter[l.friend]=Math.Max(s.friendChapter[l.friend],l.chapter);Remember(s,"回信给"+World.Friends[l.friend]+"："+World.ReplyLines[choice]);return true;
         }
         public static bool Buy(PotatoState s,int id)
-        {if(id<0||id>=World.Items.Length||s.owned.Contains(id)||s.coins<World.Items[id].price)return false;s.coins-=World.Items[id].price;s.owned.Add(id);s.charm+=3;if(World.Items[id].type==0&&s.placed.Count<4)s.placed.Add(id);Remember(s,"房间里多了"+World.Items[id].name+"，越来越像家了。");return true;}
+        {if(id<0||id>=World.Items.Length||s.owned.Contains(id)||s.coins<World.Items[id].price)return false;s.coins-=World.Items[id].price;s.owned.Add(id);s.charm+=3;if(World.Items[id].type==0&&s.placed.Count<Tuning.MaxPlaced){s.placed.Add(id);s.dailyPlaces++;}Remember(s,"房间里多了"+World.Items[id].name+"，越来越像家了。");return true;}
         public static bool PlaceItem(PotatoState s,int id)
-        {if(!s.owned.Contains(id)||World.Items[id].type!=0)return false;if(s.placed.Contains(id)){s.placed.Remove(id);return true;}if(s.placed.Count>=4)return false;s.placed.Add(id);return true;}
+        {if(!s.owned.Contains(id)||World.Items[id].type!=0)return false;if(s.placed.Contains(id)){s.placed.Remove(id);s.dailyPlaces++;return true;}if(s.placed.Count>=Tuning.MaxPlaced)return false;s.placed.Add(id);s.dailyPlaces++;return true;}
         public static bool Pack(PotatoState s,int id){if(s.travelling||id!=-1&&(!s.owned.Contains(id)||World.Items[id].type!=1))return false;s.selectedBag=id;return true;}
         public static bool Dress(PotatoState s,int id){if(!s.costumes.Contains(id))return false;s.outfit=id;return true;}
         public static bool Festival(PotatoState s,int choice)
@@ -171,13 +202,52 @@ namespace PotatoLife
             int i=s.festivalPending;if(i<0||i>3||s.festivals[i]||choice<0||choice>1)return false;
             s.festivals[i]=true;s.festivalPending=-1;s.coins+=Tuning.FestivalCoins;s.company+=8;if(choice==0)s.charm+=8;else s.wisdom+=8;
             if(!s.costumes.Contains(i+1))s.costumes.Add(i+1);
-            s.album.Add(new Photo{id=12+i,trip=s.completed,outfit=i+1,season=i,caption=choice==0?"把节日的热闹拍下来，也把朋友放进画面里。":"先安静地许个愿，再把祝福写给惦记的人。"});
+            s.album.Add(new Photo{id=12+i,trip=s.completed,outfit=i+1,season=i,unopened=true,caption=choice==0?"把节日的热闹拍下来，也把朋友放进画面里。":"先安静地许个愿，再把祝福写给惦记的人。"});
             Remember(s,World.FestivalNames[i]+"：获得"+World.CostumeNames[i+1]+"，把这一天收进了手账。");
             for(int j=0;j<4;j++)if(!s.festivals[j]&&s.completed>=2+j*4){s.festivalPending=j;break;}
             return true;
         }
         public static bool QuestReady(PotatoState s,int id){return id==0?s.petTotal>=3:id==1?s.completed>=1:id==2&&s.owned.Count>=1;}
         public static bool ClaimQuest(PotatoState s,int id){if(id<0||id>2||s.questClaimed[id]||!QuestReady(s,id))return false;s.questClaimed[id]=true;s.coins+=25;s.mood=Cap(s.mood+5);return true;}
+        // Companion study counts real seconds and stops by itself at every 45-minute stretch break.
+        static int NextBreak(PotatoState s){return (s.studySession/Tuning.StudyBreakSeconds+1)*Tuning.StudyBreakSeconds;}
+        public static int StudySeconds(PotatoState s,long utc)
+        {return s.studySession+(s.studyRunning?(int)Math.Max(0,Math.Min(utc-s.studySince,NextBreak(s)-s.studySession)):0);}
+        public static int StudyToBreak(PotatoState s,long utc){return NextBreak(s)-StudySeconds(s,utc);}
+        public static bool StudyStart(PotatoState s,long utc)
+        {if(s.studyRunning||s.studyBreak)return false;s.studyRunning=true;s.studySince=Math.Max(utc,s.lastUtc);return true;}
+        // Folds the running time into the session. Returns true when the stretch break has just been reached.
+        public static bool StudySettle(PotatoState s,long utc)
+        {
+            if(!s.studyRunning)return false;int limit=NextBreak(s)-s.studySession;int add=(int)Math.Max(0,Math.Min(utc-s.studySince,limit));
+            s.studySession+=add;s.studySince+=add;s.dailyStudy+=add;s.studyTotal+=add;CreditStudy(s);
+            if(add<limit)return false;s.studyRunning=false;s.studyBreak=true;return true;
+        }
+        static void CreditStudy(PotatoState s)
+        {
+            int blocks=Math.Min(Tuning.StudyDailyBlocks,s.dailyStudy/Tuning.StudyBlockSeconds);
+            while(s.studyBlocks<blocks){s.studyBlocks++;s.coins+=Tuning.StudyBlockCoins+s.placed.Sum(i=>World.Items[i].studyCoins);s.wisdom+=1+s.placed.Sum(i=>World.Items[i].studyWisdom);s.company++;}
+        }
+        public static int StudyBlockCoins(PotatoState s){return Tuning.StudyBlockCoins+s.placed.Sum(i=>World.Items[i].studyCoins);}
+        public static void StudyPause(PotatoState s,long utc){StudySettle(s,utc);s.studyRunning=false;}
+        public static bool StudyContinue(PotatoState s,long utc)
+        {if(!s.studyBreak)return false;s.studyBreak=false;s.studyRunning=true;s.studySince=Math.Max(utc,s.lastUtc);return true;}
+        public static int StudyEnd(PotatoState s,long utc)
+        {StudySettle(s,utc);int total=s.studySession;s.studyRunning=s.studyBreak=false;s.studySession=0;if(total>=60)Remember(s,"陪土豆子专注了 "+(total/60)+" 分钟。");return total;}
+        public static Todo AddTodo(PotatoState s,string text)
+        {
+            text=(text??"").Replace("\n"," ").Trim();if(text.Length==0||s.todos.Count(t=>!t.done)>=Tuning.MaxTodos)return null;
+            if(text.Length>Tuning.TodoLength)text=text.Substring(0,Tuning.TodoLength);var todo=new Todo{id=s.todoNext++,text=text};s.todos.Add(todo);return todo;
+        }
+        // Returns coins earned, 0 once today's rewards are used up, or -1 when nothing changed.
+        public static int CompleteTodo(PotatoState s,int id)
+        {
+            var t=s.todos.FirstOrDefault(x=>x.id==id);if(t==null||t.done)return -1;t.done=true;s.dailyTodos++;
+            while(s.todos.Count(x=>x.done)>20)s.todos.Remove(s.todos.First(x=>x.done));
+            if(s.todoRewards>=Tuning.TodoDailyRewards)return 0;s.todoRewards++;int coins=Tuning.TodoCoins+s.placed.Sum(i=>World.Items[i].todoCoins);
+            s.coins+=coins;s.mood=Cap(s.mood+2);s.wisdom++;return coins;
+        }
+        public static bool RemoveTodo(PotatoState s,int id){return s.todos.RemoveAll(x=>x.id==id)>0;}
         public static void Mode(PotatoState s,bool demo,long utc)
         {
             Tick(s,utc);if(s.demo==demo)return;long now=Math.Max(utc,s.lastUtc);

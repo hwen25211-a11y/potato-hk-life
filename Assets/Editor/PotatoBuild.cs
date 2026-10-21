@@ -12,14 +12,14 @@ namespace PotatoLife.Editor
 {
     public static class PotatoBuild
     {
-        public const string Version="0.1.2";
+        public const string Version="0.1.3";
         public const string Scene="Assets/Scenes/PotatoHome.unity";
         [MenuItem("土豆子的港硕生活/准备场景与字体")]
         public static void Prepare()
         {
             AssetDatabase.Refresh();
             foreach(string path in Directory.GetFiles("Assets/Resources/Art","*.png"))
-            {var a=AssetImporter.GetAtPath(path) as TextureImporter;if(a==null)continue;a.textureType=TextureImporterType.Default;a.maxTextureSize=2048;a.mipmapEnabled=false;a.filterMode=FilterMode.Bilinear;a.alphaIsTransparency=true;a.isReadable=path.Contains("PotatoAtlas")||path.Contains("Costumes");a.textureCompression=a.isReadable?TextureImporterCompression.Uncompressed:TextureImporterCompression.CompressedHQ;a.SaveAndReimport();}
+            {var a=AssetImporter.GetAtPath(path) as TextureImporter;if(a==null)continue;a.textureType=TextureImporterType.Default;a.maxTextureSize=2048;a.mipmapEnabled=false;a.filterMode=FilterMode.Bilinear;a.alphaIsTransparency=true;a.isReadable=path.Contains("PotatoAtlas")||path.Contains("Costumes")||path.Contains("Items");a.textureCompression=a.isReadable?TextureImporterCompression.Uncompressed:TextureImporterCompression.CompressedHQ;a.SaveAndReimport();}
             foreach(string path in Directory.GetFiles("Assets/Resources/Audio").Where(p=>p.EndsWith(".wav")||p.EndsWith(".mp3")||p.EndsWith(".ogg")))
             {var a=AssetImporter.GetAtPath(path) as AudioImporter;if(a==null)continue;var settings=a.defaultSampleSettings;settings.compressionFormat=AudioCompressionFormat.Vorbis;settings.quality=.7f;settings.loadType=path.EndsWith(".mp3")?AudioClipLoadType.CompressedInMemory:AudioClipLoadType.DecompressOnLoad;a.defaultSampleSettings=settings;a.SaveAndReimport();}
             const string fontPath="Assets/Resources/Fonts/Potato SDF.asset";var font=AssetDatabase.LoadAssetAtPath<TMP_FontAsset>(fontPath);

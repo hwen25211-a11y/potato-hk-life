@@ -41,6 +41,37 @@ namespace PotatoLife
         }
         public static RectTransform Actor(Transform p,int pose,int outfit,float x,float y,float w,float h,bool animate=true)
         {var r=Rect("Potato",p,x,y,w,h);var im=r.gameObject.AddComponent<Image>();im.sprite=outfit>0?Frame("Art/Costumes",outfit-1,2,2):Frame("Art/PotatoAtlas",pose,4,2);im.preserveAspect=true;im.raycastTarget=false;if(animate)r.gameObject.AddComponent<PotatoMotion>().pose=pose;return r;}
+        // Shop goods share one 5x4 atlas (Items.png), indexed by item id.
+        public static Image Item(Transform p,int id,float x,float y,float w,float h)
+        {var r=Rect("Item"+id,p,x,y,w,h);var im=r.gameObject.AddComponent<Image>();im.sprite=Frame("Art/Items",id,5,4);im.preserveAspect=true;im.raycastTarget=false;return im;}
+        public static TMP_InputField Field(Transform p,string placeholder,float x,float y,float w,float h,float size,string id)
+        {
+            var r=Rect(id,p,x,y,w,h);r.gameObject.SetActive(false);var bg=r.gameObject.AddComponent<Image>();bg.sprite=Rounded;bg.type=Image.Type.Sliced;bg.color=Color.white;
+            var area=Rect("Text Area",r,16,4,w-32,h-8);area.gameObject.AddComponent<RectMask2D>();
+            TextMeshProUGUI Line(string name,string content,Color color)
+            {var t=Rect(name,area,0,0,w-32,h-8).gameObject.AddComponent<TextMeshProUGUI>();t.font=Font;t.text=content;t.fontSize=size;t.color=color;t.alignment=TextAlignmentOptions.MidlineLeft;t.enableWordWrapping=false;t.raycastTarget=false;return t;}
+            var hint=Line("Placeholder",placeholder,Muted);var text=Line("Text","",Ink);
+            var input=r.gameObject.AddComponent<TMP_InputField>();input.targetGraphic=bg;input.textViewport=area;input.textComponent=text;input.placeholder=hint;input.fontAsset=Font;input.pointSize=size;input.lineType=TMP_InputField.LineType.SingleLine;input.caretColor=Ink;input.selectionColor=new Color(.42f,.75f,.56f,.35f);
+            r.gameObject.SetActive(true);return input;
+        }
+        // Frame strips made with agent-sprite-forge (sources in ArtSource/forge): four equal cells, left to right.
+        static Dictionary<string,Sprite[]> strips=new Dictionary<string,Sprite[]>();
+        static Sprite[] Strip(string path,int count)
+        {
+            if(strips.ContainsKey(path))return strips[path];var t=Resources.Load<Texture2D>(path);Sprite[] s=null;
+            if(t!=null){s=new Sprite[count];int cw=t.width/count;for(int i=0;i<count;i++)s[i]=Sprite.Create(t,new Rect(i*cw,0,cw,t.height),new Vector2(.5f,.5f));}
+            strips[path]=s;return s;
+        }
+        // Keeps the static pose's height, so animated and still potatoes read the same size.
+        public static RectTransform Animated(Transform p,string path,float fps,float x,float y,float w,float h)
+        {
+            var frames=Strip(path,4);if(frames==null)return null;float fw=h*frames[0].rect.width/frames[0].rect.height;
+            var r=Rect("Potato",p,x+(w-fw)/2,y,fw,h);var im=r.gameObject.AddComponent<Image>();im.sprite=frames[0];im.preserveAspect=true;im.raycastTarget=false;
+            var a=r.gameObject.AddComponent<FramePlayer>();a.frames=frames;a.fps=fps;return r;
+        }
+        // The strips show the plain potato with its red backpack; costumes keep their still pose.
+        public static RectTransform Wave(Transform p,int pose,int outfit,float x,float y,float w,float h)
+        {return (outfit==0?Animated(p,"Art/PotatoWave",6,x,y,w,h):null)??Actor(p,pose,outfit,x,y,w,h);}
         public static Image Bar(Transform p,float x,float y,float w,float h,float value,Color color)
         {Card(p,x,y,w,h,Pale);var fill=Card(p,x,y,w*Life.Cap(value)/100f,h,color);fill.gameObject.AddComponent<SmoothBar>().fullWidth=w;return fill;}
         public static RectTransform Scroll(Transform p,float x,float y,float w,float h,float full)
@@ -59,6 +90,31 @@ namespace PotatoLife
         public int pose;Vector2 origin;RectTransform r;float start;
         void Start(){r=(RectTransform)transform;origin=r.anchoredPosition;start=Time.unscaledTime;}
         void Update(){float t=Time.unscaledTime-start;float wave=Mathf.Sin(t*(pose==5?1.6f:3));r.anchoredPosition=origin+new Vector2(0,wave*(pose==5?2:5));r.localScale=new Vector3(1+wave*.018f,1-wave*.018f,1);r.localRotation=Quaternion.Euler(0,0,pose==3?Mathf.Sin(t*3)*2:Mathf.Sin(t*1.3f)*1.2f);}
+    }
+    // Lets the player drag a decoration around the room; it stays inside the room picture.
+    public class DragItem:MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragHandler
+    {
+        public Action<Vector2> dropped;RectTransform r;int index;float scale=1;
+        public void OnBeginDrag(PointerEventData e){r=(RectTransform)transform;index=r.GetSiblingIndex();var c=GetComponentInParent<Canvas>();scale=c==null?1:c.scaleFactor;r.SetAsLastSibling();r.localScale=Vector3.one*1.06f;}
+        public void OnDrag(PointerEventData e)
+        {if(r==null)return;var p=(RectTransform)r.parent;var a=r.anchoredPosition+e.delta/scale;a.x=Mathf.Clamp(a.x,0,p.rect.width-r.rect.width);a.y=Mathf.Clamp(a.y,-(p.rect.height-r.rect.height),0);r.anchoredPosition=a;}
+        public void OnEndDrag(PointerEventData e){if(r==null)return;r.localScale=Vector3.one;r.SetSiblingIndex(index);if(dropped!=null)dropped(r.anchoredPosition);}
+    }
+    public class FramePlayer:MonoBehaviour
+    {
+        public Sprite[] frames;public float fps=8;Image im;float start;
+        void Start(){im=GetComponent<Image>();start=Time.unscaledTime;}
+        void Update(){if(frames!=null&&frames.Length>0)im.sprite=frames[(int)((Time.unscaledTime-start)*fps)%frames.Length];}
+    }
+    public class WalkOut:MonoBehaviour
+    {
+        public Action done;public float distance=400,duration=1.6f;Vector2 from;RectTransform r;CanvasGroup group;float t;
+        void Start(){r=(RectTransform)transform;from=r.anchoredPosition;group=gameObject.AddComponent<CanvasGroup>();}
+        void Update()
+        {
+            t+=Time.unscaledDeltaTime;float k=Mathf.Clamp01(t/duration);r.anchoredPosition=from+new Vector2(distance*k,Mathf.Abs(Mathf.Sin(t*14.1f))*6);group.alpha=1-Mathf.Clamp01((k-.7f)/.3f);
+            if(k>=1&&done!=null){var d=done;done=null;d();}
+        }
     }
     public class SmoothBar:MonoBehaviour
     {
