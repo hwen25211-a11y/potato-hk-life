@@ -80,7 +80,3 @@ Unity 编辑器菜单“土豆子的港硕生活”也提供构建入口。构�
 新美术统一使用土豆角色与手绘场景，生成提示词见 `docs/ART-PROVENANCE.txt`。沿用的 Noto Sans SC 派生字体遵循 SIL OFL；TMP 保留自带许可。音乐版权归原权利人，不因仓库公开而变成 CC0。项目未额外指定整个游戏的开源许可证。
 
 提交源码与 `.meta`，不提交 `Library`、`Build`、`release`、存档、凭据及 `LocalReferences`。新需求原文和旧项目的私有设计文档不进入公开仓库或发行包。协作请通过功能分支和 Pull Request，避免同时编辑同一大资源。
-
-## 联系方式
-
-联系邮箱：[yuruqiao5@gmail.com](mailto:yuruqiao5@gmail.com)
