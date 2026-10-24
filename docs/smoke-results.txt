@@ -56,8 +56,8 @@ PASS three step guide complete
 PASS scrollbar handle receives pointer input
 PASS dragging scrollbar moves content
 PASS album photos wait to be opened
-PASS button Open1
-PASS raycast Open1
+PASS button Open9
+PASS raycast Open9
 PASS postcard opened by hand
 UI 08-photo overflow=0
 PASS button ×
@@ -93,6 +93,87 @@ PASS raycast Quest1
 PASS optional reward once
 PASS button 回小屋
 PASS raycast 回小屋
+PASS new save: invitation after the first trip and album
+PASS v0.1.3-shaped save without the new fields
+PASS v0.1.3 save loads with its photos
+PASS old save receives the invitation without restarting
+PASS button Tab小屋
+PASS raycast Tab小屋
+UI 40-invite-board overflow=0
+PASS button Story
+PASS raycast Story
+UI 41-invite overflow=0
+PASS button StoryLater
+PASS raycast StoryLater
+PASS invitation can wait
+PASS button Tab来信
+PASS raycast Tab来信
+UI 41b-invite-letters overflow=0
+PASS button LetterInvite
+PASS raycast LetterInvite
+PASS button Route1
+PASS raycast Route1
+PASS route A chosen
+PASS button StoryPackLater
+PASS raycast StoryPackLater
+PASS button Tab小店
+PASS raycast Tab小店
+PASS button Buy7
+PASS raycast Buy7
+PASS button Tab小屋
+PASS raycast Tab小屋
+PASS umbrella bought
+PASS button Depart
+PASS raycast Depart
+UI 42-story-pack overflow=0
+PASS button StoryBag7
+PASS raycast StoryBag7
+PASS umbrella packed for Tai O
+PASS button StoryGo
+PASS raycast StoryGo
+PASS Tai O trip leaves from the packing page
+PASS reload during the story trip
+PASS rain message arrives on the way
+UI 43-story-away overflow=0
+PASS rain message survives reload and does not repeat
+PASS button Story
+PASS raycast Story
+UI 44-rain overflow=0
+PASS button RainDrink
+PASS raycast RainDrink
+PASS rain reply saved
+PASS story trip comes home, auto trips pause
+PASS button Depart
+PASS raycast Depart
+UI 45-story-harvest overflow=0
+PASS story trip collected once
+PASS reload after collecting pays nothing twice
+PASS button Tab来信
+PASS raycast Tab来信
+PASS button Letter9001
+PASS raycast Letter9001
+UI 46-story-note overflow=0
+PASS button StoryReply0
+PASS raycast StoryReply0
+UI 47-story-replied overflow=0
+PASS reply pays the base reward once
+PASS reply and the waiting echo survive reload
+PASS button Tab来信
+PASS raycast Tab来信
+PASS button Letter9001
+PASS raycast Letter9001
+UI 48-story-review overflow=0
+PASS button ReviewClose
+PASS raycast ReviewClose
+PASS button Tab手账
+PASS raycast Tab手账
+UI 49-keepsake-album overflow=0
+PASS button Keepsake
+PASS raycast Keepsake
+PASS button ReviewClose
+PASS raycast ReviewClose
+PASS button Tab小屋
+PASS raycast Tab小屋
 PASS offline cap through actual save reload
 UI 15-offline-return overflow=0
 PASS button Depart
@@ -197,6 +278,16 @@ PASS button Tab小店
 PASS raycast Tab小店
 PASS button Shop2
 PASS raycast Shop2
+UI 29b-student-goods overflow=0
+PASS button Buy22
+PASS raycast Buy22
+PASS button Buy27
+PASS raycast Buy27
+PASS student goods: rice cooker placed, transit card carried
+PASS button Tab小店
+PASS raycast Tab小店
+PASS button Shop3
+PASS raycast Shop3
 UI 31-rooms overflow=0
 PASS button Room1
 PASS raycast Room1
@@ -243,46 +334,6 @@ PASS button Tab小屋
 PASS raycast Tab小屋
 PASS button PickDirection
 PASS raycast PickDirection
-PASS button Direction0
-PASS raycast Direction0
-PASS button Depart
-PASS raycast Depart
-PASS full-year UI departure 5
-PASS button Settings
-PASS raycast Settings
-PASS button ToggleDemo
-PASS raycast ToggleDemo
-PASS UI slow mode preserves progress
-PASS button ToggleDemo
-PASS raycast ToggleDemo
-PASS UI demo mode preserves progress
-PASS button ×
-PASS raycast ×
-PASS button Depart
-PASS raycast Depart
-PASS full-year UI claim 5
-PASS button OpenNewAlbum
-PASS raycast OpenNewAlbum
-PASS button Tab小屋
-PASS raycast Tab小屋
-PASS button Quests
-PASS raycast Quests
-PASS button Quest0
-PASS raycast Quest0
-PASS pet milestone can be claimed after collecting a trip
-PASS button 回小屋
-PASS raycast 回小屋
-PASS button Tab来信
-PASS raycast Tab来信
-PASS button Letter50
-PASS raycast Letter50
-PASS button ReplyTogether
-PASS raycast ReplyTogether
-PASS UI letter replied 5
-PASS button Tab小屋
-PASS raycast Tab小屋
-PASS button PickDirection
-PASS raycast PickDirection
 PASS button Direction1
 PASS raycast Direction1
 PASS button Depart
@@ -309,8 +360,8 @@ PASS button CloseWardrobe
 PASS raycast CloseWardrobe
 PASS button Tab来信
 PASS raycast Tab来信
-PASS button Letter61
-PASS raycast Letter61
+PASS button Letter60
+PASS raycast Letter60
 PASS button ReplyAdvice
 PASS raycast ReplyAdvice
 PASS UI letter replied 6
@@ -332,8 +383,8 @@ PASS button Tab小屋
 PASS raycast Tab小屋
 PASS button Tab来信
 PASS raycast Tab来信
-PASS button Letter71
-PASS raycast Letter71
+PASS button Letter70
+PASS raycast Letter70
 PASS button ReplyTogether
 PASS raycast ReplyTogether
 PASS UI letter replied 7
@@ -355,8 +406,8 @@ PASS button Tab小屋
 PASS raycast Tab小屋
 PASS button Tab来信
 PASS raycast Tab来信
-PASS button Letter82
-PASS raycast Letter82
+PASS button Letter80
+PASS raycast Letter80
 PASS button ReplyAdvice
 PASS raycast ReplyAdvice
 PASS UI letter replied 8
@@ -413,8 +464,8 @@ PASS button CloseWardrobe
 PASS raycast CloseWardrobe
 PASS button Tab来信
 PASS raycast Tab来信
-PASS button Letter101
-PASS raycast Letter101
+PASS button Letter102
+PASS raycast Letter102
 PASS button ReplyAdvice
 PASS raycast ReplyAdvice
 PASS UI letter replied 10
@@ -436,8 +487,8 @@ PASS button Tab小屋
 PASS raycast Tab小屋
 PASS button Tab来信
 PASS raycast Tab来信
-PASS button Letter112
-PASS raycast Letter112
+PASS button Letter110
+PASS raycast Letter110
 PASS button ReplyTogether
 PASS raycast ReplyTogether
 PASS UI letter replied 11
@@ -482,8 +533,8 @@ PASS button Tab小屋
 PASS raycast Tab小屋
 PASS button Tab来信
 PASS raycast Tab来信
-PASS button Letter130
-PASS raycast Letter130
+PASS button Letter132
+PASS raycast Letter132
 PASS button ReplyTogether
 PASS raycast ReplyTogether
 PASS UI letter replied 13
@@ -517,8 +568,8 @@ PASS button CloseWardrobe
 PASS raycast CloseWardrobe
 PASS button Tab来信
 PASS raycast Tab来信
-PASS button Letter140
-PASS raycast Letter140
+PASS button Letter141
+PASS raycast Letter141
 PASS button ReplyAdvice
 PASS raycast ReplyAdvice
 PASS UI letter replied 14
@@ -540,8 +591,8 @@ PASS button Tab小屋
 PASS raycast Tab小屋
 PASS button Tab来信
 PASS raycast Tab来信
-PASS button Letter150
-PASS raycast Letter150
+PASS button Letter152
+PASS raycast Letter152
 PASS button ReplyTogether
 PASS raycast ReplyTogether
 PASS UI letter replied 15
@@ -610,6 +661,129 @@ PASS button Tab来信
 PASS raycast Tab来信
 PASS daily letters are labelled separately from story chapters
 UI 24-daily-mail overflow=0
+PASS 阿晴's echo arrived once during the year
+PASS city postcards collected during the year
+PASS photo and thumbnail packed at their own ratio tram-139
+PASS photo and thumbnail packed at their own ratio central-wheel
+PASS photo and thumbnail packed at their own ratio chungking-mansions
+PASS photo and thumbnail packed at their own ratio night-arches
+PASS photo and thumbnail packed at their own ratio back-alley
+PASS photo and thumbnail packed at their own ratio nam-cheong-pawn
+PASS photo and thumbnail packed at their own ratio colour-tenements
+PASS photo and thumbnail packed at their own ratio red-taxi-arches
+PASS photo and thumbnail packed at their own ratio monster-building
+PASS photo and thumbnail packed at their own ratio stonecutters-harbour
+PASS photo and thumbnail packed at their own ratio central-across-harbour
+PASS photo and thumbnail packed at their own ratio canal-road-villain
+PASS watermarked photo removed
+PASS portrait and landscape postcards collected
+PASS button Tab手账
+PASS raycast Tab手账
+PASS button Open109
+PASS raycast Open109
+PASS postcard shows the whole photo at its own ratio monster-building
+PASS photo imported without rescaling monster-building
+UI 50-city-portrait overflow=0
+PASS button PostcardFlip
+PASS raycast PostcardFlip
+UI 51-city-back-portrait overflow=0
+PASS button PostcardFlip
+PASS raycast PostcardFlip
+PASS button PhotoBig
+PASS raycast PhotoBig
+PASS full view keeps the ratio monster-building
+UI 52-photo-full-portrait overflow=0
+PASS button ViewerBack
+PASS raycast ViewerBack
+PASS closing the full photo returns to the postcard
+PASS button PostcardStack
+PASS raycast PostcardStack
+UI 53-city-stacked-portrait overflow=0
+PASS button PostcardStack
+PASS raycast PostcardStack
+PASS button PostcardDone
+PASS raycast PostcardDone
+PASS portrait and landscape postcards collected
+PASS button Tab手账
+PASS raycast Tab手账
+PASS button Open107
+PASS raycast Open107
+PASS postcard shows the whole photo at its own ratio colour-tenements
+PASS photo imported without rescaling colour-tenements
+UI 50-city-landscape overflow=0
+PASS button PostcardFlip
+PASS raycast PostcardFlip
+UI 51-city-back-landscape overflow=0
+PASS button PostcardFlip
+PASS raycast PostcardFlip
+PASS button PhotoBig
+PASS raycast PhotoBig
+PASS full view keeps the ratio colour-tenements
+UI 52-photo-full-landscape overflow=0
+PASS button ViewerBack
+PASS raycast ViewerBack
+PASS closing the full photo returns to the postcard
+PASS button PostcardStack
+PASS raycast PostcardStack
+UI 53-city-stacked-landscape overflow=0
+PASS button PostcardStack
+PASS raycast PostcardStack
+PASS button PostcardDone
+PASS raycast PostcardDone
+PASS repeat postcards add a memory, not a second thumbnail
+PASS button Tab小店
+PASS raycast Tab小店
+PASS button Shop0
+PASS raycast Shop0
+PASS button Buy20
+PASS raycast Buy20
+PASS travel frame bought and placed
+PASS button Tab小屋
+PASS raycast Tab小屋
+UI 55a-frame-empty overflow=0
+UI 54-frame-picker overflow=0
+PASS button Frame109
+PASS raycast Frame109
+PASS frame shows the chosen postcard
+PASS frame drag saves its spot
+UI 55-frame-room overflow=0
+PASS frame picture and spot survive reopening
+PASS dragged sofa is still where it was after reopening
+PASS button Tab来信
+PASS raycast Tab来信
+PASS button LetterInvite
+PASS raycast LetterInvite
+PASS button Route2
+PASS raycast Route2
+UI 56-route-2 overflow=0
+PASS route 2 plays at home without a trip
+PASS route 2 shows no Tai O results
+PASS button OpenNote
+PASS raycast OpenNote
+PASS button StoryReply1
+PASS raycast StoryReply1
+PASS route 2 same base reward and its own keepsake
+UI 57-route-2-replied overflow=0
+PASS button StoryHome
+PASS raycast StoryHome
+PASS button Tab来信
+PASS raycast Tab来信
+PASS button LetterInvite
+PASS raycast LetterInvite
+PASS button Route3
+PASS raycast Route3
+UI 56-route-3 overflow=0
+PASS route 3 plays at home without a trip
+PASS route 3 shows no Tai O results
+PASS button OpenNote
+PASS raycast OpenNote
+PASS button StoryReply2
+PASS raycast StoryReply2
+PASS route 3 same base reward and its own keepsake
+UI 57-route-3-replied overflow=0
+PASS button StoryHome
+PASS raycast StoryHome
+PASS real save restored after the route copies
 PASS legacy duplicate mail loads once without changing earned stats
 PASS button Tab来信
 PASS raycast Tab来信

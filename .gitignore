@@ -33,3 +33,7 @@ __pycache__/
 # Local generation records (contain machine paths)
 /ArtSource/.forge/
 /ArtSource/forge/**/job.json
+# Owner-supplied original photos (game copies live in Assets/Resources/Photos)
+/ArtSource/photos/originals/
+
+/.forge/
