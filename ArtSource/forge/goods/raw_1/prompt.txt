@@ -1,0 +1,10 @@
+Game item icon sheet, landscape 2:1, EXACTLY 8 separate objects in a regular 4 columns by 2 rows grid of equal cells, reading order left-to-right then top-to-bottom. Everyday things a new postgraduate student buys after moving into a small Hong Kong flat:
+1 a chunky white British three-pin travel plug adapter with a short white cable;
+2 a small white electric rice cooker with a little rice paddle leaning on it;
+3 a compact white home dehumidifier with a clear water tank showing a little water;
+4 a white standing floor fan with a round guard;
+5 a folding silver clothes drying rack with two small pastel towels hanging on it;
+6 a slim mint-green stainless steel thermos flask with a cup lid;
+7 a plain pale-yellow contactless transit card with rounded corners on a coral lanyard, completely blank;
+8 a small phone SIM card pressed into a plain white cardboard holder, completely blank.
+Each object is drawn alone, centred in its own cell, upright, in a gentle three-quarter front view, at a consistent catalogue scale (the fan and rack fill most of the cell height, the plug, cards and flask are smaller but still clearly readable), with a generous empty margin of at least one fifth of the cell on every side; nothing touches or crosses a cell edge. STYLE: copy the attached room illustration exactly - soft warm storybook illustration, clean thin warm-brown outlines, flat colours with soft painted shading, cozy and slightly realistic proportions. Do not use any blue colour on the objects. Background: completely flat pure blue #0000FF filling every cell, no shadows on the background, no floor, no grid lines, no borders, no text, no numbers, no labels, no logos, no brand names, no checkerboard.

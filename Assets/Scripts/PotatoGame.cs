@@ -28,7 +28,8 @@ namespace PotatoLife
         void Update()
         {
             if(State==null||menu)return;long now=Save.Now;
-            if(now!=lastSecond){lastSecond=now;long beforeDay=State.dailyDay;bool arrived=Life.Tick(State,now);if(arrived){Sound.Fx("return");Save.Write(State);if(tab=="小屋"&&modal==null)Render();else{pageStale=true;Float("土豆子带回了新的手账，去门口收好吧。",Mango);}}if(beforeDay!=State.dailyDay){Save.Write(State);if(modal==null)Render();else pageStale=true;}
+            if(now!=lastSecond){lastSecond=now;long beforeDay=State.dailyDay;int stage=State.weekend.stage,rain=State.weekend.rain;bool arrived=Life.Tick(State,now);
+                if(stage==0&&State.weekend.stage==1||rain==0&&State.weekend.rain==1){bool invite=State.weekend.stage==1&&stage==0;Save.Write(State);Sound.Fx("mail");if(tab=="小屋"&&modal==null)Render();else pageStale=true;Float(invite?"阿晴发来一条周末邀请，在今日待办里。":"阿晴发来一条消息：真的下雨了。",Blue);}if(arrived){Sound.Fx("return");Save.Write(State);if(tab=="小屋"&&modal==null)Render();else{pageStale=true;Float("土豆子带回了新的手账，去门口收好吧。",Mango);}}if(beforeDay!=State.dailyDay){Save.Write(State);if(modal==null)Render();else pageStale=true;}
                 if(State.studyRunning){int blocks=State.studyBlocks;bool rest=Life.StudySettle(State,now);if(State.studyBlocks>blocks){Sound.Fx("coin");Float("专注满 15 分钟 · 金币 +"+Life.StudyBlockCoins(State)+" · 智慧 +1",Mint);}if(rest){Save.Write(State);StudyBreakDialog();}}
                 RefreshStats();if(now-lastSaved>=5){lastSaved=now;Save.Write(State);}}
             if(Input.GetKeyDown(KeyCode.Escape)&&modal!=null)CloseModal();
@@ -45,7 +46,7 @@ namespace PotatoLife
             page=UI.Rect("Page",root,0,0,1600,1000);page.gameObject.AddComponent<PageFade>();effects=UI.Rect("Feedback",root,0,0,1600,1000);
             if(menu){DrawTitle();return;}Header();if(tab=="手账")DrawAlbum();else if(tab=="来信")DrawLetters();else if(tab=="小店")DrawShop();else if(tab=="陪伴")DrawStudy();else DrawRoom();RefreshStats();
             Text(page,Save.Error!=""?Save.Error:"已悄悄保存 · 今天也没有必须完成的任务",46,957,1160,28,16,Muted);
-            Text(page,State.demo?"演示模式 · 一次外出 30 秒":"慢生活 · 一次外出 30—120 分钟",1160,957,394,28,16,Blue,false,TextAlignmentOptions.TopRight);
+            Text(page,State.demo?"演示模式 · 一次外出 5 秒":"慢生活 · 一次外出 30—120 分钟",1160,957,394,28,16,Blue,false,TextAlignmentOptions.TopRight);
         }
         void Header()
         {
@@ -63,7 +64,7 @@ namespace PotatoLife
             Text(page,"土豆子的\n港硕生活",95,203,600,178,64,Ink,true);Text(page,"你来选方向，\n它把日子过成小惊喜。",101,422,590,95,30,Blue);
             Text(page,"没有挂科，没有催促。\n出门看一看，回来收一页手账。",103,551,580,92,25,Muted);Actor(page,0,0,960,402,370,444);
             Button(page,"和土豆子一起抵港  →",102,696,589,65,()=>{if(Save.Exists)Restart();else NewGame();},Coral,true,"NewGame");Button(page,"回到我的小屋",102,779,589,61,ContinueGame,Blue,Save.Exists,"Continue");
-            Text(page,"首次试玩默认 30 秒演示外出，可在设置切回慢生活。",782,916,748,38,21,Ink);
+            Text(page,"首次试玩默认 5 秒演示外出，可在设置切回慢生活。",782,916,748,38,21,Ink);
         }
         void DrawRoom()
         {
@@ -73,11 +74,13 @@ namespace PotatoLife
             if(!State.travelling){DrawDecorations(scene);if(State.placed.Count>0){var hint=Card(scene,770,20,250,40,new Color(1,.98f,.93f,.9f)).transform;Text(hint,"拖动家具，自己摆放",0,7,250,28,17,Muted,false,TextAlignmentOptions.Center);}}
             var actor=!State.travelling&&State.pending.Count>0?Wave(scene,pose,State.outfit,361,281,318,357):Actor(scene,pose,State.travelling?State.trip.outfit:State.outfit,361,281,318,357);var button=actor.gameObject.AddComponent<Button>();actor.GetComponent<Image>().raycastTarget=true;button.targetGraphic=actor.GetComponent<Image>();button.onClick.AddListener(()=>{int before=State.coins;Float(Life.Pet(State),Coral);Sound.Fx(State.coins>before?"coin":"company");RefreshStats();Save.Write(State);});actor.name="PetPotato";
             var speech=Card(scene,277,157,610,99,new Color(1,1,1,.96f)).transform;
-            Text(speech,State.travelling?World.Places[State.trip.place].caption:State.pending.Count>0?"我回来啦！这次也带了好多小事情给你。":State.energy<30?"呼……先在家充一会儿电，什么都不会错过。":"今天想往哪个方向走？也可以先抱抱我。",21,17,568,67,23,Ink);
+            Text(speech,State.travelling&&State.trip.story==1?(State.weekend.rain>0?"真的下雨了。阿晴问要不要找个地方等一等。":"和阿晴在大澳慢慢走，云有点厚。"):State.travelling?World.Places[State.trip.place].caption:State.pending.Count>0?"我回来啦！这次也带了好多小事情给你。":State.energy<30?"呼……先在家充一会儿电，什么都不会错过。":"今天想往哪个方向走？也可以先抱抱我。",21,17,568,67,23,Ink);
             DrawNoticeBoard();
             Button(page,State.tutorial==0?"① 选今天的方向":"方向 · "+World.Directions[(int)State.direction],44,902,327,53,DirectionDialog,Blue,true,"PickDirection");
             Button(page,"行囊 / 换装",386,902,288,53,Wardrobe,Mint,State.tutorial>=1,"Wardrobe");
-            string locked=Life.DepartureLock(State);Button(page,State.pending.Count>0?"带回 "+State.pending.Count+" 份手账 · 收好它们":State.travelling?"土豆子正在替你过日子":State.energy<25?"正在自动充电…":"② 送土豆子出门",690,902,394,53,()=>{if(State.pending.Count>0)CollectGifts();else if(Life.Depart(State,Save.Now)){Sound.Fx("page");Save.Write(State);WalkOutOfDoor();}},Coral,State.pending.Count>0||locked==""&&State.tutorial>0,"Depart");
+            // Once Tai O is chosen, the next departure is that trip: the button opens its packing page instead.
+            string locked=Life.DepartureLock(State);bool story=Life.StoryTripWaiting(State)&&!State.travelling&&State.pending.Count==0;
+            Button(page,State.pending.Count>0?"带回 "+State.pending.Count+" 份手账 · 收好它们":State.travelling?"土豆子正在替你过日子":story?"和阿晴出发去大澳":State.energy<25?"正在自动充电…":"② 送土豆子出门",690,902,394,53,()=>{if(State.pending.Count>0)CollectGifts();else if(story)StoryPackDialog();else if(Life.Depart(State,Save.Now)){Sound.Fx("page");Save.Write(State);WalkOutOfDoor();}},Coral,State.pending.Count>0||story||locked==""&&State.tutorial>0,"Depart");
         }
         // The trip has already started in the save; this only walks the potato out of the door before the away scene.
         void WalkOutOfDoor()
@@ -105,9 +108,13 @@ namespace PotatoLife
                 dailyButtons[i]=Button(c,"",277,22,103,38,()=>DailyAction(id),Mint,true,"Daily"+i);
             }
             dailyFooter=Text(p,"",25,527,393,29,17,Muted);
+            // One slot, in order: festival letter, an unread graduation, the weekend story, the graduation journal, progress.
+            string story=StoryEntry();
             if(State.festivalPending>=0)Button(p,"拆开"+World.FestivalNames[State.festivalPending]+"邀请",25,571,393,47,FestivalDialog,Mango,true,"Festival");
+            else if(Life.YearReady(State)&&!State.graduated)Button(p,"翻开这一年的毕业手账",25,571,393,47,EndingDialog,Mango,true,"Graduation");
+            else if(story!=null)Button(p,story,25,571,393,47,StoryAction,Coral,true,"Story");
             else if(Life.YearReady(State))Button(p,"翻开这一年的毕业手账",25,571,393,47,EndingDialog,Mango,true,"Graduation");
-            else Text(p,"学年手账 "+State.completed+" / 16 · 照片 "+State.album.Count+" / 16",25,577,393,36,20,Blue,true);
+            else Text(p,"学年手账 "+State.completed+" / 16 · 照片 "+Life.LegacyPhotos(State)+" / 16",25,577,393,36,20,Blue,true);
             Button(p,"成长资料",25,639,190,41,Profile,Blue,true,"Profile");Button(p,"手账与照片",229,639,189,41,()=>{Life.OpenAlbum(State);tab="手账";Save.Write(State);Render();},Mint,true,"BoardAlbum");
         }
         void RefreshStats()
@@ -129,9 +136,18 @@ namespace PotatoLife
         void CollectGifts()
         {
             int count=State.pending.Count;int coins=State.pending.Sum(g=>g.coins);int photos=State.pending.Sum(g=>g.photos.Count);string note=State.pending.Last().highlight;
-            Life.Collect(State,Save.Now);Save.Write(State);Render();Sound.Fx("coin");var p=Modal("回来啦，收获都在这里。","第 "+State.completed+" 次外出 · 已存进你的手账",1040,734);Wave(p,4,State.outfit,29,174,241,299);Text(p,note,310,177,690,88,31,Blue,true);
+            var story=State.pending.FirstOrDefault(g=>g.trip.story==1);bool echoWaiting=State.weekend.echo==1;var known=State.album.Select(x=>x.id).ToList();
+            int city=State.pending.SelectMany(g=>g.photos).Select(x=>x.id).FirstOrDefault(id=>World.Spot(id)!=null&&!known.Contains(id));
+            int wisdom=State.pending.Sum(g=>g.wisdom),charm=State.pending.Sum(g=>g.charm),company=State.pending.Sum(g=>g.company);
+            Life.Collect(State,Save.Now);Save.Write(State);Render();Sound.Fx("coin");
+            if(story!=null){StoryHarvestDialog(story,coins,wisdom,charm,company,count-1);return;}
+            var p=Modal("回来啦，收获都在这里。","第 "+State.completed+" 次外出 · 已存进你的手账",1040,734);Wave(p,4,State.outfit,29,174,241,299);Text(p,note,310,177,690,88,31,Blue,true);
             Text(p,"金币 +"+coins+"\n带回 "+photos+" 张照片 · "+count+" 封来信\n智慧、魅力和陪伴也悄悄长大了。",310,301,690,155,25,Ink);Text(p,"重复照片会化为陪伴，不会白跑一趟。",32,527,975,41,20,Muted);
-            Button(p,"③ 翻开新手账  →",32,623,975,65,()=>{Life.OpenAlbum(State);tab="手账";Save.Write(State);Render();Sound.Fx("page");},Coral,true,"OpenNewAlbum");
+            if(echoWaiting&&State.weekend.echo==2)Text(p,"阿晴的回响："+Life.StoryEcho(State),310,458,690,64,20,Coral);
+            System.Action album=()=>{Life.OpenAlbum(State);tab="手账";Save.Write(State);Render();Sound.Fx("page");};
+            // A new city postcard is the main thing to open; the album stays one click away.
+            if(city!=0){Button(p,"拆开新明信片 · "+World.Spot(city).title,32,623,640,65,()=>{Life.OpenAlbum(State);tab="手账";Save.Write(State);Render();OpenPostcard(city);},Coral,true,"OpenCityPostcard");Button(p,"③ 翻开新手账",688,623,319,65,album,Blue,true,"OpenNewAlbum");}
+            else Button(p,"③ 翻开新手账  →",32,623,975,65,album,Coral,true,"OpenNewAlbum");
         }
     }
 }

@@ -41,9 +41,9 @@ namespace PotatoLife
         }
         public static RectTransform Actor(Transform p,int pose,int outfit,float x,float y,float w,float h,bool animate=true)
         {var r=Rect("Potato",p,x,y,w,h);var im=r.gameObject.AddComponent<Image>();im.sprite=outfit>0?Frame("Art/Costumes",outfit-1,2,2):Frame("Art/PotatoAtlas",pose,4,2);im.preserveAspect=true;im.raycastTarget=false;if(animate)r.gameObject.AddComponent<PotatoMotion>().pose=pose;return r;}
-        // Shop goods share one 5x4 atlas (Items.png), indexed by item id.
+        // Shop goods: ids 0-19 in the 5x4 Items.png, 21-28 (港硕必备) in the 4x2 Items2.png; 20 is drawn in code.
         public static Image Item(Transform p,int id,float x,float y,float w,float h)
-        {var r=Rect("Item"+id,p,x,y,w,h);var im=r.gameObject.AddComponent<Image>();im.sprite=Frame("Art/Items",id,5,4);im.preserveAspect=true;im.raycastTarget=false;return im;}
+        {var r=Rect("Item"+id,p,x,y,w,h);var im=r.gameObject.AddComponent<Image>();im.sprite=id>=21?Frame("Art/Items2",id-21,4,2):Frame("Art/Items",id,5,4);im.preserveAspect=true;im.raycastTarget=false;return im;}
         public static TMP_InputField Field(Transform p,string placeholder,float x,float y,float w,float h,float size,string id)
         {
             var r=Rect(id,p,x,y,w,h);r.gameObject.SetActive(false);var bg=r.gameObject.AddComponent<Image>();bg.sprite=Rounded;bg.type=Image.Type.Sliced;bg.color=Color.white;

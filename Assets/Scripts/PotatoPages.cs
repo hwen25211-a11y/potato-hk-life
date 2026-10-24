@@ -27,9 +27,9 @@ namespace PotatoLife
         void DrawAlbum()
         {
             int sealedCount=State.album.Count(p=>p.unopened);
-            Text(page,"把普通的日子，贴成一本书。",45,183,1485,56,37,Ink,true);Text(page,(sealedCount>0?"有 "+sealedCount+" 张新明信片等你亲手拆开。":"12 个香港角落 + 4 张节日纪念。")+"照片保留拍摄时的衣服，回忆不会被换掉。",47,250,1489,36,21,sealedCount>0?Coral:Muted);
-            var list=Scroll(page,44,314,1512,605,1460);
-            var order=State.album.OrderByDescending(p=>p.trip).Select(p=>p.id).Concat(Enumerable.Range(0,16).Where(id=>!State.album.Any(p=>p.id==id))).ToArray();
+            Text(page,"把普通的日子，贴成一本书。",45,183,1485,56,37,Ink,true);Text(page,(sealedCount>0?"有 "+sealedCount+" 张新明信片等你亲手拆开。":"12 个香港角落 + 4 张节日纪念 + "+World.Spots.Length+" 张真实的城市明信片。")+"照片保留拍摄时的衣服，回忆不会被换掉。",47,250,1489,36,21,sealedCount>0?Coral:Muted);
+            int cityRows=(World.Spots.Length+3)/4;var list=Scroll(page,44,314,1512,605,1440+100+cityRows*356+70+356);
+            var order=State.album.Where(p=>p.id<16).OrderByDescending(p=>p.trip).Select(p=>p.id).Concat(Enumerable.Range(0,16).Where(id=>!State.album.Any(p=>p.id==id))).ToArray();
             for(int position=0;position<16;position++)
             {
                 int id=order[position],index=id;var photo=State.album.FirstOrDefault(p=>p.id==id);int row=position/4,col=position%4;var c=Card(list,col*374,row*356,354,348,Color.white).rectTransform;
@@ -37,6 +37,12 @@ namespace PotatoLife
                 else if(photo.unopened){PostcardBack(c,photo,14,14,326,229);Text(c,id<12?World.Places[id].name:World.FestivalNames[id-12],16,260,322,39,24,Ink,true);Button(c,"拆开这张明信片",16,304,322,35,()=>OpenPostcard(index),Coral,true,"Open"+id);}
                 else{PhotoVisual(c,photo,14,14,326,229);Text(c,id<12?World.Places[id].name:World.FestivalNames[id-12],16,260,322,39,24,Ink,true);Button(c,"第 "+photo.trip+" 次外出 · 打开这一页",16,304,322,35,()=>PhotoDialog(index),Colors[photo.season],true,"Photo"+id);}
             }
+            // v0.1.4: real photos and story keepsakes live in the same album, below the original sixteen.
+            Text(list,"城市明信片 · 真实的香港街景 "+Life.CityPhotos(State)+" / "+World.Spots.Length,4,1440,1100,46,28,Ink,true);
+            Text(list,"怎么得到：土豆子外出回家时顺路寄回——每次「到处玩玩」都会带一张，其他方向每隔一次带一张。收好手账后点「拆开这张明信片」。",4,1492,1440,34,19,Muted);
+            for(int i=0;i<World.Spots.Length;i++)CityCard(list,World.Spots[i],(i%4)*374,1540+(i/4)*356);
+            float keep=1540+cityRows*356;Text(list,"故事纪念",4,keep,1100,46,28,Ink,true);KeepsakeCard(list,0,keep+70);
+            if(albumToStory){albumToStory=false;list.GetComponentInParent<ScrollRect>().verticalNormalizedPosition=0;}
         }
         void PostcardBack(Transform p,Photo photo,float x,float y,float w,float h)
         {
@@ -50,26 +56,38 @@ namespace PotatoLife
         }
         void PhotoVisual(Transform p,Photo photo,float x,float y,float w,float h)
         {
+            var spot=World.Spot(photo.id);if(spot!=null){Card(p,x,y,w,h,Hex("F3EEE4"));CityPicture(p,spot,x+4,y+4,w-8,h-8,true);return;}
             int scene=photo.id<12?World.Places[photo.id].art:3;
             if(photo.id<12){var atlas=Resources.Load<Texture2D>("Art/PostcardAtlas");var picture=Picture(p,atlas,x,y,w,h);float u=.25f,v=1f/3,ratio=(atlas.width/4f)/(atlas.height/3f);if(w/h>ratio)v*=ratio/(w/h);else u*=(w/h)/ratio;picture.uvRect=new UnityEngine.Rect(photo.id%4*.25f+(.25f-u)/2,1-(photo.id/4+1)/3f+(1f/3-v)/2,u,v);}else Picture(p,places,x,y,w,h,scene);
             int pose=photo.id<12?(int)World.Places[photo.id].direction:3;pose=pose==0?1:pose==1?2:pose==2?3:6;
             Actor(p,pose,photo.outfit,x+w*.35f,y+h*.35f,w*.3f,h*.61f,false);Card(p,x+9,y+9,84,36,new Color(1,.98f,.94f,.93f));Text(p,new[]{"春日","夏日","秋日","冬日"}[photo.season],x+15,y+10,75,33,16,Blue,true);
         }
-        void PhotoDialog(int id)
+        void PhotoDialog(int id){PhotoDialog(id,false);}
+        void PhotoDialog(int id,bool back)
         {
-            var photo=State.album.FirstOrDefault(p=>p.id==id);if(photo==null)return;var p=Modal(id<12?World.Places[id].name:World.FestivalNames[id-12],"土豆子拍给你的 / 第 "+photo.trip+" 次外出",1000,820);PhotoVisual(p,photo,32,148,936,398);Text(p,photo.caption,32,575,936,132,26,Ink);Button(p,"把这一页收好",32,733,936,50,CloseModal,Blue);
+            if(World.Spot(id)!=null){CityPostcard(id,back);return;}
+            var photo=State.album.FirstOrDefault(p=>p.id==id);if(photo==null)return;var p=Modal(id<12?World.Places[id].name:World.FestivalNames[id-12],"土豆子拍给你的 / 第 "+photo.trip+" 次外出",1000,820);
+            if(back)
+            {
+                // The back of the postcard: the stamp, the caption and any later visits.
+                var c=Card(p,32,148,936,560,Hex("FFF1D6")).transform;Card(c,936-100,20,72,84,Colors[photo.season]);Card(c,936-94,26,60,72,Cream);Text(c,"港",936-94,38,60,46,26,Colors[photo.season],true,TextAlignmentOptions.Center);
+                Text(c,photo.caption,30,40,760,200,26,Ink);if(!string.IsNullOrEmpty(photo.revisits))Text(c,photo.revisits,30,270,760,150,20,Muted);for(int i=0;i<3;i++)Card(c,30,450+i*30,540,3,Hex("E2CFA8"));
+            }
+            else{PhotoVisual(p,photo,32,148,936,398);Text(p,photo.caption,32,575,936,132,26,Ink);}
+            Button(p,back?"看看正面":"看看背面",32,733,300,50,()=>PhotoDialog(id,!back),Mint,true,"PostcardFlip");Button(p,"把这一页收好",348,733,620,50,CloseModal,Blue);
         }
         void DrawLetters()
         {
             Text(page,"有人，把你放在心上。",45,182,1490,53,37,Ink,true);Text(page,"没有必须立刻回复的消息。读一读，回一句，友谊会慢慢长起来。",47,250,1487,36,22,Muted);
             for(int i=0;i<3;i++){int id=i;var c=Card(page,44+i*509,309,490,135,Color.white).transform;Actor(c,6,0,13,10,91,111,false);Text(c,World.Friends[i]+" · 默契 "+State.friendBond[i],123,16,340,35,25,Colors[i],true);Text(c,World.FriendNotes[i],123,66,340,52,19,Muted);}
             if(State.letters.Count==0){Text(page,"信箱还是空的。土豆子第一次回来时，\n会把认识的朋友和一封信一起带给你。",92,560,1400,128,31,Muted,false,TextAlignmentOptions.Center);return;}
-            var letters=State.letters.AsEnumerable().Reverse().ToArray();var list=Scroll(page,44,475,1511,439,letters.Length*141);
-            for(int i=0;i<letters.Length;i++){var l=letters[i];float y=i*141;var c=Card(list,0,y,1489,125,Color.white).transform;Text(c,(l.read?"已读":"新来信")+" / "+World.Friends[l.friend]+" · "+(l.kind==0?"第 "+l.chapter+" 封心事":"日常小纸条 · 第 "+(l.id/10)+" 次外出"),23,14,1102,29,18,Colors[l.friend],true);Text(c,l.title,23,58,1095,42,28,Ink,true);Button(c,l.reply>=0?"看看我们的回信":"拆开信封",1198,35,266,54,()=>LetterDialog(l.id),Coral,true,"Letter"+l.id);}
+            var letters=State.letters.AsEnumerable().Reverse().ToArray();int top=State.weekend.stage==1?1:0;var list=Scroll(page,44,475,1511,439,(letters.Length+top)*141);
+            if(top==1){var c=Card(list,0,0,1489,125,Hex("FFF1D6")).transform;Text(c,"新邀请 / 阿晴 · 周末邀请",23,14,1102,29,18,Coral,true);Text(c,World.StoryInvite,23,58,1095,42,28,Ink,true);Button(c,"看看邀请",1198,35,266,54,InviteDialog,Coral,true,"LetterInvite");}
+            for(int i=0;i<letters.Length;i++){var l=letters[i];float y=(i+top)*141;var c=Card(list,0,y,1489,125,Color.white).transform;Text(c,(l.read?"已读":"新来信")+" / "+World.Friends[l.friend]+" · "+(l.kind==0?"第 "+l.chapter+" 封心事":l.kind==2?"周末邀请的纸条":"日常小纸条 · 第 "+(l.id/10)+" 次外出"),23,14,1102,29,18,Colors[l.friend],true);Text(c,l.title,23,58,1095,42,28,Ink,true);Button(c,l.reply>=0?"看看我们的回信":"拆开信封",1198,35,266,54,()=>LetterDialog(l.id),Coral,true,"Letter"+l.id);}
         }
         void LetterDialog(int id)
         {
-            var l=State.letters.First(x=>x.id==id);bool first=Life.ReadLetter(State,id);Save.Write(State);RefreshStats();if(first)Sound.Fx("mail");
+            var l=State.letters.First(x=>x.id==id);if(l.kind==2){if(State.weekend.stage>=5)StoryReview();else StoryNoteDialog();return;}bool first=Life.ReadLetter(State,id);Save.Write(State);RefreshStats();if(first)Sound.Fx("mail");
             var p=Modal(l.title,"来自 "+World.Friends[l.friend]+" / 读信后心情 +5、陪伴 +2（仅首次）",1060,785);Actor(p,6,0,30,170,196,245);Text(p,l.body,262,161,761,256,26,Ink);
             if(!string.IsNullOrEmpty(l.previousReplies))Button(p,"看看以前的回复",262,424,761,31,()=>LetterHistory(l),Blue,true,"LetterHistory"+id);
             Text(p,l.reply<0?"选一句回给对方。这三句回复都会让故事继续，不会扣任何东西。":"你写过："+World.ReplyLines[l.reply],32,461,996,70,22,Muted);
@@ -86,19 +104,19 @@ namespace PotatoLife
         int shopTab;
         void DrawShop()
         {
-            Text(page,"让小屋，多一点你的样子。",45,181,900,55,37,Ink,true);
+            Text(page,"让小屋，多一点你的样子。",45,181,740,55,37,Ink,true);
             string[] tabs=World.Shops.Concat(new[]{"换个房间"}).ToArray();
-            for(int t=0;t<tabs.Length;t++){int id=t;Button(page,tabs[t],990+t*190,186,176,48,()=>{shopTab=id;Sound.Fx("page");Render();},shopTab==t?Coral:Muted,true,"Shop"+t);}
-            if(shopTab==2){DrawRooms();return;}
+            for(int t=0;t<tabs.Length;t++){int id=t;Button(page,tabs[t],800+t*190,186,176,48,()=>{shopTab=id;Sound.Fx("page");Render();},shopTab==t?Coral:Muted,true,"Shop"+t);}
+            if(shopTab==World.Shops.Length){DrawRooms();return;}
             Text(page,World.ShopNotes[shopTab]+"  已摆放 "+State.placed.Count+" / "+Tuning.MaxPlaced,47,251,1478,38,21,Muted);
             var ids=Enumerable.Range(0,World.Items.Length).Where(i=>World.Items[i].shop==shopTab).ToArray();
             var list=Scroll(page,44,317,1511,608,(ids.Length+3)/4*355);
             for(int n=0;n<ids.Length;n++)
             {
                 int id=ids[n];var item=World.Items[id];bool owned=State.owned.Contains(id);float x=(n%4)*374,y=(n/4)*355;var c=Card(list,x,y,354,333,Color.white).transform;
-                Item(c,id,97,14,160,128);Text(c,item.name,19,150,316,36,27,Ink,true);Text(c,item.description,19,200,316,64,21,Muted);
-                string label=owned?(item.type==0?(State.placed.Contains(id)?"已摆放 · 收起来":"摆进房间"):(State.selectedBag==id?"已放进行囊":"放进行囊")):"购买 · "+item.price+" 金币";
-                Button(c,label,19,281,316,34,()=>{if(!owned){if(Life.Buy(State,id)){Save.Write(State);Render();Float("新物件！魅力 +3",Mint);Sound.Fx("purchase");}}else{if(item.type==0){if(!Life.PlaceItem(State,id)){Float("最多摆 "+Tuning.MaxPlaced+" 件，先收起一件给它腾个位置吧。",Blue);return;}}else Life.Pack(State,id);Save.Write(State);Render();}},owned?Mint:Coral,owned?(item.type==0||!State.travelling):State.coins>=item.price,"Buy"+id);
+                Furniture(c,id,97,14,160,128);Text(c,item.name,19,150,316,36,27,Ink,true);Text(c,item.description,19,200,316,64,21,Muted);
+                string label=owned&&item.type==2?"已随身带着":owned?(item.type==0?(State.placed.Contains(id)?"已摆放 · 收起来":"摆进房间"):(State.selectedBag==id?"已放进行囊":"放进行囊")):"购买 · "+item.price+" 金币";
+                Button(c,label,19,281,316,34,()=>{if(!owned){if(Life.Buy(State,id)){Save.Write(State);Render();Float("新物件！魅力 +3",Mint);Sound.Fx("purchase");}}else{if(item.type==0){if(!Life.PlaceItem(State,id)){Float("最多摆 "+Tuning.MaxPlaced+" 件，先收起一件给它腾个位置吧。",Blue);return;}}else Life.Pack(State,id);Save.Write(State);Render();}},owned?Mint:Coral,owned?(item.type==0||item.type==1&&!State.travelling):State.coins>=item.price,"Buy"+id);
             }
         }
         // Five homes: three free real-world rooms and two to unlock once. Decorations follow you, each room remembers its own layout.
@@ -143,7 +161,7 @@ namespace PotatoLife
             var input=Field(p,"写下想做的小事，按回车添加",1022,210,330,52,21,"TodoInput");input.characterLimit=Tuning.TodoLength;
             System.Action add=()=>{if(Life.AddTodo(State,input.text)==null){Float(string.IsNullOrEmpty(input.text.Trim())?"先写下一件想做的小事吧。":"未完成的待办已经很多啦，先完成几件吧。",Blue);return;}Save.Write(State);Sound.Fx("page");focusTodo=true;QuestDialog();};
             input.onSubmit.AddListener(_=>add());Button(p,"添加",1364,210,104,52,()=>add(),Coral,true,"TodoAdd");
-            int bonus=State.placed.Sum(i=>World.Items[i].todoCoins);
+            int bonus=Life.Active(State).Sum(i=>World.Items[i].todoCoins);
             Text(p,"完成一项：金币 +"+(Tuning.TodoCoins+bonus)+" · 心情 +2 · 智慧 +1\n每天前 "+Tuning.TodoDailyRewards+" 项有奖励（今日 "+State.todoRewards+" / "+Tuning.TodoDailyRewards+"）",1022,272,446,58,18,Muted);
             var todos=State.todos.Where(t=>!t.done).Concat(State.todos.Where(t=>t.done).Reverse()).ToArray();
             var list=Scroll(p,1022,340,446,400,System.Math.Max(400,todos.Length*62));
@@ -171,6 +189,7 @@ namespace PotatoLife
                 if(State.festivalPending>=0){FestivalDialog();return;}
                 if(Life.YearReady(State)&&!State.graduated){EndingDialog();return;}
                 if(State.tutorial==0){DirectionDialog();return;}
+                if(Life.StoryTripWaiting(State)&&!State.travelling){StoryPackDialog();return;}
                 if(Life.Depart(State,Save.Now)){tab="小屋";Save.Write(State);Render();Sound.Fx("page");}
                 else Float(Life.DepartureLock(State),Blue);
             }
@@ -188,18 +207,20 @@ namespace PotatoLife
         void FinishFestival(int choice){Life.Festival(State,choice);Save.Write(State);Render();Sound.Fx("coin");Float("节日纪念 +1 · 新衣服 +1 · 金币 +200",Coral);}
         void EndingDialog()
         {
-            if(!Life.YearReady(State))return;int e=string.IsNullOrEmpty(State.ending)?Life.SuggestEnding(State):int.Parse(State.ending);var p=Modal("这一年，你成为了"+World.Endings[e]+"。","学年纪念 / 没有坏结局，每一页日常都算数",1200,900);
-            var list=Scroll(p,32,147,1136,612,1150+Math.Min(16,State.album.Count)*12);
+            if(!Life.YearReady(State))return;int e=string.IsNullOrEmpty(State.ending)?Life.SuggestEnding(State):int.Parse(State.ending);var p=Modal("这一年，你走向了「"+World.EndingPaths[e]+"」。","学年纪念 / 四个方向并排放着，没有高低，每一页日常都算数",1200,900);
+            var journal=YearJournal();var list=Scroll(p,32,147,1136,612,1200+journal.Length*84);
             Actor(list,7,4,0,10,246,280,false);Text(list,World.DiaryEnding(e),281,23,815,164,29,Ink);Text(list,"这一年留下了 "+State.album.Count+" 张照片、"+State.letters.Count+" 封信和 "+State.owned.Count+" 件心爱的小物。",281,220,815,74,24,Blue,true);
             Text(list,"一起走过这一年的朋友",0,333,1098,41,29,Ink,true);for(int i=0;i<3;i++){string line=State.friendChapter[i]>=3?"谢谢你陪我把这一年走熟，下一段路还可以互相写信。":State.friendBond[i]>0?"认识你，是这一年很值得记住的小事。":"还没好好聊过，下一次相遇也值得期待。";Text(list,World.Friends[i]+"："+line,0,398+i*79,1090,66,23,Muted);}
             Text(list,"把照片翻一遍，再出发。",0,660,1098,39,28,Ink,true);for(int i=0;i<Math.Min(8,State.album.Count);i++){var ph=State.album[i];PhotoVisual(list,ph,(i%4)*278,725+(i/4)*190,260,174);}
-            var available=Life.AvailableEndings(State);for(int i=0;i<available.Length;i++){int id=available[i];float w=1136f/available.Length-10;Button(p,World.Endings[id]+(id==e?" · 此刻":""),32+i*(w+10),780,w,43,()=>{Life.Graduate(State,id);Save.Write(State);EndingDialog();},id==e?Coral:Blue,true,"Ending"+id);}
+            // Only recorded facts; anything with no record is left out.
+            Text(list,"这一年的手账",0,1110,1098,41,29,Ink,true);for(int i=0;i<journal.Length;i++)Text(list,journal[i],0,1170+i*84,1090,76,23,Muted);
+            var available=Life.AvailableEndings(State);for(int i=0;i<available.Length;i++){int id=available[i];float w=1136f/available.Length-10;Button(p,World.EndingPaths[id]+(id==e?" · 此刻":""),32+i*(w+10),780,w,43,()=>{Life.Graduate(State,id);Save.Write(State);EndingDialog();},id==e?Coral:Blue,true,"Ending"+id);}
             Button(p,"把这一年收好，继续陪伴  →",32,839,1136,40,()=>{if(!State.graduated)Life.Graduate(State,e);Save.Write(State);Render();},Mint,true,"FinishYear");
         }
         void Settings()
         {
             var p=Modal("让节奏，合你的心意。","时间、声音和手账",1030,794);
-            Text(p,"外出节奏",32,148,962,36,27,Ink,true);Button(p,State.demo?"正在使用：30 秒演示模式":"切换到 30 秒演示模式",32,200,966,55,()=>{Life.Mode(State,!State.demo,Save.Now);Save.Write(State);RefreshStats();Settings();},Blue,true,"ToggleDemo");
+            Text(p,"外出节奏",32,148,962,36,27,Ink,true);Button(p,State.demo?"正在使用：5 秒演示模式":"切换到 5 秒演示模式",32,200,966,55,()=>{Life.Mode(State,!State.demo,Save.Now);Save.Write(State);RefreshStats();Settings();},Blue,true,"ToggleDemo");
             Text(p,State.demo?"适合课堂和第一次试玩。切换模式会保留当前外出的完成比例。":"慢生活模式：每次外出 30—120 分钟，可关闭游戏，最多积攒 3 份收获。",32,274,966,68,21,Muted);
             Button(p,State.autoRoam?"连续外出：开（最多等你收三份）":"连续外出：关（每次由你送它出门）",32,361,966,52,()=>{State.autoRoam=!State.autoRoam;Save.Write(State);Settings();},Mint,true,"ToggleAuto");
             Text(p,"背景音乐",32,445,180,32,22,Ink);Button mute=null;VolumeSlider(p,232,455,615,Sound.MusicVolume,v=>{Sound.SetMusic(v);if(mute!=null)mute.GetComponentInChildren<TextMeshProUGUI>().text=v<.01f?"开启":"静音";});mute=Button(p,Sound.MusicVolume<.01f?"开启":"静音",866,441,132,42,()=>{Sound.SetMusic(Sound.MusicVolume<.01f?.32f:0);Settings();},Muted,true,"MuteMusic");
@@ -224,7 +245,8 @@ namespace PotatoLife
             float k=1040f/1536f;
             foreach(int id in State.placed.Where(i=>World.Slots[State.room][i]!=null).OrderBy(i=>{var r=Life.ItemRect(State,i);return r[1]+r[3];}))
             {
-                var a=Life.ItemRect(State,id);var image=Item(scene,id,a[0]*k,a[1]*k,a[2]*k,a[3]*k);image.raycastTarget=true;int item=id;
+                var a=Life.ItemRect(State,id);var image=Furniture(scene,id,a[0]*k,a[1]*k,a[2]*k,a[3]*k);image.raycastTarget=true;int item=id;
+                if(id==Tuning.FrameItem)image.gameObject.AddComponent<ClickItem>().clicked=FramePicker;
                 image.gameObject.AddComponent<DragItem>().dropped=pos=>{if(Life.MoveItem(State,item,Mathf.RoundToInt(pos.x/k),Mathf.RoundToInt(-pos.y/k))){Save.Write(State);RefreshStats();}};
             }
         }

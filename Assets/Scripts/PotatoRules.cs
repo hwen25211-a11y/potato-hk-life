@@ -49,13 +49,16 @@ namespace PotatoLife
         public static bool Depart(PotatoState s,long utc)
         {
             Tick(s,utc);if(DepartureLock(s)!="")return false;
-            Schedule(s,Math.Max(utc,s.lastUtc));s.dailyDeparts++;if(s.tutorial==1)s.tutorial=2;return true;
+            if(StoryTripWaiting(s)){Schedule(s,Math.Max(utc,s.lastUtc),true);s.weekend.stage=3;s.weekend.trip=s.trip.number;s.weekend.bag=s.trip.bag+1;Remember(s,"和阿晴出发去大澳，天上的云有点厚。");}
+            else Schedule(s,Math.Max(utc,s.lastUtc));s.dailyDeparts++;if(s.tutorial==1)s.tutorial=2;return true;
         }
-        static void Schedule(PotatoState s,long start)
+        static void Schedule(PotatoState s,long start,bool story=false)
         {
             int d=(int)s.direction;if(Random(s,0,100)>=60)d=(d+Random(s,1,4))%4;
             int place=d*3+Random(s,0,3);int normal=Random(s,Tuning.MinTripSeconds,Tuning.MaxTripSeconds+1);
             int n=s.completed+s.pending.Count+1;s.trip=new Trip{number=n,place=place,direction=(Direction)d,outfit=s.outfit,bag=s.selectedBag,weather=Random(s,0,6),season=Math.Min(3,(n-1)/4),normalDuration=normal,startUtc=start,finishUtc=start+(s.demo?Tuning.DemoSeconds:normal)};
+            // The story trip is always Tai O in the rain; it uses the same clock, energy and RNG draws as any trip.
+            if(story){s.trip.place=5;s.trip.direction=Direction.Explore;s.trip.weather=2;s.trip.story=1;}else s.trip.stop=CityStop(s,s.trip);
             s.travelling=true;s.energy=Cap(s.energy-(s.selectedBag==5?8:14));s.mood=Cap(s.mood-2);
         }
         public static bool Tick(PotatoState s,long utc)
@@ -63,16 +66,18 @@ namespace PotatoLife
             // A monotonic high-water mark prevents duplicate rewards when the wall clock moves backwards.
             long now=Math.Max(utc,s.lastUtc);EnsureDaily(s,now);if(now==s.lastUtc)return false;
             bool changed=false;long homeSince=s.travelling?now:s.lastUtc;
-            int guard=0;
+            int guard=0;StoryRainCheck(s,now);
             while(s.travelling&&s.trip.finishUtc<=now&&guard++<Tuning.MaxPending)
             {
                 if(s.pending.Count>=Tuning.MaxPending){s.travelling=false;homeSince=now;break;}
                 long arrived=s.trip.finishUtc;s.pending.Add(MakeGift(s,s.trip));s.travelling=false;homeSince=arrived;changed=true;
                 // A three-return mailbox cap is shared by online and offline play. No hidden backlog survives the cap.
-                if(s.autoRoam&&s.tutorial>=4&&s.pending.Count<Tuning.MaxPending&&s.energy>=39&&s.festivalPending<0&&(s.completed+s.pending.Count<Tuning.YearTrips||s.graduated))Schedule(s,arrived);
+                // Auto trips never answer the story for the player: they pause after the Tai O trip and while it waits to be packed.
+                // An unanswered invitation does not stop them, so offline returns keep working.
+                if(s.autoRoam&&s.tutorial>=4&&s.pending.Last().trip.story==0&&!StoryTripWaiting(s)&&s.pending.Count<Tuning.MaxPending&&s.energy>=39&&s.festivalPending<0&&(s.completed+s.pending.Count<Tuning.YearTrips||s.graduated))Schedule(s,arrived);
             }
             if(!s.travelling){float seconds=Math.Max(0,now-homeSince);float recovery=s.demo?Tuning.DemoHomeRecoveryPerSecond:Tuning.NormalHomeRecoveryPerSecond;s.energy=Cap(s.energy+seconds*recovery);s.mood=Cap(s.mood+seconds*recovery*.3f);}
-            s.lastUtc=now;return changed;
+            s.lastUtc=now;StoryCheck(s,now);return changed;
         }
         static ReturnGift MakeGift(PotatoState s,Trip t)
         {
@@ -81,11 +86,18 @@ namespace PotatoLife
             if(t.direction==Direction.Explore){g.charm+=8;g.highlight="带回了一阵刚刚好的海风。";}
             if(t.direction==Direction.Work){g.coins+=55;g.highlight="靠自己的小本事赚到了零花钱。";}
             if(t.direction==Direction.Friends){g.company+=8;g.mood+=6;g.highlight="今天有人主动说：下次还一起。";}
-            foreach(int id in s.placed){var item=World.Items[id];g.mood+=item.mood;g.energy+=item.energy;g.company+=item.company;if(t.direction==Direction.Study)g.wisdom+=item.wisdom;}
+            foreach(int id in Active(s)){var item=World.Items[id];g.mood+=item.mood;g.energy+=item.energy;g.company+=item.company;if(t.direction==Direction.Study)g.wisdom+=item.wisdom;}
             int count=Random(s,1,4);if(t.bag==6||t.bag==7&&(t.weather==2||t.weather==4))count=Math.Min(3,count+1);
+            if(t.story==1)
+            {
+                // The Tai O trip brings its own ticket and note; there is no real Tai O photo, so no city postcard stands in for it.
+                g.highlight=World.StoryBagTitles[StoryBag(s)];g.photos.Add(new Photo{id=5,trip=t.number,outfit=t.outfit,season=t.season,caption=World.Places[5].caption+"\n和阿晴一起去的那天，路上下了雨。"});
+                g.letter=new Letter{id=StoryLetterId(1),friend=0,kind=2,title="阿晴的纸条",body=World.StoryTaiONotes[Math.Min(2,s.weekend.rainReply)]};return g;
+            }
             var known=new HashSet<int>(s.album.Select(p=>p.id));foreach(var gift in s.pending)foreach(var p in gift.photos)known.Add(p.id);
             var places=Enumerable.Range((int)t.direction*3,3).OrderBy(i=>known.Contains(i)).ThenBy(i=>(i-t.place+3)%3).Take(count).ToArray();
             foreach(int id in places)g.photos.Add(new Photo{id=id,trip=t.number,outfit=t.outfit,season=t.season,caption=World.Places[id].caption+"\n"+World.Weather[t.weather]+"，穿着"+World.CostumeNames[t.outfit]+"出门的一天。"});
+            var spot=World.Spot(t.stop);if(spot!=null)g.photos.Add(new Photo{id=spot.id,trip=t.number,outfit=t.outfit,season=t.season,caption=spot.note});
             int friend=t.direction==Direction.Work?2:t.direction==Direction.Study?0:Random(s,0,2);g.letter=MakeLetter(s,t,friend);return g;
         }
         static Letter MakeLetter(PotatoState s,Trip t,int friend)
@@ -143,22 +155,30 @@ namespace PotatoLife
         static void TrimLetters(PotatoState s)
         {
             // Story chapters and their reply history remain in the album of letters.
-            while(s.letters.Count>80){int index=s.letters.FindIndex(l=>l.kind!=0);if(index<0)break;s.letters.RemoveAt(index);}
+            while(s.letters.Count>80){int index=s.letters.FindIndex(l=>l.kind==1);if(index<0)break;s.letters.RemoveAt(index);}
         }
         public static int Collect(PotatoState s,long utc)
         {
             Tick(s,utc);int n=s.pending.Count;if(n==0)return 0;
             foreach(var g in s.pending)
             {
+                if(g.trip.story==1&&s.weekend.stage==3)s.weekend.stage=4;
+                // One ordinary return after the reply carries 阿晴's echo, once.
+                if(g.trip.story==0&&s.weekend.echo==1){s.weekend.echo=2;s.weekend.echoTrip=g.trip.number;Remember(s,"阿晴的回响："+StoryEcho(s));}
                 s.coins+=g.coins;s.wisdom+=g.wisdom;s.charm+=g.charm;s.company+=g.company;s.energy=Cap(s.energy+g.energy);s.mood=Cap(s.mood+g.mood);
                 s.directionCount[(int)g.trip.direction]++;s.completed++;s.lastHighlight=g.highlight;
-                foreach(var p in g.photos){if(!s.album.Any(x=>x.id==p.id)){p.unopened=true;s.album.Add(p);}else s.company++;}
+                foreach(var p in g.photos)
+                {
+                    var old=s.album.FirstOrDefault(x=>x.id==p.id);if(old==null){p.unopened=true;s.album.Add(p);continue;}
+                    // Same picture again: the usual +1 company, plus a line of this visit; the thumbnail is not duplicated.
+                    s.company++;var lines=(old.revisits??"").Split(new[]{'\n'},StringSplitOptions.RemoveEmptyEntries).ToList();lines.Add("第 "+g.trip.number+" 次外出，又带回了这里。");old.revisits=string.Join("\n",lines.Skip(Math.Max(0,lines.Count-8)).ToArray());
+                }
                 s.letters.Add(g.letter);s.friendBond[g.letter.friend]+=2;
                 Remember(s,"第 "+s.completed+" 次回来："+World.Places[g.trip.place].name+"。"+g.highlight);
             }
             s.dailyReturns+=n;s.pending.Clear();s.petClicks=0;if(s.tutorial==2)s.tutorial=3;
             for(int i=0;i<4;i++)if(!s.festivals[i]&&s.completed>=2+i*4){s.festivalPending=i;break;}
-            TrimLetters(s);
+            TrimLetters(s);StoryCheck(s,s.lastUtc,true);
             return n;
         }
         public static string Pet(PotatoState s)
@@ -188,7 +208,7 @@ namespace PotatoLife
         {var l=s.letters.FirstOrDefault(x=>x.id==id);if(l==null||l.read)return false;l.read=true;s.dailyReads++;s.mood=Cap(s.mood+5);s.company+=2;return true;}
         public static bool Reply(PotatoState s,int id,int choice)
         {
-            var l=s.letters.FirstOrDefault(x=>x.id==id);if(l==null||l.reply>=0||choice<0||choice>2)return false;ReadLetter(s,id);l.reply=choice;s.dailyReplies++;s.friendBond[l.friend]+=choice==0?5:choice==1?3:1;s.company+=choice==2?1:2;
+            var l=s.letters.FirstOrDefault(x=>x.id==id);if(l==null||l.reply>=0||choice<0||choice>2)return false;if(l.kind==2)return StoryReply(s,choice);ReadLetter(s,id);l.reply=choice;s.dailyReplies++;s.friendBond[l.friend]+=choice==0?5:choice==1?3:1;s.company+=choice==2?1:2;
             if(choice==1)s.wisdom+=2;if(choice==2)s.energy=Cap(s.energy+5);s.friendChapter[l.friend]=Math.Max(s.friendChapter[l.friend],l.chapter);Remember(s,"回信给"+World.Friends[l.friend]+"："+World.ReplyLines[choice]);return true;
         }
         public static bool Buy(PotatoState s,int id)
@@ -205,7 +225,7 @@ namespace PotatoLife
             s.album.Add(new Photo{id=12+i,trip=s.completed,outfit=i+1,season=i,unopened=true,caption=choice==0?"把节日的热闹拍下来，也把朋友放进画面里。":"先安静地许个愿，再把祝福写给惦记的人。"});
             Remember(s,World.FestivalNames[i]+"：获得"+World.CostumeNames[i+1]+"，把这一天收进了手账。");
             for(int j=0;j<4;j++)if(!s.festivals[j]&&s.completed>=2+j*4){s.festivalPending=j;break;}
-            return true;
+            StoryCheck(s,s.lastUtc);return true;
         }
         public static bool QuestReady(PotatoState s,int id){return id==0?s.petTotal>=3:id==1?s.completed>=1:id==2&&s.owned.Count>=1;}
         public static bool ClaimQuest(PotatoState s,int id){if(id<0||id>2||s.questClaimed[id]||!QuestReady(s,id))return false;s.questClaimed[id]=true;s.coins+=25;s.mood=Cap(s.mood+5);return true;}
@@ -226,9 +246,9 @@ namespace PotatoLife
         static void CreditStudy(PotatoState s)
         {
             int blocks=Math.Min(Tuning.StudyDailyBlocks,s.dailyStudy/Tuning.StudyBlockSeconds);
-            while(s.studyBlocks<blocks){s.studyBlocks++;s.coins+=Tuning.StudyBlockCoins+s.placed.Sum(i=>World.Items[i].studyCoins);s.wisdom+=1+s.placed.Sum(i=>World.Items[i].studyWisdom);s.company++;}
+            while(s.studyBlocks<blocks){s.studyBlocks++;s.coins+=Tuning.StudyBlockCoins+Active(s).Sum(i=>World.Items[i].studyCoins);s.wisdom+=1+Active(s).Sum(i=>World.Items[i].studyWisdom);s.company++;}
         }
-        public static int StudyBlockCoins(PotatoState s){return Tuning.StudyBlockCoins+s.placed.Sum(i=>World.Items[i].studyCoins);}
+        public static int StudyBlockCoins(PotatoState s){return Tuning.StudyBlockCoins+Active(s).Sum(i=>World.Items[i].studyCoins);}
         public static void StudyPause(PotatoState s,long utc){StudySettle(s,utc);s.studyRunning=false;}
         public static bool StudyContinue(PotatoState s,long utc)
         {if(!s.studyBreak)return false;s.studyBreak=false;s.studyRunning=true;s.studySince=Math.Max(utc,s.lastUtc);return true;}
@@ -244,7 +264,7 @@ namespace PotatoLife
         {
             var t=s.todos.FirstOrDefault(x=>x.id==id);if(t==null||t.done)return -1;t.done=true;s.dailyTodos++;
             while(s.todos.Count(x=>x.done)>20)s.todos.Remove(s.todos.First(x=>x.done));
-            if(s.todoRewards>=Tuning.TodoDailyRewards)return 0;s.todoRewards++;int coins=Tuning.TodoCoins+s.placed.Sum(i=>World.Items[i].todoCoins);
+            if(s.todoRewards>=Tuning.TodoDailyRewards)return 0;s.todoRewards++;int coins=Tuning.TodoCoins+Active(s).Sum(i=>World.Items[i].todoCoins);
             s.coins+=coins;s.mood=Cap(s.mood+2);s.wisdom++;return coins;
         }
         public static bool RemoveTodo(PotatoState s,int id){return s.todos.RemoveAll(x=>x.id==id)>0;}
@@ -255,6 +275,79 @@ namespace PotatoLife
             s.demo=demo;
         }
         public static double Progress(PotatoState s,long utc){if(!s.travelling)return 0;return Math.Max(0,Math.Min(1,(double)(Math.Max(utc,s.lastUtc)-s.trip.startUtc)/Math.Max(1,s.trip.finishUtc-s.trip.startUtc)));}
+        // ---- v0.1.4: city postcards, 阿晴的周末邀请, travel frame ----
+        // Ordinary trips pass a city spot on the way home: every exploring trip and every second trip otherwise.
+        // Unseen spots come first; no RNG is drawn, so existing trip outcomes are unchanged.
+        static int CityStop(PotatoState s,Trip t)
+        {
+            if(t.direction!=Direction.Explore&&t.number%2!=0)return 0;int n=World.Spots.Length,start=(t.number*3)%n;
+            var known=new HashSet<int>(s.album.Select(p=>p.id));foreach(var g in s.pending)foreach(var p in g.photos)known.Add(p.id);
+            for(int k=0;k<n;k++){var spot=World.Spots[(start+k)%n];if(!known.Contains(spot.id))return spot.id;}
+            return World.Spots[start].id;
+        }
+        // Items whose bonuses count now: placed decorations plus carried cards (type 2) the player owns.
+        public static IEnumerable<int> Active(PotatoState s){return s.placed.Concat(s.owned.Where(i=>World.Items[i].type==2));}
+        // Drops retired city postcards from a save before it is validated; each removed card becomes +1 company.
+        public static void RetireSpots(PotatoState s)
+        {
+            var gone=new HashSet<int>(World.RetiredSpots);if(s.album!=null)s.company+=s.album.RemoveAll(p=>p!=null&&gone.Contains(p.id));
+            if(s.pending!=null)foreach(var g in s.pending){if(g==null)continue;if(g.photos!=null)s.company+=g.photos.RemoveAll(p=>p!=null&&gone.Contains(p.id));if(g.trip!=null&&gone.Contains(g.trip.stop))g.trip.stop=0;}
+            if(s.trip!=null&&gone.Contains(s.trip.stop))s.trip.stop=0;if(gone.Contains(s.framePhoto))s.framePhoto=0;
+        }
+        public static int LegacyPhotos(PotatoState s){return s.album.Count(p=>p.id<16);}
+        public static int CityPhotos(PotatoState s){return s.album.Count(p=>World.Spot(p.id)!=null);}
+        public static bool StoryTripWaiting(PotatoState s){return s.weekend.stage==2&&s.weekend.route==1;}
+        public static int StoryLetterId(int route){return 9000+route;}
+        // 0 none, 1 bento, 2 camera, 3 umbrella: the index into the StoryBag* texts.
+        public static int StoryBag(PotatoState s){int b=s.weekend.bag-1;return b==5?1:b==6?2:b==7?3:0;}
+        public static int Keepsake(PotatoState s){return s.weekend.stage==5&&s.weekend.route>0?s.weekend.route-1:-1;}
+        public static string StoryEcho(PotatoState s){var w=s.weekend;return w.route>0&&w.reply>0?World.StoryEchoes[w.route-1,w.reply-1]:"";}
+        public static string StoryResponse(PotatoState s){var w=s.weekend;return w.route>0&&w.reply>0?World.StoryResponses[w.route-1,w.reply-1]:"";}
+        // The invitation arrives after the first trip has been collected and the album opened, and only while
+        // nothing else is happening: no returns waiting, no festival letter, not away - except right after the player
+        // collects, so a running chain of auto trips cannot hold it back for ever. Older saves qualify too.
+        public static bool StoryCheck(PotatoState s,long utc,bool collecting=false)
+        {
+            if(s.weekend.stage!=0||s.tutorial<4||s.completed<1||s.travelling&&!collecting||s.pending.Count>0||s.festivalPending>=0)return false;
+            s.weekend.stage=1;s.weekend.invitedUtc=Math.Max(utc,s.lastUtc);Remember(s,"阿晴发来消息："+World.StoryInvite);return true;
+        }
+        public static bool StoryChoose(PotatoState s,int route)
+        {
+            if(s.weekend.stage!=1||route<1||route>3)return false;s.weekend.route=route;
+            if(route==1){s.weekend.stage=2;Remember(s,"答应了阿晴：去大澳慢慢走。");return true;}
+            // The other two routes are short scenes at home: no trip, no energy, the note arrives at once.
+            s.weekend.stage=4;s.letters.Add(new Letter{id=StoryLetterId(route),friend=0,kind=2,title="阿晴的纸条",body=World.StoryNotes[route-1]});s.friendBond[0]+=2;
+            Remember(s,route==2?"和阿晴在校园附近吃了顿饭。":"今天想自己待着，阿晴说明白。");return true;
+        }
+        static void StoryRainCheck(PotatoState s,long now)
+        {if(s.weekend.stage==3&&s.weekend.rain==0&&s.travelling&&s.trip.story==1&&Progress(s,now)>=.5)s.weekend.rain=1;}
+        public static bool StoryRainSeen(PotatoState s){if(s.weekend.rain!=1)return false;s.weekend.rain=2;return true;}
+        // 1 = find somewhere for a drink, 2 = keep walking. Only while still on the trip; "稍后再看" just marks it seen.
+        public static bool StoryRain(PotatoState s,int choice)
+        {
+            if(choice<1||choice>2||s.weekend.stage!=3||s.weekend.rain==0||s.weekend.rainReply!=0||!s.travelling||s.trip.story!=1)return false;
+            s.weekend.rain=2;s.weekend.rainReply=choice;return true;
+        }
+        // The same base reward for every route and every reply; the keepsake differs by route.
+        public static bool StoryReply(PotatoState s,int choice)
+        {
+            var w=s.weekend;if(w.stage!=4||choice<0||choice>2)return false;var l=s.letters.FirstOrDefault(x=>x.kind==2&&x.id==StoryLetterId(w.route));if(l==null||l.reply>=0)return false;
+            ReadLetter(s,l.id);l.reply=choice;w.reply=choice+1;w.stage=5;w.echo=1;s.dailyReplies++;
+            s.coins+=Tuning.StoryCoins;s.mood=Cap(s.mood+Tuning.StoryMood);s.company+=Tuning.StoryCompany;s.friendBond[0]+=Tuning.StoryBond;
+            Remember(s,"回信给阿晴："+World.StoryReplies[w.route-1,choice]+" 收好了「"+World.Keepsakes[w.route-1].name+"」。");return true;
+        }
+        public static bool ChooseFrame(PotatoState s,int id)
+        {var p=s.album.FirstOrDefault(x=>x.id==id);if(p==null||p.unopened||World.Spot(id)==null||s.framePhoto==id)return false;s.framePhoto=id;return true;}
+        // Saves from v0.1.3 and earlier have no story; anything out of range falls back to a state that cannot pay twice.
+        public static void NormalizeStory(PotatoState s)
+        {
+            if(s.weekend==null)s.weekend=new WeekendStory();var w=s.weekend;
+            if(w.stage<0||w.stage>5||w.route<0||w.route>3||w.stage>=2&&w.route==0||w.reply<0||w.reply>3||w.rainReply<0||w.rainReply>2||w.rain<0||w.rain>2||w.echo<0||w.echo>2||w.bag<0||w.bag>World.Items.Length)
+            {bool done=w.stage>=5||w.reply>0;s.weekend=new WeekendStory{stage=done?5:0,route=done?Math.Max(1,Math.Min(3,w.route)):0,reply=done?Math.Max(1,Math.Min(3,w.reply)):0,echo=done?2:0};w=s.weekend;}
+            // A story trip lost from the save (e.g. a crash mid-write) goes back to packing rather than vanishing.
+            if(w.stage==3&&!(s.travelling&&s.trip.story==1)&&!s.pending.Any(g=>g.trip.story==1))w.stage=2;
+            if(s.framePhoto!=0&&World.Spot(s.framePhoto)==null)s.framePhoto=0;
+        }
         public static int SuggestEnding(PotatoState s){int best=0;for(int i=1;i<4;i++)if(s.directionCount[i]>s.directionCount[best])best=i;return best;}
         public static int[] AvailableEndings(PotatoState s){if(!YearReady(s))return new int[0];int best=SuggestEnding(s);return Enumerable.Range(0,4).Where(i=>s.directionCount[i]>=2||i==best).ToArray();}
         public static bool Graduate(PotatoState s,int e){if(!AvailableEndings(s).Contains(e))return false;s.ending=e.ToString();s.graduated=true;s.costumes.Add(4);s.costumes=s.costumes.Distinct().ToList();Remember(s,"学年纪念："+World.Endings[e]+"。每个普通的日子都算数。");return true;}

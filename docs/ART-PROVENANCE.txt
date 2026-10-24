@@ -27,3 +27,5 @@ v0.1.2 art changes
 - Items.png (5x4, one cell per shop item id): two Codex (local CLI) sheets, prompts items_a.txt and items_b.txt, keyed by agent-sprite-forge (matte QA 0 opaque key px, 0 edge spill) and split by object ownership. 素白良物 is an original minimalist home-goods shop, not a real brand; no brand names or logos are used.
 - Home2.png / Home3.png: two more selectable rooms, Codex (local CLI) image_gen, prompts room2.txt / room3.txt, Home.png as style reference and the owner's second and third bedroom photos as layout references. Per-room decoration slots: World.Slots (preview script ArtSource/slots.py).
 - Home4.png (海景大平层) / Home5.png (山顶别墅): Codex (local CLI) image_gen, prompts room4.txt / room5.txt, Home.png as style reference only.
+
+Items2.png (v0.1.4, 港硕必备, 4x2, ids 21-28): one Codex (local CLI) image_gen sheet via agent-sprite-forge route_media.py, prompt ArtSource/forge/prompts/goods.txt, Home.png as style reference; keyed by generate2dsprite process (blue key, matte QA pass: 0 opaque key px, outer-ring spill 0.04%), each object re-centred in a 384 px cell. No brand names or logos.
