@@ -275,7 +275,7 @@ namespace PotatoLife
             s.demo=demo;
         }
         public static double Progress(PotatoState s,long utc){if(!s.travelling)return 0;return Math.Max(0,Math.Min(1,(double)(Math.Max(utc,s.lastUtc)-s.trip.startUtc)/Math.Max(1,s.trip.finishUtc-s.trip.startUtc)));}
-        // ---- v0.1.4: city postcards, 阿晴的周末邀请, travel frame ----
+        // ---- v0.1.3: city postcards, 阿晴的周末邀请, travel frame ----
         // Ordinary trips pass a city spot on the way home: every exploring trip and every second trip otherwise.
         // Unseen spots come first; no RNG is drawn, so existing trip outcomes are unchanged.
         static int CityStop(PotatoState s,Trip t)

@@ -69,7 +69,7 @@ namespace PotatoLife.Editor
             Click("Tab来信");yield return null;Audit("09-mail");yield return null;Click("Letter"+game.State.letters[0].id);yield return null;Audit("10-letter");yield return null;Click("ReplyTogether");yield return null;Check(game.State.friendChapter.Any(x=>x>0),"reply advances friend arc");
             Click("Tab小店");yield return null;Audit("11-shop");yield return null;Click("Buy0");yield return null;Check(game.State.placed.Contains(0),"buy places decoration");Click("Tab小屋");yield return null;Audit("12-decorated-home");yield return null;Click("Wardrobe");yield return null;Audit("13-wardrobe");yield return null;Click("CloseWardrobe");yield return null;
             Click("Quests");yield return null;Audit("14-goals");yield return null;Click("Quest1");yield return null;Check(game.State.questClaimed[1],"optional reward once");Click("回小屋");yield return null;
-            // v0.1.4: 阿晴的周末邀请, route A through the real UI, reloading the save at every stage.
+            // v0.1.3: 阿晴的周末邀请, route A through the real UI, reloading the save at every stage.
             clock+=1;for(int i=0;i<3;i++)yield return null;Check(game.State.weekend.stage==1,"new save: invitation after the first trip and album");
             string legacyStory=System.Text.RegularExpressions.Regex.Replace(Save.Encode(game.State),",\"(?:weekend\":\\{[^}]*\\}|framePhoto\":\\d+|stop\":\\d+|story\":\\d+|revisits\":\"[^\"]*\")","");
             Check(!legacyStory.Contains("weekend")&&!legacyStory.Contains("framePhoto")&&!legacyStory.Contains("revisits"),"v0.1.3-shaped save without the new fields");

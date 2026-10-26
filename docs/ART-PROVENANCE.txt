@@ -28,4 +28,4 @@ v0.1.2 art changes
 - Home2.png / Home3.png: two more selectable rooms, Codex (local CLI) image_gen, prompts room2.txt / room3.txt, Home.png as style reference and the owner's second and third bedroom photos as layout references. Per-room decoration slots: World.Slots (preview script ArtSource/slots.py).
 - Home4.png (海景大平层) / Home5.png (山顶别墅): Codex (local CLI) image_gen, prompts room4.txt / room5.txt, Home.png as style reference only.
 
-Items2.png (v0.1.4, 港硕必备, 4x2, ids 21-28): one Codex (local CLI) image_gen sheet via agent-sprite-forge route_media.py, prompt ArtSource/forge/prompts/goods.txt, Home.png as style reference; keyed by generate2dsprite process (blue key, matte QA pass: 0 opaque key px, outer-ring spill 0.04%), each object re-centred in a 384 px cell. No brand names or logos.
+Items2.png (v0.1.3, 港硕必备, 4x2, ids 21-28): one Codex (local CLI) image_gen sheet via agent-sprite-forge route_media.py, prompt ArtSource/forge/prompts/goods.txt, Home.png as style reference; keyed by generate2dsprite process (blue key, matte QA pass: 0 opaque key px, outer-ring spill 0.04%), each object re-centred in a 384 px cell. No brand names or logos.

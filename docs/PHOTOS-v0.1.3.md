@@ -1,4 +1,4 @@
-# 城市明信片照片 · v0.1.4
+# 城市明信片照片 · v0.1.3
 
 原图由项目作者提供（`~/Desktop/照片`），复制在 `ArtSource/photos/originals/`（已 gitignore，不公开）。
 游戏使用 `Assets/Resources/Photos/<id>.jpg`（长边 ≤1600）和 `<id>_thumb.jpg`（长边 ≤480），由 `python3 Tools/prepare_photos.py` 生成：

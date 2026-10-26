@@ -9,7 +9,7 @@ namespace PotatoLife
         public int number,place,outfit,bag=-1,weather,season,normalDuration;
         public Direction direction;
         public long startUtc,finishUtc;
-        // v0.1.4: stop = city postcard spot passed on the way home (0 none); story = 1 for the Tai O trip with 阿晴.
+        // v0.1.3: stop = city postcard spot passed on the way home (0 none); story = 1 for the Tai O trip with 阿晴.
         public int stop,story;
     }
     [Serializable] public class Photo
@@ -53,7 +53,7 @@ namespace PotatoLife
         public List<Photo> album=new List<Photo>();public List<Letter> letters=new List<Letter>();
         public List<int> owned=new List<int>(),placed=new List<int>(),costumes=new List<int>{0};
         public List<string> memories=new List<string>();
-        // v0.1.4: 阿晴的周末邀请 and the travel frame's picture (a city postcard id, 0 = not chosen).
+        // v0.1.3: 阿晴的周末邀请 and the travel frame's picture (a city postcard id, 0 = not chosen).
         public WeekendStory weekend=new WeekendStory();public int framePhoto;
     }
     // One-off story. Every field starts at 0 = not yet, so older saves begin cleanly and each step pays out once.
@@ -167,7 +167,7 @@ namespace PotatoLife
             new ShopItem("白色收纳推车",160,0,"摆放后，回家时体力额外 +4。",1){energy=4},new ShopItem("橡木边几",140,0,"摆放后，回家时陪伴额外 +3。",1){company=3},
             new ShopItem("亚麻靠垫",70,0,"摆放后，回家时体力 +3、心情 +1。",1){energy=3,mood=1},new ShopItem("白瓷马克杯",50,0,"陪伴学习每满 15 分钟，金币额外 +1。",1){studyCoins=1},
             new ShopItem("墙面置物架",150,0,"摆放后，回家时心情额外 +3。",1){mood=3},new ShopItem("软木留言板",120,0,"完成自己的待办时，金币额外 +3。",1){todoCoins=3},
-            // v0.1.4: drawn in code, not in Items.png. Click it in the room to choose a collected city postcard.
+            // v0.1.3: drawn in code, not in Items.png. Click it in the room to choose a collected city postcard.
             new ShopItem("旅行相框",60,0,"竖版木相框，挂一张收藏的城市明信片，点它可以换照片。"),
             // 港硕必备 (Items2.png, 4x2): what new postgraduates buy in their first weeks. Type 2 cards work once owned, no placing.
             new ShopItem("英式转换插头",30,0,"三脚插座终于对得上。陪伴学习每满 15 分钟，智慧额外 +1。",2){studyWisdom=1},
