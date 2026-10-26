@@ -37,7 +37,7 @@ namespace PotatoLife
                 else if(photo.unopened){PostcardBack(c,photo,14,14,326,229);Text(c,id<12?World.Places[id].name:World.FestivalNames[id-12],16,260,322,39,24,Ink,true);Button(c,"拆开这张明信片",16,304,322,35,()=>OpenPostcard(index),Coral,true,"Open"+id);}
                 else{PhotoVisual(c,photo,14,14,326,229);Text(c,id<12?World.Places[id].name:World.FestivalNames[id-12],16,260,322,39,24,Ink,true);Button(c,"第 "+photo.trip+" 次外出 · 打开这一页",16,304,322,35,()=>PhotoDialog(index),Colors[photo.season],true,"Photo"+id);}
             }
-            // v0.1.4: real photos and story keepsakes live in the same album, below the original sixteen.
+            // v0.1.3: real photos and story keepsakes live in the same album, below the original sixteen.
             Text(list,"城市明信片 · 真实的香港街景 "+Life.CityPhotos(State)+" / "+World.Spots.Length,4,1440,1100,46,28,Ink,true);
             Text(list,"怎么得到：土豆子外出回家时顺路寄回——每次「到处玩玩」都会带一张，其他方向每隔一次带一张。收好手账后点「拆开这张明信片」。",4,1492,1440,34,19,Muted);
             for(int i=0;i<World.Spots.Length;i++)CityCard(list,World.Spots[i],(i%4)*374,1540+(i/4)*356);

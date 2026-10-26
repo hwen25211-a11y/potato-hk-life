@@ -8,7 +8,7 @@ using TMPro;
 using static PotatoLife.UI;
 namespace PotatoLife
 {
-    // v0.1.4: 阿晴的周末邀请, real-photo city postcards, the travel frame and the year-in-review lines.
+    // v0.1.3: 阿晴的周末邀请, real-photo city postcards, the travel frame and the year-in-review lines.
     public partial class PotatoGame
     {
         static readonly Dictionary<string,Texture2D> photoCache=new Dictionary<string,Texture2D>();

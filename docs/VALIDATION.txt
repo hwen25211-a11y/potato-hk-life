@@ -95,7 +95,7 @@ Mac为x86_64+arm64通用二进制，codesign --verify --deep --strict通过。
 Native build launched and title screen visually checked: correct Chinese text, mascot transparency and room scene.
 
 
-v0.1.4 · 2026-10-24（本机 Unity 2022.3.62f3c1，全部静音）
+v0.1.3 · 2026-10-24（本机 Unity 2022.3.62f3c1，全部静音）
 - Tools/test-rules.sh：PASS 1574 assertions（新：阿晴故事三条路线 × 四种行囊 × 三种途中回复、未回消息离线完成、各阶段读档、重复点击/读档不重复发奖、连续外出不跳过选择、离线三份上限仍在、慢生活/演示切换、旧档迁移、城市明信片不重复缩图、相框与沙发拖动保存）。
 - PotatoSmoke.Run（非 batchmode 编辑器）：778 项 PASS，total_overflow=0；含 v0.1.3 形状存档读取后收到邀请、A 路线完整 UI 流程与每阶段重开、B/C 路线、竖图/横图明信片比例与不裁切、背面/大图/上下阅读、相框换图拖动重开、沙发拖动重开、毕业、音频与静音。
 - Mac 构建与 WebGL 构建成功；Mac 包以 -potato-silent-test 启动 20 秒无异常；浏览器包本地服务可访问。未运行 Tools/test-web-audio.cjs（本机未装 Playwright）。
