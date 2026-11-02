@@ -1,0 +1,3644 @@
+{
+  "source": "Desktop/essay group/542/potato-new-life",
+  "version": "0.2.2",
+  "source_commit": "ad2d275f8558a3520840b519e47b0b90d38ad24d",
+  "files": [
+    {
+      "path": ".gitattributes",
+      "bytes": 117,
+      "sha256": "08d6514c3c4536076ad675d051ee89e552930b5a32dddc20c58e8779e2ed1fc3"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 700,
+      "sha256": "d13f8bfdcb706cf3f65a641360e12e389377eff574beecaa5b152b57edcbc055"
+    },
+    {
+      "path": "ArtSource/forge/goods/key/animation.gif",
+      "bytes": 42544,
+      "sha256": "5119edae34ebcd5dc809a2e2a173d872064453382fbefbb170b4ec20d155043e"
+    },
+    {
+      "path": "ArtSource/forge/goods/key/pipeline-meta.json",
+      "bytes": 20003,
+      "sha256": "4f13341dee6c70cab11efa259b9771ca4fed3986acc439f21d435739cc7d4791"
+    },
+    {
+      "path": "ArtSource/forge/goods/key/raw-sheet-clean.png",
+      "bytes": 903122,
+      "sha256": "9f8788d8c9c66e03e458fc90c5e154e744612dd06c8c34e3e01c1d2a25334e78"
+    },
+    {
+      "path": "ArtSource/forge/goods/key/raw-sheet.png",
+      "bytes": 1494367,
+      "sha256": "25ba1ce6068e5d1714ea6724016328967dd2dc2ceb5e15107b54984d27a20e08"
+    },
+    {
+      "path": "ArtSource/forge/goods/key/sheet-1.png",
+      "bytes": 14471,
+      "sha256": "62d8819428d75416bb767c13911d4d396000076139ff90a26d68f2522a867484"
+    },
+    {
+      "path": "ArtSource/forge/goods/key/sheet-2.png",
+      "bytes": 19622,
+      "sha256": "126de5bce56d53d8740cb06d0ad4a39267e65550a3073c9f01d67078632cb316"
+    },
+    {
+      "path": "ArtSource/forge/goods/key/sheet-3.png",
+      "bytes": 15888,
+      "sha256": "d70b4ed9c57b92f556bc2766fe4a72a84aa5165d433870c28e0c825eceedc10a"
+    },
+    {
+      "path": "ArtSource/forge/goods/key/sheet-4.png",
+      "bytes": 12632,
+      "sha256": "0d00c8a3d4a39d4ce0528163ad266b78edf1149930639074816fc35bd3d31553"
+    },
+    {
+      "path": "ArtSource/forge/goods/key/sheet-5.png",
+      "bytes": 19537,
+      "sha256": "0f8b190411a60ca6f88103fd2b68ded861600d6afaab83605a46049e689f79eb"
+    },
+    {
+      "path": "ArtSource/forge/goods/key/sheet-6.png",
+      "bytes": 6755,
+      "sha256": "3cf0ef59d734c52432493460912225ca89e1a7b3877d588a257d595a00b39d50"
+    },
+    {
+      "path": "ArtSource/forge/goods/key/sheet-7.png",
+      "bytes": 15160,
+      "sha256": "7dad5a0385e0d9b6066aecc4060ee322549636cb62af62dc53f298482d560cf0"
+    },
+    {
+      "path": "ArtSource/forge/goods/key/sheet-8.png",
+      "bytes": 15399,
+      "sha256": "f5911ff058a383c0fa1c50468d58ed01ed26e2a6d5a57a8cdd01be3798e77727"
+    },
+    {
+      "path": "ArtSource/forge/goods/key/sheet-transparent.png",
+      "bytes": 120294,
+      "sha256": "d3c94fb1507bfa85f283c8e5e45ab278b2b97ee5329ce100243cdf03aa9f521c"
+    },
+    {
+      "path": "ArtSource/forge/goods/raw_1/generated.png",
+      "bytes": 1494367,
+      "sha256": "25ba1ce6068e5d1714ea6724016328967dd2dc2ceb5e15107b54984d27a20e08"
+    },
+    {
+      "path": "ArtSource/forge/goods/raw_1/prompt.txt",
+      "bytes": 1707,
+      "sha256": "909093fcebbb5e3fde1cc0609cbeac1c782f8be94e1ffa5dcb978bb45675578d"
+    },
+    {
+      "path": "ArtSource/forge/home_accepted.png",
+      "bytes": 1784171,
+      "sha256": "159179cca1b8fe9ff18e001fd46e747bdcd1a41910f8a53d4255c226911cc573"
+    },
+    {
+      "path": "ArtSource/forge/home_raw_1/generated.png",
+      "bytes": 1784171,
+      "sha256": "159179cca1b8fe9ff18e001fd46e747bdcd1a41910f8a53d4255c226911cc573"
+    },
+    {
+      "path": "ArtSource/forge/home_raw_1/prompt.txt",
+      "bytes": 2337,
+      "sha256": "3112c6113fbbacb63499efc8ef0af2e2763d0b5f228f11b4cde2415a4793c148"
+    },
+    {
+      "path": "ArtSource/forge/identity_ref.png",
+      "bytes": 358013,
+      "sha256": "5c8fe926394afbb7fb04be2e700f3df9616e609758d6ce8fe27f4598ecf60d91"
+    },
+    {
+      "path": "ArtSource/forge/items_a_1/generated.png",
+      "bytes": 1533600,
+      "sha256": "c01695df2b58034751ba4b497c34e2a18d4dd705246e77aa9d4992f024fc1a01"
+    },
+    {
+      "path": "ArtSource/forge/items_a_1/prompt.txt",
+      "bytes": 1458,
+      "sha256": "c68c39631b4c19464a2d21aeb05ccb66e8e956cc25c943c33dde4d36581b3057"
+    },
+    {
+      "path": "ArtSource/forge/items_a_key/animation.gif",
+      "bytes": 124875,
+      "sha256": "da3e1338a3c589049d92b16922fe250613a74be2a5d89500b0b5196e90b5a409"
+    },
+    {
+      "path": "ArtSource/forge/items_a_key/pipeline-meta.json",
+      "bytes": 8724,
+      "sha256": "aada54ea70cec8898eb216eff28f737a16d5707169eb9d02c4c3d6aea213d94b"
+    },
+    {
+      "path": "ArtSource/forge/items_a_key/raw-sheet-clean.png",
+      "bytes": 933433,
+      "sha256": "0fe4352ab9ea1d192706c59d9202929ec3067a0086896a9ca73bfb597d027665"
+    },
+    {
+      "path": "ArtSource/forge/items_a_key/raw-sheet.png",
+      "bytes": 1533600,
+      "sha256": "c01695df2b58034751ba4b497c34e2a18d4dd705246e77aa9d4992f024fc1a01"
+    },
+    {
+      "path": "ArtSource/forge/items_a_key/sheet-1.png",
+      "bytes": 377989,
+      "sha256": "ab009ad3e48122238a35ebb690803ed54c3971c04bcc48172a725e493ece388a"
+    },
+    {
+      "path": "ArtSource/forge/items_a_key/sheet-transparent.png",
+      "bytes": 377989,
+      "sha256": "ab009ad3e48122238a35ebb690803ed54c3971c04bcc48172a725e493ece388a"
+    },
+    {
+      "path": "ArtSource/forge/items_b_1/generated.png",
+      "bytes": 1597081,
+      "sha256": "965eb8d0d2a0c1ffda528e9897c2809cd13d2ee9f33ff2a1312fadb03e5ba4e9"
+    },
+    {
+      "path": "ArtSource/forge/items_b_1/prompt.txt",
+      "bytes": 1773,
+      "sha256": "2ce75c566a5f4fd2e45206366a0567892c80e897beea5fde833f498f2a0cda9d"
+    },
+    {
+      "path": "ArtSource/forge/items_b_key/animation.gif",
+      "bytes": 140811,
+      "sha256": "d5622e9f349b21ca8596fc7e7f43bc9f93c349ef559699415e46483f2cc9b2cc"
+    },
+    {
+      "path": "ArtSource/forge/items_b_key/pipeline-meta.json",
+      "bytes": 8725,
+      "sha256": "e0f22c674ab05e4756eb9596a6f092a229422440b39a27451b501b5d041a0a54"
+    },
+    {
+      "path": "ArtSource/forge/items_b_key/raw-sheet-clean.png",
+      "bytes": 986567,
+      "sha256": "91880c5ab47d1ea20bb40313e344f11cb45a1484991079b1fdf1826b4b0a4e26"
+    },
+    {
+      "path": "ArtSource/forge/items_b_key/raw-sheet.png",
+      "bytes": 1597081,
+      "sha256": "965eb8d0d2a0c1ffda528e9897c2809cd13d2ee9f33ff2a1312fadb03e5ba4e9"
+    },
+    {
+      "path": "ArtSource/forge/items_b_key/sheet-1.png",
+      "bytes": 396514,
+      "sha256": "53148f06caec8f8dc6acd20ea12be3e21b20973766e765bb92a387238c8ae5cc"
+    },
+    {
+      "path": "ArtSource/forge/items_b_key/sheet-transparent.png",
+      "bytes": 396514,
+      "sha256": "53148f06caec8f8dc6acd20ea12be3e21b20973766e765bb92a387238c8ae5cc"
+    },
+    {
+      "path": "ArtSource/forge/prompts/goods.txt",
+      "bytes": 1707,
+      "sha256": "909093fcebbb5e3fde1cc0609cbeac1c782f8be94e1ffa5dcb978bb45675578d"
+    },
+    {
+      "path": "ArtSource/forge/prompts/home.txt",
+      "bytes": 2337,
+      "sha256": "3112c6113fbbacb63499efc8ef0af2e2763d0b5f228f11b4cde2415a4793c148"
+    },
+    {
+      "path": "ArtSource/forge/prompts/items_a.txt",
+      "bytes": 1458,
+      "sha256": "c68c39631b4c19464a2d21aeb05ccb66e8e956cc25c943c33dde4d36581b3057"
+    },
+    {
+      "path": "ArtSource/forge/prompts/items_b.txt",
+      "bytes": 1773,
+      "sha256": "2ce75c566a5f4fd2e45206366a0567892c80e897beea5fde833f498f2a0cda9d"
+    },
+    {
+      "path": "ArtSource/forge/prompts/room2.txt",
+      "bytes": 1541,
+      "sha256": "dcd3c3177513040dd1458c5a90a9f8dd56bf78c06a45232232513ee77315f578"
+    },
+    {
+      "path": "ArtSource/forge/prompts/room3.txt",
+      "bytes": 1664,
+      "sha256": "3aea3035cd69451db95dd9007ef8260b59e3148b5966b027af2c63bc0c0b096c"
+    },
+    {
+      "path": "ArtSource/forge/prompts/room4.txt",
+      "bytes": 1571,
+      "sha256": "703c46403da2dd679feb9693cd2d20ad303e8412cb92cf69e0fcc5e7c1b6f849"
+    },
+    {
+      "path": "ArtSource/forge/prompts/room5.txt",
+      "bytes": 1491,
+      "sha256": "994d88a5a432623eacf08236461430b27e86b1d99127745dbea46b2a6840aa08"
+    },
+    {
+      "path": "ArtSource/forge/prompts/walk.txt",
+      "bytes": 1581,
+      "sha256": "ce7052941af824413462eef21505c7f3a5effdb5578abfabb70330890a4eca6b"
+    },
+    {
+      "path": "ArtSource/forge/prompts/wave.txt",
+      "bytes": 1618,
+      "sha256": "be7dca3a413c50150092dd95988e6f812f608ea9394f85d646a56b0820826f49"
+    },
+    {
+      "path": "ArtSource/forge/room2_accepted.png",
+      "bytes": 1767810,
+      "sha256": "6cc08e988efe8789df452cfc102ebe8a5923b44453911c7e2e4e50e991424d38"
+    },
+    {
+      "path": "ArtSource/forge/room2_raw_1/generated.png",
+      "bytes": 1767810,
+      "sha256": "6cc08e988efe8789df452cfc102ebe8a5923b44453911c7e2e4e50e991424d38"
+    },
+    {
+      "path": "ArtSource/forge/room2_raw_1/prompt.txt",
+      "bytes": 1541,
+      "sha256": "dcd3c3177513040dd1458c5a90a9f8dd56bf78c06a45232232513ee77315f578"
+    },
+    {
+      "path": "ArtSource/forge/room3_accepted.png",
+      "bytes": 1813174,
+      "sha256": "3863974950a3dd93a825ae38b7e21d8fdd397068ca73aec6b58283d949969c06"
+    },
+    {
+      "path": "ArtSource/forge/room3_raw_1/generated.png",
+      "bytes": 1813174,
+      "sha256": "3863974950a3dd93a825ae38b7e21d8fdd397068ca73aec6b58283d949969c06"
+    },
+    {
+      "path": "ArtSource/forge/room3_raw_1/prompt.txt",
+      "bytes": 1664,
+      "sha256": "3aea3035cd69451db95dd9007ef8260b59e3148b5966b027af2c63bc0c0b096c"
+    },
+    {
+      "path": "ArtSource/forge/room4_accepted.png",
+      "bytes": 1978959,
+      "sha256": "528f17687f9dc502dd360918f5fef22947c574d34638624a3071fce2d2dde313"
+    },
+    {
+      "path": "ArtSource/forge/room4_raw_1/generated.png",
+      "bytes": 1978959,
+      "sha256": "528f17687f9dc502dd360918f5fef22947c574d34638624a3071fce2d2dde313"
+    },
+    {
+      "path": "ArtSource/forge/room4_raw_1/prompt.txt",
+      "bytes": 1571,
+      "sha256": "703c46403da2dd679feb9693cd2d20ad303e8412cb92cf69e0fcc5e7c1b6f849"
+    },
+    {
+      "path": "ArtSource/forge/room5_accepted.png",
+      "bytes": 2203455,
+      "sha256": "587859283a54951000622027df29acb3608f45ecbdeba71ca31100d665b12496"
+    },
+    {
+      "path": "ArtSource/forge/room5_raw_1/generated.png",
+      "bytes": 2203455,
+      "sha256": "587859283a54951000622027df29acb3608f45ecbdeba71ca31100d665b12496"
+    },
+    {
+      "path": "ArtSource/forge/room5_raw_1/prompt.txt",
+      "bytes": 1491,
+      "sha256": "994d88a5a432623eacf08236461430b27e86b1d99127745dbea46b2a6840aa08"
+    },
+    {
+      "path": "ArtSource/forge/walk_proc/animation.gif",
+      "bytes": 102423,
+      "sha256": "2df553bc55c9a4a2eb666f8130e137ba036d5e265fe3b1ef96f281351af10339"
+    },
+    {
+      "path": "ArtSource/forge/walk_proc/pipeline-meta.json",
+      "bytes": 14403,
+      "sha256": "8e5940e199f6734ab633ca5b01269678c1e0ae25847c09fc1105e649544abe2d"
+    },
+    {
+      "path": "ArtSource/forge/walk_proc/raw-sheet-clean.png",
+      "bytes": 625810,
+      "sha256": "13782c660329eacfaae77b80ea9391fb2624e163e8e5b95baf6fc28942d71151"
+    },
+    {
+      "path": "ArtSource/forge/walk_proc/raw-sheet.png",
+      "bytes": 1350752,
+      "sha256": "52a68ccb0756bc24d971d70f7d1a2477343e7305fa67e557285d639db531cb49"
+    },
+    {
+      "path": "ArtSource/forge/walk_proc/sheet-1.png",
+      "bytes": 67564,
+      "sha256": "1350cf05e47189246e73b843ee8222ac93d9a14f52d2f20bed550a0bdf9f9cbd"
+    },
+    {
+      "path": "ArtSource/forge/walk_proc/sheet-2.png",
+      "bytes": 66914,
+      "sha256": "3ef79675aa45823cb8dbf16d7f405fd1b9c5af1e9da48609cb53e542e851e8e9"
+    },
+    {
+      "path": "ArtSource/forge/walk_proc/sheet-3.png",
+      "bytes": 68228,
+      "sha256": "c785bf22e8c0597dc6c044d8f933498a715f5db852c5e5fc1a28285eaeee6728"
+    },
+    {
+      "path": "ArtSource/forge/walk_proc/sheet-4.png",
+      "bytes": 69291,
+      "sha256": "0ba2aae9fcf47508562488648800e833d5491dee3f7e6141c058189e59402b03"
+    },
+    {
+      "path": "ArtSource/forge/walk_proc/sheet-transparent.png",
+      "bytes": 267361,
+      "sha256": "b577aec2c5ebb536d8b7b1c06b25a8294e285eb45a3d4699c9c78247653defc2"
+    },
+    {
+      "path": "ArtSource/forge/walk_raw_1/generated.png",
+      "bytes": 1350752,
+      "sha256": "52a68ccb0756bc24d971d70f7d1a2477343e7305fa67e557285d639db531cb49"
+    },
+    {
+      "path": "ArtSource/forge/walk_raw_1/prompt.txt",
+      "bytes": 1581,
+      "sha256": "ce7052941af824413462eef21505c7f3a5effdb5578abfabb70330890a4eca6b"
+    },
+    {
+      "path": "ArtSource/forge/walk_spill/sheet-qc.json",
+      "bytes": 7337,
+      "sha256": "848975af97858d2a272dcd287552b7e8dcc7ef4000ec834badba6e3d3dd00f3d"
+    },
+    {
+      "path": "ArtSource/forge/walk_spill/spill-overlay.png",
+      "bytes": 542091,
+      "sha256": "fafef7587d48ac8e6e3fe668c67322f4d0c337fb00bce2eb0847b0f1c92f5c03"
+    },
+    {
+      "path": "ArtSource/forge/wave_proc/animation.gif",
+      "bytes": 105261,
+      "sha256": "0e8b31f747911c3c8dcb3d7c0ffa248f4a99926e24829a1d2460af81728075f0"
+    },
+    {
+      "path": "ArtSource/forge/wave_proc/pipeline-meta.json",
+      "bytes": 14402,
+      "sha256": "41b95570fd0faed87657e89af513a28b55a90742c2869f282386c74942d72807"
+    },
+    {
+      "path": "ArtSource/forge/wave_proc/raw-sheet-clean.png",
+      "bytes": 662637,
+      "sha256": "134248bc9bfa3f34f060be296cc285c300b1af751cddec119bc27369b3b69ef8"
+    },
+    {
+      "path": "ArtSource/forge/wave_proc/raw-sheet.png",
+      "bytes": 1373451,
+      "sha256": "319464f03ffe47b2b092aa18cd838792f9109fc3df6040615bacfa91cdbc8de0"
+    },
+    {
+      "path": "ArtSource/forge/wave_proc/sheet-1.png",
+      "bytes": 69975,
+      "sha256": "1df2c999160d4d1d2fb127235d7cd04650f427a6d796352e5c3982a9d63b6af7"
+    },
+    {
+      "path": "ArtSource/forge/wave_proc/sheet-2.png",
+      "bytes": 71157,
+      "sha256": "16fd6b6233bc9192e88401f3f1e70cd4846bd17ebb3ca4b88bbb9c616ab6a340"
+    },
+    {
+      "path": "ArtSource/forge/wave_proc/sheet-3.png",
+      "bytes": 69648,
+      "sha256": "ae1b05904a7a2a50af5d4028dfcb4a0442901d4602be4ba010f0128704fc9472"
+    },
+    {
+      "path": "ArtSource/forge/wave_proc/sheet-4.png",
+      "bytes": 67642,
+      "sha256": "ed29291217ebec88f82cfaa26796efc0c192c77916dc1657d6904fe09a88bb2b"
+    },
+    {
+      "path": "ArtSource/forge/wave_proc/sheet-transparent.png",
+      "bytes": 274121,
+      "sha256": "9c4b1d4359d30c6b575590a3e68a510f2f8457d0759381d72d8e77d08e879cd7"
+    },
+    {
+      "path": "ArtSource/forge/wave_raw_1/generated.png",
+      "bytes": 1373451,
+      "sha256": "319464f03ffe47b2b092aa18cd838792f9109fc3df6040615bacfa91cdbc8de0"
+    },
+    {
+      "path": "ArtSource/forge/wave_raw_1/prompt.txt",
+      "bytes": 1618,
+      "sha256": "be7dca3a413c50150092dd95988e6f812f608ea9394f85d646a56b0820826f49"
+    },
+    {
+      "path": "ArtSource/forge/wave_spill/sheet-qc.json",
+      "bytes": 7337,
+      "sha256": "4564f7f8153b8b8c8a793ed86b5d2de0de8dc7d4e1511bf43c01628d2b4064aa"
+    },
+    {
+      "path": "ArtSource/forge/wave_spill/spill-overlay.png",
+      "bytes": 576412,
+      "sha256": "529794f705efc013d18d6f0f326a6459dfc7bb73465a003e49d556a30306de4f"
+    },
+    {
+      "path": "ArtSource/newlife/comic.png",
+      "bytes": 20081,
+      "sha256": "49f31228161fef64142caf3be6a32e45f6214b988f93474c710d5e3f535ca2e5"
+    },
+    {
+      "path": "ArtSource/newlife/minibus-drawn.png",
+      "bytes": 2170677,
+      "sha256": "2cf37def325fcce0aba2e9b29693ce2d6584ccd48f6b68dc49c7d6b4348bd487"
+    },
+    {
+      "path": "ArtSource/newlife/prompts/act.txt",
+      "bytes": 1513,
+      "sha256": "379a7544d754d1488b886cb6d026ccfe854d49561c853183118053be31b003f8"
+    },
+    {
+      "path": "ArtSource/newlife/prompts/b_ash.txt",
+      "bytes": 1382,
+      "sha256": "7439edf4b57d7bcead618ac8d62958b33e75a20ab13ca058e8e1eb2ad0f94ec6"
+    },
+    {
+      "path": "ArtSource/newlife/prompts/b_bsh.txt",
+      "bytes": 1391,
+      "sha256": "02c21013feb575194a4f1ec9f682e859eefd83cc4dada70db5969b7a279e6708"
+    },
+    {
+      "path": "ArtSource/newlife/prompts/b_poodle.txt",
+      "bytes": 1383,
+      "sha256": "20f790043b090364dd06faeef0a1f8be30f6a3c2550ea472dff26936f8823417"
+    },
+    {
+      "path": "ArtSource/newlife/prompts/b_ragdoll.txt",
+      "bytes": 1404,
+      "sha256": "5abb3898e9b369f83eade8983be8ced202c632483cd1d7cb8bb7f07fd9c77784"
+    },
+    {
+      "path": "ArtSource/newlife/prompts/b_shiba.txt",
+      "bytes": 1383,
+      "sha256": "b4ea9faef73408898297144e80e842bef89c294458dd9d402a76d7083fc55de8"
+    },
+    {
+      "path": "ArtSource/newlife/prompts/b_siamese.txt",
+      "bytes": 1394,
+      "sha256": "183b359571cc984969250e96c2eb3761c474b5f76965c540d71630d481c6f33d"
+    },
+    {
+      "path": "ArtSource/newlife/prompts/b_tong.txt",
+      "bytes": 1420,
+      "sha256": "abc4ecdf9a1627bb3fa7a2e9c8ba87981748ec30a6ea42234e03f2b5c29bfdc0"
+    },
+    {
+      "path": "ArtSource/newlife/prompts/b_westie.txt",
+      "bytes": 1508,
+      "sha256": "f817dfa7b2e0d2c16d0c06e7b47b08877c5b5ba3ad34fb2c6afede76317aa189"
+    },
+    {
+      "path": "ArtSource/newlife/prompts/cafe.txt",
+      "bytes": 611,
+      "sha256": "3cc2eafc7a9829455a161581993c042bd9e8588ae195d684074ba0dee415a772"
+    },
+    {
+      "path": "ArtSource/newlife/prompts/clinic.txt",
+      "bytes": 684,
+      "sha256": "163cb27200ebcbb359185b2723405e9c22d768bb41c84cf6bac7144f22bc251f"
+    },
+    {
+      "path": "ArtSource/newlife/prompts/eath.txt",
+      "bytes": 1190,
+      "sha256": "d5916c642e987575e45f06ac451086a65bd8860e61fb39895ed4b2d4f33c69ae"
+    },
+    {
+      "path": "ArtSource/newlife/prompts/eatp.txt",
+      "bytes": 790,
+      "sha256": "0e14af03796c3160b1ab63f7f57d41114f35de66d342391398fab9ba17e6418c"
+    },
+    {
+      "path": "ArtSource/newlife/prompts/food.txt",
+      "bytes": 1020,
+      "sha256": "d5e5810130b1d49efe3cfc9b75d8388d0b100e27b8f93a429793df464c5d5df8"
+    },
+    {
+      "path": "ArtSource/newlife/prompts/mall.txt",
+      "bytes": 742,
+      "sha256": "10a9c491befbf5c6c8cc110598a1b09e093f8444bc0ed548d5e611db4da1dc6f"
+    },
+    {
+      "path": "ArtSource/newlife/prompts/mtr.txt",
+      "bytes": 709,
+      "sha256": "6e28c3364a21b17140f32fdb63a56faaa887ba7be16a57d2a248b60d121bf490"
+    },
+    {
+      "path": "ArtSource/newlife/prompts/park.txt",
+      "bytes": 713,
+      "sha256": "76c2d1679179afaba838d60f57498343ff2eec4ef2fb82784086731c3b3c572c"
+    },
+    {
+      "path": "ArtSource/newlife/prompts/pets.txt",
+      "bytes": 1129,
+      "sha256": "f7414371ab8532b71960db481993ae09366dea0529fa0570df1e8caa53346936"
+    },
+    {
+      "path": "ArtSource/newlife/prompts/places.txt",
+      "bytes": 1129,
+      "sha256": "f0a8ab7819a25cb10bbb4670d6c526a2c2caadb753a8280f6fd71f5ec9b4c9f3"
+    },
+    {
+      "path": "ArtSource/newlife/prompts/potato.txt",
+      "bytes": 1327,
+      "sha256": "a5b785f5096c8b0c362dadeb4f56764831a350f22a9bfc4572aa29fbfb3bb1b7"
+    },
+    {
+      "path": "ArtSource/newlife/prompts/store.txt",
+      "bytes": 645,
+      "sha256": "e3352f11f953c072c7286581977f1cec7e83ea5b4b96009de05f05d8dbbf5fda"
+    },
+    {
+      "path": "ArtSource/newlife/prompts/street.txt",
+      "bytes": 698,
+      "sha256": "65a859c74527fe584faadc3fc4947ad835b2791cf9daaeef79c8082970888220"
+    },
+    {
+      "path": "ArtSource/newlife/prompts/table.txt",
+      "bytes": 861,
+      "sha256": "1f9d3af9d296a29a4c0c028bce0c07f9f9240c6baa801ef9a3bd229a3040386b"
+    },
+    {
+      "path": "ArtSource/newlife/raw/raw_act/generated.png",
+      "bytes": 1581807,
+      "sha256": "6aee5a3fd619648d2a2f466ee9cc0760f579eab4d55b462840fbe6c6d3f7dd7b"
+    },
+    {
+      "path": "ArtSource/newlife/raw/raw_act/prompt.txt",
+      "bytes": 1513,
+      "sha256": "379a7544d754d1488b886cb6d026ccfe854d49561c853183118053be31b003f8"
+    },
+    {
+      "path": "ArtSource/newlife/raw/raw_b_ash/generated.png",
+      "bytes": 1843863,
+      "sha256": "39a42e7586523d1fb980de44438d711d39bafbf5bba06fa617294807d31f45db"
+    },
+    {
+      "path": "ArtSource/newlife/raw/raw_b_ash/prompt.txt",
+      "bytes": 1383,
+      "sha256": "a68bf1d41cb7626ab45fc1c3873050a67c01109a2ed6151750ecfc973beffe72"
+    },
+    {
+      "path": "ArtSource/newlife/raw/raw_b_bsh/generated.png",
+      "bytes": 1843721,
+      "sha256": "8575ecbffc2efa07c02e3b3fb8952826b00da68cadd4bc33ef97698cb8a78e8b"
+    },
+    {
+      "path": "ArtSource/newlife/raw/raw_b_bsh/prompt.txt",
+      "bytes": 1392,
+      "sha256": "831c6084b8eabe8c07a7b6067d499f03ecd8b7519ec13872444182ddffb39f4d"
+    },
+    {
+      "path": "ArtSource/newlife/raw/raw_b_poodle/generated.png",
+      "bytes": 1808835,
+      "sha256": "acf4d3984ec4efc9346f61d42d0775bca3aeac8bd659b622161be9fa08f3163a"
+    },
+    {
+      "path": "ArtSource/newlife/raw/raw_b_poodle/prompt.txt",
+      "bytes": 1384,
+      "sha256": "3e30172e3b5a68be2f46a0a2ab6577f0c510aba3aef41a1e48f3d100630079e5"
+    },
+    {
+      "path": "ArtSource/newlife/raw/raw_b_ragdoll/generated.png",
+      "bytes": 1845837,
+      "sha256": "adfa648c3f9c3c06eeeb8bc6fed0da9e5eb53a21114670a85e77527a1b304d53"
+    },
+    {
+      "path": "ArtSource/newlife/raw/raw_b_ragdoll/prompt.txt",
+      "bytes": 1405,
+      "sha256": "d6313819ae31d897e4ab4617ce5f5a00fc9368f1caf2d5c0aa06f0d8bbd4ea39"
+    },
+    {
+      "path": "ArtSource/newlife/raw/raw_b_shiba/generated.png",
+      "bytes": 1721826,
+      "sha256": "b22fc086ace0afc626fd28657b11585e9a7fdd0ba3a67411db91ef335c965d76"
+    },
+    {
+      "path": "ArtSource/newlife/raw/raw_b_shiba/prompt.txt",
+      "bytes": 1384,
+      "sha256": "81f03c1b90244d1bd877f96bfc18b76c317cbb5eeb5d994ab4a91abfe7e3ccfe"
+    },
+    {
+      "path": "ArtSource/newlife/raw/raw_b_siamese/generated.png",
+      "bytes": 1770364,
+      "sha256": "e42d5b8a15593c70e806d75b116aba68b82fbeb96f15b775b8e229e23d4e7ede"
+    },
+    {
+      "path": "ArtSource/newlife/raw/raw_b_siamese/prompt.txt",
+      "bytes": 1395,
+      "sha256": "26fbe73f31279ea49d44a369bd1d094d5ed988b1140d3226b2f6cf9c0b5cfbe4"
+    },
+    {
+      "path": "ArtSource/newlife/raw/raw_b_tong/generated.png",
+      "bytes": 1809158,
+      "sha256": "1c7de027cf2aa65b600d51e4ea95a1c10c90110f754bedcbd13a69de9a4bbfa4"
+    },
+    {
+      "path": "ArtSource/newlife/raw/raw_b_tong/prompt.txt",
+      "bytes": 1421,
+      "sha256": "9ab8cc2c1ff05bed505f59cc0db9fa8eb0d84fd9d85682521a914e5b3c1a1670"
+    },
+    {
+      "path": "ArtSource/newlife/raw/raw_b_westie/generated.png",
+      "bytes": 1774887,
+      "sha256": "782bed512344e3503a77c979c0f716f8a72c5eb11c2df47065fd85b00e253c33"
+    },
+    {
+      "path": "ArtSource/newlife/raw/raw_b_westie/prompt.txt",
+      "bytes": 1509,
+      "sha256": "1ed70f4c92db64d0c71b56e7ae80b65712330004005685bb0db0619b3a707868"
+    },
+    {
+      "path": "ArtSource/newlife/raw/raw_cafe/generated.png",
+      "bytes": 2374555,
+      "sha256": "fde3b9c00ff8a9cf548bc6f11770707a30a1af0818e9a94c36b6fb245e825281"
+    },
+    {
+      "path": "ArtSource/newlife/raw/raw_cafe/prompt.txt",
+      "bytes": 611,
+      "sha256": "3cc2eafc7a9829455a161581993c042bd9e8588ae195d684074ba0dee415a772"
+    },
+    {
+      "path": "ArtSource/newlife/raw/raw_clinic/generated.png",
+      "bytes": 1829938,
+      "sha256": "9f4b5d8701992dc1abeb17ea44775f86a12010a342663a0647e1bb4bb17aeb22"
+    },
+    {
+      "path": "ArtSource/newlife/raw/raw_clinic/prompt.txt",
+      "bytes": 684,
+      "sha256": "163cb27200ebcbb359185b2723405e9c22d768bb41c84cf6bac7144f22bc251f"
+    },
+    {
+      "path": "ArtSource/newlife/raw/raw_eath/generated.png",
+      "bytes": 1686337,
+      "sha256": "0a7b2323aee878714a5caacf83cc55308570a114297bc801b4a92a59801e7b74"
+    },
+    {
+      "path": "ArtSource/newlife/raw/raw_eath/prompt.txt",
+      "bytes": 1190,
+      "sha256": "d5916c642e987575e45f06ac451086a65bd8860e61fb39895ed4b2d4f33c69ae"
+    },
+    {
+      "path": "ArtSource/newlife/raw/raw_eatp/generated.png",
+      "bytes": 1433822,
+      "sha256": "b21854f2fdde6bbaf015ee1585ed51ee46922ed169c73e53fb2a5d09414bca7c"
+    },
+    {
+      "path": "ArtSource/newlife/raw/raw_eatp/prompt.txt",
+      "bytes": 790,
+      "sha256": "0e14af03796c3160b1ab63f7f57d41114f35de66d342391398fab9ba17e6418c"
+    },
+    {
+      "path": "ArtSource/newlife/raw/raw_food/generated.png",
+      "bytes": 1935291,
+      "sha256": "12dc297105322c9e6f7d5d6a174b74e2cd53379207f841b4330de1cc26b24c92"
+    },
+    {
+      "path": "ArtSource/newlife/raw/raw_food/prompt.txt",
+      "bytes": 1020,
+      "sha256": "d5e5810130b1d49efe3cfc9b75d8388d0b100e27b8f93a429793df464c5d5df8"
+    },
+    {
+      "path": "ArtSource/newlife/raw/raw_mall/generated.png",
+      "bytes": 2274373,
+      "sha256": "85becbe1e9c69e7591e081cdd6a67a257dfb4b76fcda07a17a3bb1a8eb01d100"
+    },
+    {
+      "path": "ArtSource/newlife/raw/raw_mall/prompt.txt",
+      "bytes": 742,
+      "sha256": "10a9c491befbf5c6c8cc110598a1b09e093f8444bc0ed548d5e611db4da1dc6f"
+    },
+    {
+      "path": "ArtSource/newlife/raw/raw_mtr/generated.png",
+      "bytes": 1818533,
+      "sha256": "f101b570334feb8ebf322a849010dee80559dee9565f8598e3b31040476f7722"
+    },
+    {
+      "path": "ArtSource/newlife/raw/raw_mtr/prompt.txt",
+      "bytes": 709,
+      "sha256": "6e28c3364a21b17140f32fdb63a56faaa887ba7be16a57d2a248b60d121bf490"
+    },
+    {
+      "path": "ArtSource/newlife/raw/raw_park/generated.png",
+      "bytes": 2573002,
+      "sha256": "d1ac2999d0d3b786cb8754d2f6c565ac81c7e9de30421a1b1444cb30357f66f3"
+    },
+    {
+      "path": "ArtSource/newlife/raw/raw_park/prompt.txt",
+      "bytes": 713,
+      "sha256": "76c2d1679179afaba838d60f57498343ff2eec4ef2fb82784086731c3b3c572c"
+    },
+    {
+      "path": "ArtSource/newlife/raw/raw_pets/generated.png",
+      "bytes": 1630939,
+      "sha256": "22f7073e01d2fdf45374e17e7abee74d88fe82658223ef419123914e89caaa91"
+    },
+    {
+      "path": "ArtSource/newlife/raw/raw_pets/prompt.txt",
+      "bytes": 1129,
+      "sha256": "f7414371ab8532b71960db481993ae09366dea0529fa0570df1e8caa53346936"
+    },
+    {
+      "path": "ArtSource/newlife/raw/raw_places/generated.png",
+      "bytes": 2863380,
+      "sha256": "54efea6369ad07b118ad3d140c894d622c70f3cd4735d6d51f0a3d79e8b8cd2a"
+    },
+    {
+      "path": "ArtSource/newlife/raw/raw_places/prompt.txt",
+      "bytes": 1129,
+      "sha256": "f0a8ab7819a25cb10bbb4670d6c526a2c2caadb753a8280f6fd71f5ec9b4c9f3"
+    },
+    {
+      "path": "ArtSource/newlife/raw/raw_potato/generated.png",
+      "bytes": 1504462,
+      "sha256": "bed3bdcdee081917aa21c2ca7e9fc01f82c58281a7e9e2cd4ab881bc84ec249c"
+    },
+    {
+      "path": "ArtSource/newlife/raw/raw_potato/prompt.txt",
+      "bytes": 1327,
+      "sha256": "a5b785f5096c8b0c362dadeb4f56764831a350f22a9bfc4572aa29fbfb3bb1b7"
+    },
+    {
+      "path": "ArtSource/newlife/raw/raw_store/generated.png",
+      "bytes": 2170069,
+      "sha256": "5efbf89105c629e776f0e7e7c677009a0a1b67765205d6119e4c718324764478"
+    },
+    {
+      "path": "ArtSource/newlife/raw/raw_store/prompt.txt",
+      "bytes": 645,
+      "sha256": "e3352f11f953c072c7286581977f1cec7e83ea5b4b96009de05f05d8dbbf5fda"
+    },
+    {
+      "path": "ArtSource/newlife/raw/raw_street/generated.png",
+      "bytes": 2457330,
+      "sha256": "708d0c7f8c0668517665da89cfb1b831b2d0e2e3b0b12bfab780b99926846aef"
+    },
+    {
+      "path": "ArtSource/newlife/raw/raw_street/prompt.txt",
+      "bytes": 698,
+      "sha256": "65a859c74527fe584faadc3fc4947ad835b2791cf9daaeef79c8082970888220"
+    },
+    {
+      "path": "ArtSource/newlife/raw/raw_table/generated.png",
+      "bytes": 1327677,
+      "sha256": "b012d6a1587539f6f0a65ea54e66a5f89fc115e2638bd6be4b990527486e0731"
+    },
+    {
+      "path": "ArtSource/newlife/raw/raw_table/prompt.txt",
+      "bytes": 861,
+      "sha256": "1f9d3af9d296a29a4c0c028bce0c07f9f9240c6baa801ef9a3bd229a3040386b"
+    },
+    {
+      "path": "ArtSource/newlife/webp/a_PotatoWalk.webp",
+      "bytes": 54710,
+      "sha256": "ebef04a9cce6952e2a127bf79a366fd682ec004b0a8a92b2b551b6f77ff5e484"
+    },
+    {
+      "path": "ArtSource/newlife/webp/a_PotatoWave.webp",
+      "bytes": 64712,
+      "sha256": "33065f76bc4a2909c62a3373a02f01f1c5b4368809937dcd1674f4e7487a31db"
+    },
+    {
+      "path": "ArtSource/newlife/webp/a_act.webp",
+      "bytes": 135032,
+      "sha256": "895fa007b57aa1c4907b95a871867b06324f701f1ede8555cd4ae60d8fc4e27b"
+    },
+    {
+      "path": "ArtSource/newlife/webp/a_b_ash.webp",
+      "bytes": 86872,
+      "sha256": "3fade3cf2c51b48fb165afe8e431c3e493d527b6c16b39f10d1379cc2bd1e1a0"
+    },
+    {
+      "path": "ArtSource/newlife/webp/a_b_bsh.webp",
+      "bytes": 82200,
+      "sha256": "1c16fb2e9f76b049b33c48f225723e7286160e5193357b92c0b368734193d3a2"
+    },
+    {
+      "path": "ArtSource/newlife/webp/a_b_corgi.webp",
+      "bytes": 85500,
+      "sha256": "7a9629a2e85b4f400a5f572732202f42373aa6be0a983da7f88a7a4cdcab0d55"
+    },
+    {
+      "path": "ArtSource/newlife/webp/a_b_ginger.webp",
+      "bytes": 86306,
+      "sha256": "88992ab301e2149b9282f836e45827c626f0a56ff1d4fe57ef3fc0ed12924ea6"
+    },
+    {
+      "path": "ArtSource/newlife/webp/a_b_poodle.webp",
+      "bytes": 92304,
+      "sha256": "ec8eb50baa60043c144483cf54d0ea9430b0794fa3e0b78dcf7c370aa482db0d"
+    },
+    {
+      "path": "ArtSource/newlife/webp/a_b_ragdoll.webp",
+      "bytes": 80944,
+      "sha256": "6e72c483c64d3d4ff9fa79c6b18ec4bfaf85e363a125d3f2ab8b826d7d7e4269"
+    },
+    {
+      "path": "ArtSource/newlife/webp/a_b_shiba.webp",
+      "bytes": 86084,
+      "sha256": "32ccc8c2ba1030ccdd03d59eb18c60e07bcf6a80b41f18fd5f887d727287f0f1"
+    },
+    {
+      "path": "ArtSource/newlife/webp/a_b_siamese.webp",
+      "bytes": 86294,
+      "sha256": "269bd45717da6b585b8af67cf103355cb173608c4d83db002d18711e5be6c96f"
+    },
+    {
+      "path": "ArtSource/newlife/webp/a_b_tong.webp",
+      "bytes": 88568,
+      "sha256": "7824c349ccedd3008ee05b99232e66a8e5aed609efd1adc02228dfe893e54ac9"
+    },
+    {
+      "path": "ArtSource/newlife/webp/a_b_westie.webp",
+      "bytes": 90902,
+      "sha256": "8e745c407e9baf7b9cf0323888d8fb32b09a95ac49e18792c28abc0f139d25cf"
+    },
+    {
+      "path": "ArtSource/newlife/webp/a_bench.webp",
+      "bytes": 16412,
+      "sha256": "ee5ecd138738969436d1606b5b7e38d9aee49116819bccc1ce45834a3f42ce21"
+    },
+    {
+      "path": "ArtSource/newlife/webp/a_bus.webp",
+      "bytes": 63066,
+      "sha256": "9cc98ae64944a5345510f4c83e5c3084f90a7da737b55ea6ba5294bfdd00ea18"
+    },
+    {
+      "path": "ArtSource/newlife/webp/a_cafe.webp",
+      "bytes": 104052,
+      "sha256": "4c7440eec2ee43f8fe7fd1f57cb04d07b2a522726ea1680e1b3752df0d5ba90e"
+    },
+    {
+      "path": "ArtSource/newlife/webp/a_clinic.webp",
+      "bytes": 52774,
+      "sha256": "58d0603ae6ced151bd66eb69e3f9a56632752e56e32e3bee2b448ca47545222a"
+    },
+    {
+      "path": "ArtSource/newlife/webp/a_eath.webp",
+      "bytes": 119792,
+      "sha256": "65d4fbc5d6a59783c51c16241a43661d5667d2b13456a0aeb12f33f22085382e"
+    },
+    {
+      "path": "ArtSource/newlife/webp/a_eatp.webp",
+      "bytes": 38714,
+      "sha256": "7b249658d6289e0f6df878156458600b193ae0b31daed057f73431e68c2e0470"
+    },
+    {
+      "path": "ArtSource/newlife/webp/a_food.webp",
+      "bytes": 124292,
+      "sha256": "9ddf31b730f98e5c6594f78645411ce9b37830b06bdf63e8db825b27a6b06d48"
+    },
+    {
+      "path": "ArtSource/newlife/webp/a_home.webp",
+      "bytes": 51860,
+      "sha256": "f921897c446af24d3cf61b4bffacc997c7ce276600ad9b15ec02ccd3245c8eb3"
+    },
+    {
+      "path": "ArtSource/newlife/webp/a_mall.webp",
+      "bytes": 117736,
+      "sha256": "bb56d5392ca76fba086e63bdb7eff21172f17f12254364276cd6bf636d31ca5a"
+    },
+    {
+      "path": "ArtSource/newlife/webp/a_mtr.webp",
+      "bytes": 49878,
+      "sha256": "5e36f455b819d1d5483b2b4ea0f273498a9e7adba2f525fc6a6c0baa83f00bb5"
+    },
+    {
+      "path": "ArtSource/newlife/webp/a_old.webp",
+      "bytes": 13712,
+      "sha256": "de4584501ba48b43dd645c68a1c08365fed981fcfc227a57fb0230fa00e0fded"
+    },
+    {
+      "path": "ArtSource/newlife/webp/a_park.webp",
+      "bytes": 154804,
+      "sha256": "85d07d652cae47092c32a51cb9bde32efe109e7375ecf64cb86bb8a782494df0"
+    },
+    {
+      "path": "ArtSource/newlife/webp/a_pets.webp",
+      "bytes": 140822,
+      "sha256": "eff298df1d6de95e2dbdf8a6bf61bbe9f20d8e2509651691cad3a890b6a148c3"
+    },
+    {
+      "path": "ArtSource/newlife/webp/a_ph_cm.webp",
+      "bytes": 74274,
+      "sha256": "4bbd1f0fd6301fee30a6f171a073a7642f39fc18f3a968ff7d538a10fea1a2fe"
+    },
+    {
+      "path": "ArtSource/newlife/webp/a_ph_harbour.webp",
+      "bytes": 58892,
+      "sha256": "9bdfa6e5a7caf93b4737e88f5bf8c7bd482e977dc7273db118dec5475febcb44"
+    },
+    {
+      "path": "ArtSource/newlife/webp/a_ph_monster.webp",
+      "bytes": 69852,
+      "sha256": "d4ed975e249fdeab9f2a8eaa8b72c362e5b2b08d2418b26b675210f4c05eae9b"
+    },
+    {
+      "path": "ArtSource/newlife/webp/a_ph_villain.webp",
+      "bytes": 89272,
+      "sha256": "9f5f61a8dfc4fa361cd99c39a60f24ff645518c9e288802cfaa0ec3b4d698d9b"
+    },
+    {
+      "path": "ArtSource/newlife/webp/a_ph_wheel.webp",
+      "bytes": 73306,
+      "sha256": "020cb32138175756db86dc3fc37f21c0a8a994e45004ef50a0ff235350957df9"
+    },
+    {
+      "path": "ArtSource/newlife/webp/a_places.webp",
+      "bytes": 230234,
+      "sha256": "074293ddfe6a83e503b04f71371e0f5e063629446aaca4a6776a0b27e815cbc9"
+    },
+    {
+      "path": "ArtSource/newlife/webp/a_polig.webp",
+      "bytes": 79010,
+      "sha256": "f5ee1b20e94cb21a68866043d61c550be50277118805d7143b4092d22679bf85"
+    },
+    {
+      "path": "ArtSource/newlife/webp/a_ponon.webp",
+      "bytes": 80324,
+      "sha256": "3966378aa9abd9b56a1bd0378e08b1cdd075bc3369ff719ada37e9abcc2e41b7"
+    },
+    {
+      "path": "ArtSource/newlife/webp/a_poster.webp",
+      "bytes": 1303096,
+      "sha256": "e0941ad35dfd3fa85fc6bed4b1f3bf7a8b6bb21ebf0ce7d475b6bc983b266e2f"
+    },
+    {
+      "path": "ArtSource/newlife/webp/a_potato.webp",
+      "bytes": 138364,
+      "sha256": "e25d759e712af3972ad360fff7d4106199931fa9316c237e152570a1b2599417"
+    },
+    {
+      "path": "ArtSource/newlife/webp/a_stop.webp",
+      "bytes": 3150,
+      "sha256": "e734d1a2506cce398cf8e6babae2bbbd02df61b0bd5d93de4e02fab53e588d14"
+    },
+    {
+      "path": "ArtSource/newlife/webp/a_store.webp",
+      "bytes": 97534,
+      "sha256": "1d1c7490ce9795f649c2c1d14c82309ea1aff9920195f2684de1a2a619f593ec"
+    },
+    {
+      "path": "ArtSource/newlife/webp/a_street.webp",
+      "bytes": 170220,
+      "sha256": "be4b3070ed822dabb6f963eb307f703f8de13a48afd1585f67a30b4a22a03228"
+    },
+    {
+      "path": "ArtSource/newlife/webp/a_table.webp",
+      "bytes": 10888,
+      "sha256": "0aa16608c1ace5c7b50704bde22ef15ef10fa332abd1f7ac4e76aeaa3e0bcdaf"
+    },
+    {
+      "path": "ArtSource/slots.py",
+      "bytes": 1482,
+      "sha256": "6c2beb66ad26b1147fd6f1a6235eea3b375b7f041229f9b938ead65155c41470"
+    },
+    {
+      "path": "Assets/Editor.meta",
+      "bytes": 172,
+      "sha256": "9eebf99704160e9d27469d2bdd0e2e5e4dd4621330689ae26df6684afd6c4d9b"
+    },
+    {
+      "path": "Assets/Editor/PotatoAudioCheck.cs",
+      "bytes": 5815,
+      "sha256": "60af4ab386e001544f11dac1de7e54821f25706a40e805d7bb19a12f5374ab20"
+    },
+    {
+      "path": "Assets/Editor/PotatoAudioCheck.cs.meta",
+      "bytes": 243,
+      "sha256": "02340b23fbaf94d04dcf6bc56dbf0d86a4b0a30851ed65635006f3caa5973c1f"
+    },
+    {
+      "path": "Assets/Editor/PotatoBuild.cs",
+      "bytes": 9738,
+      "sha256": "ac2513ddd8c58507e20516d9bb22d8f3238bcea875cc56148b2db95c941c7ea7"
+    },
+    {
+      "path": "Assets/Editor/PotatoBuild.cs.meta",
+      "bytes": 243,
+      "sha256": "aef5f81ff32b1e6378a76e251760d701957a9f1e7442eef976dcdeb1fa90ae9a"
+    },
+    {
+      "path": "Assets/Editor/PotatoChecks.cs",
+      "bytes": 32964,
+      "sha256": "675a69150d3f4cf1992658edf531b6c48884feb67f609730f4dc9406f8ff6a94"
+    },
+    {
+      "path": "Assets/Editor/PotatoChecks.cs.meta",
+      "bytes": 243,
+      "sha256": "dc944c72ce54cb8374c1fefd6725ccd5507431ea93facb0654900a7957623937"
+    },
+    {
+      "path": "Assets/Editor/PotatoSmoke.cs",
+      "bytes": 51195,
+      "sha256": "0439f69c866f7d64fa8a8cd6bc23a2014d963c72dba1bcd0ec27164188256940"
+    },
+    {
+      "path": "Assets/Editor/PotatoSmoke.cs.meta",
+      "bytes": 243,
+      "sha256": "a07caf9ff631b288307f801a2e55992b244bd99bd64fdc2be555a043d9f4e5a2"
+    },
+    {
+      "path": "Assets/Icon.meta",
+      "bytes": 172,
+      "sha256": "94153bb13b37db052b54e7f63fbff6936062b52b2d3e2249b27307dc2d43ee3d"
+    },
+    {
+      "path": "Assets/Icon/AppIcon.png",
+      "bytes": 331879,
+      "sha256": "7101841562db95ade3e42fa197a7eb7d8d8fc9aec3f80091b7506bb6a782fb39"
+    },
+    {
+      "path": "Assets/Icon/AppIcon.png.meta",
+      "bytes": 3303,
+      "sha256": "a60cad7e533729a8de2b0846d4f9df23212d6ea14ff3c2acf1e5c89c55778271"
+    },
+    {
+      "path": "Assets/Plugins.meta",
+      "bytes": 172,
+      "sha256": "0417f38601b15af4679e9cd14f33b1ba118070e4be62dda5893fa1d37caf3bb1"
+    },
+    {
+      "path": "Assets/Plugins/Android.meta",
+      "bytes": 172,
+      "sha256": "4fe174ba0a0e23a4c2a6499121ab7043467ccbf84eea7c6b2fc9a28384565315"
+    },
+    {
+      "path": "Assets/Plugins/Android/gradleTemplate.properties",
+      "bytes": 311,
+      "sha256": "0e0dd3de3f176124d24c401893571511964b95a76c3d4e1c309f30257ccd62b8"
+    },
+    {
+      "path": "Assets/Plugins/Android/gradleTemplate.properties.meta",
+      "bytes": 155,
+      "sha256": "b3281222541c1096fc6909617cfb2ac1746c5b6c4d99140a8f082f11c4f83823"
+    },
+    {
+      "path": "Assets/Plugins/Android/mainTemplate.gradle",
+      "bytes": 1833,
+      "sha256": "b82f79b27dc9f6fe0160df71648ff33c415967ae096046ad4541b70d1dcab1b0"
+    },
+    {
+      "path": "Assets/Plugins/Android/mainTemplate.gradle.meta",
+      "bytes": 155,
+      "sha256": "4f1b9c3fe89e8460a98f3f1b60d79fa88d10bfaf15e03c88ad400edd55d98ddc"
+    },
+    {
+      "path": "Assets/Plugins/Android/settingsTemplate.gradle",
+      "bytes": 948,
+      "sha256": "10b1efeb2d7c3c58a2fd1444c275fbd82bbe8312bc5b609418e44f917ad2264e"
+    },
+    {
+      "path": "Assets/Plugins/Android/settingsTemplate.gradle.meta",
+      "bytes": 155,
+      "sha256": "26932327692e33ede8c4c3533c96e5671cbc9f713c1a38838245d2e824eadae2"
+    },
+    {
+      "path": "Assets/Resources.meta",
+      "bytes": 172,
+      "sha256": "95781762b0d1e0808e84d6d256e8aabd4e99fb4ff08347254431089ce96e4f21"
+    },
+    {
+      "path": "Assets/Resources/Art.meta",
+      "bytes": 172,
+      "sha256": "cf37497f7037bf35b2de96304565cf2155a68e4eb2a5f98bf790439cff10cc23"
+    },
+    {
+      "path": "Assets/Resources/Art/Costumes.png",
+      "bytes": 1910867,
+      "sha256": "b6da2f9409380cd3379869517a1ab5d0593dc3894a9f5e156c2c22fa2b5aab6f"
+    },
+    {
+      "path": "Assets/Resources/Art/Costumes.png.meta",
+      "bytes": 3303,
+      "sha256": "b33c40f09cf30b32e9e5aff3a9c81288d44384eac9d55015a8637d0f6e6aaa6d"
+    },
+    {
+      "path": "Assets/Resources/Art/Home.png",
+      "bytes": 1784171,
+      "sha256": "159179cca1b8fe9ff18e001fd46e747bdcd1a41910f8a53d4255c226911cc573"
+    },
+    {
+      "path": "Assets/Resources/Art/Home.png.meta",
+      "bytes": 3303,
+      "sha256": "185a5c83f209bf71dbb9698a02a91c5a12280ed8acac1e035272650b66563593"
+    },
+    {
+      "path": "Assets/Resources/Art/Home2.png",
+      "bytes": 1767810,
+      "sha256": "6cc08e988efe8789df452cfc102ebe8a5923b44453911c7e2e4e50e991424d38"
+    },
+    {
+      "path": "Assets/Resources/Art/Home2.png.meta",
+      "bytes": 3303,
+      "sha256": "28680a49da85036cc730ac86ae63db73558482f69ebeaec205aa8f9309b8719e"
+    },
+    {
+      "path": "Assets/Resources/Art/Home3.png",
+      "bytes": 1813174,
+      "sha256": "3863974950a3dd93a825ae38b7e21d8fdd397068ca73aec6b58283d949969c06"
+    },
+    {
+      "path": "Assets/Resources/Art/Home3.png.meta",
+      "bytes": 3303,
+      "sha256": "cb2072fd1b6b7be4a4a2b863ad4776dce7db0d8c5fb724b66094c96410bf0909"
+    },
+    {
+      "path": "Assets/Resources/Art/Home4.png",
+      "bytes": 1978959,
+      "sha256": "528f17687f9dc502dd360918f5fef22947c574d34638624a3071fce2d2dde313"
+    },
+    {
+      "path": "Assets/Resources/Art/Home4.png.meta",
+      "bytes": 3303,
+      "sha256": "3dca431b70faff93d6503ff7a6037ec330acb4eff299f0c0ab32fcee4411917a"
+    },
+    {
+      "path": "Assets/Resources/Art/Home5.png",
+      "bytes": 2203455,
+      "sha256": "587859283a54951000622027df29acb3608f45ecbdeba71ca31100d665b12496"
+    },
+    {
+      "path": "Assets/Resources/Art/Home5.png.meta",
+      "bytes": 3303,
+      "sha256": "1e2fa4805cf1ba798df9f81ecc160f2023737dc9665acd5443dd5e4c53cc6dfe"
+    },
+    {
+      "path": "Assets/Resources/Art/Items.png",
+      "bytes": 1434516,
+      "sha256": "4d3f5a30f3f46fafaf523320af8d8659a5c3fba0f67b5f469fe85ff19d621e7a"
+    },
+    {
+      "path": "Assets/Resources/Art/Items.png.meta",
+      "bytes": 3303,
+      "sha256": "6a4f9d1ba4a130924d3caf1b595455b02bd9e8b5a141240b0dcb5afeae6eb710"
+    },
+    {
+      "path": "Assets/Resources/Art/Items2.png",
+      "bytes": 779275,
+      "sha256": "cdb066c78955a729044938552ef576b6838e40f67261f21f9d590071e91373ed"
+    },
+    {
+      "path": "Assets/Resources/Art/Items2.png.meta",
+      "bytes": 3303,
+      "sha256": "9e43b1660cea35a870285f3c043f55230970d0fbf6350c71d5649c7931b4d3fa"
+    },
+    {
+      "path": "Assets/Resources/Art/Life.meta",
+      "bytes": 172,
+      "sha256": "ac9c0621c98137805a5be8974c68445b8dd3acc8b5168a3d1b0de983cfeedd7f"
+    },
+    {
+      "path": "Assets/Resources/Art/Life/Actions.png",
+      "bytes": 640980,
+      "sha256": "cfc843f728ebb9b4d5adfe8af667b2cd9414bca363f94b3c959ccffea4f7754f"
+    },
+    {
+      "path": "Assets/Resources/Art/Life/Actions.png.meta",
+      "bytes": 3303,
+      "sha256": "57f859264c28f4f4bf121922695263ae3726ffb515afd3bbb5c324baa93a62ed"
+    },
+    {
+      "path": "Assets/Resources/Art/Life/Bench.png",
+      "bytes": 166070,
+      "sha256": "1980897c9b04998d2f0abca52a6c59ed74b4e1f421fda9a4b46b3331f0335dae"
+    },
+    {
+      "path": "Assets/Resources/Art/Life/Bench.png.meta",
+      "bytes": 3303,
+      "sha256": "7a61172c3c43fff59616ebb2be66885ca6675a8cac49b3de942c0279881feaa2"
+    },
+    {
+      "path": "Assets/Resources/Art/Life/Cafe.png",
+      "bytes": 1183158,
+      "sha256": "824bdfc672f2f52208c427657846e83401595b5d9c59c7e4d0dc22633a56e4ae"
+    },
+    {
+      "path": "Assets/Resources/Art/Life/Cafe.png.meta",
+      "bytes": 3303,
+      "sha256": "ccc9a593582afd578645e6157829c5190273475f7139753c899e82f31f538e90"
+    },
+    {
+      "path": "Assets/Resources/Art/Life/Clinic.png",
+      "bytes": 699437,
+      "sha256": "fc67487865e73dad3a6607ebac671d53d130955e423de719d29901ef07f2bd87"
+    },
+    {
+      "path": "Assets/Resources/Art/Life/Clinic.png.meta",
+      "bytes": 3303,
+      "sha256": "1243448e781b2e34f8f512acec5dc43797674af63b8fe4f3d586f48a406f9543"
+    },
+    {
+      "path": "Assets/Resources/Art/Life/Comic.png",
+      "bytes": 21308,
+      "sha256": "2d635f186418a966c396419f779a6f99c3b0da73e1d7d814f9fa9497df1b688f"
+    },
+    {
+      "path": "Assets/Resources/Art/Life/Comic.png.meta",
+      "bytes": 3303,
+      "sha256": "5237b8f304955b598823b5e64c8cb26814915df34e86bb560c525d06cd50af9c"
+    },
+    {
+      "path": "Assets/Resources/Art/Life/EatChopsticks.png",
+      "bytes": 205074,
+      "sha256": "147b8852896f12ab7dff0369996b876cdd01ebf06a9914fb96c93a8f344480d9"
+    },
+    {
+      "path": "Assets/Resources/Art/Life/EatChopsticks.png.meta",
+      "bytes": 3303,
+      "sha256": "96b6a092112bece3b7a19b101d06f7fcf5f9818c8456301180201fe6c03c23ca"
+    },
+    {
+      "path": "Assets/Resources/Art/Life/EatHand.png",
+      "bytes": 645835,
+      "sha256": "a5a9350493457253310774c90d066a62807d03010cbf06f44612d3462c180274"
+    },
+    {
+      "path": "Assets/Resources/Art/Life/EatHand.png.meta",
+      "bytes": 3303,
+      "sha256": "818cbca374b7c55a92be7383e05fb2856ae789e9b4ed46a24075b5c49954be6a"
+    },
+    {
+      "path": "Assets/Resources/Art/Life/Food.png",
+      "bytes": 628548,
+      "sha256": "6896b58029fcf655be7b60f0324d7db413292dfae8318e5c2f20f33bf7c81092"
+    },
+    {
+      "path": "Assets/Resources/Art/Life/Food.png.meta",
+      "bytes": 3303,
+      "sha256": "c3f2a7cfdad534161e91a74cf479b3eec4cc2e4c2446420b871e82c71a570e59"
+    },
+    {
+      "path": "Assets/Resources/Art/Life/Mall.png",
+      "bytes": 1219773,
+      "sha256": "27f18b57af9abc9c458ea19f5e0c1d986839d28837fbcfdb798cdc4e9558d08d"
+    },
+    {
+      "path": "Assets/Resources/Art/Life/Mall.png.meta",
+      "bytes": 3303,
+      "sha256": "ed05fcf16a6d135cc06cd17d7ba8aad0aa8aaa08393c68ab2b54cdfa117c990e"
+    },
+    {
+      "path": "Assets/Resources/Art/Life/Minibus.png",
+      "bytes": 942681,
+      "sha256": "04611f7bb2719972f776ef822260c60e431553c28a17949ba40c8b576be98f42"
+    },
+    {
+      "path": "Assets/Resources/Art/Life/Minibus.png.meta",
+      "bytes": 3303,
+      "sha256": "e49a63b34357272fe8081cd869cda51e9ee7980933a1ecc2960e5bc5f29fd381"
+    },
+    {
+      "path": "Assets/Resources/Art/Life/MinibusStop.png",
+      "bytes": 17466,
+      "sha256": "563e7646548c879126c92e0b1477a71d0e8027947cbc340d43a894da59c5d0b2"
+    },
+    {
+      "path": "Assets/Resources/Art/Life/MinibusStop.png.meta",
+      "bytes": 3303,
+      "sha256": "03937a0431ebb0e4411de543eed3fb8264f1c48ac619f01235660e02934766cc"
+    },
+    {
+      "path": "Assets/Resources/Art/Life/Mtr.png",
+      "bytes": 674205,
+      "sha256": "6e1d4677eb816d8d0ded3e6861fa6d4f99ebfa9415f7124b08b0ec8b211073ba"
+    },
+    {
+      "path": "Assets/Resources/Art/Life/Mtr.png.meta",
+      "bytes": 3303,
+      "sha256": "27463d746fcbab89a5b7362f8f69a600b3d3c9b325db893fe61e56c926751473"
+    },
+    {
+      "path": "Assets/Resources/Art/Life/Park.png",
+      "bytes": 1561122,
+      "sha256": "93fc4426eba93f50de4547611c34e3052d43caa331823aff1430b22d244eebff"
+    },
+    {
+      "path": "Assets/Resources/Art/Life/Park.png.meta",
+      "bytes": 3303,
+      "sha256": "31cba160fc8a3436dce6148b3f1aa29f91160f72a8ca5c633a8bd40758a20cbd"
+    },
+    {
+      "path": "Assets/Resources/Art/Life/Pet_ash.png",
+      "bytes": 442757,
+      "sha256": "77234b82c9279524fcb014ccd96c47b20d48d81ab83d943ef64a5b3c63860b19"
+    },
+    {
+      "path": "Assets/Resources/Art/Life/Pet_ash.png.meta",
+      "bytes": 3303,
+      "sha256": "5b6e828c4f091bd1e4632366ec59c5680a3294b1f67d66bc8874950504e59704"
+    },
+    {
+      "path": "Assets/Resources/Art/Life/Pet_bsh.png",
+      "bytes": 417247,
+      "sha256": "f941707227dd7fa6539e1233de0877bbc96ee94404ab208d7e66b785f4aab46f"
+    },
+    {
+      "path": "Assets/Resources/Art/Life/Pet_bsh.png.meta",
+      "bytes": 3303,
+      "sha256": "cf3b58ea76417560bf47b48d419c3b8bedca72b158001ad6300e69e4ac5bb5d3"
+    },
+    {
+      "path": "Assets/Resources/Art/Life/Pet_corgi.png",
+      "bytes": 440049,
+      "sha256": "332ad0c009195dc21a7575a2def552f0a513deba7af53f9437965c880ce24d37"
+    },
+    {
+      "path": "Assets/Resources/Art/Life/Pet_corgi.png.meta",
+      "bytes": 3303,
+      "sha256": "de52e326600b35835271c3ef2b8f6e22ca76f73f2c05157933b8bc74db647a05"
+    },
+    {
+      "path": "Assets/Resources/Art/Life/Pet_ginger.png",
+      "bytes": 435203,
+      "sha256": "134195489791ad5bdf59998fdd1caf45eca01cb71665e944aedb8fd4f6db7170"
+    },
+    {
+      "path": "Assets/Resources/Art/Life/Pet_ginger.png.meta",
+      "bytes": 3303,
+      "sha256": "53cbadcddd7c82122f7dac9e7c1e6cc74abfe2f3c4865f1f1fcb7a65df2b999e"
+    },
+    {
+      "path": "Assets/Resources/Art/Life/Pet_poodle.png",
+      "bytes": 457821,
+      "sha256": "7cde55c3f8f40d20fa1975a9c74a2284a4f962feb375390017863d9f9a434e75"
+    },
+    {
+      "path": "Assets/Resources/Art/Life/Pet_poodle.png.meta",
+      "bytes": 3303,
+      "sha256": "afd0b45130e5baddcfe322993844b6d90f2f116ea1cee951a5ddb06847f7458a"
+    },
+    {
+      "path": "Assets/Resources/Art/Life/Pet_ragdoll.png",
+      "bytes": 416643,
+      "sha256": "7956d098b525d497bbfac42243abae876393947146bed322e7bacd497dd422c7"
+    },
+    {
+      "path": "Assets/Resources/Art/Life/Pet_ragdoll.png.meta",
+      "bytes": 3303,
+      "sha256": "d63b79873c80b094b03c39c268be2311ca43a0261ca6957cd72f4b9853fa84ce"
+    },
+    {
+      "path": "Assets/Resources/Art/Life/Pet_shiba.png",
+      "bytes": 455710,
+      "sha256": "ccc507bc5815a0d395f445cb3e012d52f9652de4a323b63074be87bdeacdec76"
+    },
+    {
+      "path": "Assets/Resources/Art/Life/Pet_shiba.png.meta",
+      "bytes": 3303,
+      "sha256": "70e34d9b35608bc46741dc27ad9951897b0d11cf33768316b52099135bc6fa5a"
+    },
+    {
+      "path": "Assets/Resources/Art/Life/Pet_siamese.png",
+      "bytes": 425411,
+      "sha256": "7e2b7d05426911d47ee360351407792ad8e30dc036f369919addb3ca215c42b4"
+    },
+    {
+      "path": "Assets/Resources/Art/Life/Pet_siamese.png.meta",
+      "bytes": 3303,
+      "sha256": "28aa55a183252f4ccfd0c39173c427fbb228d5f7245ff5ed842a2495ea9857d8"
+    },
+    {
+      "path": "Assets/Resources/Art/Life/Pet_tong.png",
+      "bytes": 439419,
+      "sha256": "f4dce76ec48f225bfe6b854c48879502016f2460425711570418470527ccebf1"
+    },
+    {
+      "path": "Assets/Resources/Art/Life/Pet_tong.png.meta",
+      "bytes": 3303,
+      "sha256": "6ca5b38981d79c3f8dbd9d0fd82fc956ffdf88a261ba1a18d9c4c66a42d02d11"
+    },
+    {
+      "path": "Assets/Resources/Art/Life/Pet_westie.png",
+      "bytes": 436135,
+      "sha256": "7ca4b3977a5c317d4cbcbb4812c71b70bdb276661daf0d09567c094277546ad6"
+    },
+    {
+      "path": "Assets/Resources/Art/Life/Pet_westie.png.meta",
+      "bytes": 3303,
+      "sha256": "8a193ab0340584db219bbf5da9c6e3e7f4e79649e7b8d2e95603bafc767b537d"
+    },
+    {
+      "path": "Assets/Resources/Art/Life/Places.png",
+      "bytes": 2080533,
+      "sha256": "90ad78f065458647b8e7233c147f1dc05df28613c376ed6684055d5aa3acf8f2"
+    },
+    {
+      "path": "Assets/Resources/Art/Life/Places.png.meta",
+      "bytes": 3303,
+      "sha256": "e0936c18590aae6adf94fb0f6a746b43c3874e4c0de47b1d41d402ad587df1c4"
+    },
+    {
+      "path": "Assets/Resources/Art/Life/Potato.png",
+      "bytes": 652766,
+      "sha256": "70d3194fa768e3c68af33405a34ae8d2fd5a6d8614e1adac6b44cb0079feec1b"
+    },
+    {
+      "path": "Assets/Resources/Art/Life/Potato.png.meta",
+      "bytes": 3303,
+      "sha256": "5349b4a3254e8c19ad7d9f7dbad40cb5d17c87ef12c3160d4afe5d19c9c1968b"
+    },
+    {
+      "path": "Assets/Resources/Art/Life/Store.png",
+      "bytes": 1081615,
+      "sha256": "3771c66038da2903144760f34427522acc69bd4fb1cde6a794fcf12bb3c4b57d"
+    },
+    {
+      "path": "Assets/Resources/Art/Life/Store.png.meta",
+      "bytes": 3303,
+      "sha256": "f4c6c6dc87d03db24d637363e1e067e2511b82f656808059ff4077e9bd5a0748"
+    },
+    {
+      "path": "Assets/Resources/Art/Life/Street.png",
+      "bytes": 1733047,
+      "sha256": "2c90f3673e2965f639698f04ad63994d19f46482fcbb4e6dc3fb8dadf21c8f31"
+    },
+    {
+      "path": "Assets/Resources/Art/Life/Street.png.meta",
+      "bytes": 3303,
+      "sha256": "63c67b84e5a1f79035aa56f92715f22c00d9e00b4d9fc9b31e5741a3f309e88e"
+    },
+    {
+      "path": "Assets/Resources/Art/Life/Table.png",
+      "bytes": 83828,
+      "sha256": "733afba9d914243d380ef7a4db7fad3d6b0b9cb139a4d3b4afba0f1bfc151289"
+    },
+    {
+      "path": "Assets/Resources/Art/Life/Table.png.meta",
+      "bytes": 3303,
+      "sha256": "aeccfbc7914b5ae3eda9bbaca096c393940fea762645487ab22785bd40204377"
+    },
+    {
+      "path": "Assets/Resources/Art/PlacesAtlas.png",
+      "bytes": 2787522,
+      "sha256": "a4e10573f335128e2b9cbd7df08d8da85c7cbf891f898a4e40c3d9cf15c26d08"
+    },
+    {
+      "path": "Assets/Resources/Art/PlacesAtlas.png.meta",
+      "bytes": 3303,
+      "sha256": "a324ed4d43e038faaffc42da0ec393cd5dc896fe61b781be6915aebfabe425e7"
+    },
+    {
+      "path": "Assets/Resources/Art/PostcardAtlas.png",
+      "bytes": 3153942,
+      "sha256": "186bde94dcaabd23aa71c08e17ef0522cfbf5d3155bc4cae795900d0e67c2c93"
+    },
+    {
+      "path": "Assets/Resources/Art/PostcardAtlas.png.meta",
+      "bytes": 3303,
+      "sha256": "21ad4167959e4e7cffad1093fccb2f461d563ffff9203a4a2571dbff3c53818d"
+    },
+    {
+      "path": "Assets/Resources/Art/PotatoAtlas.png",
+      "bytes": 1868086,
+      "sha256": "4a9b6e3b9772af928f7415f9a2b8129371c692585ad2e8433b9909de603248a1"
+    },
+    {
+      "path": "Assets/Resources/Art/PotatoAtlas.png.meta",
+      "bytes": 3303,
+      "sha256": "292b2659fa9a900f2be212e750d75ce8b3a82fe4962cce900a7abaef7052098d"
+    },
+    {
+      "path": "Assets/Resources/Art/PotatoWalk.png",
+      "bytes": 487148,
+      "sha256": "cd4a41e0b698b39feee69ad585fbb849702c4fab43140c2344030141a32c8103"
+    },
+    {
+      "path": "Assets/Resources/Art/PotatoWalk.png.meta",
+      "bytes": 3303,
+      "sha256": "3c6a35bd256e0eda443379ca6f63dd5a8d76e61117bab87fd92f7d5f2e838840"
+    },
+    {
+      "path": "Assets/Resources/Art/PotatoWave.png",
+      "bytes": 541461,
+      "sha256": "4fcd23fef0b14194c5868f9d4ba1e3ff552a7f95fe9c42b7b6289c33b08d96d2"
+    },
+    {
+      "path": "Assets/Resources/Art/PotatoWave.png.meta",
+      "bytes": 3303,
+      "sha256": "a844ce38f825706fa05e44421eeb399c6032d75be7b2d0a77b832d4716a0ea9f"
+    },
+    {
+      "path": "Assets/Resources/Audio.meta",
+      "bytes": 172,
+      "sha256": "e5bd85177ca7713a83e5afb2e3b73ce65f5c1cb2cb9a32eeccf4fdcd1590451a"
+    },
+    {
+      "path": "Assets/Resources/Audio/AfternoonJazz.mp3",
+      "bytes": 2881705,
+      "sha256": "50e5d3ba965809b4b873ebe68988c8a8ac1faee4f428087a805a3d2a98d7aee1"
+    },
+    {
+      "path": "Assets/Resources/Audio/AfternoonJazz.mp3.meta",
+      "bytes": 484,
+      "sha256": "8bb7825f8209594672945ece0e25c7e26fa357330ad5395ec772ab3de7fc0a8e"
+    },
+    {
+      "path": "Assets/Resources/Audio/Day.mp3",
+      "bytes": 4767883,
+      "sha256": "826b1d8d4a971b655cd968abec8b86f020d5ffe980b903a6b5c73c5eda7d2e36"
+    },
+    {
+      "path": "Assets/Resources/Audio/Day.mp3.meta",
+      "bytes": 487,
+      "sha256": "2552f14d2e86ee69ab147e1a11430d7d6a88d9ab5eb50e5a9dd4c1f4f19858b5"
+    },
+    {
+      "path": "Assets/Resources/Audio/LazyCoolJazz.mp3",
+      "bytes": 2881705,
+      "sha256": "db6f745313feec640e3a0ad3b83637ceb78666f616e7814fbaee4d0ae2a8d6a5"
+    },
+    {
+      "path": "Assets/Resources/Audio/LazyCoolJazz.mp3.meta",
+      "bytes": 484,
+      "sha256": "be7784892785c6d6bb93c14b9ef2d1c258f93c47ab032ed8ba3e689dadd27115"
+    },
+    {
+      "path": "Assets/Resources/Audio/Night.mp3",
+      "bytes": 4894422,
+      "sha256": "fd12b890f52ae785674c3e25024c537d93d796461b9b813b2ad4e70f0fb8069c"
+    },
+    {
+      "path": "Assets/Resources/Audio/Night.mp3.meta",
+      "bytes": 487,
+      "sha256": "7b6148a95d382b92807a5cb1619e4dc8c7b53bdaa68b77cdec0e8254ca2bcd88"
+    },
+    {
+      "path": "Assets/Resources/Audio/PixelRoomPiano.mp3",
+      "bytes": 1921235,
+      "sha256": "9560fb8a116386aa4f6c8c14b035ec2455e357c93c470682b1c0c3458eed35fd"
+    },
+    {
+      "path": "Assets/Resources/Audio/PixelRoomPiano.mp3.meta",
+      "bytes": 484,
+      "sha256": "4207941c7eef3a1bfb98066f74be26bd5323b58308a206574ebe1153bacdfe4a"
+    },
+    {
+      "path": "Assets/Resources/Audio/Travel.mp3",
+      "bytes": 4618117,
+      "sha256": "02247fc07c020307e1343cc099d2c8f4a1f966f1d6948f0a93743fdea4edfcc2"
+    },
+    {
+      "path": "Assets/Resources/Audio/Travel.mp3.meta",
+      "bytes": 487,
+      "sha256": "5c873cb52f3488c2d35c362f84c5ade325d3e20a08b903820747de86e17796e7"
+    },
+    {
+      "path": "Assets/Resources/Audio/bubble.wav",
+      "bytes": 358,
+      "sha256": "6bbbbe5f84a99e91e714ea7b6631561aaf35a41ccd9f336ebdd9b30fc56ca2b9"
+    },
+    {
+      "path": "Assets/Resources/Audio/bubble.wav.meta",
+      "bytes": 487,
+      "sha256": "c56de77a162488f3227ab64f37ca660c85708b4bb4794ffd538986700e66002d"
+    },
+    {
+      "path": "Assets/Resources/Audio/coin.wav",
+      "bytes": 28708,
+      "sha256": "b265083022d4c990de39065260cf9d13015b979520a4815c1f1bb9e73d0ef298"
+    },
+    {
+      "path": "Assets/Resources/Audio/coin.wav.meta",
+      "bytes": 487,
+      "sha256": "61f8f05416be5318823ba0abed6912eac58b646f8b85cebab3e00eedfeed44d2"
+    },
+    {
+      "path": "Assets/Resources/Audio/company.wav",
+      "bytes": 28708,
+      "sha256": "b87c128f64f62a9f89088cf0b6ead6189f5f14a479fb4364d568222e535c8df1"
+    },
+    {
+      "path": "Assets/Resources/Audio/company.wav.meta",
+      "bytes": 487,
+      "sha256": "4233dfb6d72789807411bbc41f165c8ca935770683eef7747db67be9cf21cd70"
+    },
+    {
+      "path": "Assets/Resources/Audio/mail.wav",
+      "bytes": 6562,
+      "sha256": "d1c4d6f078a5634e9ca5f6f7c6563716a7e83d4cabe0d54517459ffb22d2af76"
+    },
+    {
+      "path": "Assets/Resources/Audio/mail.wav.meta",
+      "bytes": 484,
+      "sha256": "2cb824e53ef9febe1a06ed819276af7ffabbac71c4c7906f045e996cf128deb5"
+    },
+    {
+      "path": "Assets/Resources/Audio/page.wav",
+      "bytes": 25802,
+      "sha256": "921974adb54018782b14b0b5e0b0abebe380038d5e882aaa837db7f4c5a92506"
+    },
+    {
+      "path": "Assets/Resources/Audio/page.wav.meta",
+      "bytes": 487,
+      "sha256": "55c2ee7275eea51e00701503392096889e387ceaf68129ea524ba905d6d99198"
+    },
+    {
+      "path": "Assets/Resources/Audio/purchase.wav",
+      "bytes": 4434,
+      "sha256": "567d422717b2c44d55bb50fd82f063ef082ff3d11c1ed693f0ac3287ee6d792e"
+    },
+    {
+      "path": "Assets/Resources/Audio/purchase.wav.meta",
+      "bytes": 484,
+      "sha256": "5e9d9eea5fb1443f04e3ae3ec54f5c367f522c3560658e3a2a2c97670f9a3a5c"
+    },
+    {
+      "path": "Assets/Resources/Audio/return.wav",
+      "bytes": 28708,
+      "sha256": "7ae4806238b026fbd72cce26588b03c4cdbc81f96e812c62f428a03c1d47939c"
+    },
+    {
+      "path": "Assets/Resources/Audio/return.wav.meta",
+      "bytes": 487,
+      "sha256": "74d2e7b64d1cd8771f245ce816dd44bef9b99fbd43488351dcb3740f6a5cfbab"
+    },
+    {
+      "path": "Assets/Resources/Audio/stamp.wav",
+      "bytes": 28708,
+      "sha256": "38250a0353bf988a46427960ac6be6b250047094521103a880033edbaffca2ca"
+    },
+    {
+      "path": "Assets/Resources/Audio/stamp.wav.meta",
+      "bytes": 487,
+      "sha256": "fe8cfc5bae9d8661439b7aa1a6d2a09d543e985fa7f21f86854ae3f6e2e101d3"
+    },
+    {
+      "path": "Assets/Resources/Fonts.meta",
+      "bytes": 172,
+      "sha256": "bc236d902b9cdc806391da75ce6ce34934153b414c942bae9511c2c8ee5d6334"
+    },
+    {
+      "path": "Assets/Resources/Fonts/FONT-SOURCE.txt",
+      "bytes": 506,
+      "sha256": "b3b54d22e6006bd08adafb8b94caf0141eaff02a0fa5f080253d125204ed0cd7"
+    },
+    {
+      "path": "Assets/Resources/Fonts/FONT-SOURCE.txt.meta",
+      "bytes": 158,
+      "sha256": "9c4ee798ef0274e2ed1d338834fbf8cfc306dc6e3a25ebabb2d77948374e7f3d"
+    },
+    {
+      "path": "Assets/Resources/Fonts/NotebookSans.ttf",
+      "bytes": 9869772,
+      "sha256": "249f630d8b6531c02040881c1d17501265c4d4c291f8304cf2ba191dadd6a305"
+    },
+    {
+      "path": "Assets/Resources/Fonts/NotebookSans.ttf.meta",
+      "bytes": 486,
+      "sha256": "c29640a9d28fa5b73c43661b96465b05bf824b47dcd8b3c22ba6167f4dc05c04"
+    },
+    {
+      "path": "Assets/Resources/Fonts/OFL.txt",
+      "bytes": 4388,
+      "sha256": "1c05c68c34f9708415aada51f17e1b0092d2cea709bf4a94cd38114f9e73d7d9"
+    },
+    {
+      "path": "Assets/Resources/Fonts/OFL.txt.meta",
+      "bytes": 158,
+      "sha256": "399fc9668d8b51790b3b15246de22b7a7bc708c67a1193bc3465631f711aae36"
+    },
+    {
+      "path": "Assets/Resources/Fonts/Potato SDF.asset",
+      "bytes": 9098203,
+      "sha256": "56923cfe093ec3f21b60a9663bde28ba591fa77d0668683421b57115feb459c9"
+    },
+    {
+      "path": "Assets/Resources/Fonts/Potato SDF.asset.meta",
+      "bytes": 189,
+      "sha256": "cac2fad2799cf1e4f4556b151eef0a53d9434c8b51f85bdb66f306a0de23be53"
+    },
+    {
+      "path": "Assets/Resources/Hospital.meta",
+      "bytes": 172,
+      "sha256": "9ca26ef8dd6c0f3fb79b71b48c733a76d766f35cc17fc960134529468a94b3bf"
+    },
+    {
+      "path": "Assets/Resources/Hospital/FeePoster.jpg",
+      "bytes": 3161978,
+      "sha256": "48362acd753567793ae4f505c24d3fd0602a3a8079b6201e0b505b15bfd5d017"
+    },
+    {
+      "path": "Assets/Resources/Hospital/FeePoster.jpg.meta",
+      "bytes": 3303,
+      "sha256": "47dc6a5034cba1b9cd35871d2e56e63c391c3fec15e6bc4ab4d7768962f981f2"
+    },
+    {
+      "path": "Assets/Resources/Photos.meta",
+      "bytes": 172,
+      "sha256": "318980e525a91225c09a8c126891d6e7cfb396c4d12ebff7c47253b457f124f2"
+    },
+    {
+      "path": "Assets/Resources/Photos/back-alley.jpg",
+      "bytes": 534380,
+      "sha256": "bed08b986058d318922defbfae7624541990799e4f3469846fa1408603297368"
+    },
+    {
+      "path": "Assets/Resources/Photos/back-alley.jpg.meta",
+      "bytes": 3303,
+      "sha256": "82521c1a5f96b3fb28afc9ec51fd0568031f5a6be659b553959e0b83a432cd28"
+    },
+    {
+      "path": "Assets/Resources/Photos/back-alley_thumb.jpg",
+      "bytes": 58631,
+      "sha256": "6badfa4816129017da8045af45fd30a0b3af01654c622979c039182ed55ef8de"
+    },
+    {
+      "path": "Assets/Resources/Photos/back-alley_thumb.jpg.meta",
+      "bytes": 3303,
+      "sha256": "b8e8b3c03cd0a32cd3328276c844e8e66959aac1671aebe27b8b9915ef0cc0fb"
+    },
+    {
+      "path": "Assets/Resources/Photos/canal-road-villain.jpg",
+      "bytes": 505216,
+      "sha256": "4f4a1530bd7da3355a0c8753bcf4509e98a9617ab098f519914bbeeb8d66aec5"
+    },
+    {
+      "path": "Assets/Resources/Photos/canal-road-villain.jpg.meta",
+      "bytes": 3303,
+      "sha256": "c3ea15a3393d6279cded246f34a6abea84a87988ab56bdfb302106973483d22c"
+    },
+    {
+      "path": "Assets/Resources/Photos/canal-road-villain_thumb.jpg",
+      "bytes": 59804,
+      "sha256": "78235343f8848ad534542ec7d62795e63b4dd4d1104cb8a3119889469e7f5332"
+    },
+    {
+      "path": "Assets/Resources/Photos/canal-road-villain_thumb.jpg.meta",
+      "bytes": 3303,
+      "sha256": "19918cd62dab7ddfe7fd280dd9c7cfb4319506c96879663205f6d9f40c8a9a41"
+    },
+    {
+      "path": "Assets/Resources/Photos/central-across-harbour.jpg",
+      "bytes": 259816,
+      "sha256": "6a14bfca3275aecc859300167512b0955eaa32c8dea4f0e31276d60cb8b9e074"
+    },
+    {
+      "path": "Assets/Resources/Photos/central-across-harbour.jpg.meta",
+      "bytes": 3303,
+      "sha256": "38b5c704507f94bac9234b21330478b302b349a8205100c5ae825c7738efdf64"
+    },
+    {
+      "path": "Assets/Resources/Photos/central-across-harbour_thumb.jpg",
+      "bytes": 36636,
+      "sha256": "06928d44f7c735e6d4bbf8e345b08cf87dcf2895c25dcaf2989325e743edc826"
+    },
+    {
+      "path": "Assets/Resources/Photos/central-across-harbour_thumb.jpg.meta",
+      "bytes": 3303,
+      "sha256": "5ef111cf463cbf1ff528799b933469dbc8d17b90ffa8e32851a3d01d9092c0d8"
+    },
+    {
+      "path": "Assets/Resources/Photos/central-wheel.jpg",
+      "bytes": 199033,
+      "sha256": "45b61101ac7f1eadfe4195d83f5c4f249e91cf4dd01fce29d0ca718466db9aec"
+    },
+    {
+      "path": "Assets/Resources/Photos/central-wheel.jpg.meta",
+      "bytes": 3303,
+      "sha256": "f8a1536927dd963f7d5b466e51f5493f2d62772333fe84271e91c4560281ba7e"
+    },
+    {
+      "path": "Assets/Resources/Photos/central-wheel_thumb.jpg",
+      "bytes": 40322,
+      "sha256": "96d0a07e88ed9e19adc6baa95e33b0ed92344cb795b84bacdac67034f790e121"
+    },
+    {
+      "path": "Assets/Resources/Photos/central-wheel_thumb.jpg.meta",
+      "bytes": 3303,
+      "sha256": "e90aed33c9ec7c1b16b6d12d7b3f28c5b5ea498445160e3a8bc08d7dbb6c7315"
+    },
+    {
+      "path": "Assets/Resources/Photos/chungking-mansions.jpg",
+      "bytes": 208410,
+      "sha256": "2e2998b1588d94b53fc97f6739db50d1f878e0945dd37392a3a9bca89e77b041"
+    },
+    {
+      "path": "Assets/Resources/Photos/chungking-mansions.jpg.meta",
+      "bytes": 3303,
+      "sha256": "b25783650af48becd1006ff43cce8f9dd40712454f26bcc7089dbbade27d6d13"
+    },
+    {
+      "path": "Assets/Resources/Photos/chungking-mansions_thumb.jpg",
+      "bytes": 49212,
+      "sha256": "75ad69bca3f57434c781cf40c64bea8d6b1c0b4ca0794c4ae5120c01ce4ee347"
+    },
+    {
+      "path": "Assets/Resources/Photos/chungking-mansions_thumb.jpg.meta",
+      "bytes": 3303,
+      "sha256": "c3ee09f948326932a28837b53d3248bacb8785b90baea69d5014500a1c759c8c"
+    },
+    {
+      "path": "Assets/Resources/Photos/colour-tenements.jpg",
+      "bytes": 447082,
+      "sha256": "d3ca0b8ccad3e0b0941d2438a80ff3a1bcef9627452b246cbfd7feb81a16bf7f"
+    },
+    {
+      "path": "Assets/Resources/Photos/colour-tenements.jpg.meta",
+      "bytes": 3303,
+      "sha256": "261514769941c1b4153de0d2f8b2d3f3bbdcf78dd981bcc8e864cfb3d6531a20"
+    },
+    {
+      "path": "Assets/Resources/Photos/colour-tenements_thumb.jpg",
+      "bytes": 52196,
+      "sha256": "d64099ed922d89a09c817795b5427843ec977076613bfc9d483a466bd4f7ff4e"
+    },
+    {
+      "path": "Assets/Resources/Photos/colour-tenements_thumb.jpg.meta",
+      "bytes": 3303,
+      "sha256": "4fce7bd64aa85e034368d5e22e8075673f5cc889cda94c16381e384293ea09a7"
+    },
+    {
+      "path": "Assets/Resources/Photos/monster-building.jpg",
+      "bytes": 385146,
+      "sha256": "4d3b3f55fdf18d5827e5e4f1a6090d2cd336e61de09299047e638864f121dad7"
+    },
+    {
+      "path": "Assets/Resources/Photos/monster-building.jpg.meta",
+      "bytes": 3303,
+      "sha256": "01e9391da967fef4c49446f8a084a93e12a1dffee9c15d376309ed538a39e3da"
+    },
+    {
+      "path": "Assets/Resources/Photos/monster-building_thumb.jpg",
+      "bytes": 45293,
+      "sha256": "b6b854277181ef5a8e90ecdcdf3725b1420d9840ed0a59210bf2aff4016db8bc"
+    },
+    {
+      "path": "Assets/Resources/Photos/monster-building_thumb.jpg.meta",
+      "bytes": 3303,
+      "sha256": "c398714c5fd997cf50039371a9331b409f1b8c8c51ed0fdeaf34db5f66f4df03"
+    },
+    {
+      "path": "Assets/Resources/Photos/nam-cheong-pawn.jpg",
+      "bytes": 308985,
+      "sha256": "2f5771df128d7c152e8a64d8d8815131e669ea32742bebb9c2eb491f08f52b50"
+    },
+    {
+      "path": "Assets/Resources/Photos/nam-cheong-pawn.jpg.meta",
+      "bytes": 3303,
+      "sha256": "83f1c80e8ac036d76ffc15e54ddfd902626021398ee9c7aca21828dd65f57c4a"
+    },
+    {
+      "path": "Assets/Resources/Photos/nam-cheong-pawn_thumb.jpg",
+      "bytes": 42038,
+      "sha256": "643e633541201cec91782edbc64d40605735dfd317da0507671e16b57e4703cc"
+    },
+    {
+      "path": "Assets/Resources/Photos/nam-cheong-pawn_thumb.jpg.meta",
+      "bytes": 3303,
+      "sha256": "88733bb87f343fc65342e84d598705f540a7664146ebe2151709a75553046108"
+    },
+    {
+      "path": "Assets/Resources/Photos/night-arches.jpg",
+      "bytes": 246053,
+      "sha256": "e79a2e758d2f79a2578c0e73a78f5e2d9cfcbc5a0e02acafd31f49dbedfb32f5"
+    },
+    {
+      "path": "Assets/Resources/Photos/night-arches.jpg.meta",
+      "bytes": 3303,
+      "sha256": "578464e63794fe9ef54b9d7b7ba52a4d5760f7ac14895fcdf9bd7c5e7f795154"
+    },
+    {
+      "path": "Assets/Resources/Photos/night-arches_thumb.jpg",
+      "bytes": 34976,
+      "sha256": "1a646589e4f0fcf988068ee0868386f6fc216b1ae040c47863a65df5997e8ba1"
+    },
+    {
+      "path": "Assets/Resources/Photos/night-arches_thumb.jpg.meta",
+      "bytes": 3303,
+      "sha256": "3516d392f4d35235618ba585520494caab830779611bdc445056a02b4906f7ee"
+    },
+    {
+      "path": "Assets/Resources/Photos/red-taxi-arches.jpg",
+      "bytes": 342903,
+      "sha256": "dd1d176da90e0fc7e1a903ec5441cb5ecc6440d0e58e7472646e33d047e97312"
+    },
+    {
+      "path": "Assets/Resources/Photos/red-taxi-arches.jpg.meta",
+      "bytes": 3303,
+      "sha256": "3762bea07a0af5c860e0f7853b912133ac7327d466a6d306a7a90048ec79c25e"
+    },
+    {
+      "path": "Assets/Resources/Photos/red-taxi-arches_thumb.jpg",
+      "bytes": 53893,
+      "sha256": "fb342b579d602be680b58d1c3327975172b3b87333eeb610c64452f72c0feeea"
+    },
+    {
+      "path": "Assets/Resources/Photos/red-taxi-arches_thumb.jpg.meta",
+      "bytes": 3303,
+      "sha256": "278f7ec6d9d689de071e790df6b56073be2ca4346441f6ee7d6c5277f259cbc9"
+    },
+    {
+      "path": "Assets/Resources/Photos/stonecutters-harbour.jpg",
+      "bytes": 314544,
+      "sha256": "374aba9f4862669f100554aa0473749d7a3845e2abe104669c8ec3f8ea2af9b8"
+    },
+    {
+      "path": "Assets/Resources/Photos/stonecutters-harbour.jpg.meta",
+      "bytes": 3303,
+      "sha256": "c3ab1107ae80c5260ef4dfdaedda4ee2f099c9bd844ad72c94632637d490024e"
+    },
+    {
+      "path": "Assets/Resources/Photos/stonecutters-harbour_thumb.jpg",
+      "bytes": 27868,
+      "sha256": "1e5f52ec2c8a5eebab30eca87a03d19c0b4a0f385507b57cecd5dd29134e3f3e"
+    },
+    {
+      "path": "Assets/Resources/Photos/stonecutters-harbour_thumb.jpg.meta",
+      "bytes": 3303,
+      "sha256": "1f22c0fd20b2a6d9fc312ba3dd3d0125257d44efb7f2665b7df16ae82192c547"
+    },
+    {
+      "path": "Assets/Resources/Photos/tram-139.jpg",
+      "bytes": 226208,
+      "sha256": "b7925aca76c0bfeb59b435e1b490a1e151043ade93583e139b49827bd8ff93de"
+    },
+    {
+      "path": "Assets/Resources/Photos/tram-139.jpg.meta",
+      "bytes": 3303,
+      "sha256": "e28a1844c34ac862cf2358c2d6c966a2411bc6fafb2dfebb5edc3e378794e79b"
+    },
+    {
+      "path": "Assets/Resources/Photos/tram-139_thumb.jpg",
+      "bytes": 48719,
+      "sha256": "b92f55bfcfa25701ac2c1bffa3ebc0c63c3120c523a5415037755cbd35539fb6"
+    },
+    {
+      "path": "Assets/Resources/Photos/tram-139_thumb.jpg.meta",
+      "bytes": 3303,
+      "sha256": "2353dcd4e74a679e9c8ab4edace80970eddcb7791d2a6c809bddc0b3f80f0ea9"
+    },
+    {
+      "path": "Assets/Scenes.meta",
+      "bytes": 172,
+      "sha256": "553efe394297ef6b6f494fd2d8bb4bc31c17f2caf767f433203b3251a43e7d52"
+    },
+    {
+      "path": "Assets/Scenes/PotatoHome.unity",
+      "bytes": 4427,
+      "sha256": "b6f03d4a162d098fac762adc858bdade05f0446892183327c4a148041fe7a5f5"
+    },
+    {
+      "path": "Assets/Scenes/PotatoHome.unity.meta",
+      "bytes": 155,
+      "sha256": "cb4f2eada790e8a9c9f6fe2f57352c33d6cc9ea8ee3ce0773e6bb72ca72939d4"
+    },
+    {
+      "path": "Assets/Scripts.meta",
+      "bytes": 172,
+      "sha256": "db532268a6ccdb511bf0025540ce26f33b3e561278b095e0a2144c54f2323d6a"
+    },
+    {
+      "path": "Assets/Scripts/CozyUI.cs",
+      "bytes": 13579,
+      "sha256": "5ca46e1c7dbbffe21355125e535d4094852e79c433b8b920f582ffd9e87ae51d"
+    },
+    {
+      "path": "Assets/Scripts/CozyUI.cs.meta",
+      "bytes": 243,
+      "sha256": "a2b619bd742bf5ce2e895c810875dd186f4bcaf4918ef5750ea5bfebea16b80a"
+    },
+    {
+      "path": "Assets/Scripts/PotatoCity.cs",
+      "bytes": 15829,
+      "sha256": "da37f31c49704aa29896ca830b852da83f810e56e9af3c768f76b0d255302d59"
+    },
+    {
+      "path": "Assets/Scripts/PotatoCity.cs.meta",
+      "bytes": 243,
+      "sha256": "c7eb7b10b85dd8051bcae2dd9c849639e8a1b2a621f55af9a62ec73d5449c087"
+    },
+    {
+      "path": "Assets/Scripts/PotatoCityPages.cs",
+      "bytes": 40443,
+      "sha256": "a15bd26862d62db9e7f94f321da261b578f7ecd6a48ccb2eb77e9a9162d8f42c"
+    },
+    {
+      "path": "Assets/Scripts/PotatoCityPages.cs.meta",
+      "bytes": 243,
+      "sha256": "1f3d201f068dc8022322680657307ed92aac228e23b92abb245cd1a69f354dbb"
+    },
+    {
+      "path": "Assets/Scripts/PotatoGame.cs",
+      "bytes": 19929,
+      "sha256": "bf4c84807ff4aa32fbef5f7dcb1079388257eff8d39215b1c2eb8f4d092261df"
+    },
+    {
+      "path": "Assets/Scripts/PotatoGame.cs.meta",
+      "bytes": 243,
+      "sha256": "b069ffe0f3194f67f4c6900bf56cae8411d667f77c4044c63d8e42e93c7f5d6d"
+    },
+    {
+      "path": "Assets/Scripts/PotatoModel.cs",
+      "bytes": 31925,
+      "sha256": "f8fce0e0ca1ffc24e7dd7d561576c9182954f08a9ba00afe63712f618f88b87f"
+    },
+    {
+      "path": "Assets/Scripts/PotatoModel.cs.meta",
+      "bytes": 243,
+      "sha256": "7a546af140e7f149b21a63c38bc2e08e2a1fcb34bf644376adf259c977af48d9"
+    },
+    {
+      "path": "Assets/Scripts/PotatoPages.cs",
+      "bytes": 29464,
+      "sha256": "babcb6c487839d9f3301f8842f2c6f6713086ac3751306318e16f4e2acaa1660"
+    },
+    {
+      "path": "Assets/Scripts/PotatoPages.cs.meta",
+      "bytes": 243,
+      "sha256": "b43f893686be6150c1b977a2a32917b1b688202ce4048aaf94462a6eb38dd800"
+    },
+    {
+      "path": "Assets/Scripts/PotatoPrivacy.cs",
+      "bytes": 2921,
+      "sha256": "64598f133527ad054f80d66771ef1af720f8e39612df8a1f8e9e93c33ec8fb7d"
+    },
+    {
+      "path": "Assets/Scripts/PotatoPrivacy.cs.meta",
+      "bytes": 243,
+      "sha256": "6552897d7dbfbdb8bdb355b9f53c2e487abcad1ecf508647bd81ba8aeb205f9e"
+    },
+    {
+      "path": "Assets/Scripts/PotatoRules.cs",
+      "bytes": 33094,
+      "sha256": "db406c488832be8f441631b6db028ca79686f71a9082502d6135ea59a2f74861"
+    },
+    {
+      "path": "Assets/Scripts/PotatoRules.cs.meta",
+      "bytes": 243,
+      "sha256": "53f1c3825dfb7accae5079acfbc105de0d2a36218cff6f02defa31f6e84d6804"
+    },
+    {
+      "path": "Assets/Scripts/PotatoSave.cs",
+      "bytes": 5125,
+      "sha256": "43479dc5f87fd0d172eda36198c6d37e9d404b15081ce2222bde990ea724a9a6"
+    },
+    {
+      "path": "Assets/Scripts/PotatoSave.cs.meta",
+      "bytes": 243,
+      "sha256": "17832326d5fa5cf5ccc5f30b6e43ac981b40223251f7b591611259916d1e4509"
+    },
+    {
+      "path": "Assets/Scripts/PotatoSound.cs",
+      "bytes": 7861,
+      "sha256": "87d80cc28aeee10c816caebdc923b909c72fef85531d27ac174693b6ddf87b00"
+    },
+    {
+      "path": "Assets/Scripts/PotatoSound.cs.meta",
+      "bytes": 243,
+      "sha256": "2693cf81fd150056f16e6e438c43f7ecef01aa830055d2216f7ac3684ba6e1c0"
+    },
+    {
+      "path": "Assets/Scripts/PotatoStage.cs",
+      "bytes": 17476,
+      "sha256": "f32ec1269bc7fef2fb40ff439800c19b89233ae14fc51aca395094d416d81366"
+    },
+    {
+      "path": "Assets/Scripts/PotatoStage.cs.meta",
+      "bytes": 243,
+      "sha256": "6f5d46d061a7565398705919332387d07449ed67134373d12899c6e902364e9d"
+    },
+    {
+      "path": "Assets/Scripts/PotatoStory.cs",
+      "bytes": 24613,
+      "sha256": "826ff130d705c68dd664a58fcec76bb1e5f931087814a057bcb0a4551efb0938"
+    },
+    {
+      "path": "Assets/Scripts/PotatoStory.cs.meta",
+      "bytes": 243,
+      "sha256": "9a8c25748409f0ced35e60e6263730a0d43e2ce09422e0c1ff32bf88b71eb412"
+    },
+    {
+      "path": "Assets/Scripts/PotatoStudy.cs",
+      "bytes": 6803,
+      "sha256": "11babbb7e5167c2c5373e08126cb998bc0731203a75f80a5f3e6d589174b8a23"
+    },
+    {
+      "path": "Assets/Scripts/PotatoStudy.cs.meta",
+      "bytes": 243,
+      "sha256": "2608fe7cd6c4b7ff237e3952188bb12465c56b53640053cb8999ba1d4e7295da"
+    },
+    {
+      "path": "Assets/Scripts/PotatoTapGate.cs",
+      "bytes": 8187,
+      "sha256": "904b08001a325e8a171e7910b362aff10316755d7c7e170c41e7f5db751c7bdc"
+    },
+    {
+      "path": "Assets/Scripts/PotatoTapGate.cs.meta",
+      "bytes": 243,
+      "sha256": "056e9b2cb777be983e1c7b46e28ae852c80726a288394e794e91165b34fb7374"
+    },
+    {
+      "path": "Assets/TapSDK.meta",
+      "bytes": 172,
+      "sha256": "e11bba320549301f0690a831e36f425b6c793c1b0974054d81dcb0318e502021"
+    },
+    {
+      "path": "Assets/TapSDK/Compliance.meta",
+      "bytes": 172,
+      "sha256": "048c699c3fee90cc2310d1247b3cd373bb22c97399d648f038542273ddbbed9e"
+    },
+    {
+      "path": "Assets/TapSDK/Compliance/link.xml",
+      "bytes": 151,
+      "sha256": "eccd67bc4043961628fb83e55e2088f31aa917c67435301fc30c3eaa1339b411"
+    },
+    {
+      "path": "Assets/TapSDK/Compliance/link.xml.meta",
+      "bytes": 158,
+      "sha256": "14a3296bda671111826d9fb6e1b8b7bd1bef49d85b94385cc5a9f482a07c9840"
+    },
+    {
+      "path": "Assets/TapSDK/Core.meta",
+      "bytes": 172,
+      "sha256": "ed9ff670f7e545cbfb5ae0a0c2107cfd8a0b732ad5599c54f3672102dc7d0a64"
+    },
+    {
+      "path": "Assets/TapSDK/Core/link.xml",
+      "bytes": 147,
+      "sha256": "6eae2f219657eeca533f1e4bb3e0111380c4d81f11492a97f4c9bbfbc883cb46"
+    },
+    {
+      "path": "Assets/TapSDK/Core/link.xml.meta",
+      "bytes": 158,
+      "sha256": "9b18bff9a1bea4eff0c9dcfef1fd8c7da15e0faa4aff9a45bd411d6a9ff01a6c"
+    },
+    {
+      "path": "Assets/TapSDK/Login.meta",
+      "bytes": 172,
+      "sha256": "3070d3cca32a75133509355632315f79e8535d40c9d0988ad1499ed68cd457aa"
+    },
+    {
+      "path": "Assets/TapSDK/Login/link.xml",
+      "bytes": 149,
+      "sha256": "d2451b80239406ff815ba8ed1eff8219952c9f417349bd798d8eb51acbbb1e76"
+    },
+    {
+      "path": "Assets/TapSDK/Login/link.xml.meta",
+      "bytes": 158,
+      "sha256": "5db0b79e242a0b04bb24c352d97fa21a2ef9a16ad514fdbe966ffa87acb4f22a"
+    },
+    {
+      "path": "Assets/TextMesh Pro.meta",
+      "bytes": 172,
+      "sha256": "8529d84d190a68aeb1a16e0a90308081bd30a738dbcc63c63b2a93c53b9a11b3"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Documentation.meta",
+      "bytes": 172,
+      "sha256": "07a8d45855ad4e331c57cd451654a5a454b001ef9677b725b856810b7d58b77b"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Documentation/TextMesh Pro User Guide 2016.pdf",
+      "bytes": 694398,
+      "sha256": "93d6d3ca8a7d8423b01faacd00fa3921fe055fb2187873653a925e4cc1af85c0"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Documentation/TextMesh Pro User Guide 2016.pdf.meta",
+      "bytes": 155,
+      "sha256": "942ef57b7129d587bdee03541cc260cf55af7564d9d2d582ea11eacd3de278ca"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Fonts.meta",
+      "bytes": 172,
+      "sha256": "11e80153fa39b86efadb8917ecde12a0402fe0729f2c88f6f8d1999f3fb04748"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Fonts/LiberationSans - OFL.txt",
+      "bytes": 4469,
+      "sha256": "37f8552e9a874ec10710dc0ede6a9adf168e6609fbd02a507f35629373b85a48"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Fonts/LiberationSans - OFL.txt.meta",
+      "bytes": 177,
+      "sha256": "5dbec32c014c17d94674af5f1494d49b42ba00edd50397f895f088c868ccbf86"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Fonts/LiberationSans.ttf",
+      "bytes": 350200,
+      "sha256": "e5b0af421ea2bfbc1ac8d251d647268087ae82786234c57f757d1f0b90fa8b49"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Fonts/LiberationSans.ttf.meta",
+      "bytes": 414,
+      "sha256": "e2e35a015703584fb119355fa02631764d111c3e112d32519801d46bd697b596"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Resources.meta",
+      "bytes": 172,
+      "sha256": "167448559db07c9857b206a0f5a0aedcd6a6dad900d618b35b0702d636573805"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Resources/Fonts & Materials.meta",
+      "bytes": 191,
+      "sha256": "8917470a9265beb1ef55a28c6a3718eb12ec8004554499998cc345056247995f"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Drop Shadow.mat",
+      "bytes": 2975,
+      "sha256": "b6b65c34e4907dd3006c2217fc8a4cef81b6da24df0a3de8e2288199eb6c5a9d"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Drop Shadow.mat.meta",
+      "bytes": 179,
+      "sha256": "ef2eee63b288d47823da38109e3e8c879f4717a82dc662ac2d5e2460dacde698"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset",
+      "bytes": 9266,
+      "sha256": "6f33cdcd6d203e175a012087a4209442c2b6811baeebce6c875bb8c8d7c64e51"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset.meta",
+      "bytes": 179,
+      "sha256": "d6d86504040cf6e736767fda9bdef494afb06d5304384243e2dd703eba3a4a3d"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Outline.mat",
+      "bytes": 2889,
+      "sha256": "25874340976d40e9f9e8abf731b7f32e5a478541dead9288140bd60c7a3287d9"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Outline.mat.meta",
+      "bytes": 179,
+      "sha256": "a8cf0ee9888a163e892368b4660b9c62a7375e7f8afdb8ee02e5c91ca1cdb355"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF.asset",
+      "bytes": 2256862,
+      "sha256": "c3ff50e3133d989180b187748ffc67903f1fede099a5b85b4fcbd8cb6e8be958"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF.asset.meta",
+      "bytes": 179,
+      "sha256": "37233890984555987cb585551bc885069f2849a9b0d1c2191af073b9376aa10f"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Resources/LineBreaking Following Characters.txt",
+      "bytes": 269,
+      "sha256": "3a73e5ffe2510756dd3c2e982fdc1218b4be82c6e21abde88070d6860e1bc8e6"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Resources/LineBreaking Following Characters.txt.meta",
+      "bytes": 179,
+      "sha256": "d5a86d8b7db6aa3ca6f4a63750eb94e0c42a64909b47d8c6c6f2565845534490"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Resources/LineBreaking Leading Characters.txt",
+      "bytes": 95,
+      "sha256": "62d3f4d5f64aaf885692d2d13a8313f6918e6e4c5aeb3990a43f614652bfd89c"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Resources/LineBreaking Leading Characters.txt.meta",
+      "bytes": 179,
+      "sha256": "6a925814d5e251a0ced6de210db2bacf2de29b4f0dc2991e85c908632e9565e4"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Resources/Sprite Assets.meta",
+      "bytes": 191,
+      "sha256": "5605affac803b81f876f35577f075c9b7e5ea73cf812fdfcc74277bf0f40140e"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Resources/Sprite Assets/EmojiOne.asset",
+      "bytes": 13441,
+      "sha256": "155fff99f467baa93dd2d0886df466bd242cd5e3c8c60c9d43e9cdad269f7f54"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Resources/Sprite Assets/EmojiOne.asset.meta",
+      "bytes": 179,
+      "sha256": "097525b164260b0fb34b4e0c73b3187c693f4dfe2991f475b5b416dbf07dfbbc"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Resources/Style Sheets.meta",
+      "bytes": 191,
+      "sha256": "1fdf0423552f46284fb97894f36adcd34d32e595aaf5c7cf1ce38a2349faaf89"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Resources/Style Sheets/Default Style Sheet.asset",
+      "bytes": 4953,
+      "sha256": "01222ac025a1f5b90f3f129eee7bfac7fb05223a1edd84aecf2171ec34b10708"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Resources/Style Sheets/Default Style Sheet.asset.meta",
+      "bytes": 181,
+      "sha256": "b832663ca09ec7af8c8e816fd91a718b2af6c21ab4f126fa818871ad53bce763"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Resources/TMP Settings.asset",
+      "bytes": 1683,
+      "sha256": "a699a043195b71622df343e8c353312cdfdc49c4b8c7043eb14584c34451991c"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Resources/TMP Settings.asset.meta",
+      "bytes": 179,
+      "sha256": "a65193b095ec3606789a3191751a837704cf52d4f461993ae7903024c6d43f45"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Shaders.meta",
+      "bytes": 172,
+      "sha256": "c109eb7e331affedb377f7051df3d4881f8529b65f9593234585713e6e94ed30"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Shaders/TMP_Bitmap-Custom-Atlas.shader",
+      "bytes": 3497,
+      "sha256": "f45e54dd8d92ae0702621bfc3aaaedac7f9c2509dcb84f721c11aa257171d523"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Shaders/TMP_Bitmap-Custom-Atlas.shader.meta",
+      "bytes": 204,
+      "sha256": "91be1d5618a7da33c878e20cf2be3e13b897d4976c70bde0cda7a67dbd502cd2"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Shaders/TMP_Bitmap-Mobile.shader",
+      "bytes": 3549,
+      "sha256": "86216818723945b88960d3958e744cf7a2433eb306f4f6bfba84f1f09320a25e"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Shaders/TMP_Bitmap-Mobile.shader.meta",
+      "bytes": 204,
+      "sha256": "7430f3e97ae1b46f34e1ca75508705bb7b944307c41dc568ea728011f327086d"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Shaders/TMP_Bitmap.shader",
+      "bytes": 3499,
+      "sha256": "05b182e4a8eefe246a83b8065a38f47524e9492128ea0c5a0f1bafc28cc59974"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Shaders/TMP_Bitmap.shader.meta",
+      "bytes": 204,
+      "sha256": "3d462e6f8ba57f45dc5e6000020db066c36ed5a1a24f74f749727812373c2325"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Shaders/TMP_SDF Overlay.shader",
+      "bytes": 10585,
+      "sha256": "5d014fd30168464ef417514fdc25d19b15ce5705dc352bc7f9703c95008f6dd0"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Shaders/TMP_SDF Overlay.shader.meta",
+      "bytes": 204,
+      "sha256": "fb8fc84b612e19c169cdf3596195b416e68d227a8987a0eaa90d8c137fb69797"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Shaders/TMP_SDF SSD.shader",
+      "bytes": 12000,
+      "sha256": "699f0e1291b37a9103fcf5059f44eca257cc63f02728939046311b431e804039"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Shaders/TMP_SDF SSD.shader.meta",
+      "bytes": 204,
+      "sha256": "bea74d576f181a8bb04b8cf02eedd0136540325ecb2824928a3aa52c75adcb13"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Masking.shader",
+      "bytes": 7822,
+      "sha256": "c11c36263a42ec618251c21d1f9b5f2e9df5f0f21f10f82ab6b4388913f7aed7"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Masking.shader.meta",
+      "bytes": 204,
+      "sha256": "3744d078f9a8b6d3c5d9bca51e43f9223544fcafaf9396e121f49ea84a0609d3"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader",
+      "bytes": 7643,
+      "sha256": "b2f29604a41934625338b7d1e6bd37fe008366f98932ac49f026dec16fd465d0"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader.meta",
+      "bytes": 204,
+      "sha256": "1eeca1536c7506f79d4d877b866a5fb88db8f402634e091b6d78aa9d21c9d18b"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile SSD.shader",
+      "bytes": 3071,
+      "sha256": "598b92ea8c4d65802c9273bec594786b8ca896013afaf8f31e2c973518f293b1"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile SSD.shader.meta",
+      "bytes": 204,
+      "sha256": "e3412891b9306b017e60cba4ae4f6d258ee8b161d986dcde9cefb3d60345514d"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader",
+      "bytes": 7674,
+      "sha256": "970db4b1e73b8289c1dd56cff60877f426b49c9682620b2d14da6cd70b64cb9c"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader.meta",
+      "bytes": 204,
+      "sha256": "f2112f50c72762d4e6731391495ea11f76975d677b698e9bcfdd38275ea18f9d"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Shaders/TMP_SDF-Surface-Mobile.shader",
+      "bytes": 3524,
+      "sha256": "79b6e02dbdf65168f2bd81e1a41966ab492bf473be8ba7abd659ab8876c781b1"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Shaders/TMP_SDF-Surface-Mobile.shader.meta",
+      "bytes": 204,
+      "sha256": "95aa060f371ee503a22c0a0b018e029c0328bd82b9317feaa784432b0a787343"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Shaders/TMP_SDF-Surface.shader",
+      "bytes": 4355,
+      "sha256": "a1ec7f5beb83b6c2f00570246f542cc3c9d12516e69b4a2c39d58675b5b76d15"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Shaders/TMP_SDF-Surface.shader.meta",
+      "bytes": 204,
+      "sha256": "42439f5ac7491998f562e8ede73d64c3512953eb99fb1b49e833f5d9999a7660"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Shaders/TMP_SDF.shader",
+      "bytes": 10600,
+      "sha256": "bbae422625f31bfa560ac5ce44c402fafd16dba55d496c6279ca985b652b58bf"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Shaders/TMP_SDF.shader.meta",
+      "bytes": 204,
+      "sha256": "0897fb06d170043fffa2d28783b347bbaee87a3f09f08374ca44b2c3848697d6"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Shaders/TMP_Sprite.shader",
+      "bytes": 2673,
+      "sha256": "c5d35f56a73324cf1639a4b9b0650a7412230bacaa9b0fdd4ee34f437a9b3f31"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Shaders/TMP_Sprite.shader.meta",
+      "bytes": 204,
+      "sha256": "9609584c5249687f3765f0018a93dfd6445c7e35d5aee4e87556f111c8852819"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Shaders/TMPro.cginc",
+      "bytes": 2277,
+      "sha256": "14edb7d7b88caf2b82cae68200abe895e5b5b3474c3fffbf0e9b4b09a4e2467e"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Shaders/TMPro.cginc.meta",
+      "bytes": 204,
+      "sha256": "277459ef190430ad8e4ceb2bb38a8895d11fbbe6c2b2672e818ff970cb59efed"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Shaders/TMPro_Mobile.cginc",
+      "bytes": 5311,
+      "sha256": "31aa22debdf974d1dc73e90b7feadf7f2e37ad60cf6f9f9e54a6adc71cd792b5"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Shaders/TMPro_Mobile.cginc.meta",
+      "bytes": 204,
+      "sha256": "2e16fa15ef884a60a402d8b696f8b09e5315cbb468ba223d256030c7fe2b0667"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Shaders/TMPro_Properties.cginc",
+      "bytes": 2843,
+      "sha256": "26c70831a9bdd6a56a37ec1e2358929453d66a064d10a61da49a1d4b05280e06"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Shaders/TMPro_Properties.cginc.meta",
+      "bytes": 204,
+      "sha256": "edace33591894d86d9a4144466fb3606e538d3341030fe22f908551755120ea5"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Shaders/TMPro_Surface.cginc",
+      "bytes": 3563,
+      "sha256": "434adb97dfcd9d5772fc11bb3a76f36af13614a664aca840ebcbf635e6e2df24"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Shaders/TMPro_Surface.cginc.meta",
+      "bytes": 204,
+      "sha256": "247746f3a4e39dd24d1ad99e4fae03ae8976586307948b2846529a876dcb0a63"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Sprites.meta",
+      "bytes": 172,
+      "sha256": "41e002b97ba2235689fba502d1ee4419f50ea0095cd3632cdc50bc90ca8a94de"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Sprites/EmojiOne Attribution.txt",
+      "bytes": 185,
+      "sha256": "4b65f8960e4f4c5c8b35fd139e369265e9bb45667fc16461b2ba01188d464d93"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Sprites/EmojiOne Attribution.txt.meta",
+      "bytes": 158,
+      "sha256": "9fffc8ac513116b8ac394d86d81ca9ac4ec52ee92c63c114d355808384ea16fc"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Sprites/EmojiOne.json",
+      "bytes": 3966,
+      "sha256": "b85c4b3001b6ba82d175f4cd5dab83da467bbc2527d3d447b66919d2d20c4faf"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Sprites/EmojiOne.json.meta",
+      "bytes": 177,
+      "sha256": "ac2c551b5bc7f7d636d54ded634dfc3493e249567283b2efc06d1299f9360061"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Sprites/EmojiOne.png",
+      "bytes": 112319,
+      "sha256": "a87b965a701de3dc31d7401e542b1fc946587f912c51d7a26e46ade9f098bd1a"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Sprites/EmojiOne.png.meta",
+      "bytes": 9784,
+      "sha256": "eb63c0321658b980b138ce5f675d44689b8c7144df43976931e132e7706d1e1a"
+    },
+    {
+      "path": "Assets/WebGLTemplates.meta",
+      "bytes": 172,
+      "sha256": "b2ad80dd515941269351c09d583d7bde8541b60778b4161b98d75674da230d75"
+    },
+    {
+      "path": "Assets/WebGLTemplates/Potato.meta",
+      "bytes": 172,
+      "sha256": "aad6f350550de2016af0482d157c5ef2441ce260b2d75deb9a4fea900a0b34b3"
+    },
+    {
+      "path": "Assets/WebGLTemplates/Potato/audio-focus.js",
+      "bytes": 2994,
+      "sha256": "8a9368760fa1c9cea7a5c47c64fecf5e6cd261623b1c205db44ab5712521ffb3"
+    },
+    {
+      "path": "Assets/WebGLTemplates/Potato/audio-focus.js.meta",
+      "bytes": 155,
+      "sha256": "e77ec3a4056b63fbe4ffcb7ddd639b0fa8c386fa704c9c390b8a5a46569d21f0"
+    },
+    {
+      "path": "Assets/WebGLTemplates/Potato/index.html",
+      "bytes": 2188,
+      "sha256": "4c7bd02eff277047cba27a65ef9cd2cde9fc8e7a1d4e99daf970c1dfc0080e53"
+    },
+    {
+      "path": "Assets/WebGLTemplates/Potato/index.html.meta",
+      "bytes": 155,
+      "sha256": "5292bc056f79ea39d24312fbd2e1fc23987c2e75a8b26a5f6440f0f46914e44e"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "bytes": 12348,
+      "sha256": "05f8e97d534eed72bca4a7fbdb445a794f11fa1777b1f3143f86a0b31eb522a4"
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "bytes": 1224,
+      "sha256": "35e166b26f235395a5c9569eea7195cedad8b33691e76307b8bedf9ca93f49b2"
+    },
+    {
+      "path": "Licenses/Kenney-casino.txt",
+      "bytes": 465,
+      "sha256": "4e539c26696202c2a885c08e40ff8d6b64d7a04836932ec3b783b1169e0b210c"
+    },
+    {
+      "path": "Licenses/Kenney-interface.txt",
+      "bytes": 551,
+      "sha256": "c36200e700dd1f244dc4234dd05aa0ca4d8f44eddd23657998011db728d4db9e"
+    },
+    {
+      "path": "Licenses/Music.txt",
+      "bytes": 1511,
+      "sha256": "54c568f12e5cf37accd76e3c1381e211e9778289aec748115a3385b63ba2777d"
+    },
+    {
+      "path": "Licenses/SoundEffects.json",
+      "bytes": 1235,
+      "sha256": "d40d02cff018ffe609b6334934ca864553c0ae1ae0c0791ffc06883efd98bc2b"
+    },
+    {
+      "path": "Licenses/UserMusic.json",
+      "bytes": 3349,
+      "sha256": "f47ce5ee17c4f3226ebee946861038c9deb35aadf3e81520817aad086bcecf20"
+    },
+    {
+      "path": "Packages/manifest.json",
+      "bytes": 1059,
+      "sha256": "70741ccf4eaaea3d96336510c92b191d682526e5bad3a8f536a5c36ca4657a14"
+    },
+    {
+      "path": "Packages/packages-lock.json",
+      "bytes": 3180,
+      "sha256": "7ecc91b05f0966e39acee44aa525d5a02622ad2ba7de0213f95adf14303a237a"
+    },
+    {
+      "path": "ProjectSettings/AndroidResolverDependencies.xml",
+      "bytes": 1203,
+      "sha256": "afd30057d0ecc4ac4102361c63aedd73111fa878b37449a318de9c5ef2d9dbca"
+    },
+    {
+      "path": "ProjectSettings/AudioManager.asset",
+      "bytes": 443,
+      "sha256": "9a554916fe138ebcad8443ee9b079363ecc72795c39d0e80f5f7ca99e2c6f5e7"
+    },
+    {
+      "path": "ProjectSettings/ClusterInputManager.asset",
+      "bytes": 114,
+      "sha256": "40e65dd214bf254955d2c8829ca8ce2130fd3510485560ce012e9a1ddd93e623"
+    },
+    {
+      "path": "ProjectSettings/DynamicsManager.asset",
+      "bytes": 1394,
+      "sha256": "62fd35da36080a098d3e9f90cf4af6c655fe582091c33e505b812cf9aa36fee1"
+    },
+    {
+      "path": "ProjectSettings/EditorBuildSettings.asset",
+      "bytes": 256,
+      "sha256": "07e991ee1add8024ef38386e2203befa2d6cab29b13451793c860d483367e2f5"
+    },
+    {
+      "path": "ProjectSettings/EditorSettings.asset",
+      "bytes": 1502,
+      "sha256": "d853eebd40ee532398333bac1bf7ac668eca3b831b6fc7d0887d7602f04e881a"
+    },
+    {
+      "path": "ProjectSettings/GraphicsSettings.asset",
+      "bytes": 2392,
+      "sha256": "96fbec3a726513347293fb201477836277ade290a0bd7bd473cea90ffe896820"
+    },
+    {
+      "path": "ProjectSettings/GvhProjectSettings.xml",
+      "bytes": 1286,
+      "sha256": "959698693b6cc7ab2c92cf0867bc83dec4cf527ac6a874fe88aad2af4388f42f"
+    },
+    {
+      "path": "ProjectSettings/InputManager.asset",
+      "bytes": 5816,
+      "sha256": "d0f454ddb880912abcae92e3e12957a7446786ba89e24937e019ff3bbc0d4300"
+    },
+    {
+      "path": "ProjectSettings/MemorySettings.asset",
+      "bytes": 1192,
+      "sha256": "1e8379a461b10ae09f3f696911088c16875d63e87ed5f2d95df9e1892703f9fd"
+    },
+    {
+      "path": "ProjectSettings/NavMeshAreas.asset",
+      "bytes": 1361,
+      "sha256": "7ebbf8f53b8033104e1878b95ca07a28d0954092d81c220f14196a42f651e658"
+    },
+    {
+      "path": "ProjectSettings/PackageManagerSettings.asset",
+      "bytes": 1354,
+      "sha256": "7851e73226b4eab4a0e116d8362e2b93579d9aed7525db26b002f649aa29a1b6"
+    },
+    {
+      "path": "ProjectSettings/Physics2DSettings.asset",
+      "bytes": 1635,
+      "sha256": "531861618163b01648a075414f6e864506ad8fe0a0d4d0096aa1fbbfcd3937dc"
+    },
+    {
+      "path": "ProjectSettings/PresetManager.asset",
+      "bytes": 146,
+      "sha256": "29c125923fe6e29f90190d4fce1c82d660e7051546e2c9d02908d18c9cf2436c"
+    },
+    {
+      "path": "ProjectSettings/ProjectSettings.asset",
+      "bytes": 21821,
+      "sha256": "4bfb05d459902326b917e00965c445bfbcf6e6ab1c453d7af80f18684264f46f"
+    },
+    {
+      "path": "ProjectSettings/ProjectVersion.txt",
+      "bytes": 89,
+      "sha256": "b42279cfd794d9f1825f3b7c1f318b861fa9e2e2b3c6c146737bdbd41c01b389"
+    },
+    {
+      "path": "ProjectSettings/QualitySettings.asset",
+      "bytes": 9183,
+      "sha256": "96bd74ce337152e3b13b94d534207d17fbefb5f6c72a632ebf1b62f255a01329"
+    },
+    {
+      "path": "ProjectSettings/SceneTemplateSettings.json",
+      "bytes": 3534,
+      "sha256": "5baf593374ad67246277a435d8d0ded7167696eef6e05d2d245670e490625d8c"
+    },
+    {
+      "path": "ProjectSettings/TagManager.asset",
+      "bytes": 378,
+      "sha256": "8e18b1c820e9c09e16bbd1f1b7842e9fb3b0158a0921b0964e0b8fa12c6e2c01"
+    },
+    {
+      "path": "ProjectSettings/TimeManager.asset",
+      "bytes": 202,
+      "sha256": "1a83e54adbbda7c9f4851103a0c6ab7f6448a3343d4ea5b7620452fa08416ecd"
+    },
+    {
+      "path": "ProjectSettings/UnityConnectSettings.asset",
+      "bytes": 1044,
+      "sha256": "5af4c69bb69f1d9dfbbc47b01eb6522e3ea41e672791e080a003c8deacae9ab5"
+    },
+    {
+      "path": "ProjectSettings/VFXManager.asset",
+      "bytes": 465,
+      "sha256": "3f31266c7c1910447586e71b041dabd58d8371715ac3142d3e38ace46121f4ab"
+    },
+    {
+      "path": "ProjectSettings/VersionControlSettings.asset",
+      "bytes": 188,
+      "sha256": "e7bda45bf7a394745fee1316e6c71fa676004d591ad1f3aa247fd3e4ceb86071"
+    },
+    {
+      "path": "README.md",
+      "bytes": 9599,
+      "sha256": "9110fb0ad732f6692113f66018ef1779b6faad2401fa02f0f81915973c768a00"
+    },
+    {
+      "path": "Tools/AudioSources/card-slide-2.ogg",
+      "bytes": 9042,
+      "sha256": "e674a1679ec87b507047fe012d068ad2c412125f56186f0e732684705c2a6888"
+    },
+    {
+      "path": "Tools/AudioSources/chips-stack-3.ogg",
+      "bytes": 7203,
+      "sha256": "48cc0f01e2b62be7677f2e8c02177906cab80e96fa8176fa05b3ced35bc2a9c2"
+    },
+    {
+      "path": "Tools/AudioSources/click_003.ogg",
+      "bytes": 4371,
+      "sha256": "2fa929138bc3a0f432696588f66eac94b8f6d463905ec8808c6461ce4b054292"
+    },
+    {
+      "path": "Tools/AudioSources/open_001.ogg",
+      "bytes": 9834,
+      "sha256": "a27c6bb0df7da1e6af5dd5937593c98bc58b6e513f42fe6a3254cd6a6949c648"
+    },
+    {
+      "path": "Tools/AudioSources/pluck_001.ogg",
+      "bytes": 6317,
+      "sha256": "be97ec4893a02d6eccfb678daa76c83e34cb2583b834ec2593d2641def739fa4"
+    },
+    {
+      "path": "Tools/build.sh",
+      "bytes": 809,
+      "sha256": "786e09201ae9a18addbf08521e61f3f7f927c109f851a91f3a7fd1cba9a299d7"
+    },
+    {
+      "path": "Tools/get_font.py",
+      "bytes": 501,
+      "sha256": "6f3b3f75e3ce82b8eee3adcf967d335ad8a83e9abb8ed9b6d0fc71bb311fc307"
+    },
+    {
+      "path": "Tools/import_new_life_art.py",
+      "bytes": 1962,
+      "sha256": "53f2db944e8f059431c742cfbdaded477bff756a3315db15910dbd4e1a91e856"
+    },
+    {
+      "path": "Tools/make_audio.py",
+      "bytes": 2719,
+      "sha256": "32a35e82e2548f72b9cea6c467c85f4bc6a7e5e7b8668f1e22cc42ef73a7ad11"
+    },
+    {
+      "path": "Tools/package.py",
+      "bytes": 6200,
+      "sha256": "2f5bd2cf34a902273164be733ad50b20d51eb5739ded5efcf6afd132cc8f176a"
+    },
+    {
+      "path": "Tools/prepare_font.py",
+      "bytes": 1523,
+      "sha256": "fc267d24a65d27ef42761f2216d7347e055ab62095865a735e66e2feb83304d0"
+    },
+    {
+      "path": "Tools/prepare_photos.py",
+      "bytes": 3204,
+      "sha256": "7b925e41674311ea2efa493cc83e22853cc0faee32599f2f30f86e730e0f2d56"
+    },
+    {
+      "path": "Tools/preview.py",
+      "bytes": 1274,
+      "sha256": "c9b877f3fd688f0aeb89fe822e5966e1df6bed34ebdb594200da468ee2ceb5a1"
+    },
+    {
+      "path": "Tools/privacy_html.py",
+      "bytes": 1998,
+      "sha256": "26a29f0ed4137cfd0d77192fcc1a17908a71df2649ea0f258f26ef6822a2a50e"
+    },
+    {
+      "path": "Tools/remove_freckles.py",
+      "bytes": 3028,
+      "sha256": "2445dec4b5a61422f173fe59e2f0e5375388940fda703ab9e96d17c71bd0e9e4"
+    },
+    {
+      "path": "Tools/test-rules.sh",
+      "bytes": 491,
+      "sha256": "fb5de2783b354a36a17bb34bc28899c5273440e733af4d0d00ccd98e43c059af"
+    },
+    {
+      "path": "Tools/test-web-audio.cjs",
+      "bytes": 7585,
+      "sha256": "77b386bf4a8e1641bf914aa026a55e179ccc3e79b5e58c139c0b52146b978c51"
+    },
+    {
+      "path": "docs/ART-PROVENANCE.txt",
+      "bytes": 8565,
+      "sha256": "46214635b5f0790a4dc98c7fa901187b7e8d336d0936c00939cc15b697a7fc74"
+    },
+    {
+      "path": "docs/AUDIO-v0.1.2.txt",
+      "bytes": 2376,
+      "sha256": "2b457c08e45d246a487bfd8fc09c8647c424dfcaa4a91ae5094cbfb38df9770a"
+    },
+    {
+      "path": "docs/PHOTOS-v0.1.3.md",
+      "bytes": 2626,
+      "sha256": "5b909cb91affa8ba9487cb34ba92709841af9e1ffad249670f547eaa0814837b"
+    },
+    {
+      "path": "docs/PLAYTEST-v0.1.1.txt",
+      "bytes": 3435,
+      "sha256": "6b078b45a481b8103434eea0308e9c4a9a30651857b2401199bf5c3e812d6944"
+    },
+    {
+      "path": "docs/RELEASE-2026-10-24.md",
+      "bytes": 247,
+      "sha256": "caedbae1f7eed3c08c2a6c938d60feb7f07d8d69ada14bdfa68953d7fa7e4d49"
+    },
+    {
+      "path": "docs/RELEASE-v0.1.3.md",
+      "bytes": 2442,
+      "sha256": "d8b1f9631e9fa41774a7226e7746b6de5198bf669204f8a1dcc9d5be3cbd013f"
+    },
+    {
+      "path": "docs/REUSE-AUDIT.txt",
+      "bytes": 2805,
+      "sha256": "6428235f99aea4396bc2f14239bc2fd6ffac2eb1ae76ff567e875080d83364e9"
+    },
+    {
+      "path": "docs/VALIDATION.txt",
+      "bytes": 8074,
+      "sha256": "c1ce5b0d6db00d8130a778814133c77cff2f3945f8a7d89265e7d6ded715bdc3"
+    },
+    {
+      "path": "docs/VERIFY-v0.2.0.md",
+      "bytes": 700,
+      "sha256": "493de376488323a53a485f63c84b638d7195b18935e1a2e537bef97005d48b0d"
+    },
+    {
+      "path": "docs/audio-unity-v0.1.2.txt",
+      "bytes": 936,
+      "sha256": "b729fe7c72e5fc4f79ec4b7045b1a5c4f94756c8974ad0679b579eac2d1dcec8"
+    },
+    {
+      "path": "docs/audio-web-v0.1.2.txt",
+      "bytes": 1022,
+      "sha256": "f1de6785522bd177d469f38cf2e75c2c4e017431fb95023c7ace0161b0f59ff8"
+    },
+    {
+      "path": "docs/paths/Explore.txt",
+      "bytes": 2916,
+      "sha256": "b437228f851cd6af1c7a26d5614e7919069bc04f63357de483756f99d95ab6e2"
+    },
+    {
+      "path": "docs/paths/Friends.txt",
+      "bytes": 2937,
+      "sha256": "ddc7a16dadb7391b47443e103e7004874af92dae1bbb15be6a08bcdc3c312973"
+    },
+    {
+      "path": "docs/paths/Study.txt",
+      "bytes": 2892,
+      "sha256": "c2c317c21a8b92def97879cdbecd6418f55dd37106887737bbc2a8da805d4617"
+    },
+    {
+      "path": "docs/paths/Work.txt",
+      "bytes": 2979,
+      "sha256": "a6d32805ebf4b1f42d26683fd794c71c66f3c220b9cea44dca62053bf1eb2032"
+    },
+    {
+      "path": "docs/rules-results.txt",
+      "bytes": 328,
+      "sha256": "d8e8f57fd4c7ed7b133dac628d6767976e43d0a3bb898159d30b0b71a15c6764"
+    },
+    {
+      "path": "docs/screenshots/01-title.png",
+      "bytes": 1371298,
+      "sha256": "79fcc99a41c0c861b3dd37bfcb1f97e81b79d93ecf37777ad8d7ff37d88c6a5d"
+    },
+    {
+      "path": "docs/screenshots/02-home-guide.png",
+      "bytes": 1120572,
+      "sha256": "b1c597d35e9aa676b0c7a7cdfe1598e2da1e70fb07638bf2f008c236ce59080f"
+    },
+    {
+      "path": "docs/screenshots/03-direction.png",
+      "bytes": 534351,
+      "sha256": "50893ed7061f23fd2eeb777ba9f2973eddb1b68804ae9b3ae12d985e9499804e"
+    },
+    {
+      "path": "docs/screenshots/04-away.png",
+      "bytes": 1258326,
+      "sha256": "2ba2c7cef60fc37532edf5b545b4c54bc637dff1c022b610fa47fd4d3cb80de4"
+    },
+    {
+      "path": "docs/screenshots/05-settings.png",
+      "bytes": 448177,
+      "sha256": "8429b6c752a7c81f5489b2cd8ef9f5616c65ef560bff834e6422acaac3502c72"
+    },
+    {
+      "path": "docs/screenshots/06-return.png",
+      "bytes": 502127,
+      "sha256": "933de3b3e6be54129e1e7eb12465f03dd8e9afe2dcf68744459a15bb6eaf0093"
+    },
+    {
+      "path": "docs/screenshots/07-album.png",
+      "bytes": 214831,
+      "sha256": "4919fc72137f63323146a68156878e30e94d382104a43fb621f25a03c7fe824b"
+    },
+    {
+      "path": "docs/screenshots/08-photo.png",
+      "bytes": 695839,
+      "sha256": "dfea6eeb089b164041984e02c2aaba3424524f76ccc5481dad838877247d4042"
+    },
+    {
+      "path": "docs/screenshots/09-mail.png",
+      "bytes": 209387,
+      "sha256": "0c0bb1e28cc752d5b2d5cb3035a9b356d219d00c65637badad819ffa357b5519"
+    },
+    {
+      "path": "docs/screenshots/10-letter.png",
+      "bytes": 296697,
+      "sha256": "87f471e4cf9733b7ef1d825b201ae02f252b8e0cbc2439b85bdc5e3b3265dfbb"
+    },
+    {
+      "path": "docs/screenshots/11-shop.png",
+      "bytes": 454278,
+      "sha256": "97f13dfd29b1149040b7d04f8c1b2b80aff00461da83228fe44042b578d29a24"
+    },
+    {
+      "path": "docs/screenshots/12-decorated-home.png",
+      "bytes": 1113647,
+      "sha256": "a29d6c6149efdc954712ec2c0160334721a9ba124272a12c7273dab849045c6b"
+    },
+    {
+      "path": "docs/screenshots/13-wardrobe.png",
+      "bytes": 551819,
+      "sha256": "3df40ec297031ecf1d6683c83b834674926d3e51c072469c0b9bf327481db8e8"
+    },
+    {
+      "path": "docs/screenshots/14-goals.png",
+      "bytes": 265080,
+      "sha256": "f89f097d035bff03c8a6e788b14cbffdb73bc23adf0e046ff03f0e3bf7238f44"
+    },
+    {
+      "path": "docs/screenshots/15-offline-return.png",
+      "bytes": 1126283,
+      "sha256": "8cd25032f3faa5126ae2c9595baace82f3f2d8868a45e1d5f7d3309c3ce250e3"
+    },
+    {
+      "path": "docs/screenshots/16-festival.png",
+      "bytes": 960267,
+      "sha256": "dec9c917ee27b129418f47ec35c0fcec1cdacd3f90ec81de05de0a6cdbc3f673"
+    },
+    {
+      "path": "docs/screenshots/17-new-costume.png",
+      "bytes": 1135096,
+      "sha256": "6dc19755e8dce670f3a4132101850d11f671c19bd284cdac2f763f9dcfeba5e6"
+    },
+    {
+      "path": "docs/screenshots/18-ending.png",
+      "bytes": 471425,
+      "sha256": "6f1af6094b3e04d29719828af3e078e216a82f5f96d972fe143650d26a6a002a"
+    },
+    {
+      "path": "docs/screenshots/19-profile.png",
+      "bytes": 494748,
+      "sha256": "438e4ed7509d6ab8b7ba317f290be94a38d0bc455653051df56c7cf205a0d043"
+    },
+    {
+      "path": "docs/screenshots/20-festival-1.png",
+      "bytes": 961260,
+      "sha256": "c40fbc16e9932a5d89829f6f02035c31c0424cfa70580ba86bf81574a0f25a08"
+    },
+    {
+      "path": "docs/screenshots/20-festival-2.png",
+      "bytes": 955944,
+      "sha256": "de0abd33e5baa460556f9ce75318fc4ecc254190cc6f7a42ebe8e4d4e308ff23"
+    },
+    {
+      "path": "docs/screenshots/20-festival-3.png",
+      "bytes": 966068,
+      "sha256": "284982bc277604bf77ec6cfd2c7ab551ba4e6a10c30d4620e7299210d0d8369e"
+    },
+    {
+      "path": "docs/screenshots/21-all-poses.png",
+      "bytes": 731891,
+      "sha256": "7c036e8a479ab9b3f1156e6ae75723fa0a456987de6a3650997e1fbc3d93e4e1"
+    },
+    {
+      "path": "docs/screenshots/22-letters-migrated.png",
+      "bytes": 212922,
+      "sha256": "2d06b532d4e6c4340be3ca74d50cc57a2528d5a83f319760bab466f4e6879b6c"
+    },
+    {
+      "path": "docs/screenshots/23-letter-history.png",
+      "bytes": 172791,
+      "sha256": "dbc7a80eb102a5dc64972d0b7e6d8afaf99e5b7ad3e56eeb24cca741ab5e7db5"
+    },
+    {
+      "path": "docs/screenshots/24-daily-mail.png",
+      "bytes": 261156,
+      "sha256": "d943303017451e4811c7ce44f5712b8c7ec6ef9633ddd0e1cba1e0ae361c08f6"
+    },
+    {
+      "path": "docs/screenshots/25-study.png",
+      "bytes": 1092634,
+      "sha256": "600bd11513f2f2a4c51f5a68adbc86e52167f87aa2405ef60a26c959464890af"
+    },
+    {
+      "path": "docs/screenshots/26-study-break.png",
+      "bytes": 596759,
+      "sha256": "4befdf9d76d55df73d11d895086f3245da3d6a54dca25fb7ec6cd5b1a6901a8f"
+    },
+    {
+      "path": "docs/screenshots/27-studying.png",
+      "bytes": 1110959,
+      "sha256": "a8de5c5215befbd5455ce4926c66146e81fa9e97fc11ee5d83ed3a77caa8a150"
+    },
+    {
+      "path": "docs/screenshots/28-todos.png",
+      "bytes": 254169,
+      "sha256": "ae1370c9171d5b399fec5dc1fd5510a36badc03353dccd44cdf31170665d4c50"
+    },
+    {
+      "path": "docs/screenshots/29-home-goods.png",
+      "bytes": 433823,
+      "sha256": "13008705beded7cd35d53668338b8af62617eff3d7e3c7fddb3ded52f1e1fef1"
+    },
+    {
+      "path": "docs/screenshots/29b-student-goods.png",
+      "bytes": 455811,
+      "sha256": "c99e0be4b148a567751659f504ef5f16a91180cfeab6d82c8d88e9032c9bc08f"
+    },
+    {
+      "path": "docs/screenshots/30-new-room.png",
+      "bytes": 1158379,
+      "sha256": "fb5ca00bab7e1c2cf5a860f3dfa1946aec5eadbb78018041ba2224bd1928df6c"
+    },
+    {
+      "path": "docs/screenshots/31-rooms.png",
+      "bytes": 994344,
+      "sha256": "6c6b5354c8a41fd5b02bb7e948e416bdb5def03412265cd73efdeef03669894b"
+    },
+    {
+      "path": "docs/screenshots/32-room-two.png",
+      "bytes": 1109144,
+      "sha256": "ff348bd7560701d0d820218512cbb5d33297769710052b94bb81e63691006b5b"
+    },
+    {
+      "path": "docs/screenshots/33-room-three.png",
+      "bytes": 1151690,
+      "sha256": "91cbd9b622ff358f560730cc36d1714486ab57c69d007a6642ac71bcc731eded"
+    },
+    {
+      "path": "docs/screenshots/34-dragged.png",
+      "bytes": 1163526,
+      "sha256": "0312077031f885328e1ec0165e27908541bf9fbca1cf92892e7529e1496cfaa5"
+    },
+    {
+      "path": "docs/screenshots/35-rooms-more.png",
+      "bytes": 747843,
+      "sha256": "8eff7c6078ca32ba3e82ceac7f5a3e3952dc1387dae43bbf79526d8b0d2b0db9"
+    },
+    {
+      "path": "docs/screenshots/36-villa.png",
+      "bytes": 1339276,
+      "sha256": "e74eae97ff61b55dc4139cadce039adeb0da9b98b7ae9b8c2e85fd97490803d9"
+    },
+    {
+      "path": "docs/screenshots/37-flat.png",
+      "bytes": 1226110,
+      "sha256": "bfd92711d30cb232277e76a08472d1626a915a79f04b6cac65bd06c0517942b6"
+    },
+    {
+      "path": "docs/screenshots/40-invite-board.png",
+      "bytes": 1114448,
+      "sha256": "e081bfde1ca9acaab76ea6c64311615dbe9252bdaf16f114ce72b2a3e613b36b"
+    },
+    {
+      "path": "docs/screenshots/41-invite.png",
+      "bytes": 451479,
+      "sha256": "eae92c82647929baa7cbb38e6fc1b53503b698b10474d068cfdbded2cbb7da2a"
+    },
+    {
+      "path": "docs/screenshots/41b-invite-letters.png",
+      "bytes": 236637,
+      "sha256": "674af339b7064ad40497518ac53cd0da665a04cf2e3e5c23cc2c05a33ca04c80"
+    },
+    {
+      "path": "docs/screenshots/42-story-pack.png",
+      "bytes": 486998,
+      "sha256": "73c9493494ad3441588de3b25a8efe3d8c0797b913cb3fd60450c45d2e9597e4"
+    },
+    {
+      "path": "docs/screenshots/43-story-away.png",
+      "bytes": 1278251,
+      "sha256": "95e1ea549c0911ec4ac6f7d838611fed8a2f60c022d94741c54d9f40e3bb2513"
+    },
+    {
+      "path": "docs/screenshots/44-rain.png",
+      "bytes": 506143,
+      "sha256": "fee90976ee147b0554e99aa92537d963efd6ace96a700551004956826614ab71"
+    },
+    {
+      "path": "docs/screenshots/45-story-harvest.png",
+      "bytes": 408540,
+      "sha256": "d3ce4b049869c2536eaeb57787e34ceeb6b1755010823f750d4dfcd81cb58857"
+    },
+    {
+      "path": "docs/screenshots/46-story-note.png",
+      "bytes": 234563,
+      "sha256": "e9c7ca862c023a8369a9b0c3aad7a83a61f0a3afd14493ac8cb3401d6f2bdd45"
+    },
+    {
+      "path": "docs/screenshots/47-story-replied.png",
+      "bytes": 224682,
+      "sha256": "20d5ee43ad3f4dbfee647495355d1ace6edd5b1fa0e10fc2107895a7c894a66a"
+    },
+    {
+      "path": "docs/screenshots/48-story-review.png",
+      "bytes": 252724,
+      "sha256": "b8ecb97ac09465c08f7a4abab07f39777c36bdc91af184f4fc06f0abd9f12de9"
+    },
+    {
+      "path": "docs/screenshots/49-keepsake-album.png",
+      "bytes": 170866,
+      "sha256": "3ec8df2fbc9b8ce3ba2a8c0436875e57d3f9ea97210effb9cf7024ca18836e53"
+    },
+    {
+      "path": "docs/screenshots/50-city-landscape.png",
+      "bytes": 754073,
+      "sha256": "16753f4bce1cbf1908955cc559015e67f17baeb1dcdf12874f2e484702c512a6"
+    },
+    {
+      "path": "docs/screenshots/50-city-portrait.png",
+      "bytes": 644300,
+      "sha256": "927a7c55d66275b237ecef0cfde7b7b86a0e1a8a13f48cdea52830fc98fc7712"
+    },
+    {
+      "path": "docs/screenshots/51-city-back-landscape.png",
+      "bytes": 218592,
+      "sha256": "fcd832cf0cbb472813261f630c8286f02df8e30b76a95e3b49a1b5ccbb89bd4d"
+    },
+    {
+      "path": "docs/screenshots/51-city-back-portrait.png",
+      "bytes": 205205,
+      "sha256": "e0d164a59c27de3329f9eeb3257b6919f272ea4aa68111093e4586641e8f1a1c"
+    },
+    {
+      "path": "docs/screenshots/52-photo-full-landscape.png",
+      "bytes": 1756897,
+      "sha256": "d44ecdfe2d0aaf0dc92aa9f39f373a9e456a6906ffb6ff1ff7ad6938044b9398"
+    },
+    {
+      "path": "docs/screenshots/52-photo-full-portrait.png",
+      "bytes": 1119100,
+      "sha256": "7f4690608ef77f0de581d7f5a942c61b2e24a31e02cc9c5088661ef362f162db"
+    },
+    {
+      "path": "docs/screenshots/53-city-stacked-landscape.png",
+      "bytes": 1143530,
+      "sha256": "b0274b6a56af5ef68254e6b8459c227c2b9b9dbe91330ff72c3668b121ddbe68"
+    },
+    {
+      "path": "docs/screenshots/53-city-stacked-portrait.png",
+      "bytes": 719120,
+      "sha256": "1e2bd58128a35e1c1c1b2043673894a92bac8f92070bc74698a367f137328974"
+    },
+    {
+      "path": "docs/screenshots/54-frame-picker.png",
+      "bytes": 392703,
+      "sha256": "923cf4fc4034ef64136bc03f5469839cc2e7fd44dadfa90c62ebaac27a97e915"
+    },
+    {
+      "path": "docs/screenshots/55-frame-room.png",
+      "bytes": 1163404,
+      "sha256": "1e1db2fa4c03b3e7ee61279c150baaa2fc9771c9a720c2004c2345854c83f668"
+    },
+    {
+      "path": "docs/screenshots/55a-frame-empty.png",
+      "bytes": 1154583,
+      "sha256": "4ba4dc432d791fd038f52c84386b6a81ca3862847d5e26c446448beb2a4c42f4"
+    },
+    {
+      "path": "docs/screenshots/56-route-2.png",
+      "bytes": 454431,
+      "sha256": "fd5bb0a073dfed719d13834ebb450c50a69ed493988a50bceeb7fef7bc5cea73"
+    },
+    {
+      "path": "docs/screenshots/56-route-3.png",
+      "bytes": 432875,
+      "sha256": "fa5f14455ba501946e4595daa84ed70b8c3d5db73302bcf3d34d0b2c71b7ef27"
+    },
+    {
+      "path": "docs/screenshots/57-route-2-replied.png",
+      "bytes": 414829,
+      "sha256": "fbe8bae7e05c0834cda5d05934248a29fc5dbd39f3179d3076580fa7fca1bdc3"
+    },
+    {
+      "path": "docs/screenshots/57-route-3-replied.png",
+      "bytes": 409822,
+      "sha256": "c24be67eea7a96600a232c8437cd69bb8f4d957a6ca2481cd079d7a245bea2e1"
+    },
+    {
+      "path": "docs/screenshots/c00-room.png",
+      "bytes": 732797,
+      "sha256": "c8d49d7441c689e333de99b42b6057c105beae51a2561fdcdcb63baf4ae8449d"
+    },
+    {
+      "path": "docs/screenshots/c00-title.png",
+      "bytes": 809568,
+      "sha256": "4a2261ae4c56b27bd9b62ec557e8dff7dc48cfd8f2eee753b89ad42980be4fd0"
+    },
+    {
+      "path": "docs/screenshots/c01-anim.png",
+      "bytes": 119032,
+      "sha256": "944ec63bedfa2c592e9858771e4d189a1c18f305a5fc0e05c41ceb3f065d3de0"
+    },
+    {
+      "path": "docs/screenshots/c01-hop.png",
+      "bytes": 715595,
+      "sha256": "3fbebbd87703602c77f2e52045768a97de02036256233fdd5514fd26737509b6"
+    },
+    {
+      "path": "docs/screenshots/c01-walk.png",
+      "bytes": 738951,
+      "sha256": "c5c8923cd71d1001ec163952c43f47df264fbf0848724d4547f563c21df666a3"
+    },
+    {
+      "path": "docs/screenshots/c01-wave.png",
+      "bytes": 736459,
+      "sha256": "5196cbecd2b57cc885b78a54628cd4cdaafeeddc7b728e5af73c40ae4f301651"
+    },
+    {
+      "path": "docs/screenshots/c02-abandon.png",
+      "bytes": 720489,
+      "sha256": "44f139d4b2b33b73823853cdbde9da59cc5ad73706c3aaf7970eba4f005bf5c0"
+    },
+    {
+      "path": "docs/screenshots/c02-blocked.png",
+      "bytes": 706520,
+      "sha256": "658cabc97e7b99b0ab02861ed2344514dc788eaa2df4e23c938df85365401e9c"
+    },
+    {
+      "path": "docs/screenshots/c02-breed-last.png",
+      "bytes": 781909,
+      "sha256": "24c8826bce69e3cf21fac742e978db11c3dcc2337dbd9bbc39bd29695d642fac"
+    },
+    {
+      "path": "docs/screenshots/c02-breeds.png",
+      "bytes": 782459,
+      "sha256": "ad2ea3e83dccc72803c2b3e7b13fd4ff41a9898b21c6cf687e0d725cb14c164e"
+    },
+    {
+      "path": "docs/screenshots/c02-care.png",
+      "bytes": 730484,
+      "sha256": "e20ee193e236827bf121ebddf5ac6932cec01d045bd2c03fa1a03916335cfde6"
+    },
+    {
+      "path": "docs/screenshots/c02-clear.png",
+      "bytes": 698371,
+      "sha256": "9a481f336cbe95613157abdcc89e57007ad598b928d2c1435d932e26851dc295"
+    },
+    {
+      "path": "docs/screenshots/c02-ending.png",
+      "bytes": 734280,
+      "sha256": "6bc987161b379b1f9169b644d83ef3e1b33373fde7c375177a5da87168d19ef3"
+    },
+    {
+      "path": "docs/screenshots/c02-feed-1.png",
+      "bytes": 733317,
+      "sha256": "cb148a85fca66cbbb9e4aa847e97d721ecacf01ce3789e57a0380befce2cd232"
+    },
+    {
+      "path": "docs/screenshots/c02-feed-2.png",
+      "bytes": 729373,
+      "sha256": "9440fdd7dc132ae6e8a6d3023ee6069944c02fb86851b17588c1884d2c79722d"
+    },
+    {
+      "path": "docs/screenshots/c02-hug.png",
+      "bytes": 743577,
+      "sha256": "f30fdf13d028690e3fb117dfce3429dce45260a67e9eccd0cfcc6c639cac9ed4"
+    },
+    {
+      "path": "docs/screenshots/c02-quiz.png",
+      "bytes": 709721,
+      "sha256": "a21df4244118fd3937420df4d13dc24fafe13368313f2370ae85a0874db6e82c"
+    },
+    {
+      "path": "docs/screenshots/c02-room-pet.png",
+      "bytes": 742888,
+      "sha256": "1cb66f0439bebf97d1f922e9b5f4e292ff90c2769e7a1d192cc0f6710949932d"
+    },
+    {
+      "path": "docs/screenshots/c03-comic.png",
+      "bytes": 358317,
+      "sha256": "38e0c71e927afd866bea6c618dd9dc8fa9316858b0e14b9037d79cd947ec6000"
+    },
+    {
+      "path": "docs/screenshots/c03-park.png",
+      "bytes": 1133257,
+      "sha256": "afb920d73bf102d0b61bb25e976df85be9d6c19933a69a0685dbe7779fd47f08"
+    },
+    {
+      "path": "docs/screenshots/c03-poop.png",
+      "bytes": 1112586,
+      "sha256": "0c9d9d4a3c55614c52947a36832ef6326570d46554a459431deebcf4d9e97c3b"
+    },
+    {
+      "path": "docs/screenshots/c03-seen.png",
+      "bytes": 1127144,
+      "sha256": "3a7206e7add4ddf60061135c1ee0231a91b37b5fe2c3dffa8d237440b53631e9"
+    },
+    {
+      "path": "docs/screenshots/c04-friend.png",
+      "bytes": 981324,
+      "sha256": "b4d54560229259c049f2439d4df672723002568c59f2a3841fb6d38bb28ec13d"
+    },
+    {
+      "path": "docs/screenshots/c04-mall.png",
+      "bytes": 976375,
+      "sha256": "7100d2c4b5e1843ca219e8e053f6ea9ac89a2b8f3b83a6c868e87537dc2cc63d"
+    },
+    {
+      "path": "docs/screenshots/c04-skate.png",
+      "bytes": 995562,
+      "sha256": "5cb861f451dd6cb1a60d532a8e54d7b15f83d88bef0a1e9f3318f94aa6e26088"
+    },
+    {
+      "path": "docs/screenshots/c05-card.png",
+      "bytes": 978834,
+      "sha256": "1eeb1e21f3ecd7ab44cc5891a56dd4d32f91d09cb50b3c73874a5f7dd6ee3900"
+    },
+    {
+      "path": "docs/screenshots/c05-docs.png",
+      "bytes": 733407,
+      "sha256": "52c2c709623da02909afa681a1c6e5936cde278a96a0abdaf13155049b4f74a6"
+    },
+    {
+      "path": "docs/screenshots/c05-id.png",
+      "bytes": 975379,
+      "sha256": "dec93a0299b124b1eef40d5cd9605601d795a4e94fdaed9ace0562575d130daf"
+    },
+    {
+      "path": "docs/screenshots/c05-phone.png",
+      "bytes": 726788,
+      "sha256": "ac7833a3b6e57a806723da202f13e6d76e32b050a80ba81797b6cf6ed453ec8b"
+    },
+    {
+      "path": "docs/screenshots/c05-sim.png",
+      "bytes": 967423,
+      "sha256": "379211b196a579a65802fa3f9f3d5236328c46b03a2a0f23324d1da1cbbd6d80"
+    },
+    {
+      "path": "docs/screenshots/c05-week.png",
+      "bytes": 970025,
+      "sha256": "ca74c0a36a3b15801c35efbcef82f3800484a9ed5fbe461be805d09d619c98bc"
+    },
+    {
+      "path": "docs/screenshots/c06-bus-near.png",
+      "bytes": 1030143,
+      "sha256": "f515838537745d65d77bdf24680c814702cc0567c0723c7555f562818280cf2d"
+    },
+    {
+      "path": "docs/screenshots/c06-bus-stop.png",
+      "bytes": 1015520,
+      "sha256": "dbe42d9816cfbcd711eefb955d94b75da699b8ffdedd20e24aedb36ebc0143bc"
+    },
+    {
+      "path": "docs/screenshots/c06-bus.png",
+      "bytes": 1038226,
+      "sha256": "c3fb99361922c570537f8e1098bba0f16021def6b229f570b99fa2f51a068914"
+    },
+    {
+      "path": "docs/screenshots/c06-map-line.png",
+      "bytes": 215039,
+      "sha256": "054f5f6960df5b31d38bd9c8c7c370e0db487fe88a336dc796bf80e6bd45dac2"
+    },
+    {
+      "path": "docs/screenshots/c06-map.png",
+      "bytes": 209312,
+      "sha256": "b6544b446ab18428ccdf01e01a7bb5bdc96dd986d6ea71f79ef01704d2fec6d6"
+    },
+    {
+      "path": "docs/screenshots/c06-pay.png",
+      "bytes": 767614,
+      "sha256": "336b259c4344109cdf430b871ea849b9fae2a429089554a6ff7b28cb787c0cbe"
+    },
+    {
+      "path": "docs/screenshots/c06-pay2.png",
+      "bytes": 776504,
+      "sha256": "b34edc993fa6152e11873d0a3b8464583f524d28704ce3a27b842abc3fbdbb3d"
+    },
+    {
+      "path": "docs/screenshots/c06-taxi.png",
+      "bytes": 1053118,
+      "sha256": "375df8b59122720a1151a8e703d1ae3f3487b93277a8a5a9cd9bca3136bcebdc"
+    },
+    {
+      "path": "docs/screenshots/c07-booked.png",
+      "bytes": 764717,
+      "sha256": "76d88a4a7d2e934f806cf0074f735468ba4c14d525c5f50201d618b155d26b7b"
+    },
+    {
+      "path": "docs/screenshots/c07-clinic.png",
+      "bytes": 775102,
+      "sha256": "232500425feeace7d92ec0c3983cbb75713825689ce34111a3e829117456c021"
+    },
+    {
+      "path": "docs/screenshots/c07-fees.png",
+      "bytes": 835762,
+      "sha256": "0e8f41b0af81fdc11aa29d383652295e9c96147617f48c5d721fe8ffa5d5958a"
+    },
+    {
+      "path": "docs/screenshots/c07-hago.png",
+      "bytes": 558576,
+      "sha256": "8e7f3a850be328eacd53968c8b681928a7f030c6082a64435be598ed88795f9f"
+    },
+    {
+      "path": "docs/screenshots/c07-poster-a.png",
+      "bytes": 908619,
+      "sha256": "3e608e1a1ca11c6466dd5a8307fe4b0ffa1bcd709a78b6c18d6a585982b81664"
+    },
+    {
+      "path": "docs/screenshots/c07-poster-b.png",
+      "bytes": 934416,
+      "sha256": "f4f78bb389f13e1b1c97c69b8c911403a05b2d748e2ada9d88acd1964011e095"
+    },
+    {
+      "path": "docs/screenshots/c07-poster-c.png",
+      "bytes": 1005390,
+      "sha256": "a411ae034fa582595238b548d75b1ed6889baf6b725eaf4df539f6a6119e2d3b"
+    },
+    {
+      "path": "docs/screenshots/c07-poster.png",
+      "bytes": 895070,
+      "sha256": "f3cb4b09f0243a59eb8bac4c88e1245afbab0635b939b485dd8aaba1447e8e6f"
+    },
+    {
+      "path": "docs/screenshots/c08-eat-noodles.png",
+      "bytes": 1066206,
+      "sha256": "d8f800411c7f61d612f9a4b4f6dfcdaabe160b841e02cca160a64b9389423c98"
+    },
+    {
+      "path": "docs/screenshots/c08-food.png",
+      "bytes": 1046983,
+      "sha256": "0d46a278e55dbf535d789ff31be0794e86a2adc49d6cdeea88a58aa9365700a1"
+    },
+    {
+      "path": "docs/screenshots/c08-order.png",
+      "bytes": 1055950,
+      "sha256": "c4ec0bbe19d60095f2d3628f0e06fcb02872c40ee222258f9bff0e4f5168776a"
+    },
+    {
+      "path": "docs/screenshots/c08-served.png",
+      "bytes": 1054602,
+      "sha256": "f9993d9410a627abcb5c8c13cb375741249b4c79eab8abf305d825608336635e"
+    },
+    {
+      "path": "docs/screenshots/c08-tea.png",
+      "bytes": 1059543,
+      "sha256": "11a6b30707be380126abd988339659bd21a3f7f9ca6e3e3f4eb960a1cb7c1140"
+    },
+    {
+      "path": "docs/screenshots/c08-toast.png",
+      "bytes": 1064132,
+      "sha256": "9a207ed1d04b08f0b431325ed2f87456c08b6677e5508f4c350e5d1bf0b5fef2"
+    },
+    {
+      "path": "docs/screenshots/c08-walking.png",
+      "bytes": 1046034,
+      "sha256": "7fab36fd5545f17bfb9bcd5e44edbd2d0177731cbdbdb66574fb6a7917c19360"
+    },
+    {
+      "path": "docs/screenshots/c09-art.png",
+      "bytes": 583181,
+      "sha256": "bf6281cf5fba579ebc21566af73b9c6af4f6d0f4d233f09f0185c9a4f65f576d"
+    },
+    {
+      "path": "docs/screenshots/c09-out.png",
+      "bytes": 661253,
+      "sha256": "447e83bbc44b444873443f9d77354619f621131c9cd26d9d692cc5cbfad25524"
+    },
+    {
+      "path": "docs/screenshots/c09-photo.png",
+      "bytes": 1033355,
+      "sha256": "2aea32f573e2337a3d26bfb27ca4e243fcf2afe406485cf6716ff5edebcbbe4e"
+    },
+    {
+      "path": "docs/screenshots/c09-shop.png",
+      "bytes": 641659,
+      "sha256": "3f1c6b5e947c74d38809cdb0fa61221e12a9b2dc0e315349b74d03c2e51ebc7e"
+    },
+    {
+      "path": "docs/screenshots/c09-street.png",
+      "bytes": 995599,
+      "sha256": "6a54488c54f9fdd90be27a36f8e2950c50c3fac93683966f2df85c56919c4369"
+    },
+    {
+      "path": "docs/screenshots/c10-english.png",
+      "bytes": 698661,
+      "sha256": "625d582c360e3e99e140a1d09f089a0af0f0f8907b10f53725912696893fb159"
+    },
+    {
+      "path": "docs/screenshots/c10-later.png",
+      "bytes": 692944,
+      "sha256": "9ffc2abec546345a35b241230fbd236cf6dac2fb606484e7308aa476387e7567"
+    },
+    {
+      "path": "docs/screenshots/c11-room-after.png",
+      "bytes": 743292,
+      "sha256": "fa39f6e4e1a19536aaacc7ccae04b6a8e463dc137189a8300a676b33daf14e5f"
+    },
+    {
+      "path": "docs/screenshots/g01-privacy.png",
+      "bytes": 746256,
+      "sha256": "ce7ea9aca767b8da95dc3fa06f32eb7d189c03d1a1a6f660e4b595fa30a99fea"
+    },
+    {
+      "path": "docs/screenshots/g02-policy.png",
+      "bytes": 342651,
+      "sha256": "15220c922e0d6c6b18407f53e285b1ee90ba5e6b20c0618678c2531ba6171064"
+    },
+    {
+      "path": "docs/screenshots/g03-declined.png",
+      "bytes": 729448,
+      "sha256": "42dea4d87735747c0155112a78bba9fea057f96ef767e76aedaddaf2c7b0d154"
+    },
+    {
+      "path": "docs/screenshots/g04-login.png",
+      "bytes": 706167,
+      "sha256": "c96c4152404426d1317b47058495517fb0b5a723d3994fac97b794e0d6689751"
+    },
+    {
+      "path": "docs/screenshots/g05-settings.png",
+      "bytes": 326681,
+      "sha256": "0dcd0f9397f1052e2f716553be62c3afd7ddfdfcaa71dcac683b2bcd4254d7bb"
+    },
+    {
+      "path": "docs/screenshots/g06-settings-policy.png",
+      "bytes": 367715,
+      "sha256": "1d892a94a6d0001c50f076707581b93715a06939a71195c89d072fbd8ae970fc"
+    },
+    {
+      "path": "docs/smoke-city-results.txt",
+      "bytes": 8971,
+      "sha256": "78d196b7abbceeacb682664a0bd5ed8b5f955cfa09ed1165312e9945d8db3346"
+    },
+    {
+      "path": "docs/smoke-results.txt",
+      "bytes": 10094,
+      "sha256": "7299ab2252ba833fcfa7c76d11844bcb9819cf36958d14d6e83303b2d102ba15"
+    },
+    {
+      "path": "store/icon-512.png",
+      "bytes": 128790,
+      "sha256": "4ac20bbe7b9d93fd6c00d9e06dbf756ed4092b11a943907b1f69dcdc6559499a"
+    },
+    {
+      "path": "store/itch-cover-630x500.png",
+      "bytes": 266425,
+      "sha256": "04ceee89c180bb5e49c1eb953797ad12c0b1dcf7f870db9a6a02848f787cc2b3"
+    },
+    {
+      "path": "store/itch上传步骤.md",
+      "bytes": 4106,
+      "sha256": "16a5705a9a316350177dfd217a322915c580f4124e49253f747374fcd8eaed94"
+    },
+    {
+      "path": "store/privacy.html",
+      "bytes": 3206,
+      "sha256": "eec0e3246bddb9e134adb112a6aa7b5520146077d12e368aa031b3b2704dcbb0"
+    },
+    {
+      "path": "store/screenshots/01-c00-title.png",
+      "bytes": 809568,
+      "sha256": "4a2261ae4c56b27bd9b62ec557e8dff7dc48cfd8f2eee753b89ad42980be4fd0"
+    },
+    {
+      "path": "store/screenshots/02-c00-room.png",
+      "bytes": 732797,
+      "sha256": "c8d49d7441c689e333de99b42b6057c105beae51a2561fdcdcb63baf4ae8449d"
+    },
+    {
+      "path": "store/screenshots/03-c02-care.png",
+      "bytes": 730484,
+      "sha256": "e20ee193e236827bf121ebddf5ac6932cec01d045bd2c03fa1a03916335cfde6"
+    },
+    {
+      "path": "store/screenshots/04-c03-park.png",
+      "bytes": 1133257,
+      "sha256": "afb920d73bf102d0b61bb25e976df85be9d6c19933a69a0685dbe7779fd47f08"
+    },
+    {
+      "path": "store/screenshots/05-c06-bus.png",
+      "bytes": 1038226,
+      "sha256": "c3fb99361922c570537f8e1098bba0f16021def6b229f570b99fa2f51a068914"
+    },
+    {
+      "path": "store/screenshots/06-c08-served.png",
+      "bytes": 1054602,
+      "sha256": "f9993d9410a627abcb5c8c13cb375741249b4c79eab8abf305d825608336635e"
+    },
+    {
+      "path": "store/上架步骤.md",
+      "bytes": 3440,
+      "sha256": "ea46f5a65a2f2bf09b83af25160a73411bf460eda95da0b55dbf9edafa5621b4"
+    }
+  ],
+  "excluded": [
+    ".git history",
+    "Unity Library/Build/Logs/UserSettings caches",
+    "local .forge session records",
+    "private signing keys",
+    "course papers and presentations"
+  ]
+}

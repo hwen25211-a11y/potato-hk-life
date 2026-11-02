@@ -23,9 +23,31 @@ namespace PotatoLife.Tests
             Check(Life.YearReady(s),"year complete");Check(s.festivals.All(x=>x),"four festivals reached");Check(s.album.Count>=8,"multiple memories collected");Check(Life.AvailableEndings(s).Contains((int)d),"desired ending is reachable");Check(Life.Graduate(s,(int)d),"choose ending");Check(s.graduated&&s.ending==((int)d).ToString(),"ending saved");
             return s;
         }
+        // 新生活: pets and the city chapters.
+        static void CityChecks()
+        {
+            var s=Life.New(100000,7);Check(!City.HasPet(s),"no pet at start");Check(!City.Adopt(s,"corgi",100000),"cannot adopt before the four questions");
+            City.Answer(s,2);for(int i=0;i<3;i++)City.Answer(s,0);Check(City.LeaseBlocked(s)&&!City.Adopt(s,"corgi",100000),"a lease that forbids pets blocks adoption");
+            City.ResetQuiz(s);for(int i=0;i<4;i++)Check(City.Answer(s,i==1?2:0),"quiz answer");Check(!City.Answer(s,0),"no fifth answer");Check(City.Risky(s)==1&&!City.LeaseBlocked(s),"risk counted, not blocked");
+            Check(!City.Adopt(s,"unicorn",100000),"unknown breed rejected");Check(City.Adopt(s,"ginger",100000)&&City.HasPet(s)&&!City.IsDog(s),"cat adopted");Check(!City.Adopt(s,"corgi",100000),"second adoption rejected");
+            Check(City.Breeds.Length==10&&City.Breeds.Count(b=>b.dog)==5,"five dogs, five cats");
+            s.coins=500;Check(City.Feed(s)&&s.coins==480&&s.city.food==90,"feed costs and fills");Check(City.Clean(s)&&s.coins==470,"cat litter costs less than a bath");Check(City.Hug(s)&&s.coins==470,"a hug is free");
+            s.coins=5;Check(!City.Feed(s)&&s.coins==5,"cannot feed without coins");s.coins=0;Check(!City.Vet(s),"vet needs coins");
+            s.demo=true;City.Decay(s,100000+864000);Check(s.city.food==0&&s.city.clean==0&&s.city.joy==0&&s.city.health>=City.HealthFloor,"neglect never kills");long at=s.city.petUtc;City.Decay(s,at+5);Check(s.city.petUtc==at,"decay waits for half a minute");
+            s.coins=480;Check(City.Vet(s)&&s.city.health==100&&s.coins==0,"vet restores health");
+            int memories=s.memories.Count;Check(!City.PetEnding(s,2),"abandoning is not an ending");Check(s.city.ending=="","rejected ending changes nothing");Check(City.PetEnding(s,0)&&City.PetEnding(s,1)&&s.memories.Count==memories+1,"ending remembered once");
+            s.coins=0;Check(City.WeekTask(s,"sim")==City.FirstReward&&City.WeekTask(s,"sim")==0,"week task pays once");Check(!s.city.hkid&&City.WeekTask(s,"id")>0&&s.city.hkid,"booking the ID card changes the fee column");
+            Check(City.Ate(s,4)>0&&City.Ate(s,4)==0&&City.Ate(s,99)==0,"food pays once");Check(City.Stamp(s,3)>0&&City.Stamp(s,3)==0&&City.Stamp(s,-1)==0,"stamp pays once");Check(s.coins==City.FirstReward*4,"rewards add up");
+            for(int i=0;i<City.Foods.Length;i++)Check((City.Held(i)==null)==(i==4||i==5||i==6),"noodles and rice use chopsticks, the rest are held");
+            Check(City.Places.All(p=>p.line==null||City.Lines.Any(l=>l.key==p.line)),"every place names a real line");Check(City.Lines.All(l=>l.path.Length%2==0&&l.path.Length>=4),"line paths are x,y pairs");Check(City.Fees.All(f=>f.Length==3),"fee rows");
+            var old=Life.New(100000,8);old.city=null;City.Normalize(old);Check(old.city!=null&&!City.HasPet(old),"older saves gain an empty city");
+            var bad=Life.New(100000,9);bad.city.pet="dragon";bad.city.food=float.NaN;bad.city.ate=new List<int>{1,1,44};bad.city.answers=new List<int>{9,0};City.Normalize(bad);Check(!City.HasPet(bad)&&bad.city.food==60&&bad.city.ate.Count==1&&bad.city.quiz==1,"bad city data repaired");
+            report.Add("city checks passed");
+        }
         public static void Run()
         {
             count=0;report=new List<string>();Directory.CreateDirectory("docs/paths");
+            CityChecks();
             foreach(Direction d in Enum.GetValues(typeof(Direction)))
             {
                 var s=RunYear(d);string line=World.Endings[(int)d]+" / trips="+s.completed+" / photos="+s.album.Count+" / letters="+s.letters.Count+" / direction="+string.Join(",",s.directionCount.Select(x=>x.ToString()).ToArray());Console.WriteLine(line);report.Add(line);File.WriteAllLines("docs/paths/"+d+".txt",s.memories.Concat(new[]{line}).ToArray());

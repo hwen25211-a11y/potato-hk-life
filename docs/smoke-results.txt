@@ -1,867 +1,383 @@
-PASS test audio is silent before gameplay
-UI 01-title overflow=0
+PASS gate shows privacy first
+UI g01-privacy overflow=0
+PASS button GatePolicy
+PASS raycast GatePolicy hit GatePolicy
+UI g02-policy overflow=0
+PASS button PrivacyClose
+PASS raycast PrivacyClose hit PrivacyClose
+PASS button GateDecline
+PASS raycast GateDecline hit GateDecline
+PASS declining explains and blocks
+UI g03-declined overflow=0
+PASS button GateAgree
+PASS raycast GateAgree hit GateAgree
+UI g04-login overflow=0
+PASS button GateLogin
+PASS raycast GateLogin hit GateLogin
+PASS login opens the title page
+UI c00-title overflow=0
 PASS button NewGame
-PASS raycast NewGame
+PASS raycast NewGame hit NewGame
 PASS button ConfirmNewGame
-PASS raycast ConfirmNewGame
-UI 02-home-guide overflow=0
-PASS starts with one guide step
-PASS button Profile
-PASS raycast Profile
-PASS zero profile value is visible 0
-PASS zero profile value is visible 1
-PASS zero profile value is visible 2
-PASS button ×
-PASS raycast ×
-PASS button PickDirection
-PASS raycast PickDirection
-UI 03-direction overflow=0
-PASS button Direction0
-PASS raycast Direction0
-PASS direction guide advances
-PASS button PetPotato
-PASS raycast PetPotato
-PASS pet produces reward
-PASS button Depart
-PASS raycast Depart
-PASS depart UI starts trip
-UI 04-away overflow=0
-PASS active timer roundtrip
-PASS v0.1.0 save gains daily tasks without losing trip
-PASS button Settings
-PASS raycast Settings
-PASS volume fill stays within track at 0
-PASS volume fill stays within track at 0.5
-PASS volume fill stays within track at 1
-PASS volume fill stays within track at 0
-PASS volume fill stays within track at 0.5
-PASS volume fill stays within track at 1
-PASS volume slider updates mute button label
-PASS button NextMusic
-PASS raycast NextMusic
-PASS next music button changes track
-PASS settings displays current music title
-UI 05-settings overflow=0
-PASS button ×
-PASS raycast ×
-PASS returns while modal open
-PASS button Depart
-PASS raycast Depart
-UI 06-return overflow=0
-PASS claim advances count
-PASS button OpenNewAlbum
-PASS raycast OpenNewAlbum
-UI 07-album overflow=0
-PASS three step guide complete
-PASS scrollbar handle receives pointer input
-PASS dragging scrollbar moves content
-PASS album photos wait to be opened
-PASS button Open9
-PASS raycast Open9
-PASS postcard opened by hand
-UI 08-photo overflow=0
-PASS button ×
-PASS raycast ×
-PASS button Tab来信
-PASS raycast Tab来信
-UI 09-mail overflow=0
-PASS button Letter10
-PASS raycast Letter10
-UI 10-letter overflow=0
-PASS button ReplyTogether
-PASS raycast ReplyTogether
-PASS reply advances friend arc
-PASS button Tab小店
-PASS raycast Tab小店
-UI 11-shop overflow=0
-PASS button Buy0
-PASS raycast Buy0
-PASS buy places decoration
-PASS button Tab小屋
-PASS raycast Tab小屋
-UI 12-decorated-home overflow=0
-PASS button Wardrobe
-PASS raycast Wardrobe
-UI 13-wardrobe overflow=0
-PASS button CloseWardrobe
-PASS raycast CloseWardrobe
-PASS button Quests
-PASS raycast Quests
-UI 14-goals overflow=0
-PASS button Quest1
-PASS raycast Quest1
-PASS optional reward once
-PASS button 回小屋
-PASS raycast 回小屋
-PASS new save: invitation after the first trip and album
-PASS v0.1.3-shaped save without the new fields
-PASS v0.1.3 save loads with its photos
-PASS old save receives the invitation without restarting
-PASS button Tab小屋
-PASS raycast Tab小屋
-UI 40-invite-board overflow=0
-PASS button Story
-PASS raycast Story
-UI 41-invite overflow=0
-PASS button StoryLater
-PASS raycast StoryLater
-PASS invitation can wait
-PASS button Tab来信
-PASS raycast Tab来信
-UI 41b-invite-letters overflow=0
-PASS button LetterInvite
-PASS raycast LetterInvite
-PASS button Route1
-PASS raycast Route1
-PASS route A chosen
-PASS button StoryPackLater
-PASS raycast StoryPackLater
-PASS button Tab小店
-PASS raycast Tab小店
-PASS button Buy7
-PASS raycast Buy7
-PASS button Tab小屋
-PASS raycast Tab小屋
-PASS umbrella bought
-PASS button Depart
-PASS raycast Depart
-UI 42-story-pack overflow=0
-PASS button StoryBag7
-PASS raycast StoryBag7
-PASS umbrella packed for Tai O
-PASS button StoryGo
-PASS raycast StoryGo
-PASS Tai O trip leaves from the packing page
-PASS reload during the story trip
-PASS rain message arrives on the way
-UI 43-story-away overflow=0
-PASS rain message survives reload and does not repeat
-PASS button Story
-PASS raycast Story
-UI 44-rain overflow=0
-PASS button RainDrink
-PASS raycast RainDrink
-PASS rain reply saved
-PASS story trip comes home, auto trips pause
-PASS button Depart
-PASS raycast Depart
-UI 45-story-harvest overflow=0
-PASS story trip collected once
-PASS reload after collecting pays nothing twice
-PASS button Tab来信
-PASS raycast Tab来信
-PASS button Letter9001
-PASS raycast Letter9001
-UI 46-story-note overflow=0
-PASS button StoryReply0
-PASS raycast StoryReply0
-UI 47-story-replied overflow=0
-PASS reply pays the base reward once
-PASS reply and the waiting echo survive reload
-PASS button Tab来信
-PASS raycast Tab来信
-PASS button Letter9001
-PASS raycast Letter9001
-UI 48-story-review overflow=0
-PASS button ReviewClose
-PASS raycast ReviewClose
-PASS button Tab手账
-PASS raycast Tab手账
-UI 49-keepsake-album overflow=0
-PASS button Keepsake
-PASS raycast Keepsake
-PASS button ReviewClose
-PASS raycast ReviewClose
-PASS button Tab小屋
-PASS raycast Tab小屋
-PASS offline cap through actual save reload
-UI 15-offline-return overflow=0
-PASS button Depart
-PASS raycast Depart
-PASS button OpenNewAlbum
-PASS raycast OpenNewAlbum
-PASS button Tab小屋
-PASS raycast Tab小屋
-PASS button Festival
-PASS raycast Festival
-UI 16-festival overflow=0
-PASS button FestivalTogether
-PASS raycast FestivalTogether
-PASS festival unlocks costume
-PASS button Wardrobe
-PASS raycast Wardrobe
-PASS button Outfit1
-PASS raycast Outfit1
-PASS costume selectable
-PASS button CloseWardrobe
-PASS raycast CloseWardrobe
-UI 17-new-costume overflow=0
-PASS button Profile
-PASS raycast Profile
-UI 19-profile overflow=0
-PASS profile number actually renders 0
-PASS profile number actually renders 1
-PASS profile number actually renders 2
-PASS button ×
-PASS raycast ×
-PASS button Daily0
-PASS raycast Daily0
-PASS button Daily0
-PASS raycast Daily0
-PASS button Daily0
-PASS raycast Daily0
-PASS button Daily0
-PASS raycast Daily0
-PASS daily task claimed through main board
-PASS button Settings
-PASS raycast Settings
-PASS button ToggleAuto
-PASS raycast ToggleAuto
-PASS button ×
-PASS raycast ×
-PASS button Tab小店
-PASS raycast Tab小店
-PASS button Buy6
-PASS raycast Buy6
-PASS button Tab小屋
-PASS raycast Tab小屋
-PASS button Wardrobe
-PASS raycast Wardrobe
-PASS button Bag6
-PASS raycast Bag6
-PASS button CloseWardrobe
-PASS raycast CloseWardrobe
-PASS purchased camera can be packed
-PASS button Tab陪伴
-PASS raycast Tab陪伴
-UI 25-study overflow=0
-PASS button StudyPotato
-PASS raycast StudyPotato
-PASS tapping the napping potato wakes it with praise
-PASS button StudyToggle
-PASS raycast StudyToggle
-PASS study timer starts
-PASS 45 minute stretch reminder appears
-UI 26-study-break overflow=0
-PASS button StudyContinue
-PASS raycast StudyContinue
-PASS continue resumes the timer
-UI 27-studying overflow=0
-PASS button StudyEnd
-PASS raycast StudyEnd
-PASS study session ends
-PASS button StudyTodos
-PASS raycast StudyTodos
-PASS button TodoAdd
-PASS raycast TodoAdd
-PASS own todo added through the list
-UI 28-todos overflow=0
-PASS button TodoDone1
-PASS raycast TodoDone1
-PASS own todo completed through the list
-PASS button 回小屋
-PASS raycast 回小屋
-PASS button Tab小店
-PASS raycast Tab小店
-PASS button Shop1
-PASS raycast Shop1
-UI 29-home-goods overflow=0
-PASS button Buy9
-PASS raycast Buy9
-PASS home good bought and placed
-PASS button Shop0
-PASS raycast Shop0
-PASS button Tab小屋
-PASS raycast Tab小屋
-UI 30-new-room overflow=0
-PASS button Tab小店
-PASS raycast Tab小店
-PASS button Shop2
-PASS raycast Shop2
-UI 29b-student-goods overflow=0
-PASS button Buy22
-PASS raycast Buy22
-PASS button Buy27
-PASS raycast Buy27
-PASS student goods: rice cooker placed, transit card carried
-PASS button Tab小店
-PASS raycast Tab小店
-PASS button Shop3
-PASS raycast Shop3
-UI 31-rooms overflow=0
-PASS button Room1
-PASS raycast Room1
-PASS moving keeps decorations
-UI 32-room-two overflow=0
-PASS button Tab小店
-PASS raycast Tab小店
-PASS button Room2
-PASS raycast Room2
-PASS third room chosen
-UI 33-room-three overflow=0
-PASS button Tab小店
-PASS raycast Tab小店
-PASS button Room0
-PASS raycast Room0
-PASS back to the first room
-PASS dragging a decoration saves its new spot
-PASS button Tab小屋
-PASS raycast Tab小屋
-PASS dragged spot survives a redraw
-UI 34-dragged overflow=0
-PASS button Tab小店
-PASS raycast Tab小店
-UI 35-rooms-more overflow=0
-PASS button Room4
-PASS raycast Room4
-PASS villa unlocks and moves in
-UI 36-villa overflow=0
-PASS button Tab小店
-PASS raycast Tab小店
-PASS button Room3
-PASS raycast Room3
-PASS harbour flat unlocks and moves in
-UI 37-flat overflow=0
-PASS button Tab小店
-PASS raycast Tab小店
-PASS button Room0
-PASS raycast Room0
-PASS button Tab小店
-PASS raycast Tab小店
-PASS button Shop0
-PASS raycast Shop0
-PASS button Tab小屋
-PASS raycast Tab小屋
-PASS button PickDirection
-PASS raycast PickDirection
-PASS button Direction1
-PASS raycast Direction1
-PASS button Depart
-PASS raycast Depart
-PASS full-year UI departure 6
-PASS button Depart
-PASS raycast Depart
-PASS full-year UI claim 6
-PASS button OpenNewAlbum
-PASS raycast OpenNewAlbum
-PASS button Tab小屋
-PASS raycast Tab小屋
-PASS button Festival
-PASS raycast Festival
-UI 20-festival-1 overflow=0
-PASS button FestivalWish
-PASS raycast FestivalWish
-PASS UI festival completed 1
-PASS button Wardrobe
-PASS raycast Wardrobe
-PASS button Outfit2
-PASS raycast Outfit2
-PASS button CloseWardrobe
-PASS raycast CloseWardrobe
-PASS button Tab来信
-PASS raycast Tab来信
-PASS button Letter60
-PASS raycast Letter60
-PASS button ReplyAdvice
-PASS raycast ReplyAdvice
-PASS UI letter replied 6
-PASS button Tab小屋
-PASS raycast Tab小屋
-PASS button PickDirection
-PASS raycast PickDirection
-PASS button Direction2
-PASS raycast Direction2
-PASS button Depart
-PASS raycast Depart
-PASS full-year UI departure 7
-PASS button Depart
-PASS raycast Depart
-PASS full-year UI claim 7
-PASS button OpenNewAlbum
-PASS raycast OpenNewAlbum
-PASS button Tab小屋
-PASS raycast Tab小屋
-PASS button Tab来信
-PASS raycast Tab来信
-PASS button Letter70
-PASS raycast Letter70
-PASS button ReplyTogether
-PASS raycast ReplyTogether
-PASS UI letter replied 7
-PASS button Tab小屋
-PASS raycast Tab小屋
-PASS button PickDirection
-PASS raycast PickDirection
-PASS button Direction3
-PASS raycast Direction3
-PASS button Depart
-PASS raycast Depart
-PASS full-year UI departure 8
-PASS button Depart
-PASS raycast Depart
-PASS full-year UI claim 8
-PASS button OpenNewAlbum
-PASS raycast OpenNewAlbum
-PASS button Tab小屋
-PASS raycast Tab小屋
-PASS button Tab来信
-PASS raycast Tab来信
-PASS button Letter80
-PASS raycast Letter80
-PASS button ReplyAdvice
-PASS raycast ReplyAdvice
-PASS UI letter replied 8
-PASS button Tab小屋
-PASS raycast Tab小屋
-PASS button PickDirection
-PASS raycast PickDirection
-PASS button Direction0
-PASS raycast Direction0
-PASS button Depart
-PASS raycast Depart
-PASS full-year UI departure 9
-PASS button Depart
-PASS raycast Depart
-PASS full-year UI claim 9
-PASS button OpenNewAlbum
-PASS raycast OpenNewAlbum
-PASS button Tab小屋
-PASS raycast Tab小屋
-PASS button Tab来信
-PASS raycast Tab来信
-PASS button Letter90
-PASS raycast Letter90
-PASS button ReplyTogether
-PASS raycast ReplyTogether
-PASS UI letter replied 9
-PASS button Tab小屋
-PASS raycast Tab小屋
-PASS button PickDirection
-PASS raycast PickDirection
-PASS button Direction1
-PASS raycast Direction1
-PASS button Depart
-PASS raycast Depart
-PASS full-year UI departure 10
-PASS button Depart
-PASS raycast Depart
-PASS full-year UI claim 10
-PASS button OpenNewAlbum
-PASS raycast OpenNewAlbum
-PASS button Tab小屋
-PASS raycast Tab小屋
-PASS button Festival
-PASS raycast Festival
-UI 20-festival-2 overflow=0
-PASS button FestivalTogether
-PASS raycast FestivalTogether
-PASS UI festival completed 2
-PASS button Wardrobe
-PASS raycast Wardrobe
-PASS button Outfit3
-PASS raycast Outfit3
-PASS button CloseWardrobe
-PASS raycast CloseWardrobe
-PASS button Tab来信
-PASS raycast Tab来信
-PASS button Letter102
-PASS raycast Letter102
-PASS button ReplyAdvice
-PASS raycast ReplyAdvice
-PASS UI letter replied 10
-PASS button Tab小屋
-PASS raycast Tab小屋
-PASS button PickDirection
-PASS raycast PickDirection
-PASS button Direction2
-PASS raycast Direction2
-PASS button Depart
-PASS raycast Depart
-PASS full-year UI departure 11
-PASS button Depart
-PASS raycast Depart
-PASS full-year UI claim 11
-PASS button OpenNewAlbum
-PASS raycast OpenNewAlbum
-PASS button Tab小屋
-PASS raycast Tab小屋
-PASS button Tab来信
-PASS raycast Tab来信
-PASS button Letter110
-PASS raycast Letter110
-PASS button ReplyTogether
-PASS raycast ReplyTogether
-PASS UI letter replied 11
-PASS button Tab小屋
-PASS raycast Tab小屋
-PASS button PickDirection
-PASS raycast PickDirection
-PASS button Direction3
-PASS raycast Direction3
-PASS button Depart
-PASS raycast Depart
-PASS full-year UI departure 12
-PASS button Depart
-PASS raycast Depart
-PASS full-year UI claim 12
-PASS button OpenNewAlbum
-PASS raycast OpenNewAlbum
-PASS button Tab小屋
-PASS raycast Tab小屋
-PASS button Tab来信
-PASS raycast Tab来信
-PASS button Letter120
-PASS raycast Letter120
-PASS button ReplyAdvice
-PASS raycast ReplyAdvice
-PASS UI letter replied 12
-PASS button Tab小屋
-PASS raycast Tab小屋
-PASS button PickDirection
-PASS raycast PickDirection
-PASS button Direction0
-PASS raycast Direction0
-PASS button Depart
-PASS raycast Depart
-PASS full-year UI departure 13
-PASS button Depart
-PASS raycast Depart
-PASS full-year UI claim 13
-PASS button OpenNewAlbum
-PASS raycast OpenNewAlbum
-PASS button Tab小屋
-PASS raycast Tab小屋
-PASS button Tab来信
-PASS raycast Tab来信
-PASS button Letter132
-PASS raycast Letter132
-PASS button ReplyTogether
-PASS raycast ReplyTogether
-PASS UI letter replied 13
-PASS button Tab小屋
-PASS raycast Tab小屋
-PASS button PickDirection
-PASS raycast PickDirection
-PASS button Direction1
-PASS raycast Direction1
-PASS button Depart
-PASS raycast Depart
-PASS full-year UI departure 14
-PASS button Depart
-PASS raycast Depart
-PASS full-year UI claim 14
-PASS button OpenNewAlbum
-PASS raycast OpenNewAlbum
-PASS button Tab小屋
-PASS raycast Tab小屋
-PASS button Festival
-PASS raycast Festival
-UI 20-festival-3 overflow=0
-PASS button FestivalWish
-PASS raycast FestivalWish
-PASS UI festival completed 3
-PASS button Wardrobe
-PASS raycast Wardrobe
-PASS button Outfit4
-PASS raycast Outfit4
-PASS button CloseWardrobe
-PASS raycast CloseWardrobe
-PASS button Tab来信
-PASS raycast Tab来信
-PASS button Letter141
-PASS raycast Letter141
-PASS button ReplyAdvice
-PASS raycast ReplyAdvice
-PASS UI letter replied 14
-PASS button Tab小屋
-PASS raycast Tab小屋
-PASS button PickDirection
-PASS raycast PickDirection
-PASS button Direction2
-PASS raycast Direction2
-PASS button Depart
-PASS raycast Depart
-PASS full-year UI departure 15
-PASS button Depart
-PASS raycast Depart
-PASS full-year UI claim 15
-PASS button OpenNewAlbum
-PASS raycast OpenNewAlbum
-PASS button Tab小屋
-PASS raycast Tab小屋
-PASS button Tab来信
-PASS raycast Tab来信
-PASS button Letter152
-PASS raycast Letter152
-PASS button ReplyTogether
-PASS raycast ReplyTogether
-PASS UI letter replied 15
-PASS button Tab小屋
-PASS raycast Tab小屋
-PASS button PickDirection
-PASS raycast PickDirection
-PASS button Direction3
-PASS raycast Direction3
-PASS button Depart
-PASS raycast Depart
-PASS full-year UI departure 16
-PASS button Depart
-PASS raycast Depart
-PASS full-year UI claim 16
-PASS button OpenNewAlbum
-PASS raycast OpenNewAlbum
-PASS button Tab小屋
-PASS raycast Tab小屋
-PASS button Tab来信
-PASS raycast Tab来信
-PASS button Letter160
-PASS raycast Letter160
-PASS button ReplyAdvice
-PASS raycast ReplyAdvice
-PASS UI letter replied 16
-PASS button Tab小屋
-PASS raycast Tab小屋
-PASS all four festivals completed in same UI playthrough
-PASS button Graduation
-PASS raycast Graduation
-UI 18-ending overflow=0
-PASS button Ending0
-PASS raycast Ending0
-PASS available ending selectable 0
-PASS button Ending1
-PASS raycast Ending1
-PASS available ending selectable 1
+PASS raycast ConfirmNewGame hit ConfirmNewGame
+UI c00-room overflow=0
+PASS button Tab新生活
+PASS raycast Tab新生活 hit Tab新生活
+PASS button Cityanim
+PASS raycast Cityanim hit Cityanim
+UI c01-anim overflow=0
+PASS button AnimHop
+PASS raycast AnimHop hit AnimHop
+UI c01-hop overflow=0
+PASS button AnimWalk
+PASS raycast AnimWalk hit AnimWalk
+UI c01-walk overflow=0
+PASS button AnimWave
+PASS raycast AnimWave hit AnimWave
+UI c01-wave overflow=0
+PASS button Cityhome
+PASS raycast Cityhome hit Cityhome
+UI c02-quiz overflow=0
+PASS button Quiz2
+PASS raycast Quiz2 hit Quiz2
+PASS button Quiz0
+PASS raycast Quiz0 hit Quiz0
+PASS button Quiz0
+PASS raycast Quiz0 hit Quiz0
+PASS button Quiz0
+PASS raycast Quiz0 hit Quiz0
+UI c02-blocked overflow=0
+PASS lease block hides adoption
+PASS button QuizAgain
+PASS raycast QuizAgain hit QuizAgain
+PASS button Quiz0
+PASS raycast Quiz0 hit Quiz0
+PASS button Quiz0
+PASS raycast Quiz0 hit Quiz0
+PASS button Quiz0
+PASS raycast Quiz0 hit Quiz0
+PASS button Quiz0
+PASS raycast Quiz0 hit Quiz0
+UI c02-clear overflow=0
+PASS button SeeBreeds
+PASS raycast SeeBreeds hit SeeBreeds
+UI c02-breeds overflow=0
+PASS button Breed0
+PASS raycast Breed0 hit Breed0
+PASS breed preview 0
+PASS button Breed1
+PASS raycast Breed1 hit Breed1
+PASS breed preview 1
+PASS button Breed2
+PASS raycast Breed2 hit Breed2
+PASS breed preview 2
+PASS button Breed3
+PASS raycast Breed3 hit Breed3
+PASS breed preview 3
+PASS button Breed4
+PASS raycast Breed4 hit Breed4
+PASS breed preview 4
+PASS button Breed5
+PASS raycast Breed5 hit Breed5
+PASS breed preview 5
+PASS button Breed6
+PASS raycast Breed6 hit Breed6
+PASS breed preview 6
+PASS button Breed7
+PASS raycast Breed7 hit Breed7
+PASS breed preview 7
+PASS button Breed8
+PASS raycast Breed8 hit Breed8
+PASS breed preview 8
+PASS button Breed9
+PASS raycast Breed9 hit Breed9
+PASS breed preview 9
+UI c02-breed-last overflow=0
+PASS button Breed0
+PASS raycast Breed0 hit Breed0
+PASS button Adopt
+PASS raycast Adopt hit Adopt
+PASS corgi adopted
+UI c02-care overflow=0
+PASS button PetFeed
+PASS raycast PetFeed hit PetFeed
+UI c02-feed-1 overflow=0
+PASS feeding pays when the bowl is finished
+UI c02-feed-2 overflow=0
+PASS button PetHug
+PASS raycast PetHug hit PetHug
+PASS hug starts after both walk over
+UI c02-hug overflow=0
+PASS hug raises joy
+PASS button PetClean
+PASS raycast PetClean hit PetClean
+PASS button PetVet
+PASS raycast PetVet hit PetVet
+PASS vet heals
+PASS button PetEnding
+PASS raycast PetEnding hit PetEnding
+UI c02-ending overflow=0
 PASS button Ending2
-PASS raycast Ending2
-PASS available ending selectable 2
-PASS button Ending3
-PASS raycast Ending3
-PASS available ending selectable 3
-PASS button FinishYear
-PASS raycast FinishYear
-PASS ending returns to ongoing cozy life
+PASS raycast Ending2 hit Ending2
+UI c02-abandon overflow=0
+PASS abandoning is refused
+PASS button EndingBack
+PASS raycast EndingBack hit EndingBack
+PASS button Ending0
+PASS raycast Ending0 hit Ending0
+PASS ending saved
+PASS button EndingHome
+PASS raycast EndingHome hit EndingHome
+PASS button Tab小屋
+PASS raycast Tab小屋 hit Tab小屋
+UI c02-room-pet overflow=0
+PASS pet lives in the room
+PASS button PetPotato
+PASS raycast PetPotato hit PetPotato
+PASS button Tab新生活
+PASS raycast Tab新生活 hit Tab新生活
+PASS button Citypark
+PASS raycast Citypark hit Citypark
+UI c03-park overflow=0
+PASS button ParkWalk
+PASS raycast ParkWalk hit ParkWalk
+PASS walk ends with a poop
+UI c03-poop overflow=0
+PASS button Ignore
+PASS raycast Ignore hit Ignore
+UI c03-seen overflow=0
+PASS button PickUp
+PASS raycast PickUp hit PickUp
+PASS poop picked up
+PASS button ParkComic
+PASS raycast ParkComic hit ParkComic
+UI c03-comic overflow=0
+PASS button ComicClose
+PASS raycast ComicClose hit ComicClose
+PASS button Citymall
+PASS raycast Citymall hit Citymall
+UI c04-mall overflow=0
+PASS button Spot用品店
+PASS raycast Spot用品店 hit Spot用品店
+PASS walks to the shop
+PASS button MallMeet
+PASS raycast MallMeet hit MallMeet
+PASS pets meet
+UI c04-friend overflow=0
+PASS button MallSkate
+PASS raycast MallSkate hit MallSkate
+UI c04-skate overflow=0
+PASS button Cityweek
+PASS raycast Cityweek hit Cityweek
+UI c05-week overflow=0
+PASS button HotSim
+PASS raycast HotSim hit HotSim
+PASS walks to the SIM shelf
+UI c05-sim overflow=0
+PASS button Sim0
+PASS raycast Sim0 hit Sim0
+PASS button WeekBack
+PASS raycast WeekBack hit WeekBack
+PASS button WeekId
+PASS raycast WeekId hit WeekId
+PASS opens the phone
+UI c05-phone overflow=0
+PASS button Slot0
+PASS raycast Slot0 hit Slot0
+UI c05-docs overflow=0
+PASS button Doc2
+PASS raycast Doc2 hit Doc2
+PASS button Doc0
+PASS raycast Doc0 hit Doc0
+PASS button Doc1
+PASS raycast Doc1 hit Doc1
+PASS button Doc3
+PASS raycast Doc3 hit Doc3
+PASS ID appointment done
+UI c05-id overflow=0
+PASS button WeekBack
+PASS raycast WeekBack hit WeekBack
+PASS button WeekHome
+PASS raycast WeekHome hit WeekHome
+PASS walks to the checklist
+PASS button Lease0
+PASS raycast Lease0 hit Lease0
+PASS button Lease1
+PASS raycast Lease1 hit Lease1
+PASS button Lease2
+PASS raycast Lease2 hit Lease2
+PASS lease checklist done
+PASS button WeekBack
+PASS raycast WeekBack hit WeekBack
+PASS button WeekCard
+PASS raycast WeekCard hit WeekCard
+PASS walks to the till
+PASS button Card2
+PASS raycast Card2 hit Card2
+UI c05-card overflow=0
+PASS button GoPay
+PASS raycast GoPay hit GoPay
+UI c06-pay overflow=0
+PASS button Pay2
+PASS raycast Pay2 hit Pay2
+UI c06-pay2 overflow=0
+PASS button Transmap
+PASS raycast Transmap hit Transmap
+UI c06-map overflow=0
+PASS button Linetw
+PASS raycast Linetw hit Linetw
+UI c06-map-line overflow=0
+PASS button RouteTask
+PASS raycast RouteTask hit RouteTask
+PASS button Lineis
+PASS raycast Lineis hit Lineis
+PASS wrong line refused
+PASS button Linekt
+PASS raycast Linekt hit Linekt
+PASS button Linetw
+PASS raycast Linetw hit Linetw
+PASS route task finishes
+PASS button Transbus
+PASS raycast Transbus hit Transbus
+UI c06-bus overflow=0
+UI c06-bus-near overflow=0
+PASS button BusShout
+PASS raycast BusShout hit BusShout
+PASS minibus stops
+PASS shouted in time
+UI c06-bus-stop overflow=0
+PASS button BusAgain
+PASS raycast BusAgain hit BusAgain
+PASS button BusShout
+PASS raycast BusShout hit BusShout
+PASS too early handled
+PASS too early is told
+PASS button Transtaxi
+PASS raycast Transtaxi hit Transtaxi
+UI c06-taxi overflow=0
+PASS button Taxi1
+PASS raycast Taxi1 hit Taxi1
+PASS wrong taxi refused
+PASS button Taxi0
+PASS raycast Taxi0 hit Taxi0
+PASS button Taxi1
+PASS raycast Taxi1 hit Taxi1
+PASS button Taxi2
+PASS raycast Taxi2 hit Taxi2
+PASS taxi quiz finishes
+PASS button Cityclinic
+PASS raycast Cityclinic hit Cityclinic
+UI c07-clinic overflow=0
+PASS button ClinicHa
+PASS raycast ClinicHa hit ClinicHa
+PASS HA Go opens
+UI c07-hago overflow=0
+PASS button HaFull
+PASS raycast HaFull hit HaFull
+PASS button HaOpen
+PASS raycast HaOpen hit HaOpen
+PASS appointment booked
+UI c07-booked overflow=0
+PASS button SeeFees
+PASS raycast SeeFees hit SeeFees
+UI c07-fees overflow=0
+PASS button Poster
+PASS raycast Poster hit Poster
+UI c07-poster overflow=0
+PASS button PosterA
+PASS raycast PosterA hit PosterA
+UI c07-poster-a overflow=0
+PASS button PosterB
+PASS raycast PosterB hit PosterB
+UI c07-poster-b overflow=0
+PASS button PosterC
+PASS raycast PosterC hit PosterC
+UI c07-poster-c overflow=0
+PASS button PosterFit
+PASS raycast PosterFit hit PosterFit
+PASS button PosterClose
+PASS raycast PosterClose hit PosterClose
+PASS button Cityfood
+PASS raycast Cityfood hit Cityfood
+UI c08-food overflow=0
+PASS button Food4
+PASS raycast Food4 hit Food4
+UI c08-walking overflow=0
+PASS sits and orders
+UI c08-order overflow=0
+UI c08-served overflow=0
+UI c08-eat-noodles overflow=0
+PASS noodles eaten
+PASS button Food1
+PASS raycast Food1 hit Food1
+UI c08-tea overflow=0
+PASS milk tea drunk
+PASS button Food7
+PASS raycast Food7 hit Food7
+UI c08-toast overflow=0
+PASS toast eaten
+PASS button Cityout
+PASS raycast Cityout hit Cityout
+UI c09-out overflow=0
+PASS button Place2
+PASS raycast Place2 hit Place2
+UI c09-photo overflow=0
+PASS button Stamp
+PASS raycast Stamp hit Stamp
+PASS stamped
+PASS button LineQuiz
+PASS raycast LineQuiz hit LineQuiz
+PASS button Quiztw
+PASS raycast Quiztw hit Quiztw
+PASS button Kind展览
+PASS raycast Kind展览 hit Kind展览
+UI c09-art overflow=0
+PASS button Kind看剧
+PASS raycast Kind看剧 hit Kind看剧
+PASS button Urbtix
+PASS raycast Urbtix hit Urbtix
+PASS button Urb1
+PASS raycast Urb1 hit Urb1
+PASS button UrbBack
+PASS raycast UrbBack hit UrbBack
+PASS button Kind购物
+PASS raycast Kind购物 hit Kind购物
+UI c09-shop overflow=0
+PASS button Browse
+PASS raycast Browse hit Browse
+PASS button Shop1
+PASS raycast Shop1 hit Shop1
+PASS button Place12
+PASS raycast Place12 hit Place12
+UI c09-street overflow=0
+PASS button Citylater
+PASS raycast Citylater hit Citylater
+UI c10-later overflow=0
+PASS button Later0
+PASS raycast Later0 hit Later0
+UI c10-english overflow=0
+PASS button LaterBack
+PASS raycast LaterBack hit LaterBack
+PASS city survives a save round trip
+PASS a save from the old game loads with an empty city
+PASS reload keeps the pet
+PASS button Tab小屋
+PASS raycast Tab小屋 hit Tab小屋
+UI c11-room-after overflow=0
 PASS button Settings
-PASS raycast Settings
-PASS button 保留进度，返回扉页
-PASS raycast 保留进度，返回扉页
-PASS button Continue
-PASS raycast Continue
-PASS continue reloads completed year
-PASS button Depart
-PASS raycast Depart
-PASS button Depart
-PASS raycast Depart
-PASS can collect another trip after graduation
-PASS button OpenNewAlbum
-PASS raycast OpenNewAlbum
-PASS button Tab小屋
-PASS raycast Tab小屋
-PASS UI full year has no repeated numbered stories
-PASS button Tab来信
-PASS raycast Tab来信
-PASS daily letters are labelled separately from story chapters
-UI 24-daily-mail overflow=0
-PASS 阿晴's echo arrived once during the year
-PASS city postcards collected during the year
-PASS photo and thumbnail packed at their own ratio tram-139
-PASS photo and thumbnail packed at their own ratio central-wheel
-PASS photo and thumbnail packed at their own ratio chungking-mansions
-PASS photo and thumbnail packed at their own ratio night-arches
-PASS photo and thumbnail packed at their own ratio back-alley
-PASS photo and thumbnail packed at their own ratio nam-cheong-pawn
-PASS photo and thumbnail packed at their own ratio colour-tenements
-PASS photo and thumbnail packed at their own ratio red-taxi-arches
-PASS photo and thumbnail packed at their own ratio monster-building
-PASS photo and thumbnail packed at their own ratio stonecutters-harbour
-PASS photo and thumbnail packed at their own ratio central-across-harbour
-PASS photo and thumbnail packed at their own ratio canal-road-villain
-PASS watermarked photo removed
-PASS portrait and landscape postcards collected
-PASS button Tab手账
-PASS raycast Tab手账
-PASS button Open109
-PASS raycast Open109
-PASS postcard shows the whole photo at its own ratio monster-building
-PASS photo imported without rescaling monster-building
-UI 50-city-portrait overflow=0
-PASS button PostcardFlip
-PASS raycast PostcardFlip
-UI 51-city-back-portrait overflow=0
-PASS button PostcardFlip
-PASS raycast PostcardFlip
-PASS button PhotoBig
-PASS raycast PhotoBig
-PASS full view keeps the ratio monster-building
-UI 52-photo-full-portrait overflow=0
-PASS button ViewerBack
-PASS raycast ViewerBack
-PASS closing the full photo returns to the postcard
-PASS button PostcardStack
-PASS raycast PostcardStack
-UI 53-city-stacked-portrait overflow=0
-PASS button PostcardStack
-PASS raycast PostcardStack
-PASS button PostcardDone
-PASS raycast PostcardDone
-PASS portrait and landscape postcards collected
-PASS button Tab手账
-PASS raycast Tab手账
-PASS button Open107
-PASS raycast Open107
-PASS postcard shows the whole photo at its own ratio colour-tenements
-PASS photo imported without rescaling colour-tenements
-UI 50-city-landscape overflow=0
-PASS button PostcardFlip
-PASS raycast PostcardFlip
-UI 51-city-back-landscape overflow=0
-PASS button PostcardFlip
-PASS raycast PostcardFlip
-PASS button PhotoBig
-PASS raycast PhotoBig
-PASS full view keeps the ratio colour-tenements
-UI 52-photo-full-landscape overflow=0
-PASS button ViewerBack
-PASS raycast ViewerBack
-PASS closing the full photo returns to the postcard
-PASS button PostcardStack
-PASS raycast PostcardStack
-UI 53-city-stacked-landscape overflow=0
-PASS button PostcardStack
-PASS raycast PostcardStack
-PASS button PostcardDone
-PASS raycast PostcardDone
-PASS repeat postcards add a memory, not a second thumbnail
-PASS button Tab小店
-PASS raycast Tab小店
-PASS button Shop0
-PASS raycast Shop0
-PASS button Buy20
-PASS raycast Buy20
-PASS travel frame bought and placed
-PASS button Tab小屋
-PASS raycast Tab小屋
-UI 55a-frame-empty overflow=0
-UI 54-frame-picker overflow=0
-PASS button Frame109
-PASS raycast Frame109
-PASS frame shows the chosen postcard
-PASS frame drag saves its spot
-UI 55-frame-room overflow=0
-PASS frame picture and spot survive reopening
-PASS dragged sofa is still where it was after reopening
-PASS button Tab来信
-PASS raycast Tab来信
-PASS button LetterInvite
-PASS raycast LetterInvite
-PASS button Route2
-PASS raycast Route2
-UI 56-route-2 overflow=0
-PASS route 2 plays at home without a trip
-PASS route 2 shows no Tai O results
-PASS button OpenNote
-PASS raycast OpenNote
-PASS button StoryReply1
-PASS raycast StoryReply1
-PASS route 2 same base reward and its own keepsake
-UI 57-route-2-replied overflow=0
-PASS button StoryHome
-PASS raycast StoryHome
-PASS button Tab来信
-PASS raycast Tab来信
-PASS button LetterInvite
-PASS raycast LetterInvite
-PASS button Route3
-PASS raycast Route3
-UI 56-route-3 overflow=0
-PASS route 3 plays at home without a trip
-PASS route 3 shows no Tai O results
-PASS button OpenNote
-PASS raycast OpenNote
-PASS button StoryReply2
-PASS raycast StoryReply2
-PASS route 3 same base reward and its own keepsake
-UI 57-route-3-replied overflow=0
-PASS button StoryHome
-PASS raycast StoryHome
-PASS real save restored after the route copies
-PASS legacy duplicate mail loads once without changing earned stats
-PASS button Tab来信
-PASS raycast Tab来信
-UI 22-letters-migrated overflow=0
-PASS button Letter12
-PASS raycast Letter12
-PASS opening merged read letter gives no repeat reward
-PASS button LetterHistory12
-PASS raycast LetterHistory12
-UI 23-letter-history overflow=0
-PASS button BackToLetter
-PASS raycast BackToLetter
-PASS button ×
-PASS raycast ×
-PASS button Tab小屋
-PASS raycast Tab小屋
-PASS merged reply history survives repeated saves
-PASS broken saves rejected
-PASS backup recovery
-PASS music imported Day
-PASS music imported Night
-PASS music imported Travel
-PASS music imported AfternoonJazz
-PASS music imported PixelRoomPiano
-PASS music imported LazyCoolJazz
-PASS feedback sound imported bubble
-PASS feedback sound decodes at gentle level bubble
-PASS feedback sound imported coin
-PASS feedback sound decodes at gentle level coin
-PASS feedback sound imported page
-PASS feedback sound decodes at gentle level page
-PASS feedback sound imported purchase
-PASS feedback sound decodes at gentle level purchase
-PASS feedback sound imported mail
-PASS feedback sound decodes at gentle level mail
-PASS feedback sound imported return
-PASS feedback sound decodes at gentle level return
-PASS feedback sound imported company
-PASS feedback sound decodes at gentle level company
-PASS feedback sound imported stamp
-PASS feedback sound decodes at gentle level stamp
-PASS one playing music source after fade Day
-PASS repeated theme does not restart Day
-PASS one playing music source after fade Day
-PASS repeated theme does not restart Day
-PASS one playing music source after fade Day
-PASS repeated theme does not restart Day
-PASS all songs reachable in Day playlist
-PASS one playing music source after fade Night
-PASS repeated theme does not restart Night
-PASS one playing music source after fade Night
-PASS repeated theme does not restart Night
-PASS one playing music source after fade Night
-PASS repeated theme does not restart Night
-PASS all songs reachable in Night playlist
-PASS one playing music source after fade Travel
-PASS repeated theme does not restart Travel
-PASS one playing music source after fade Travel
-PASS repeated theme does not restart Travel
-PASS one playing music source after fade Travel
-PASS repeated theme does not restart Travel
-PASS all songs reachable in Travel playlist
-PASS travel music settles before the festival check
-PASS festival shares travel without restarting
-PASS track ending automatically advances
-PASS at most one BGM during Day switch
-PASS at most one BGM during Travel switch
-PASS at most one BGM during Night switch
-PASS at most one BGM during Festival switch
-PASS mute holds through switching without changing effects volume
-PASS rapid next preserves fade-out level
-PASS rapid next settles to one source
-PASS transparent mascot atlas readable
-PASS button Settings
-PASS raycast Settings
-PASS hover animation stays centered
-PASS button ×
-PASS raycast ×
-UI 21-all-poses overflow=0
+PASS raycast Settings hit Settings
+UI g05-settings overflow=0
+PASS button SettingsPrivacy
+PASS raycast SettingsPrivacy hit SettingsPrivacy
+PASS settings policy offers withdrawing consent
+UI g06-settings-policy overflow=0
+PASS button PrivacyWithdraw
+PASS raycast PrivacyWithdraw hit PrivacyWithdraw
+PASS withdrawing returns to the privacy page
+PASS button GateAgree
+PASS raycast GateAgree hit GateAgree
+PASS button GateLogin
+PASS raycast GateLogin hit GateLogin
+PASS login again after withdrawing returns to the room
 PASS all testing remained silent
 SMOKE_OK total_overflow=0

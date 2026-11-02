@@ -55,6 +55,8 @@ namespace PotatoLife
         public List<string> memories=new List<string>();
         // v0.1.3: 阿晴的周末邀请 and the travel frame's picture (a city postcard id, 0 = not chosen).
         public WeekendStory weekend=new WeekendStory();public int framePhoto;
+        // 新生活: pets and the Hong Kong life chapters.
+        public CityState city=new CityState();
     }
     // One-off story. Every field starts at 0 = not yet, so older saves begin cleanly and each step pays out once.
     [Serializable] public class WeekendStory

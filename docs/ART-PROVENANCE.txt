@@ -29,3 +29,7 @@ v0.1.2 art changes
 - Home4.png (海景大平层) / Home5.png (山顶别墅): Codex (local CLI) image_gen, prompts room4.txt / room5.txt, Home.png as style reference only.
 
 Items2.png (v0.1.3, 港硕必备, 4x2, ids 21-28): one Codex (local CLI) image_gen sheet via agent-sprite-forge route_media.py, prompt ArtSource/forge/prompts/goods.txt, Home.png as style reference; keyed by generate2dsprite process (blue key, matte QA pass: 0 opaque key px, outer-ring spill 0.04%), each object re-centred in a 384 px cell. No brand names or logos.
+
+v0.2.0 新生活美术：ArtSource/newlife（raw 为生成原图与提示词，webp 为预览确认稿，Tools/import_new_life_art.py 转入 Assets/Resources/Art/Life）。
+绿色小巴图（Minibus.png）：项目方提供的插画（ArtSource/newlife/minibus-drawn.png），替换了早先的照片抠图；导入脚本按透明区域裁边、缩到 1200 px 宽。
+医管局收费海报（Resources/Hospital/FeePoster.jpg）：开发者在仁济医院大堂拍摄的医院管理局 2026 年收费海报，游戏内收费页和海报窗口都注明了资料来源。

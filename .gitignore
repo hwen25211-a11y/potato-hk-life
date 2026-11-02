@@ -36,4 +36,7 @@ __pycache__/
 # Owner-supplied original photos (game copies live in Assets/Resources/Photos)
 /ArtSource/photos/originals/
 
+# Private signing material and local generation session records
+*.keystore
+*.jks
 /.forge/

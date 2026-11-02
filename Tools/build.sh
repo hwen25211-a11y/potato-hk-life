@@ -10,7 +10,8 @@ fi
 case "${1:-mac}" in
  mac) method=PotatoLife.Editor.PotatoBuild.BuildMac ;;
  web) method=PotatoLife.Editor.PotatoBuild.BuildWeb ;;
+ android) method=PotatoLife.Editor.PotatoBuild.BuildAndroid ;;
  prepare) method=PotatoLife.Editor.PotatoBuild.Prepare ;;
- *) echo 'Usage: Tools/build.sh [mac|web|prepare]'; exit 2 ;;
+ *) echo 'Usage: Tools/build.sh [mac|web|android|prepare] (android test build without TapConfig: add -potato-test-apk)'; exit 2 ;;
 esac
-"$UNITY_BIN" -batchmode -nographics -quit -projectPath "$PWD" -executeMethod "$method" -logFile "$PWD/docs/build-${1:-mac}.log"
+"$UNITY_BIN" -batchmode -nographics -quit -projectPath "$PWD" -executeMethod "$method" -logFile "$PWD/docs/build-${1:-mac}.log" ${@:2}

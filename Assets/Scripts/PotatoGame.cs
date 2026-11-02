@@ -11,7 +11,7 @@ namespace PotatoLife
     {
         public PotatoState State{get;private set;}
         public bool MenuVisible{get{return menu;}}
-        RectTransform root,page,modal,effects;Texture2D home,places;Texture2D[] homes;string tab="小屋";bool menu=true,pageStale;
+        Potato2D roomPotato;RectTransform root,page,modal,effects;Texture2D home,places;Texture2D[] homes;string tab="小屋";bool menu=true,pageStale;
         TextMeshProUGUI coinText,energyText,moodText,growthText,countdown,musicTrackText;SmoothBar energyBar,moodBar,tripBar;long lastSecond,lastSaved;
         TextMeshProUGUI[] dailyProgress=new TextMeshProUGUI[3],dailyTitles=new TextMeshProUGUI[3];Button[] dailyButtons=new Button[3];TextMeshProUGUI dailyFooter;
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]static void Boot(){if(FindObjectOfType<PotatoGame>()==null)new GameObject("Potato life").AddComponent<PotatoGame>();}
@@ -23,15 +23,15 @@ namespace PotatoLife
             var scale=go.GetComponent<CanvasScaler>();scale.uiScaleMode=CanvasScaler.ScaleMode.ScaleWithScreenSize;scale.referenceResolution=new Vector2(1600,1000);scale.screenMatchMode=CanvasScaler.ScreenMatchMode.Expand;
             root=UI.Rect("Root",go.transform,0,0,1600,1000);root.anchorMin=root.anchorMax=root.pivot=new Vector2(.5f,.5f);root.anchoredPosition=Vector2.zero;
             if(FindObjectOfType<EventSystem>()==null)new GameObject("Events",typeof(EventSystem),typeof(StandaloneInputModule));var cam=new GameObject("Camera",typeof(Camera)).GetComponent<Camera>();cam.backgroundColor=Cream;cam.clearFlags=CameraClearFlags.SolidColor;cam.orthographic=true;
-            new GameObject("Listener",typeof(AudioListener));Sound.Initialize(gameObject);Render();
+            new GameObject("Listener",typeof(AudioListener));Sound.Initialize(gameObject);GateStart();Render();
         }
         void Update()
         {
-            if(State==null||menu)return;long now=Save.Now;
+            GateUpdate();if(State==null||menu||gate!=Gate.Open)return;long now=Save.Now;
             if(now!=lastSecond){lastSecond=now;long beforeDay=State.dailyDay;int stage=State.weekend.stage,rain=State.weekend.rain;bool arrived=Life.Tick(State,now);
                 if(stage==0&&State.weekend.stage==1||rain==0&&State.weekend.rain==1){bool invite=State.weekend.stage==1&&stage==0;Save.Write(State);Sound.Fx("mail");if(tab=="小屋"&&modal==null)Render();else pageStale=true;Float(invite?"阿晴发来一条周末邀请，在今日待办里。":"阿晴发来一条消息：真的下雨了。",Blue);}if(arrived){Sound.Fx("return");Save.Write(State);if(tab=="小屋"&&modal==null)Render();else{pageStale=true;Float("土豆子带回了新的手账，去门口收好吧。",Mango);}}if(beforeDay!=State.dailyDay){Save.Write(State);if(modal==null)Render();else pageStale=true;}
                 if(State.studyRunning){int blocks=State.studyBlocks;bool rest=Life.StudySettle(State,now);if(State.studyBlocks>blocks){Sound.Fx("coin");Float("专注满 15 分钟 · 金币 +"+Life.StudyBlockCoins(State)+" · 智慧 +1",Mint);}if(rest){Save.Write(State);StudyBreakDialog();}}
-                RefreshStats();if(now-lastSaved>=5){lastSaved=now;Save.Write(State);}}
+                City.Decay(State,now);if(tab=="新生活")RefreshPet();RefreshStats();if(now-lastSaved>=5){lastSaved=now;Save.Write(State);}}
             if(Input.GetKeyDown(KeyCode.Escape)&&modal!=null)CloseModal();
         }
         void OnApplicationPause(bool p){if(p&&State!=null){Life.Tick(State,Save.Now);Save.Write(State);}}
@@ -42,16 +42,16 @@ namespace PotatoLife
         public void ContinueGame(){State=Save.Read();if(State==null)return;Life.StudyPause(State,State.lastUtc);Life.Tick(State,Save.Now);menu=false;tab="小屋";Save.Write(State);Render();}
         public void Render()
         {
-            Clear(root);modal=null;pageStale=false;home=homes[State==null||menu?0:State.room];coinText=energyText=moodText=growthText=countdown=null;dailyProgress=new TextMeshProUGUI[3];dailyTitles=new TextMeshProUGUI[3];dailyButtons=new Button[3];dailyFooter=null;ClearStudy();energyBar=moodBar=tripBar=null;Card(root,0,0,1600,1000,Cream);
+            Clear(root);ClearCity();roomPotato=null;modal=null;pageStale=false;home=homes[State==null||menu?0:State.room];coinText=energyText=moodText=growthText=countdown=null;dailyProgress=new TextMeshProUGUI[3];dailyTitles=new TextMeshProUGUI[3];dailyButtons=new Button[3];dailyFooter=null;ClearStudy();energyBar=moodBar=tripBar=null;Card(root,0,0,1600,1000,Cream);
             page=UI.Rect("Page",root,0,0,1600,1000);page.gameObject.AddComponent<PageFade>();effects=UI.Rect("Feedback",root,0,0,1600,1000);
-            if(menu){DrawTitle();return;}Header();if(tab=="手账")DrawAlbum();else if(tab=="来信")DrawLetters();else if(tab=="小店")DrawShop();else if(tab=="陪伴")DrawStudy();else DrawRoom();RefreshStats();
+            if(gate!=Gate.Open){DrawGate();return;}if(menu){DrawTitle();return;}Header();if(tab=="手账")DrawAlbum();else if(tab=="来信")DrawLetters();else if(tab=="小店")DrawShop();else if(tab=="陪伴")DrawStudy();else if(tab=="新生活")DrawCity();else DrawRoom();RefreshStats();
             Text(page,Save.Error!=""?Save.Error:"已悄悄保存 · 今天也没有必须完成的任务",46,957,1160,28,16,Muted);
             Text(page,State.demo?"演示模式 · 一次外出 5 秒":"慢生活 · 一次外出 30—120 分钟",1160,957,394,28,16,Blue,false,TextAlignmentOptions.TopRight);
         }
         void Header()
         {
             Text(page,"土豆子的港硕生活",44,29,640,57,36,Ink,true);Text(page,"从一只行李箱，到一间越来越像家的小屋。",47,96,925,33,20,Muted);
-            string[] tabs={"小屋","陪伴","手账","来信","小店"};for(int i=0;i<5;i++){string t=tabs[i];Button(page,t+(t=="来信"&&State.letters.Any(l=>!l.read)?" ·":"")+(t=="陪伴"&&State.studyRunning?" ·":""),773+i*132,30,118,50,()=>{tab=t;if(t=="手账"){Life.OpenAlbum(State);Save.Write(State);}Sound.Fx("page");Render();},tab==t?Blue:Muted,true,"Tab"+t);}
+            string[] tabs={"小屋","陪伴","手账","来信","小店","新生活"};for(int i=0;i<6;i++){string t=tabs[i];Button(page,t+(t=="来信"&&State.letters.Any(l=>!l.read)?" ·":"")+(t=="陪伴"&&State.studyRunning?" ·":""),700+i*122,30,112,50,()=>{tab=t;if(t=="手账"){Life.OpenAlbum(State);Save.Write(State);}Sound.Fx("page");Render();},tab==t?Blue:Muted,true,"Tab"+t);}
             Button(page,"设置",1450,30,105,50,Settings,Muted,true,"Settings");
             growthText=Text(page,"",47,132,910,36,20,Ink,true);
             var c=Card(page,1050,99,159,49,Hex("FFE9B4")).transform;coinText=Text(c,"",13,9,134,32,21,Ink,true);
@@ -62,7 +62,7 @@ namespace PotatoLife
         {
             Picture(page,home,0,0,1600,1000);Card(page,59,73,677,814,new Color(1,.98f,.93f,.97f));Text(page,"POTATO, ONE YEAR IN HONG KONG",100,115,593,33,18,Blue,true);
             Text(page,"土豆子的\n港硕生活",95,203,600,178,64,Ink,true);Text(page,"你来选方向，\n它把日子过成小惊喜。",101,422,590,95,30,Blue);
-            Text(page,"没有挂科，没有催促。\n出门看一看，回来收一页手账。",103,551,580,92,25,Muted);Actor(page,0,0,960,402,370,444);
+            Text(page,"养一只宠物，认识一座城。\n出门看一看，回来收一页手账。",103,551,580,92,25,Muted);Actor(page,0,0,960,402,370,444);
             Button(page,"和土豆子一起抵港  →",102,696,589,65,()=>{if(Save.Exists)Restart();else NewGame();},Coral,true,"NewGame");Button(page,"回到我的小屋",102,779,589,61,ContinueGame,Blue,Save.Exists,"Continue");
             Text(page,"首次试玩默认 5 秒演示外出，可在设置切回慢生活。",782,916,748,38,21,Ink);
         }
@@ -73,6 +73,9 @@ namespace PotatoLife
             int pose=State.travelling?((int)State.trip.direction==0?1:(int)State.trip.direction==1?2:(int)State.trip.direction==2?3:6):State.energy<30?5:State.pending.Count>0?4:0;
             if(!State.travelling){DrawDecorations(scene);if(State.placed.Count>0){var hint=Card(scene,770,20,250,40,new Color(1,.98f,.93f,.9f)).transform;Text(hint,"拖动家具，自己摆放",0,7,250,28,17,Muted,false,TextAlignmentOptions.Center);}}
             var actor=!State.travelling&&State.pending.Count>0?Wave(scene,pose,State.outfit,361,281,318,357):Actor(scene,pose,State.travelling?State.trip.outfit:State.outfit,361,281,318,357);var button=actor.gameObject.AddComponent<Button>();actor.GetComponent<Image>().raycastTarget=true;button.targetGraphic=actor.GetComponent<Image>();button.onClick.AddListener(()=>{int before=State.coins;Float(Life.Pet(State),Coral);Sound.Fx(State.coins>before?"coin":"company");RefreshStats();Save.Write(State);});actor.name="PetPotato";
+            if(!State.travelling&&City.HasPet(State))Pet2D.Make(scene,State.city.pet,15,78,96,()=>State.city.joy).min=8;
+            // The plain idle potato uses the new frames; the old image stays as its invisible click target.
+            if(!State.travelling&&State.pending.Count==0&&pose==0&&State.outfit==0){var im=actor.GetComponent<Image>();Destroy(actor.GetComponent<PotatoMotion>());im.color=Color.clear;roomPotato=Potato2D.Make(scene,44,50,93);button.onClick.AddListener(()=>roomPotato.Hop());}
             var speech=Card(scene,277,157,610,99,new Color(1,1,1,.96f)).transform;
             Text(speech,State.travelling&&State.trip.story==1?(State.weekend.rain>0?"真的下雨了。阿晴问要不要找个地方等一等。":"和阿晴在大澳慢慢走，云有点厚。"):State.travelling?World.Places[State.trip.place].caption:State.pending.Count>0?"我回来啦！这次也带了好多小事情给你。":State.energy<30?"呼……先在家充一会儿电，什么都不会错过。":"今天想往哪个方向走？也可以先抱抱我。",21,17,568,67,23,Ink);
             DrawNoticeBoard();
@@ -88,7 +91,7 @@ namespace PotatoLife
             var old=page.GetComponentsInChildren<RectTransform>().FirstOrDefault(r=>r.name=="PetPotato");
             var walker=Sound.SilentTest||old==null||State.trip.outfit!=0?null:UI.Animated(old.parent,"Art/PotatoWalk",9,361,281,318,357);
             if(walker==null){Render();return;}
-            Destroy(old.gameObject);walker.name="WalkingPotato";Card(effects,0,0,1600,1000,Color.clear).raycastTarget=true;
+            if(roomPotato!=null)Destroy(roomPotato.gameObject);Destroy(old.gameObject);walker.name="WalkingPotato";Card(effects,0,0,1600,1000,Color.clear).raycastTarget=true;
             Float("土豆子出门啦，路上见！",Coral);walker.gameObject.AddComponent<WalkOut>().done=Render;
         }
         string DailyLine(int i,bool full){var t=Life.Task(State,i);return Life.DailyProgress(State,i)+" / "+t.need+(t.kind==3?" 分钟":"")+(full?" · 今天领满啦":" · +"+Tuning.DailyCoins+" 金币");}

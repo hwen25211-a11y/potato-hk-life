@@ -36,7 +36,7 @@ namespace PotatoLife
                 if(s.rooms==null||!s.rooms.Contains(0)||s.rooms.Any(r=>r<0||r>=World.Rooms.Length)||!s.rooms.Contains(s.room)||s.spots==null||s.spots.Any(p=>p==null||p.room<0||p.room>=World.Rooms.Length||p.id<0||p.id>=World.Items.Length||World.Items[p.id].type!=0||p.x<0||p.x>1536||p.y<0||p.y>1024)||s.todos==null||s.todos.Count>Tuning.MaxTodos+20||s.todos.Any(t=>t==null||string.IsNullOrEmpty(t.text)||t.text.Length>Tuning.TodoLength||t.id<=0||t.id>=s.todoNext))return null;
                 s.petTotal=Math.Max(s.petTotal,Math.Max(s.petClicks,s.dailyPets));
                 if(s.dailyDay==0)Life.EnsureDaily(s,s.lastUtc);Life.MigrateDaily(s);
-                Life.NormalizeLetters(s);Life.NormalizeStory(s);s.energy=Life.Cap(s.energy);s.mood=Life.Cap(s.mood);return s;
+                Life.NormalizeLetters(s);Life.NormalizeStory(s);City.Normalize(s);s.energy=Life.Cap(s.energy);s.mood=Life.Cap(s.mood);return s;
             }catch{return null;}
         }
         public static PotatoState Read(){Error="";var s=Parse(PlayerPrefs.GetString(Key,""));if(s!=null)return s;s=Parse(PlayerPrefs.GetString(Backup,""));if(s!=null)Error="已从上一份备份找回土豆子的手账。";return s;}

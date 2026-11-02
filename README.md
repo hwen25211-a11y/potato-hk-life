@@ -1,5 +1,9 @@
 # 土豆子的港硕生活
 
+《土豆子的港硕生活》的新工程。保留原来的全部玩法，顶部新增「新生活」页签：领养猫狗、宠物公园与商场，以及一个港硕学生在香港一年会遇到的事。原工程 `potato-hk-life` 没有改动。
+
+**v0.2.0 · 新生活**：土豆子换成逐帧动作（眨眼、蹲跳、走路、挥手）；10 个猫狗品种的领养与照顾，宠物住进小屋；抵港第一周、交通、看医生、茶餐厅、周末出门、一年后共十个章节，打开就能玩。详见 [CHANGELOG.md](CHANGELOG.md)。
+
 一款 Unity + C# 开发的中文单机放置陪伴游戏。你来选方向，土豆子自己出门，把香港的日常带回成照片、信件和小惊喜。
 
 **v0.1.3 可玩原型**：完整春夏秋冬、16 次外出的学年纪念、4 种温暖结局；新增陪伴学习（45 分钟起身提醒）、完成即换新的每日任务、自己的待办清单、「素白良物」家居小店、五间可选的房子（含需解锁的海景大平层和山顶别墅）、可用鼠标拖动摆放的家具、三句预设回信和需要亲手拆开的明信片。默认一次外出 5 秒，适合首次试玩和课堂演示；可切换到现实 30—120 分钟的慢生活模式。
@@ -8,15 +12,18 @@
 
 **v0.1.3**：新增故事「阿晴的周末邀请」（三种安排、行囊片段、途中消息、回信与回响、故事纪念），真实香港照片做成的横版城市明信片（左图右文、背面、大图），可挂照片的旅行相框，以及按实际游玩记录生成的毕业「这一年的手账」。详见 [CHANGELOG.md](CHANGELOG.md)。
 
-## 下载试玩
+## 下载试玩（最新版 v0.2.2）
 
-**v0.1.3 · 阿晴的周末与城市明信片**：2026-10-26 统一源码、游戏内版本和试玩包版本为 **0.1.3**。下载 `PotatoHK-Mac-v0.1.3.zip` 或 `PotatoHK-Browser-v0.1.3.zip`。本轮新增阿晴的周末邀请、城市明信片、港硕必备小店、旅行相框与毕业手账，详见 [本次迭代与运行说明](docs/RELEASE-v0.1.3.md)。
+游戏正式名称为 **《土豆子的港硕生活》**。本次同步桌面 `potato-new-life` 工程的 v0.2.2 源码与素材，保留旧版玩法，新增「新生活」十个章节、宠物领养与照顾等内容。
 
-[发行包与运行说明](https://github.com/hwen25211-a11y/potato-hk-life/releases)
-
-- Mac：下载 Mac 试玩 ZIP，完整解压，打开 `土豆子的港硕生活.app`。
-- Windows / 浏览器：下载 Browser 试玩 ZIP，安装 Python 3 后使用包内启动器，在浏览器访问 `http://127.0.0.1:8918`。
-- GitHub 自动生成的 `Source code (zip)` 是源码，不含构建结果。试玩不需要安装 Unity。
+- **直接网页试玩**：[itch.io 试玩页](https://hwen25211gamilcom.itch.io/potato-postgraduate-life)。建议用电脑版浏览器打开，体验更好。页面提供中英文介绍，游戏内目前为简体中文。
+- **下载最新发行包**：[v0.2.2 Releases](https://github.com/hwen25211-a11y/potato-hk-life/releases/tag/v0.2.2)。
+- **Mac**：下载 `PotatoHK-Mac-v0.2.2.zip`，完整解压后打开其中的游戏应用。
+- **本地网页包**：下载 `PotatoHK-Browser-v0.2.2.zip`，安装 Python 3 后使用包内启动器。
+- **网页平台上传包**：`PotatoHK-itch-v0.2.2.zip` 的根目录包含 `index.html`，供支持 HTML 游戏的平台使用。
+- **安卓预览包**：`PotatoHK-Android-v0.2.2-preview.apk` 用于安装体验界面与玩法，跳过 TapTap 登录；它不是正式 TapTap 合规发行包。
+- **完整源码包**：`PotatoHK-Source-v0.2.2.zip` 包含 Unity 工程、素材、依赖配置及说明，不含 Unity 缓存、私人签名密钥和课程论文/PPT。
+- 下载后可使用发行页的 `SHA256SUMS.txt` 核对文件完整性。GitHub 自动生成的 Source code 包同样是源码，不含已构建游戏。
 
 ## 怎么玩
 
@@ -58,8 +65,11 @@
 ./Tools/test-rules.sh
 ./Tools/build.sh mac
 ./Tools/build.sh web
+./Tools/build.sh android   # TapTap 安装包，先填 TapConfig
 python3 Tools/package.py
 ```
+
+安卓版面向 TapTap「开放试玩」：启动先显示隐私提示，同意后才初始化 TapSDK，再用 TapTap 登录并通过实名认证与防沉迷才进入扉页。Mac 和浏览器版不受影响。上架步骤、商店文案、图标和截图在 [store/](store/上架步骤.md)；签名密钥在仓库外的 `../PotatoHK-签名/`。
 
 Unity 编辑器菜单“土豆子的港硕生活”也提供构建入口。构建脚本支持 `UNITY_BIN`，规则测试支持 `UNITY_ROOT`。
 
@@ -73,6 +83,7 @@ Unity 编辑器菜单“土豆子的港硕生活”也提供构建入口。构�
 | `PotatoGame.cs` / `PotatoPages.cs` | 常驻场景、局部状态刷新与各页面 |
 | `CozyUI.cs` | uGUI/TMP 控件、角色图集、平滑条与轻量动画 |
 | `PotatoSound.cs` | 场景歌单轮播、手动切歌、淡入淡出、分离音量 |
+| `PotatoTapGate.cs` / `PotatoPrivacy.cs` | 安卓的隐私同意、TapTap 登录与防沉迷关卡；隐私政策全文 |
 | `Assets/Editor` | 构建、纯规则与界面交互检查 |
 
 存档键和应用标识均与旧《港硕这一年》分离。旧项目没有迁移或覆盖；复用审核见 [docs/REUSE-AUDIT.txt](docs/REUSE-AUDIT.txt)，实际验证见 [docs/VALIDATION.txt](docs/VALIDATION.txt)。

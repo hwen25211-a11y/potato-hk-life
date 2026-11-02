@@ -2,8 +2,8 @@
 from pathlib import Path
 import zipfile,hashlib,json,stat,subprocess
 ROOT=Path(__file__).resolve().parents[1];OUT=ROOT/'release';OUT.mkdir(exist_ok=True)
-VERSION='0.1.3'
-README='''《土豆子的港硕生活》0.1.3 试玩版
+VERSION='0.2.2'
+README='''《土豆子的港硕生活》0.2.2 试玩版
 
 默认演示模式：一次外出5秒。选方向，送土豆子出门，回来收照片和信件。
 设置里可换成现实30—120分钟的慢生活。离线最多积攒3份收获。
@@ -27,7 +27,8 @@ Mac双击「浏览器试玩.command」，或运行 python3 Tools/preview.py。
 来信有三句不同态度的预设回复可选，都不会扣东西；新明信片要在「手账」里亲手拆开。
 买来的家具可以在小屋里用鼠标拖动，自己摆放；每间房记住各自的布置。
 「换个房间」新增海景大平层（1500金币）和山顶别墅（3000金币），一次解锁后随时免费搬。
-0.1.3新增：第一次外出并看过手账后，阿晴会发来周末邀请（今日待办和来信里都有入口）。
+0.2.0新增：顶部「新生活」页签，十个章节：土豆新动作、领养10种猫狗、宠物公园、宠物商场、抵港第一周、交通、看医生、美食、周末出门、一年后。
+此前新增：第一次外出并看过手账后，阿晴会发来周末邀请（今日待办和来信里都有入口）。
 三种安排都能好好走完：去大澳要带行囊、路上可能收到下雨的消息；回信后得到一件故事纪念。
 外出回家时会顺路寄回真实的香港街景明信片，在「手账」下方的「城市明信片」里拆开、翻面、看大图。
 小店新增「旅行相框」，挂在墙上可以拖动，点它可换成收藏的城市明信片。
@@ -74,5 +75,12 @@ name='PotatoHK-Mac-v'+VERSION+'.zip'
 manifest[name]=build(name,[(p,str(p.relative_to(mac))) for p in mac.rglob('*') if p.is_file() and p.name!='.DS_Store']+licenses,[])
 name='PotatoHK-Browser-v'+VERSION+'.zip'
 manifest[name]=build(name,[(p,str(p.relative_to(ROOT))) for p in (ROOT/'Build/WebGL').rglob('*') if p.is_file()]+licenses+[(ROOT/'Tools/preview.py','Tools/preview.py')],[('浏览器试玩-Windows.bat',BAT.replace('\n','\r\n').encode('ascii'),0o644),('浏览器试玩.command',COMMAND.encode(),0o755)])
+# itch.io: index.html at the zip root, no launcher or readme (itch rejects a nested folder).
+web=ROOT/'Build/WebGL';name='PotatoHK-itch-v'+VERSION+'.zip';dest=OUT/name
+with zipfile.ZipFile(dest,'w',zipfile.ZIP_DEFLATED) as z:
+    for p in sorted(web.rglob('*')):
+        if p.is_file() and p.name!='.DS_Store':z.write(p,str(p.relative_to(web)))
+with zipfile.ZipFile(dest) as z:assert 'index.html' in z.namelist() and len(z.namelist())<1000
+manifest[name]={'bytes':dest.stat().st_size,'sha256':hashlib.sha256(dest.read_bytes()).hexdigest()};print(name,manifest[name]['bytes'])
 (OUT/'checksums.json').write_text(json.dumps(manifest,indent=2)+'\n')
 for name,item in manifest.items():(OUT/(name+'.sha256')).write_text(item['sha256']+'  '+name+'\n')

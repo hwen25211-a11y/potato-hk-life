@@ -245,6 +245,7 @@ namespace PotatoLife
             for(int i=0;i<3;i++){int read=s.letters.Count(l=>l.friend==i&&l.read),replied=s.letters.Count(l=>l.friend==i&&l.reply>=0);if(read+replied>0)lines.Add(World.Friends[i]+"：读了 "+read+" 封信，回了 "+replied+" 封。");}
             if(s.studyTotal>=60){int m=s.studyTotal/60;lines.Add("陪伴学习累计 "+(m>=60?m/60+" 小时 ":"")+m%60+" 分钟。");}
             int k=Life.Keepsake(s);if(k>=0)lines.Add("完成的故事：阿晴的周末邀请（"+World.StoryRoutes[s.weekend.route-1].TrimEnd('。')+"），留下了「"+World.Keepsakes[k].name+"」。");
+            if(City.HasPet(s))lines.Add("和"+City.MyPet(s).name+"一起过了这一年"+(s.city.ending!=""?"："+s.city.ending:"。"));if(s.city.ate.Count+s.city.stamps.Count>0)lines.Add("尝过 "+s.city.ate.Count+" / "+City.Foods.Length+" 样香港美食，打卡 "+s.city.stamps.Count+" / "+City.Places.Length+" 个地方。");
             return lines.ToArray();
         }
     }

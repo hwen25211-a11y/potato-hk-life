@@ -1,0 +1,349 @@
+UI c00-title overflow=0
+PASS button NewGame
+PASS raycast NewGame hit NewGame
+UI c00-room overflow=0
+PASS button Tab新生活
+PASS raycast Tab新生活 hit Tab新生活
+PASS button Cityanim
+PASS raycast Cityanim hit Cityanim
+UI c01-anim overflow=0
+PASS button AnimHop
+PASS raycast AnimHop hit AnimHop
+UI c01-hop overflow=0
+PASS button AnimWalk
+PASS raycast AnimWalk hit AnimWalk
+UI c01-walk overflow=0
+PASS button AnimWave
+PASS raycast AnimWave hit AnimWave
+UI c01-wave overflow=0
+PASS button Cityhome
+PASS raycast Cityhome hit Cityhome
+UI c02-quiz overflow=0
+PASS button Quiz2
+PASS raycast Quiz2 hit Quiz2
+PASS button Quiz0
+PASS raycast Quiz0 hit Quiz0
+PASS button Quiz0
+PASS raycast Quiz0 hit Quiz0
+PASS button Quiz0
+PASS raycast Quiz0 hit Quiz0
+UI c02-blocked overflow=0
+PASS lease block hides adoption
+PASS button QuizAgain
+PASS raycast QuizAgain hit QuizAgain
+PASS button Quiz0
+PASS raycast Quiz0 hit Quiz0
+PASS button Quiz0
+PASS raycast Quiz0 hit Quiz0
+PASS button Quiz0
+PASS raycast Quiz0 hit Quiz0
+PASS button Quiz0
+PASS raycast Quiz0 hit Quiz0
+UI c02-clear overflow=0
+PASS button SeeBreeds
+PASS raycast SeeBreeds hit SeeBreeds
+UI c02-breeds overflow=0
+PASS button Breed0
+PASS raycast Breed0 hit Breed0
+PASS breed preview 0
+PASS button Breed1
+PASS raycast Breed1 hit Breed1
+PASS breed preview 1
+PASS button Breed2
+PASS raycast Breed2 hit Breed2
+PASS breed preview 2
+PASS button Breed3
+PASS raycast Breed3 hit Breed3
+PASS breed preview 3
+PASS button Breed4
+PASS raycast Breed4 hit Breed4
+PASS breed preview 4
+PASS button Breed5
+PASS raycast Breed5 hit Breed5
+PASS breed preview 5
+PASS button Breed6
+PASS raycast Breed6 hit Breed6
+PASS breed preview 6
+PASS button Breed7
+PASS raycast Breed7 hit Breed7
+PASS breed preview 7
+PASS button Breed8
+PASS raycast Breed8 hit Breed8
+PASS breed preview 8
+PASS button Breed9
+PASS raycast Breed9 hit Breed9
+PASS breed preview 9
+UI c02-breed-last overflow=0
+PASS button Breed0
+PASS raycast Breed0 hit Breed0
+PASS button Adopt
+PASS raycast Adopt hit Adopt
+PASS corgi adopted
+UI c02-care overflow=0
+PASS button PetFeed
+PASS raycast PetFeed hit PetFeed
+UI c02-feed-1 overflow=0
+PASS feeding pays when the bowl is finished
+UI c02-feed-2 overflow=0
+PASS button PetHug
+PASS raycast PetHug hit PetHug
+PASS hug starts after both walk over
+UI c02-hug overflow=0
+PASS hug raises joy
+PASS button PetClean
+PASS raycast PetClean hit PetClean
+PASS button PetVet
+PASS raycast PetVet hit PetVet
+PASS vet heals
+PASS button PetEnding
+PASS raycast PetEnding hit PetEnding
+UI c02-ending overflow=0
+PASS button Ending2
+PASS raycast Ending2 hit Ending2
+UI c02-abandon overflow=0
+PASS abandoning is refused
+PASS button EndingBack
+PASS raycast EndingBack hit EndingBack
+PASS button Ending0
+PASS raycast Ending0 hit Ending0
+PASS ending saved
+PASS button EndingHome
+PASS raycast EndingHome hit EndingHome
+PASS button Tab小屋
+PASS raycast Tab小屋 hit Tab小屋
+UI c02-room-pet overflow=0
+PASS pet lives in the room
+PASS button PetPotato
+PASS raycast PetPotato hit PetPotato
+PASS button Tab新生活
+PASS raycast Tab新生活 hit Tab新生活
+PASS button Citypark
+PASS raycast Citypark hit Citypark
+UI c03-park overflow=0
+PASS button ParkWalk
+PASS raycast ParkWalk hit ParkWalk
+PASS walk ends with a poop
+UI c03-poop overflow=0
+PASS button Ignore
+PASS raycast Ignore hit Ignore
+UI c03-seen overflow=0
+PASS button PickUp
+PASS raycast PickUp hit PickUp
+PASS poop picked up
+PASS button ParkComic
+PASS raycast ParkComic hit ParkComic
+UI c03-comic overflow=0
+PASS button ComicClose
+PASS raycast ComicClose hit ComicClose
+PASS button Citymall
+PASS raycast Citymall hit Citymall
+UI c04-mall overflow=0
+PASS button Spot用品店
+PASS raycast Spot用品店 hit Spot用品店
+PASS walks to the shop
+PASS button MallMeet
+PASS raycast MallMeet hit MallMeet
+PASS pets meet
+UI c04-friend overflow=0
+PASS button MallSkate
+PASS raycast MallSkate hit MallSkate
+UI c04-skate overflow=0
+PASS button Cityweek
+PASS raycast Cityweek hit Cityweek
+UI c05-week overflow=0
+PASS button HotSim
+PASS raycast HotSim hit HotSim
+PASS walks to the SIM shelf
+UI c05-sim overflow=0
+PASS button Sim0
+PASS raycast Sim0 hit Sim0
+PASS button WeekBack
+PASS raycast WeekBack hit WeekBack
+PASS button WeekId
+PASS raycast WeekId hit WeekId
+PASS opens the phone
+UI c05-phone overflow=0
+PASS button Slot0
+PASS raycast Slot0 hit Slot0
+UI c05-docs overflow=0
+PASS button Doc2
+PASS raycast Doc2 hit Doc2
+PASS button Doc0
+PASS raycast Doc0 hit Doc0
+PASS button Doc1
+PASS raycast Doc1 hit Doc1
+PASS button Doc3
+PASS raycast Doc3 hit Doc3
+PASS ID appointment done
+UI c05-id overflow=0
+PASS button WeekBack
+PASS raycast WeekBack hit WeekBack
+PASS button WeekHome
+PASS raycast WeekHome hit WeekHome
+PASS walks to the checklist
+PASS button Lease0
+PASS raycast Lease0 hit Lease0
+PASS button Lease1
+PASS raycast Lease1 hit Lease1
+PASS button Lease2
+PASS raycast Lease2 hit Lease2
+PASS lease checklist done
+PASS button WeekBack
+PASS raycast WeekBack hit WeekBack
+PASS button WeekCard
+PASS raycast WeekCard hit WeekCard
+PASS walks to the till
+PASS button Card2
+PASS raycast Card2 hit Card2
+UI c05-card overflow=0
+PASS button GoPay
+PASS raycast GoPay hit GoPay
+UI c06-pay overflow=0
+PASS button Pay2
+PASS raycast Pay2 hit Pay2
+UI c06-pay2 overflow=0
+PASS button Transmap
+PASS raycast Transmap hit Transmap
+UI c06-map overflow=0
+PASS button Linetw
+PASS raycast Linetw hit Linetw
+UI c06-map-line overflow=0
+PASS button RouteTask
+PASS raycast RouteTask hit RouteTask
+PASS button Lineis
+PASS raycast Lineis hit Lineis
+PASS wrong line refused
+PASS button Linekt
+PASS raycast Linekt hit Linekt
+PASS button Linetw
+PASS raycast Linetw hit Linetw
+PASS route task finishes
+PASS button Transbus
+PASS raycast Transbus hit Transbus
+UI c06-bus overflow=0
+UI c06-bus-near overflow=0
+PASS button BusShout
+PASS raycast BusShout hit BusShout
+PASS minibus stops
+PASS shouted in time
+UI c06-bus-stop overflow=0
+PASS button BusAgain
+PASS raycast BusAgain hit BusAgain
+PASS button BusShout
+PASS raycast BusShout hit BusShout
+PASS too early handled
+PASS too early is told
+PASS button Transtaxi
+PASS raycast Transtaxi hit Transtaxi
+UI c06-taxi overflow=0
+PASS button Taxi1
+PASS raycast Taxi1 hit Taxi1
+PASS wrong taxi refused
+PASS button Taxi0
+PASS raycast Taxi0 hit Taxi0
+PASS button Taxi1
+PASS raycast Taxi1 hit Taxi1
+PASS button Taxi2
+PASS raycast Taxi2 hit Taxi2
+PASS taxi quiz finishes
+PASS button Cityclinic
+PASS raycast Cityclinic hit Cityclinic
+UI c07-clinic overflow=0
+PASS button ClinicHa
+PASS raycast ClinicHa hit ClinicHa
+PASS HA Go opens
+UI c07-hago overflow=0
+PASS button HaFull
+PASS raycast HaFull hit HaFull
+PASS button HaOpen
+PASS raycast HaOpen hit HaOpen
+PASS appointment booked
+UI c07-booked overflow=0
+PASS button SeeFees
+PASS raycast SeeFees hit SeeFees
+UI c07-fees overflow=0
+PASS button Poster
+PASS raycast Poster hit Poster
+UI c07-poster overflow=0
+PASS button PosterA
+PASS raycast PosterA hit PosterA
+UI c07-poster-a overflow=0
+PASS button PosterB
+PASS raycast PosterB hit PosterB
+UI c07-poster-b overflow=0
+PASS button PosterC
+PASS raycast PosterC hit PosterC
+UI c07-poster-c overflow=0
+PASS button PosterFit
+PASS raycast PosterFit hit PosterFit
+PASS button PosterClose
+PASS raycast PosterClose hit PosterClose
+PASS button Cityfood
+PASS raycast Cityfood hit Cityfood
+UI c08-food overflow=0
+PASS button Food4
+PASS raycast Food4 hit Food4
+UI c08-walking overflow=0
+PASS sits and orders
+UI c08-order overflow=0
+UI c08-served overflow=0
+UI c08-eat-noodles overflow=0
+PASS noodles eaten
+PASS button Food1
+PASS raycast Food1 hit Food1
+UI c08-tea overflow=0
+PASS milk tea drunk
+PASS button Food7
+PASS raycast Food7 hit Food7
+UI c08-toast overflow=0
+PASS toast eaten
+PASS button Cityout
+PASS raycast Cityout hit Cityout
+UI c09-out overflow=0
+PASS button Place2
+PASS raycast Place2 hit Place2
+UI c09-photo overflow=0
+PASS button Stamp
+PASS raycast Stamp hit Stamp
+PASS stamped
+PASS button LineQuiz
+PASS raycast LineQuiz hit LineQuiz
+PASS button Quiztw
+PASS raycast Quiztw hit Quiztw
+PASS button Kind展览
+PASS raycast Kind展览 hit Kind展览
+UI c09-art overflow=0
+PASS button Kind看剧
+PASS raycast Kind看剧 hit Kind看剧
+PASS button Urbtix
+PASS raycast Urbtix hit Urbtix
+PASS button Urb1
+PASS raycast Urb1 hit Urb1
+PASS button UrbBack
+PASS raycast UrbBack hit UrbBack
+PASS button Kind购物
+PASS raycast Kind购物 hit Kind购物
+UI c09-shop overflow=0
+PASS button Browse
+PASS raycast Browse hit Browse
+PASS button Shop1
+PASS raycast Shop1 hit Shop1
+PASS button Place12
+PASS raycast Place12 hit Place12
+UI c09-street overflow=0
+PASS button Citylater
+PASS raycast Citylater hit Citylater
+UI c10-later overflow=0
+PASS button Later0
+PASS raycast Later0 hit Later0
+UI c10-english overflow=0
+PASS button LaterBack
+PASS raycast LaterBack hit LaterBack
+PASS city survives a save round trip
+PASS a save from the old game loads with an empty city
+PASS reload keeps the pet
+PASS button Tab小屋
+PASS raycast Tab小屋 hit Tab小屋
+UI c11-room-after overflow=0
+PASS all testing remained silent
+SMOKE_OK total_overflow=0
